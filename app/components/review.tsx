@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import BottleCarousel from "./slide-bottle";
 
+
 const Review = () => {
   const [reviews] = useState([
     {
@@ -18,7 +19,7 @@ const Review = () => {
   ]);
 
   return (
-    <div className="px-6 pt-[52px] block sm:hidden space-y-4">
+    <div className="px-6 pt-[52px] block sm:hidden space-y-4 mt-8">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex justify-between items-center w-full">
@@ -182,7 +183,8 @@ const Review = () => {
           className="cursor-pointer mt-5"
         />
       </div>
-      <div className="w-full absolute bottom-0 left-0 right-0">
+      <div className="w-full absolute -bottom-18 left-0 right-0">
+   
       <BottleCarousel />
 
       </div>

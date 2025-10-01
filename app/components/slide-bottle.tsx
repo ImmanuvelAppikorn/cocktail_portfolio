@@ -82,9 +82,9 @@ export default function BottleCarousel() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeBottle.id + "-text"}
-              initial={{ opacity: 0, y: -50 }}
+              initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.5 }}
               className="flex flex-col items-center"
             >

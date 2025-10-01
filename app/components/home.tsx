@@ -5,17 +5,17 @@ import { useState, useEffect } from "react";
 import CrimsonReserveCard from "./crimson-reserve";
 import About from "./about";
 import Review from "./review";
+import SlideToggle from "./button";
+ // import your toggle
 
 export default function WineCard() {
   const [currentStep, setCurrentStep] = useState<"home" | "crimson" | "about" | "review">("home");
   const [reverse, setReverse] = useState(false);
 
-  // Prevent scrolling when animation runs
   useEffect(() => {
     document.body.style.overflow = currentStep !== "home" && !reverse ? "hidden" : "auto";
   }, [currentStep, reverse]);
 
-  // Navigate functions
   const handleStartJourney = () => setCurrentStep("crimson");
 
   const handleCrimsonNext = () => {
@@ -36,8 +36,16 @@ export default function WineCard() {
 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
-      <div className="relative w-full h-screen flex flex-col items-center justify-center">
+      
+      {/* Slide Toggle for all pages except Home */}
+      {currentStep !== "home" && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+          <SlideToggle />
+        </div>
+      )}
 
+      <div className="relative w-full h-screen flex flex-col items-center justify-center">
+        
         {/* Home Page Title */}
         <AnimatePresence>
           {currentStep === "home" && !reverse && (
@@ -49,13 +57,7 @@ export default function WineCard() {
               exit={{ opacity: 0, y: -200 }}
               transition={{ duration: 0.5 }}
             >
-              <Image
-                src={"/logo/logo.svg"}
-                alt="Vinea Logo"
-                width={310}
-                height={118}
-                className="mx-auto"
-              />
+              <Image src={"/logo/logo.svg"} alt="Vinea Logo" width={310} height={118} className="mx-auto" />
             </motion.h1>
           )}
         </AnimatePresence>
@@ -80,16 +82,15 @@ export default function WineCard() {
             </motion.div>
           )}
         </AnimatePresence>
-
         {/* Bottle Rose Image */}
         <motion.div
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
           animate={{
-            width: currentStep === "home" ? 1087 : currentStep === "crimson" ? 330 : currentStep === "about" ? 650 : 265,
-            height: currentStep === "home" ? 1183 : currentStep === "crimson" ? 359 : currentStep === "about" ? 705 : 288,
+            width: currentStep === "home" ? 1087 : currentStep === "crimson" ? 300 : currentStep === "about" ? 650 : 265,
+            height: currentStep === "home" ? 1183 : currentStep === "crimson" ? 329 : currentStep === "about" ? 705 : 288,
             rotate: currentStep === "home" ? -11 : currentStep === "crimson" ? 0 : currentStep === "about" ? -26 : 0,
-            top: currentStep === "home" ? "120px" : currentStep === "crimson" ? "30%" : currentStep === "about" ? "44%" : "66.2%",
+            top: currentStep === "home" ? "120px" : currentStep === "crimson" ? "31%" : currentStep === "about" ? "44%" : "66.2%",
             left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : currentStep === "about" ? "70%" : "50%",
             opacity: currentStep === "review" ? 0 : 1,
           }}

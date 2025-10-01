@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function About({ onNextClick }: { onNextClick?: () => void }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden px-4">
+    <div className="relative w-full h-screen overflow-hidden px-4 mt-12">
       <div className="text-[26px] font-montagu font-extrabold px-auto py-2 border-b-2 text-center w-full mt-6">
         ABOUT THE WINE
       </div>
