@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import CrimsonReserveCard from "./crimson-reserve";
 import About from "./about";
+import Review from "./review";
 
 export default function WineCard() {
-  const [currentStep, setCurrentStep] = useState<"home" | "crimson" | "about">("home");
+  const [currentStep, setCurrentStep] = useState<"home" | "crimson" | "about" | "review">("home");
   const [reverse, setReverse] = useState(false);
 
   // Prevent scrolling when animation runs
@@ -14,9 +15,8 @@ export default function WineCard() {
     document.body.style.overflow = currentStep !== "home" && !reverse ? "hidden" : "auto";
   }, [currentStep, reverse]);
 
-  const handleStartJourney = () => {
-    setCurrentStep("crimson");
-  };
+  // Navigate functions
+  const handleStartJourney = () => setCurrentStep("crimson");
 
   const handleCrimsonNext = () => {
     setReverse(true);
@@ -27,14 +27,15 @@ export default function WineCard() {
   };
 
   const handleAboutNext = () => {
-  console.log("Go to Reviews clicked");
-
-};
-
+    setReverse(true);
+    setTimeout(() => {
+      setCurrentStep("review");
+      setReverse(false);
+    }, 800);
+  };
 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
-      {/* Hero Section */}
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
 
         {/* Home Page Title */}
@@ -48,8 +49,13 @@ export default function WineCard() {
               exit={{ opacity: 0, y: -200 }}
               transition={{ duration: 0.5 }}
             >
-              Vinea <br />
-              <span className="font-extrabold">Connect</span>
+              <Image
+                src={"/logo/logo.svg"}
+                alt="Vinea Logo"
+                width={310}
+                height={118}
+                className="mx-auto"
+              />
             </motion.h1>
           )}
         </AnimatePresence>
@@ -75,59 +81,50 @@ export default function WineCard() {
           )}
         </AnimatePresence>
 
-{/* ---------------------------- */}
-{/* Bottle Rose Image */}
-{/* ---------------------------- */}
-<motion.div
-  className="absolute z-10 flex items-center justify-center"
-  style={{ translateX: "-50%" }}
-  animate={{
-    width: currentStep === "home" ? 1087 : currentStep === "crimson" ? 330 : 650,
-    height: currentStep === "home" ? 1183 : currentStep === "crimson" ? 359 : 705,
-    rotate: currentStep === "home" ? -11 : currentStep === "crimson" ? 0 : -26,
-    top: currentStep === "home" ? "120px" : currentStep === "crimson" ? "30%" : "44%",
-    left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : "70%",
-  }}
-  transition={{ duration: 1 }}
->
-  <Image
-    src="/vinea/Rose.svg"
-    alt="bottle"
-    width={1087}
-    height={1183}
-    className="object-contain w-full h-full"
-  />
-</motion.div>
+        {/* Bottle Rose Image */}
+        <motion.div
+          className="absolute z-10 flex items-center justify-center"
+          style={{ translateX: "-50%" }}
+          animate={{
+            width: currentStep === "home" ? 1087 : currentStep === "crimson" ? 330 : currentStep === "about" ? 650 : 265,
+            height: currentStep === "home" ? 1183 : currentStep === "crimson" ? 359 : currentStep === "about" ? 705 : 288,
+            rotate: currentStep === "home" ? -11 : currentStep === "crimson" ? 0 : currentStep === "about" ? -26 : 0,
+            top: currentStep === "home" ? "120px" : currentStep === "crimson" ? "30%" : currentStep === "about" ? "44%" : "66.2%",
+            left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : currentStep === "about" ? "70%" : "50%",
+            opacity: currentStep === "review" ? 0 : 1,
+          }}
+          transition={{ duration: 1 }}
+        >
+          <Image
+            src="/vinea/Rose.svg"
+            alt="bottle"
+            width={1087}
+            height={1183}
+            className="object-contain w-full h-full"
+          />
+        </motion.div>
 
-{/* ---------------------------- */}
-{/* SVG Background */}
-{/* ---------------------------- */}
-<motion.div
-  className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center"
-  initial={{ width: 850, height: 850, rotate: 0 }}
-  animate={{
-    width: currentStep === "home" ? 850 : currentStep === "crimson" ? "3000px" : 600, // keep same width/height
-    height: currentStep === "home" ? 850 : currentStep === "crimson" ? "3000px" : 600,
-    left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : "90%",
-    bottom: currentStep === "home" ? "-247px" : currentStep === "crimson" ? "-800px" : "-180px",
-    rotate: currentStep === "home" ? 0 : currentStep === "crimson" ? 0 : 90,
-  }}
-  transition={{ duration: 1, ease: "easeInOut" }}
->
-  <Image
-    src="/shape-svg/circle-shape.svg"
-    alt="background-svg"
-    fill
-    className="object-contain" // keep proportions, not cut
-  />
-</motion.div>
-
-
-
-
-
-
-
+        {/* SVG Background */}
+        <motion.div
+          className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center"
+          initial={{ width: 850, height: 850, rotate: 0 }}
+          animate={{
+            width: currentStep === "home" ? 850 : currentStep === "crimson" ? "3000px" : currentStep === "about" ? 600 : 600,
+            height: currentStep === "home" ? 850 : currentStep === "crimson" ? "3000px" : currentStep === "about" ? 600 : 600,
+            left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : currentStep === "about" ? "90%" : "50%",
+            bottom: currentStep === "home" ? "-247px" : currentStep === "crimson" ? "-800px" : currentStep === "about" ? "-180px" : "-380px",
+            rotate: currentStep === "home" ? 0 : currentStep === "crimson" ? 0 : currentStep === "about" ? 90 : 0.05,
+            
+          }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+        >
+          <Image
+            src="/shape-svg/circle-shape.svg"
+            alt="background-svg"
+            fill
+            className="object-contain"
+          />
+        </motion.div>
 
         {/* Crimson Card */}
         <AnimatePresence>
@@ -155,7 +152,21 @@ export default function WineCard() {
               transition={{ duration: 1 }}
             >
               <About onNextClick={handleAboutNext} />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
+        {/* Review Page */}
+        <AnimatePresence>
+          {currentStep === "review" && !reverse && (
+            <motion.div
+              className="absolute top-0 w-full h-full z-40"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ duration: 1 }}
+            >
+              <Review />
             </motion.div>
           )}
         </AnimatePresence>

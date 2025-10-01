@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
+import BottleCarousel from "./slide-bottle";
 
-export default function ReviewPage() {
+const Review = () => {
   const [reviews] = useState([
     {
       id: 1,
@@ -11,196 +13,181 @@ export default function ReviewPage() {
       time: "2 mins ago",
       comment:
         "Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco.",
-      avatar: "/review-images/Ellipse5.svg", // replace with real image
+      avatar: "/review-images/Ellipse5.svg",
     },
   ]);
 
-  const totalReviews = 15000;
-  const averageRating = 4.0;
-
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen p-4 font-sans">
+    <div className="px-6 pt-[52px] block sm:hidden space-y-4">
       {/* Header */}
-      <div className="flex justify-between items-centermb-4 my-4">
-        <button className=" flex flex-row  justify-center items-center gap-2">
-          <img
-            src="/button-image/back.svg"
-            alt="user"
-            className="w-[24px] h-[24px] rounded-full  "
-          />
-          <span className="text-[16px] font-bold text-[#333333] font-axiforma">
-            Vinea connect
-          </span>
-        </button>
-        <button className="bg-black text-white text-sm px-3 py-1 rounded-md flex flex-row  justify-center items-center gap-2">
-          <img
-            src="/button-image/coffee.svg"
-            alt="user"
-            className="w-[24px] h-[24px] rounded-full  "
-          />
-          <span className="text-[9.8px] font-bold text-white font-axiforma">
-            Write a Review
-          </span>
-        </button>
+      <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center w-full">
+          <div className="flex justify-center items-center gap-3">
+            <Image
+              src="/button-image/Icons.svg"
+              alt="Back Icon"
+              height={20}
+              width={20}
+            />
+            <p className="text-[16px] font-bold">Vinea connect</p>
+          </div>
+
+          {/* Write a Review button */}
+          <div className="bg-black px-3 py-2 rounded-md flex items-center text-white gap-2">
+            <Image
+              src="/button-image/coffee.svg"
+              alt="Review Icon"
+              height={20}
+              width={20}
+            />
+            <p className="text-[10px] font-bold leading-none">Write a Review</p>
+          </div>
+        </div>
       </div>
 
-      {/* Avatars & Rating */}
-      <div className="flex items-center justify-between gap-3 mb-4 p-4 bg-[#F8F8F8] rounded-lg">
-        <img
+      {/* Rating Overview */}
+      <div className="bg-[#F8F8F8] w-full rounded-xl flex items-center p-3 justify-between">
+        <Image
           src="/button-image/forward.svg"
-          alt="user"
-          className="w-[29px] h-[29px] rounded-full  "
+          alt="Forward Icon"
+          height={28}
+          width={28}
         />
-
-        <span className="text-2xl font-axiforma font-extrabold">
-          {averageRating}
-        </span>
-        <div className="flex -space-x-2">
-          <img
-            src="/review-images/Ellipse2.svg"
-            alt="user"
-            className="w-[47px] h-[47px] rounded-full  "
-          />
-          <img
-            src="/review-images/Ellipse3.svg"
-            alt="user"
-            className="w-[47px] h-[47px] rounded-full  "
-          />
-          <img
-            src="/review-images/Ellipse4.svg"
-            alt="user"
-            className="w-[47px] h-[47px] rounded-full  "
-          />
-          <img
-            src="/review-images/Ellipse5.svg"
-            alt="user"
-            className="w-[47px] h-[47px] rounded-full  "
-          />
-          <img
-            src="/review-images/Group1.svg"
-            alt="user"
-            className="w-[47px] h-[47px] rounded-full  "
-          />
+        <p className="text-2xl font-extrabold">4.0</p>
+        <div className="flex -space-x-4">
+          {[
+            "Ellipse2.svg",
+            "Ellipse3.svg",
+            "Ellipse4.svg",
+            "Ellipse5.svg",
+            "Group1.svg",
+          ].map((img, i) => (
+            <Image
+              key={i}
+              src={`/review-images/${img}`}
+              alt="Reviewer"
+              height={48}
+              width={48}
+              className="rounded-full"
+            />
+          ))}
         </div>
       </div>
 
       {/* Rating Bars */}
-      <div className="bg-[#F8F8F8] p-4 rounded-lg mb-4">
-        {[5, 4, 3, 2, 1].map((star) => (
-          <div key={star} className="flex items-center gap-1.5 mb-2">
-            <span className="w-4 text-sm flex flex-row gap-1">
-              {star}
-              <img
+      <div className="bg-[#F8F8F8] rounded-lg p-3 flex justify-between items-start">
+        {/* Left Bars */}
+        <div className="flex flex-col gap-2">
+          {[5, 4, 3, 2, 1].map((num, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <p className="text-sm font-medium">{num}</p>
+              <Image
                 src="/start-rating-icons/start-rating-bottle-full.svg"
-                alt="user"
-                className="w-[5.5px] h-[17px] "
+                alt="Rating Bottle"
+                height={16}
+                width={5}
               />
-              
-            </span>
-            <div className="flex-1 h-2  bg-[#F8F8F8] rounded">
               <div
-                className={`h-2 rounded ${
-                  star === 5
-                    ? "bg-[#7E8FB3] w-3/4"
-                    : star === 4
-                      ? "bg-[#8794b0] w-1/2"
-                      : star === 3
-                        ? "bg-[#7E8FB3] w-1/4"
-                        : star === 2
-                          ? "bg-[#97a0b3] w-1/12"
-                          : "bg-[#aaadb4] w-1/24"
-                }`}
-              ></div>
+                className={`h-[6px] rounded bg-[#7E8FB3]`}
+                style={{
+                  width:
+                    num === 5
+                      ? "151px"
+                      : num === 4
+                        ? "106px"
+                        : num === 3
+                          ? "60px"
+                          : num === 2
+                            ? "19px"
+                            : "6px",
+                }}
+              />
             </div>
+          ))}
+        </div>
+
+        {/* Right Side */}
+        <div className="flex flex-col items-end space-y-2">
+          <p className="text-4xl font-bold">4.0</p>
+          <div className="flex gap-1">
+            {[1, 2, 3, 4].map((i) => (
+              <Image
+                key={i}
+                src="/start-rating-icons/start-rating-bottle-full.svg"
+                alt="Full Bottle"
+                height={16}
+                width={5}
+              />
+            ))}
+            <Image
+              src="/start-rating-icons/start-rating-bottle-empty.svg"
+              alt="Empty Bottle"
+              height={16}
+              width={5}
+            />
           </div>
-        ))}
-        <div className="flex justify-between items-center mt-3">
-          <span className="text-2xl font-bold">{averageRating}</span>
-          <div className="flex items-center gap-1 text-[#7E8FB3]">
-            <span className="flex flex-row gap-1.5">
-              <img
-                src="/start-rating-icons/start-rating-bottle-full.svg"
-                alt="user"
-                className="w-[5.5px] h-[17px] "
-              />
-              <img
-                src="/start-rating-icons/start-rating-bottle-full.svg"
-                alt="user"
-                className="w-[5.5px] h-[17px]"
-              />
-              <img
-                src="/start-rating-icons/start-rating-bottle-full.svg"
-                alt="user"
-                className="w-[5.5px] h-[17px]"
-              />
-              <img
-                src="/start-rating-icons/start-rating-bottle-full.svg"
-                alt="user"
-                className="w-[5.5px] h-[17px]"
-              />
-              <img
-                src="/start-rating-icons/start-rating-bottle-empty.svg"
-                alt="user"
-                className="w-[5.5px] h-[17px]"
-              />
-            </span>
-            <span className="text-gray-600 ml-2 text-sm">
-              {totalReviews.toLocaleString()} Reviews
-            </span>
-          </div>
+          <p className="text-sm font-semibold">15k Reviews</p>
         </div>
       </div>
 
       {/* Reviews List */}
-      <div className="py-4 border-y border-[#D9D9D9]">
-        {reviews.map((r) => (
-          <div key={r.id} className="flex justify-between items-start mb-4">
-            <div className="flex gap-3">
-              <img
-                src={r.avatar}
-                alt={r.user}
-                className="w-10 h-10 rounded-full"
-              />
-              <div>
-                <p className="font-semibold">{r.user}</p>
-                <div className="flex items-center gap-2">
-                  <span className="flex flex-row gap-1.5">
-                    <img
-                      src="/start-rating-icons/start-rating-bottle-full.svg"
-                      className="w-[5.5px] h-[17px]"
-                    />
-                    <img
-                      src="/start-rating-icons/start-rating-bottle-full.svg"
-                      className="w-[5.5px] h-[17px]"
-                    />
-                    <img
-                      src="/start-rating-icons/start-rating-bottle-full.svg"
-                      className="w-[5.5px] h-[17px]"
-                    />
-                    <img
-                      src="/start-rating-icons/start-rating-bottle-full.svg"
-                      className="w-[5.5px] h-[17px]"
-                    />
-                    <img
-                      src="/start-rating-icons/start-rating-bottle-empty.svg"
-                      className="w-[5.5px] h-[17px]"
-                    />
-                  </span>
-                  <p className="text-xs text-gray-500">{r.time}</p>
-                </div>
-                <p className="text-sm text-[#333333] font-normal font-axiforma mt-1">
-                  {r.comment}
-                </p>
+      <div className="flex justify-between items-start">
+        <div className="py-4 border-y border-[#D9D9D9] w-[85%] space-y-4">
+          {reviews.map((r) => (
+            <div key={r.id} className="flex justify-between items-start">
+              <div className="flex flex-col gap-3">
+
+                <div className="flex flex-row items-center gap-3 ">
+                  <Image
+                    src={r.avatar}
+                    alt={r.user}
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <p className="font-semibold">{r.user}</p>
+                    <div className="flex items-center gap-2">
+                      <span className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Image
+                            key={i}
+                            src={
+                              i < r.rating
+                                ? "/start-rating-icons/start-rating-bottle-full.svg"
+                                : "/start-rating-icons/start-rating-bottle-empty.svg"
+                            }
+                            alt="Rating Bottle"
+                            width={6}
+                            height={16}
+                          />
+                        ))}
+                      </span>
+                      <p className="text-xs text-gray-500">{r.time}</p>
+                    </div>
+                  </div>
+                  </div>
+
+                  <p className="text-sm text-gray-800 mt-1">{r.comment}</p>
+                
               </div>
             </div>
-            <img
-              src="/button-image/setting-dots.svg"
-              alt="menu"
-              className="w-5 h-5 mt-2 cursor-pointer"
-            />
-          </div>
-        ))}
+          ))}
+        </div>
+        <Image
+          src="/button-image/setting-dots.svg"
+          alt="Options"
+          width={20}
+          height={20}
+          className="cursor-pointer mt-5"
+        />
+      </div>
+      <div className="w-full absolute bottom-0 left-0 right-0">
+      <BottleCarousel />
+
       </div>
     </div>
   );
-}
+};
+
+export default Review;
