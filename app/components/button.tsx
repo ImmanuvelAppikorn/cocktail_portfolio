@@ -1,23 +1,24 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function SlideToggle() {
-  const [selected, setSelected] = useState<"story" | "nutrition">("story");
-
+export default function SlideToggle({
+  selected,
+  setSelected,
+}: {
+  selected: "story" | "nutrition";
+  setSelected: (tab: "story" | "nutrition") => void;
+}) {
   return (
-    <div className="relative bg-[hsl(343,70%,90%)] rounded-[6px] p-1 flex items-center cursor-pointer select-none w-full py-1">
-      {/* Animated slider */}
+    <div className="relative bg-pink-100 rounded-[6px] flex items-center select-none w-full py-1 px-[2px] cursor-pointer">
+      {/* Animated pink slider */}
       <motion.div
         layout
+        animate={{ x: selected === "story" ? 0 : "100%" }} // <-- Use x instead of transform
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        className="absolute top-1 left-1 h-[42px] w-1/2 rounded-[6px] bg-[hsl(343,83%,53%)]"
-        style={{
-          transform: selected === "story" ? "translateX(0%)" : "translateX(100%)",
-        }}
+        className="absolute top-1  h-[42px] w-1/2 rounded-[6px] bg-[#EB235C] border-x-4 border-pink-100"
       />
 
-      {/* Options */}
+      {/* Tab Options */}
       <div className="relative z-10 flex w-full text-[17px] font-axiforma font-semibold">
         <div
           className={`w-1/2 text-center py-2 transition-colors duration-300 ${

@@ -5,15 +5,25 @@ import { useState, useEffect } from "react";
 import CrimsonReserveCard from "./crimson-reserve";
 import About from "./about";
 import Review from "./review";
-import SlideToggle from "./button";
- // import your toggle
+import NutritionPage from "./notes";
+import SlideToggle from "./button"; // toggle component
 
 export default function WineCard() {
-  const [currentStep, setCurrentStep] = useState<"home" | "crimson" | "about" | "review">("home");
+  const [currentStep, setCurrentStep] = useState<
+    "home" | "crimson" | "about" | "review" | "nutrition"
+  >("home");
   const [reverse, setReverse] = useState(false);
+  const [showIntro, setShowIntro] = useState(true); // intro animation flag
 
   useEffect(() => {
-    document.body.style.overflow = currentStep !== "home" && !reverse ? "hidden" : "auto";
+    // hide intro overlay after 1.5s
+    const timer = setTimeout(() => setShowIntro(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow =
+      currentStep !== "home" && !reverse ? "hidden" : "auto";
   }, [currentStep, reverse]);
 
   const handleStartJourney = () => setCurrentStep("crimson");
@@ -36,62 +46,137 @@ export default function WineCard() {
 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
-      
-      {/* Slide Toggle for all pages except Home */}
-      {currentStep !== "home" && (
+      {/* Intro Overlay */}
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            className="fixed inset-0 z-[9999] bg-white"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Slide Toggle (only visible on About, Crimson, Nutrition, Review) */}
+      {(currentStep === "about" ||
+        currentStep === "crimson" ||
+        currentStep === "nutrition" ||
+        currentStep === "review") && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4">
-          <SlideToggle />
+          <SlideToggle
+            selected={currentStep === "nutrition" ? "nutrition" : "story"}
+            setSelected={(tab) => {
+              if (tab === "story") {
+                setCurrentStep("crimson"); // Go to Crimson page
+              } else {
+                setCurrentStep("nutrition"); // Go to Nutrition page
+              }
+            }}
+          />
         </div>
       )}
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
-        
         {/* Home Page Title */}
         <AnimatePresence>
-          {currentStep === "home" && !reverse && (
+          {currentStep === "home" && !reverse && !showIntro && (
             <motion.h1
               className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
-              style={{ color: "var(--Text-Color, #1C1826)", fontSize: "66.94px", lineHeight: "80%" }}
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
+              style={{
+                color: "var(--Text-Color, #1C1826)",
+                fontSize: "66.94px",
+                lineHeight: "80%",
+              }}
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -200 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1 }}
             >
-              <Image src={"/logo/logo.svg"} alt="Vinea Logo" width={310} height={118} className="mx-auto" />
+              <Image
+                src={"/logo/logo.svg"}
+                alt="Vinea Logo"
+                width={310}
+                height={118}
+                className="mx-auto"
+              />
             </motion.h1>
           )}
         </AnimatePresence>
 
         {/* Home Page Button */}
         <AnimatePresence>
-          {currentStep === "home" && !reverse && (
+          {currentStep === "home" && !reverse && !showIntro && (
             <motion.div
               className="absolute top-2/6 right-4 z-20"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8 }}
             >
               <button
                 onClick={handleStartJourney}
                 className="inline-flex items-center justify-center px-[18px] py-[13px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
               >
                 Start the journey
-                <Image src="/button-image/arrow-up-right.svg" alt="arrow" width={12} height={12} className="ml-1"/>
+                <Image
+                  src="/button-image/arrow-up-right.svg"
+                  alt="arrow"
+                  width={12}
+                  height={12}
+                  className="ml-1"
+                />
               </button>
             </motion.div>
           )}
         </AnimatePresence>
+
         {/* Bottle Rose Image */}
         <motion.div
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
           animate={{
-            width: currentStep === "home" ? 1087 : currentStep === "crimson" ? 300 : currentStep === "about" ? 650 : 265,
-            height: currentStep === "home" ? 1183 : currentStep === "crimson" ? 329 : currentStep === "about" ? 705 : 288,
-            rotate: currentStep === "home" ? -11 : currentStep === "crimson" ? 0 : currentStep === "about" ? -26 : 0,
-            top: currentStep === "home" ? "120px" : currentStep === "crimson" ? "31%" : currentStep === "about" ? "44%" : "66.2%",
-            left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : currentStep === "about" ? "70%" : "50%",
+            width:
+              currentStep === "home"
+                ? 1087
+                : currentStep === "crimson"
+                ? 300
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 650
+                : 265,
+            height:
+              currentStep === "home"
+                ? 1183
+                : currentStep === "crimson"
+                ? 329
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 705
+                : 288,
+            rotate:
+              currentStep === "home"
+                ? -11
+                : currentStep === "crimson"
+                ? 0
+                : currentStep === "about" || currentStep === "nutrition"
+                ? -26
+                : 0,
+            top:
+              currentStep === "home"
+                ? "120px"
+                : currentStep === "crimson"
+                ? "31%"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? "44%"
+                : "66.2%",
+            left:
+              currentStep === "home"
+                ? "50%"
+                : currentStep === "crimson"
+                ? "50%"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? "70%"
+                : "50%",
             opacity: currentStep === "review" ? 0 : 1,
           }}
           transition={{ duration: 1 }}
@@ -110,12 +195,46 @@ export default function WineCard() {
           className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center"
           initial={{ width: 850, height: 850, rotate: 0 }}
           animate={{
-            width: currentStep === "home" ? 850 : currentStep === "crimson" ? "3000px" : currentStep === "about" ? 600 : 600,
-            height: currentStep === "home" ? 850 : currentStep === "crimson" ? "3000px" : currentStep === "about" ? 600 : 600,
-            left: currentStep === "home" ? "50%" : currentStep === "crimson" ? "50%" : currentStep === "about" ? "90%" : "50%",
-            bottom: currentStep === "home" ? "-247px" : currentStep === "crimson" ? "-800px" : currentStep === "about" ? "-180px" : "-380px",
-            rotate: currentStep === "home" ? 0 : currentStep === "crimson" ? 0 : currentStep === "about" ? 90 : 0.05,
-            
+            width:
+              currentStep === "home"
+                ? 850
+                : currentStep === "crimson"
+                ? "3000px"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 600
+                : 600,
+            height:
+              currentStep === "home"
+                ? 850
+                : currentStep === "crimson"
+                ? "3000px"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 600
+                : 600,
+            left:
+              currentStep === "home"
+                ? "50%"
+                : currentStep === "crimson"
+                ? "50%"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? "90%"
+                : "50%",
+            bottom:
+              currentStep === "home"
+                ? "-247px"
+                : currentStep === "crimson"
+                ? "-800px"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? "-180px"
+                : "-380px",
+            rotate:
+              currentStep === "home"
+                ? 0
+                : currentStep === "crimson"
+                ? 0
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 90
+                : 0.05,
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
@@ -127,9 +246,9 @@ export default function WineCard() {
           />
         </motion.div>
 
-        {/* Crimson Card */}
+        {/* Pages */}
         <AnimatePresence>
-          {currentStep === "crimson" && !reverse && (
+          {currentStep !== "home" && !reverse && (
             <motion.div
               className="absolute top-0 w-full h-full z-40"
               initial={{ opacity: 0, y: 100 }}
@@ -137,41 +256,17 @@ export default function WineCard() {
               exit={{ opacity: 0, y: 100 }}
               transition={{ duration: 1 }}
             >
-              <CrimsonReserveCard onNextClick={handleCrimsonNext} />
+              {currentStep === "crimson" && (
+                <CrimsonReserveCard onNextClick={handleCrimsonNext} />
+              )}
+              {currentStep === "about" && (
+                <About onNextClick={handleAboutNext} />
+              )}
+              {currentStep === "nutrition" && <NutritionPage />}
+              {currentStep === "review" && <Review />}
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* About Card */}
-        <AnimatePresence>
-          {currentStep === "about" && !reverse && (
-            <motion.div
-              className="absolute top-0 w-full h-full z-40"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 100 }}
-              transition={{ duration: 1 }}
-            >
-              <About onNextClick={handleAboutNext} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Review Page */}
-        <AnimatePresence>
-          {currentStep === "review" && !reverse && (
-            <motion.div
-              className="absolute top-0 w-full h-full z-40"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 100 }}
-              transition={{ duration: 1 }}
-            >
-              <Review />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
       </div>
     </div>
   );
