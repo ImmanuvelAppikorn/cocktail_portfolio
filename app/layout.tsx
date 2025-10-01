@@ -38,15 +38,14 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
-          <div className="relative flex flex-col h-screen">
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
-            </main>
-          </div>
-
+        <div className="relative flex flex-col min-h-screen">
+          <main className="container mx-auto max-w-full sm:max-w-7xl  flex-grow">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
