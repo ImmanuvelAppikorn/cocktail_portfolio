@@ -98,7 +98,7 @@ export default function CrimsonReserveCard({
       </motion.div>
 
       {/* Button */}
-      <div className="absolute bottom-15 left-1/2 -translate-x-1/2 w-[85%]">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[85%]">
         <button
           onClick={onNextClick}
           className="inline-flex items-center justify-center px-3 py-2 rounded-full w-full bg-[var(--Text-Color,#1C1826)] text-white text-[10px] font-montagu font-medium hover:bg-gray-800 transition"
