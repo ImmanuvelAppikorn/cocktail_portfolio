@@ -9,13 +9,13 @@ export default function SlideToggle({
   setSelected: (tab: "story" | "nutrition") => void;
 }) {
   return (
-    <div className="relative bg-pink-100 rounded-[6px] flex items-center select-none w-full py-[2px] px-[2px] cursor-pointer">
+    <div className="relative bg-pink-200 rounded-[6px] flex items-center select-none w-full py-[2px] cursor-pointer">
       {/* Animated pink slider */}
       <motion.div
         layout
         animate={{ x: selected === "story" ? 0 : "100%" }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        className="absolute top-[2px] h-[32px] w-1/2 rounded-[6px] bg-[#EB235C] border-x-4 border-pink-100"
+        className="absolute top-[2px] h-[30px] w-1/2 rounded-[6px] bg-[#EB235C] border-x-4 border-pink-200"
       />
 
       {/* Tab Options */}
