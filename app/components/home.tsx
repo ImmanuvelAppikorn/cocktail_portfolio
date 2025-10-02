@@ -44,6 +44,30 @@ export default function WineCard() {
     }, 800);
   };
 
+  const handleCrimsonPrev = () => {
+  setReverse(true);
+  setTimeout(() => {
+    setCurrentStep("home"); // go back to home
+    setReverse(false);
+  }, 800);
+};
+
+const handleAboutPrev = () => {
+  setReverse(true);
+  setTimeout(() => {
+    setCurrentStep("crimson"); // go back to crimson
+    setReverse(false);
+  }, 800);
+};
+
+const handleReviewPrev = () => {
+  setReverse(true);
+  setTimeout(() => {
+    setCurrentStep("about"); // go back to about
+    setReverse(false);
+  }, 800);
+};
+
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
       {/* Intro Overlay */}
@@ -263,13 +287,17 @@ export default function WineCard() {
               transition={{ duration: 1 }}
             >
               {currentStep === "crimson" && (
-                <CrimsonReserveCard onNextClick={handleCrimsonNext} />
+                <CrimsonReserveCard onNextClick={handleCrimsonNext} onPrevClick={handleCrimsonPrev} />
               )}
               {currentStep === "about" && (
-                <About onNextClick={handleAboutNext} />
+                <About onNextClick={handleAboutNext} onPrevClick={handleAboutPrev}/>
               )}
               {currentStep === "nutrition" && <NutritionPage />}
-              {currentStep === "review" && <Review />}
+               {currentStep === "review" && (
+        <Review
+          onPrevClick={handleReviewPrev}
+        />
+      )}
             </motion.div>
           )}
         </AnimatePresence>

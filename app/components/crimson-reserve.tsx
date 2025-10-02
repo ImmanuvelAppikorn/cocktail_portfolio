@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 
 export default function CrimsonReserveCard({
   onNextClick,
+  onPrevClick,
 }: {
   onNextClick: () => void;
+  onPrevClick: () => void;
 }) {
   const topVariants = {
     hidden: { y: -300, opacity: 0 },
@@ -29,7 +31,16 @@ export default function CrimsonReserveCard({
         exit="exit"
         className="space-y-4"
       >
-        <div className="mt-4 w-full py-2 px-2 flex items-center justify-center border-b border-black">
+        <div className="flex flex-row mt-4 w-full py-2 px-2 items-center justify-start border-b border-black gap-20">
+          <button onClick={onPrevClick}>
+            <Image
+              src="/button-image/white_back.svg"
+              alt="Back Icon"
+              height={30}
+              width={30}
+            />
+          </button>
+
           <h2 className="text-xl font-bold">CRIMSON RESERVE</h2>
         </div>
 
@@ -97,9 +108,6 @@ export default function CrimsonReserveCard({
         />
       </motion.div>
 
-
-
-
       {/* Button */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[85%]">
         <button
@@ -148,9 +156,7 @@ function InfoCard({
         />
       </div>
       <div className="flex flex-col justify-center ml-2">
-        <div className="text-black font-bold text-[9px] uppercase">
-          {title}
-        </div>
+        <div className="text-black font-bold text-[9px] uppercase">{title}</div>
         <div className="text-[11px] font-normal">{value}</div>
       </div>
     </div>
