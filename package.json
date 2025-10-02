@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+      "export": "next export"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.2.8",
