@@ -64,7 +64,7 @@ export default function WineCard() {
         currentStep === "crimson" ||
         currentStep === "nutrition" ||
         currentStep === "review") && (
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4">
           <SlideToggle
             selected={currentStep === "nutrition" ? "nutrition" : "story"}
             setSelected={(tab) => {
@@ -143,7 +143,7 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? 250
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 560
+                ? 430
                 : 265,
             height:
               currentStep === "home"
@@ -151,32 +151,32 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? 279
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 615
+                ? 500
                 : 288,
             rotate:
               currentStep === "home"
                 ? -11
                 : currentStep === "crimson"
-                  ? 0
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? -26
-                    : 0,
+                ? 0
+                : currentStep === "about" || currentStep === "nutrition"
+                ? -26
+                : 0,
             top:
               currentStep === "home"
                 ? "120px"
                 : currentStep === "crimson"
                 ? "26%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "48%"
+                ? "56%"
                 : "66.2%",
             left:
               currentStep === "home"
                 ? "55%"
                 : currentStep === "crimson"
-                  ? "50%"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? "85%"
-                    : "50%",
+                ? "50%"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? "85%"
+                : "50%",
             opacity: currentStep === "review" ? 0 : 1,
           }}
           transition={{ duration: 1 }}
@@ -199,25 +199,25 @@ export default function WineCard() {
               currentStep === "home"
                 ? 750
                 : currentStep === "crimson"
-                  ? "3000px"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? 450
-                    : 600,
+                ? "3000px"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 450
+                : 600,
             height:
               currentStep === "home"
                 ? 750
                 : currentStep === "crimson"
-                  ? "3000px"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? 450
-                    : 600,
+                ? "3000px"
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 450
+                : 600,
             left:
               currentStep === "home"
                 ? "50%"
                 : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "90%"
+                ? "100%"
                 : "50%",
             bottom:
               currentStep === "home"
@@ -225,16 +225,16 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? "-800px"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "-180px"
+                ? "-220px"
                 : "-470px",
             rotate:
               currentStep === "home"
                 ? 0
                 : currentStep === "crimson"
-                  ? 0
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? 90
-                    : 0.05,
+                ? 0
+                : currentStep === "about" || currentStep === "nutrition"
+                ? 90
+                : 0.05,
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
