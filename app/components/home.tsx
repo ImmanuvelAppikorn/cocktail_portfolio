@@ -97,8 +97,8 @@ export default function WineCard() {
               <Image
                 src={"/logo/logo.svg"}
                 alt="Vinea Logo"
-                width={310}
-                height={118}
+                width={250}
+                height={68}
                 className="mx-auto"
               />
             </motion.h1>
@@ -109,7 +109,7 @@ export default function WineCard() {
         <AnimatePresence>
           {currentStep === "home" && !reverse && !showIntro && (
             <motion.div
-              className="absolute top-2/6 right-4 z-20"
+              className="absolute top-[45%] right-3 z-20"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -117,7 +117,7 @@ export default function WineCard() {
             >
               <button
                 onClick={handleStartJourney}
-                className="inline-flex items-center justify-center px-[18px] py-[13px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
+                className="inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
               >
                 Start the journey
                 <Image
@@ -139,19 +139,19 @@ export default function WineCard() {
           animate={{
             width:
               currentStep === "home"
-                ? 1087
+                ? 800
                 : currentStep === "crimson"
-                ? 300
+                ? 250
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 650
+                ? 560
                 : 265,
             height:
               currentStep === "home"
-                ? 1183
+                ? 900
                 : currentStep === "crimson"
-                ? 329
+                ? 279
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 705
+                ? 615
                 : 288,
             rotate:
               currentStep === "home"
@@ -165,17 +165,17 @@ export default function WineCard() {
               currentStep === "home"
                 ? "120px"
                 : currentStep === "crimson"
-                ? "31%"
+                ? "26%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "44%"
+                ? "48%"
                 : "66.2%",
             left:
               currentStep === "home"
-                ? "50%"
+                ? "55%"
                 : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "70%"
+                ? "85%"
                 : "50%",
             opacity: currentStep === "review" ? 0 : 1,
           }}
@@ -197,19 +197,19 @@ export default function WineCard() {
           animate={{
             width:
               currentStep === "home"
-                ? 850
+                ? 750
                 : currentStep === "crimson"
                 ? "3000px"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 600
+                ? 450
                 : 600,
             height:
               currentStep === "home"
-                ? 850
+                ? 750
                 : currentStep === "crimson"
                 ? "3000px"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 600
+                ? 450
                 : 600,
             left:
               currentStep === "home"
@@ -221,12 +221,12 @@ export default function WineCard() {
                 : "50%",
             bottom:
               currentStep === "home"
-                ? "-247px"
+                ? "-450px"
                 : currentStep === "crimson"
                 ? "-800px"
                 : currentStep === "about" || currentStep === "nutrition"
                 ? "-180px"
-                : "-380px",
+                : "-470px",
             rotate:
               currentStep === "home"
                 ? 0

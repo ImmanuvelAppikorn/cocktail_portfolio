@@ -4,31 +4,34 @@ import { motion } from "framer-motion";
 
 export default function About({ onNextClick }: { onNextClick?: () => void }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden px-4 mt-12">
-      <div className="text-[26px] font-montagu font-extrabold px-auto py-2 border-b-2 text-center w-full mt-6">
+    <div className="relative w-full h-screen overflow-hidden px-3 mt-14 flex flex-col items-center">
+      {/* Heading */}
+      <div className="text-[20px] font-montagu font-extrabold py-2 border-b w-full text-center">
         ABOUT THE WINE
       </div>
 
-      <p className="text-[12px] font-axiforma tracking-[1.5px] leading-[24px] font-bold mt-8 w-[80%]">
-        "Sourced From The Mineral-Rich Soil Along The Bhadra River Belt, Our
-        House Espresso Is A Single-Origin Specialty Robusta Coffee From India,
-        Considered Among The Finest In The World. This Robusta Is Graded As
-        'Kaapi Royale,' The Highest Grade Of Indian Robusta Possible When
-        Presented In A Milk-Based Drink, It Features Notes Of Hazelnut And Dark
-        Chocolate, With An Extra Caffeine Hit Unique To Robusta."
+      {/* Paragraph */}
+      <p className="text-[11px] font-axiforma tracking-[1px] leading-[18px] font-medium mt-6 w-full text-left">
+        "Sourced from the mineral-rich soil along the Bhadra River Belt, our
+        house espresso is a single-origin specialty Robusta coffee from India,
+        considered among the finest in the world. This Robusta is graded as
+        'Kaapi Royale,' the highest grade of Indian Robusta. When presented in a
+        milk-based drink, it features notes of hazelnut and dark chocolate, with
+        an extra caffeine hit unique to Robusta."
       </p>
 
+      {/* Button */}
       {onNextClick && (
         <button
           onClick={onNextClick}
-          className="absolute right-4 mt-6 inline-flex items-center justify-center px-[18px] py-[13px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
+          className="absolute right-3 top-1/2 -translate-y-20 inline-flex items-center justify-center px-4 py-2 rounded-full bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
         >
           Go to Reviews
           <Image
             src="/button-image/arrow-up-right.svg"
             alt="arrow"
-            width={12}
-            height={12}
+            width={11}
+            height={11}
             className="ml-1"
           />
         </button>
