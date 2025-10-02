@@ -19,23 +19,32 @@ export default function About({ onNextClick }: { onNextClick?: () => void }) {
         milk-based drink, it features notes of hazelnut and dark chocolate, with
         an extra caffeine hit unique to Robusta."
       </p>
+<div className="absolute right-3 top-1/2 -translate-y-20">
+ {onNextClick && (
+  <button
+    onClick={onNextClick}
+    className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
+  >
+    {/* Expanding Circle */}
+    <span className="absolute w-40 h-40 bg-pink-500 rounded-full -bottom-20 -left-90 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-14" />
 
-      {/* Button */}
-      {onNextClick && (
-        <button
-          onClick={onNextClick}
-          className="absolute right-3 top-1/2 -translate-y-20 inline-flex items-center justify-center px-4 py-2 rounded-full bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
-        >
-          Go to Reviews
-          <Image
-            src="/button-image/arrow-up-right.svg"
-            alt="arrow"
-            width={11}
-            height={11}
-            className="ml-1"
-          />
-        </button>
-      )}
+    <span className="relative flex items-center">
+      Go to Reviews
+      <Image
+        src="/button-image/arrow-up-right.svg"
+        alt="arrow"
+        width={12}
+        height={12}
+        className="ml-1"
+      />
+    </span>
+  </button>
+)}
+</div>
+     
+
     </div>
   );
 }
+
+       

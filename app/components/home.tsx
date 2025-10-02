@@ -106,31 +106,37 @@ export default function WineCard() {
         </AnimatePresence>
 
         {/* Home Page Button */}
-        <AnimatePresence>
-          {currentStep === "home" && !reverse && !showIntro && (
-            <motion.div
-              className="absolute top-[45%] right-3 z-20"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <button
-                onClick={handleStartJourney}
-                className="inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition"
-              >
-                Start the journey
-                <Image
-                  src="/button-image/arrow-up-right.svg"
-                  alt="arrow"
-                  width={12}
-                  height={12}
-                  className="ml-1"
-                />
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+     <AnimatePresence>
+  {currentStep === "home" && !reverse && !showIntro && (
+    <motion.div
+      className="absolute top-[45%] right-3 z-50"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <button
+        onClick={handleStartJourney}
+        className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
+      >
+        {/* Expanding Circle */}
+        <span className="absolute w-50 h-50 bg-pink-500 rounded-full bottom-20 -left-80 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-30 group-hover:-left-25" />
+
+        <span className="relative flex items-center">
+          Start the journey
+          <Image
+            src="/button-image/arrow-up-right.svg"
+            alt="arrow"
+            width={12}
+            height={12}
+            className="ml-1"
+          />
+        </span>
+      </button>
+    </motion.div>
+  )}
+</AnimatePresence>
+
 
         {/* Bottle Rose Image */}
         <motion.div

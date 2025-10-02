@@ -97,6 +97,9 @@ export default function CrimsonReserveCard({
         />
       </motion.div>
 
+
+
+
       {/* Button */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[85%]">
         <button
