@@ -114,10 +114,11 @@ const Review = () => {
         <Image src="/button-image/setting-dots.svg" alt="Options" width={16} height={16} className="cursor-pointer mt-3"/>
       </div>
 
-      {/* Carousel */}
-    {/* Carousel */}
-<div className="w-full absolute  left-1/2 transform translate-x-[-50%] -bottom-60 ">
-  <BottleCarousel />
+{/* Carousel */}
+<div className="w-full fixed bottom-0 left-1/2 transform -translate-x-1/2 pb-2 sm:pb-4">
+  <div className="max-w-[420px] mx-auto px-2">
+    <BottleCarousel />
+  </div>
 </div>
 
     </div>

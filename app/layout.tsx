@@ -41,7 +41,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <div className="relative flex flex-col min-h-screen w-full max-w-sm">
+        <div className="relative flex flex-col min-h-screen w-full max-w-[448px]">
           <main className="flex-grow">
             {children}
           </main>

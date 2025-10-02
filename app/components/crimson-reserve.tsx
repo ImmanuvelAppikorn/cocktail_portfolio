@@ -34,7 +34,7 @@ export default function CrimsonReserveCard({
         </div>
 
         {/* Wine Info Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs font-semibold mt-4 px-2">
+        <div className="grid grid-cols-2  gap-2 text-xs font-semibold mt-4 px-2">
           <InfoCard
             icon="/crimson-reserve-icons/origin.svg"
             title="ORIGIN"

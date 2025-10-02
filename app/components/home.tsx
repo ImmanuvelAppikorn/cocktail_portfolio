@@ -143,7 +143,7 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? 250
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 560
+                ? 430
                 : 265,
             height:
               currentStep === "home"
@@ -151,7 +151,7 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? 279
                 : currentStep === "about" || currentStep === "nutrition"
-                ? 615
+                ? 500
                 : 288,
             rotate:
               currentStep === "home"
@@ -167,7 +167,7 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? "26%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "48%"
+                ? "56%"
                 : "66.2%",
             left:
               currentStep === "home"
@@ -217,7 +217,7 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "90%"
+                ? "100%"
                 : "50%",
             bottom:
               currentStep === "home"
@@ -225,7 +225,7 @@ export default function WineCard() {
                 : currentStep === "crimson"
                 ? "-800px"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "-180px"
+                ? "-220px"
                 : "-470px",
             rotate:
               currentStep === "home"
