@@ -37,11 +37,11 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased flex justify-center",
+          "h-screen text-foreground bg-background font-sans antialiased flex justify-center",
           fontSans.variable
         )}
       >
-        <div className="relative flex flex-col min-h-screen w-full max-w-[448px]">
+        <div className="relative flex flex-col h-screen w-full max-w-[500px]">
           <main className="flex-grow">
             {children}
           </main>
@@ -50,3 +50,4 @@ export default function RootLayout({
     </html>
   );
 }
+

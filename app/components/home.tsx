@@ -151,8 +151,8 @@ const handleReviewPrev = () => {
           <Image
             src="/button-image/arrow-up-right.svg"
             alt="arrow"
-            width={12}
-            height={12}
+            width={14}
+            height={14}
             className="ml-1"
           />
         </span>
@@ -171,7 +171,7 @@ const handleReviewPrev = () => {
               currentStep === "home"
                 ? 800
                 : currentStep === "crimson"
-                ? 250
+                ? 200
                 : currentStep === "about" || currentStep === "nutrition"
                 ? 430
                 : 265,
@@ -179,7 +179,7 @@ const handleReviewPrev = () => {
               currentStep === "home"
                 ? 900
                 : currentStep === "crimson"
-                ? 279
+                ? 229
                 : currentStep === "about" || currentStep === "nutrition"
                 ? 500
                 : 288,
@@ -195,7 +195,7 @@ const handleReviewPrev = () => {
               currentStep === "home"
                 ? "120px"
                 : currentStep === "crimson"
-                ? "26%"
+                ? "28%"
                 : currentStep === "about" || currentStep === "nutrition"
                 ? "56%"
                 : "66.2%",

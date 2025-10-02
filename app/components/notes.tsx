@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const NutritionPage = () => {
   return (
-    <div className="px-4 space-y-2 mt-16">
+    <div className="px-2 space-y-1 mt-16">
       {/* Section Renderer */}
       {[
         {
@@ -27,7 +27,7 @@ const NutritionPage = () => {
       ].map((section, idx) => (
         <div key={idx}>
           {/* Title */}
-          <p className="text-[16px] font-bold text-center tracking-[2px] w-full border-b-1  pb-1 mb-2">
+          <p className="text-[16px] font-bold text-center tracking-[2px] w-full border-b-1  pb-0 mb-2">
             {section.title}
           </p>
 
@@ -37,7 +37,7 @@ const NutritionPage = () => {
             {section.items.map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-0.5 w-full  px-3 py-1"
+                className="flex items-center gap-1.5 w-full  px-3 py-0.5"
               >
                 <Image
                   src={item.icon}
