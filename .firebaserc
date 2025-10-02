@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "vinea-connect"
-  }
+    "default": "cocktail-portfolio"
+  },
+  "targets": {},
+  "etags": {}
 }
