@@ -58,9 +58,10 @@ export default function BottleCarousel() {
 
   return (
     <div className="relative w-full h-auto flex flex-col items-center justify-center overflow-hidden">
-      <div className="relative w-full  flex items-center justify-center">
-        {/* Navigation Buttons */}
-        <div className="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 z-10">
+      {/* Navigation + Text */}
+      <div className="relative w-full flex items-center justify-center">
+        {/* Prev Button */}
+        <div className="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 z-20">
           <button onClick={prevBottle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,29 +79,29 @@ export default function BottleCarousel() {
         </div>
 
         {/* Text Info */}
-        <div className="relative  w-full h-full flex items-center justify-center pb-2">
-<AnimatePresence mode="wait">
-  <motion.div
-    key={activeBottle.id + "-text"}
-    initial={{ opacity: 0, y: 0, scale: 0.9 }}
-    animate={{ opacity: 1, y: 0, scale: 1 }}
-    exit={{ opacity: 0, y: -30, scale: 0.9 }}
-    transition={{ duration: 0.5, ease: "easeInOut" }}
-    className="flex flex-col items-center"
-  >
-    <h2
-      className="font-bold text-xl"
-      style={{ color: activeBottle.color }}
-    >
-      ${activeBottle.price}
-    </h2>
-    <h3 className="text-[16px]">{activeBottle.name}</h3>
-  </motion.div>
-</AnimatePresence>
-
+        <div className="relative w-full h-full flex items-center justify-center  z-20">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeBottle.id + "-text"}
+              initial={{ opacity: 0, y: 0, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -30, scale: 0.9 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="flex flex-col items-center"
+            >
+              <h2
+                className="font-bold text-xl"
+                style={{ color: activeBottle.color }}
+              >
+                ${activeBottle.price}
+              </h2>
+              <h3 className="text-[16px]">{activeBottle.name}</h3>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 px-4 z-10">
+        {/* Next Button */}
+        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 px-4 z-20">
           <button onClick={nextBottle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -118,8 +119,22 @@ export default function BottleCarousel() {
         </div>
       </div>
 
-      {/* Bottle Image */}
-      <div className="relative  w-full h-full flex items-center justify-center">
+      {/* Bottle Image + Circle Background */}
+      <div className="relative w-full h-full flex items-center justify-center">
+        {/* Circle Background (behind bottle) */}
+        <motion.div
+          className="w-[600px] h-[600px] absolute -bottom-[470px] rounded-full border flex items-center justify-center z-0"
+          animate={{ borderColor: activeBottle.color, scale: [0.95, 1, 0.95] }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          <motion.div
+            className="w-[550px] h-[550px] rounded-full"
+            animate={{ backgroundColor: activeBottle.color }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
+        </motion.div>
+
+        {/* Bottle Image (front) */}
         <AnimatePresence mode="wait" custom={direction}>
           <motion.img
             key={activeBottle.id}
@@ -140,7 +155,7 @@ export default function BottleCarousel() {
               scale: 0.8,
             }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="h-[150px] object-contain drop-shadow-xl"
+            className="h-[150px] object-contain drop-shadow-xl z-10"
           />
         </AnimatePresence>
       </div>
