@@ -9,6 +9,10 @@ import NutritionPage from "./notes";
 import SlideToggle from "./button"; // toggle component
 
 export default function WineCard() {
+
+const activeBottle = { color: "#EB235C" }; // example bottle color
+
+
   const [currentStep, setCurrentStep] = useState<
     "home" | "crimson" | "about" | "review" | "nutrition"
   >("home");
@@ -189,7 +193,7 @@ const handleReviewPrev = () => {
                 : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                ? -26
+                ? -31
                 : 0,
             top:
               currentStep === "home"
@@ -197,7 +201,7 @@ const handleReviewPrev = () => {
                 : currentStep === "crimson"
                 ? "28%"
                 : currentStep === "about" || currentStep === "nutrition"
-                ? "56%"
+                ? "50%"
                 : "66.2%",
             left:
               currentStep === "home"
@@ -269,12 +273,18 @@ const handleReviewPrev = () => {
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <Image
-            src="/shape-svg/circle-shape.svg"
-            alt="background-svg"
-            fill
-            className="object-contain"
-          />
+           {/* Background Circle */}
+  <motion.div
+    className="w-[600px] h-[600px] rounded-full border flex items-center justify-center z-0"
+    animate={{ borderColor: activeBottle.color, scale: [0.95, 1, 0.95] }}
+    transition={{ duration: 0.8, ease: "easeInOut" }}
+  >
+    <motion.div
+      className="w-full h-full m-8  rounded-full"
+      animate={{ backgroundColor: activeBottle.color }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+    />
+  </motion.div>
         </motion.div>
 
         {/* Pages */}

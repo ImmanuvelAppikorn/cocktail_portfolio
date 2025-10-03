@@ -30,6 +30,7 @@ export default function CircularText() {
           fontSize="40"
           fontWeight="bold"
           letterSpacing="9px"
+          fontFamily="montagu"
         >
           <textPath href="#circlePath" startOffset="0%">
             • Click to Open the Gallery

@@ -37,7 +37,7 @@ export default function About({
         milk-based drink, it features notes of hazelnut and dark chocolate, with
         an extra caffeine hit unique to Robusta."
       </p>
-      <div className="w-full flex justify-end mt-2">
+      <div className="w-full flex justify-end mt-2 mr-4">
         {onNextClick && (
           <button
             onClick={onNextClick}
