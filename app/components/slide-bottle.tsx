@@ -46,12 +46,15 @@ export default function BottleCarousel() {
   const [direction, setDirection] = useState(0);
 
   const nextBottle = () => {
+    const newIndex = (index + 1) % bottles.length;
     setDirection(1);
-    setIndex((prev) => (prev + 1) % bottles.length);
+    setIndex(newIndex);
   };
+
   const prevBottle = () => {
+    const newIndex = (index - 1 + bottles.length) % bottles.length;
     setDirection(-1);
-    setIndex((prev) => (prev - 1 + bottles.length) % bottles.length);
+    setIndex(newIndex);
   };
 
   const activeBottle = bottles[index];
@@ -79,7 +82,7 @@ export default function BottleCarousel() {
         </div>
 
         {/* Text Info */}
-        <div className="relative w-full h-full flex items-center justify-center  z-20">
+        <div className="relative w-full h-full flex items-center justify-center z-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeBottle.id + "-text"}
@@ -143,14 +146,14 @@ export default function BottleCarousel() {
             custom={direction}
             initial={{
               opacity: 0,
-              x: direction > 0 ? 120 : -120,
+              x: direction > 0 ? -120 : 120,
               y: 0,
               scale: 0.8,
             }}
             animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
             exit={{
               opacity: 0,
-              x: direction > 0 ? -120 : 120,
+              x: direction > 0 ? 120 : -120,
               y: 30,
               scale: 0.8,
             }}

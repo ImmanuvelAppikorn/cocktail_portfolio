@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CircularText() {
   return (
-    <div className="relative flex items-center justify-center w-[115px] h-[115px] mt-4">
+    <div className="relative flex items-center justify-center w-[115px] h-[115px] mt-4 ml-2">
       {/* Center Circle */}
       <div className="absolute w-[62px] h-[62px] rounded-full bg-[#EB235C] z-10"></div>
 

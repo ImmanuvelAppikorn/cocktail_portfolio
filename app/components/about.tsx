@@ -13,7 +13,7 @@ export default function About({
   return (
     <div className="relative w-full h-screen overflow-hidden  mt-14 flex flex-col items-center">
       {/* Heading */}
-      <div className="flex flex-row justify-start items-center w-full">
+      <div className="flex flex-row justify-start items-center w-full px-4">
         <button onClick={onPrevClick}>
           <Image
             src="/button-image/back.svg"
@@ -29,7 +29,7 @@ export default function About({
       </div>
 
       {/* Paragraph */}
-      <p className="text-[14px] font-axiforma tracking-[1px] leading-[18px] font-medium mt-6 w-full text-left px-3">
+      <p className="text-[14px] font-axiforma tracking-[1px] leading-[18px] font-medium mt-6 w-full text-left px-4">
         "Sourced from the mineral-rich soil along the Bhadra River Belt, our
         house espresso is a single-origin specialty Robusta coffee from India,
         considered among the finest in the world. This Robusta is graded as
@@ -37,7 +37,7 @@ export default function About({
         milk-based drink, it features notes of hazelnut and dark chocolate, with
         an extra caffeine hit unique to Robusta."
       </p>
-      <div className="w-full flex justify-end mt-2 mr-4">
+      <div className="w-full flex justify-end mt-2 px-4">
         {onNextClick && (
           <button
             onClick={onNextClick}
@@ -60,11 +60,9 @@ export default function About({
         )}
       </div>
       {/* circle text */}
-<div className="w-full flex justify-start mt-2">
-<CircularText />
-</div>
-
-
+      <div className="w-full flex justify-start mt-2">
+        <CircularText />
+      </div>
     </div>
   );
 }
