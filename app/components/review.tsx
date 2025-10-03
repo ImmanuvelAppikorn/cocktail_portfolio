@@ -179,8 +179,8 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
       </div>
 
       {/* Carousel */}
-      <div className="w-full fixed bottom-0 left-1/2 transform -translate-x-1/2 pb-2 sm:pb-4">
-        <div className="max-w-[420px] mx-auto px-2">
+      <div className="w-full fixed bottom-0 left-1/2 transform -translate-x-1/2 ">
+        <div className="max-w-[420px] mx-auto px-0">
           <BottleCarousel />
         </div>
       </div>

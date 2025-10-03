@@ -265,6 +265,7 @@ const handleReviewPrev = () => {
                 : currentStep === "about" || currentStep === "nutrition"
                 ? 90
                 : 0.05,
+            opacity: currentStep === "review" ? 0 : 1,
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
