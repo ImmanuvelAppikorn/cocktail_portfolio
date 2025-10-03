@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import CircularText from "./gallery";
 
 export default function About({
   onNextClick,
@@ -10,7 +11,7 @@ export default function About({
   onPrevClick?: () => void;
 }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden px-3 mt-14 flex flex-col items-center">
+    <div className="relative w-full h-screen overflow-hidden  mt-14 flex flex-col items-center">
       {/* Heading */}
       <div className="flex flex-row justify-start items-center w-full">
         <button onClick={onPrevClick}>
@@ -58,6 +59,12 @@ export default function About({
           </button>
         )}
       </div>
+      {/* circle text */}
+<div className="w-full flex justify-start mt-2">
+<CircularText />
+</div>
+
+
     </div>
   );
 }
