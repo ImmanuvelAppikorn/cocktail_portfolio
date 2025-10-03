@@ -4,19 +4,21 @@ import { motion } from "framer-motion";
 export default function SlideToggle({
   selected,
   setSelected,
+  color = "#EB235C", // default color if not provided
 }: {
   selected: "story" | "nutrition";
   setSelected: (tab: "story" | "nutrition") => void;
+  color?: string;
 }) {
   return (
-    <div className="relative bg-pink-200 rounded-[6px] flex items-center select-none w-full py-[2px] cursor-pointer">
-      {/* Animated pink slider */}
+    <div className="relative bg-white/20 border border-white/40 rounded-[6px] px-[1px] flex items-center select-none w-full py-[2px] cursor-pointer">
+      {/* Animated slider */}
       <motion.div
         layout
         animate={{ x: selected === "story" ? 0 : "100%" }}
-        // transition={{ type: "spring", stiffness: 500, damping: 30 }}
         transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
-        className="absolute top-[2px] h-[30px] w-1/2 rounded-[6px] bg-[#EB235C] border-x-4 border-pink-200"
+        className="absolute top-[2px] h-[30px] w-[49.7%] rounded-[6px] p"
+        style={{ backgroundColor: color }}
       />
 
       {/* Tab Options */}

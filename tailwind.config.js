@@ -23,7 +23,7 @@ const config = {
         secondary: "#55EE81", // green
         tertiary: "#6148E6",  // purple
         gold: "#FFB860",    // yellow-gold
-        re: "#EF3F48",   // red 
+        darkred: "#EF3F48",   // red 
       },
     },
   },
