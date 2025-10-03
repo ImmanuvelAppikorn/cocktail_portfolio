@@ -1,5 +1,13 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 @config "../tailwind.config.js"
+ */
 
+/* Import Tailwind's base styles (Preflight) */
+@import "tailwindcss/preflight.css" layer(base);
 
+/* Import Tailwind's theme styles */
+@import "tailwindcss/theme.css" layer(theme);
+
+/* Import Tailwind's utilities */
+@import "tailwindcss/utilities.css" layer(utilities);

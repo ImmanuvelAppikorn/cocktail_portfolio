@@ -14,7 +14,8 @@ export default function SlideToggle({
       <motion.div
         layout
         animate={{ x: selected === "story" ? 0 : "100%" }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        // transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
         className="absolute top-[2px] h-[30px] w-1/2 rounded-[6px] bg-[#EB235C] border-x-4 border-pink-200"
       />
 
