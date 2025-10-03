@@ -15,11 +15,15 @@ const config = {
         mono: ["var(--font-mono)"],
 
         // Custom fonts
-        montagu: ["'Montagu Slab'", "Axiforma", "serif"], // Montagu with Axiforma fallback
-        axiforma: ["Axiforma", "sans-serif"], // Direct Axiforma usage
+        montagu: ["Montagu Slab"], // Montagu with Axiforma fallback
+        axiforma: ["Axiforma"], // Direct Axiforma usage
       },
-      colors: {
-        // Add custom colors if needed
+   colors: {
+        primary: "#EB235C",   // pinkish red
+        secondary: "#55EE81", // green
+        tertiary: "#6148E6",  // purple
+        accent: "#FFB860",    // yellow-gold
+        neutral: "#EF3F48",   // red 
       },
     },
   },
