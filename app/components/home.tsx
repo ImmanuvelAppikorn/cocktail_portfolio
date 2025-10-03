@@ -1,38 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation"; // <-- import useParams
 import CrimsonReserveCard from "./crimson-reserve";
 import About from "./about";
 import Review from "./review";
 import NutritionPage from "./notes";
 import SlideToggle from "./button";
 
-// Manual QR code mapping
-const bottles: Record<string, { color: string; image: string }> = {
-  "rose-vine": { color: "#EB235C", image: "/vinea/Rose.svg" },
-  "gold-vine": { color: "#FFD700", image: "/vinea/Gold.svg" },
-  "green-vine": { color: "#00C851", image: "/vinea/Green.svg" },
+
+const colors = {
+  primary: "#EB235C",   // pinkish red
+  secondary: "#55EE81", // green
+  tertiary: "#6148E6",  // purple
+  gold: "#FFB860",      // yellow-gold
+  darkred: "#EF3F48",        // red 
 };
 
-export default function WineCard() {
-  const router = useRouter();
-  const [activeBottle, setActiveBottle] = useState(bottles["rose-vine"]);
+
+// Manual QR code mapping
+const bottles: Record<string, { colorKey: keyof typeof colors; image: string }> = {
+  "rose-vine": { colorKey: "primary", image: "/vinea/Rose.svg" },
+  "gold-vine": { colorKey: "gold", image: "/vinea/Gold.svg" },
+  "green-vine": { colorKey: "secondary", image: "/vinea/Green.svg" },
+  "purple-vine": { colorKey: "tertiary", image: "/vinea/Purple.svg" },
+  "red-vine": { colorKey: "darkred", image: "/vinea/Red.svg" },
+};
+
+
+export default function WineCardPage() {
+const params = useParams();
+const qrParam = Array.isArray(params.qrCode) ? params.qrCode[0] : params.qrCode;
+const qrCode = qrParam?.toLowerCase() || "rose-vine"; // now safe
+
+  const [activeBottle, setActiveBottle] = useState(bottles[qrCode]);
+
+  useEffect(() => {
+    if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
+  }, [qrCode]);
+
   const [currentStep, setCurrentStep] = useState<
     "home" | "crimson" | "about" | "review" | "nutrition"
   >("home");
   const [reverse, setReverse] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
 
-  // Detect QR code from URL
-  useEffect(() => {
-    const path = window.location.pathname.replace("/", "").toLowerCase();
-    if (bottles[path]) setActiveBottle(bottles[path]);
-  }, []);
-
-  // Intro overlay
   useEffect(() => {
     const timer = setTimeout(() => setShowIntro(false), 1500);
     return () => clearTimeout(timer);
@@ -83,18 +97,58 @@ export default function WineCard() {
 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
-      {/* Intro Overlay */}
-      <AnimatePresence>
-        {showIntro && (
-          <motion.div
-            className="fixed inset-0 z-[9999] bg-white"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+
+{/* Home Page Title */}
+<AnimatePresence>
+  {currentStep === "home" && !reverse && !showIntro && (
+    <motion.h1
+      className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
+      style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -200 }}
+      transition={{ duration: 1 }}
+    >
+      <Image
+        src={"/logo/logo.svg"}
+        alt="Vinea Logo"
+        width={250}
+        height={68}
+        className="mx-auto"
+      />
+    </motion.h1>
+  )}
+</AnimatePresence>
+
+{/* Home Page Button */}
+<AnimatePresence>
+  {currentStep === "home" && !reverse && !showIntro && (
+    <motion.div
+      className="absolute top-[45%] right-3 z-50"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <button
+        onClick={handleStartJourney}
+        className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[#1C1826] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
+      >
+        <span className="relative flex items-center">
+          Start the journey
+          <Image
+            src="/button-image/arrow-up-right.svg"
+            alt="arrow"
+            width={14}
+            height={14}
+            className="ml-1"
           />
-        )}
-      </AnimatePresence>
+        </span>
+      </button>
+    </motion.div>
+  )}
+</AnimatePresence>
+
 
       {/* Slide Toggle */}
       {(currentStep === "about" ||
@@ -113,57 +167,6 @@ export default function WineCard() {
       )}
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
-        {/* Home Title */}
-        <AnimatePresence>
-          {currentStep === "home" && !reverse && !showIntro && (
-            <motion.h1
-              className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
-              style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -200 }}
-              transition={{ duration: 1 }}
-            >
-              <Image
-                src={"/logo/logo.svg"}
-                alt="Vinea Logo"
-                width={250}
-                height={68}
-                className="mx-auto"
-              />
-            </motion.h1>
-          )}
-        </AnimatePresence>
-
-        {/* Home Button */}
-        <AnimatePresence>
-          {currentStep === "home" && !reverse && !showIntro && (
-            <motion.div
-              className="absolute top-[45%] right-3 z-50"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <button
-                onClick={handleStartJourney}
-                className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[#1C1826] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
-              >
-                <span className="relative flex items-center">
-                  Start the journey
-                  <Image
-                    src="/button-image/arrow-up-right.svg"
-                    alt="arrow"
-                    width={14}
-                    height={14}
-                    className="ml-1"
-                  />
-                </span>
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Bottle Image */}
         <motion.div
           className="absolute z-10 flex items-center justify-center"
@@ -222,7 +225,7 @@ export default function WineCard() {
           />
         </motion.div>
 
-        {/* Animated Background Circle */}
+        {/* Background Circle */}
         <motion.div
           className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
           initial={{ width: 850, height: 850, rotate: 0 }}
@@ -271,17 +274,17 @@ export default function WineCard() {
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <motion.div
-            className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
-            animate={{ borderColor: activeBottle.color, scale: [0.95, 1, 0.95] }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <motion.div
-              className="w-full h-full rounded-full m-4"
-              animate={{ backgroundColor: activeBottle.color }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </motion.div>
+<motion.div
+  className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
+  animate={{ borderColor: colors[activeBottle.colorKey], scale: [0.95, 1, 0.95] }}
+  transition={{ duration: 0.8, ease: "easeInOut" }}
+>
+  <motion.div
+    className="w-full h-full rounded-full m-4"
+    animate={{ backgroundColor: colors[activeBottle.colorKey] }}
+    transition={{ duration: 0.6, ease: "easeInOut" }}
+  />
+</motion.div>
         </motion.div>
 
         {/* Pages */}
@@ -307,7 +310,9 @@ export default function WineCard() {
                 />
               )}
               {currentStep === "nutrition" && <NutritionPage />}
-              {currentStep === "review" && <Review onPrevClick={handleReviewPrev} />}
+              {currentStep === "review" && (
+                <Review onPrevClick={handleReviewPrev} />
+              )}
             </motion.div>
           )}
         </AnimatePresence>
