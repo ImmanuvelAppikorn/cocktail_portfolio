@@ -1,0 +1,56 @@
+/* Scale view instead of scrolling */
+.scale-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.scale-content {
+  transform-origin: center center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* Ensure body and html don't scroll and have white background */
+html, body {
+  overflow: hidden !important;
+  height: 100% !important;
+  position: fixed;
+  width: 100%;
+  touch-action: none;
+  background-color: white !important;
+}
+
+/* Prevent all scrolling */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbars */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Full screen container */
+.full-screen-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}

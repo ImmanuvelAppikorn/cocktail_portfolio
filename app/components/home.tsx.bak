@@ -52,6 +52,10 @@ const qrCode = qrParam?.toLowerCase() || "rose-vine"; // now safe
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow =
+      currentStep !== "home" && !reverse ? "hidden" : "auto";
+  }, [currentStep, reverse]);
 
   // Navigation handlers
   const handleStartJourney = () => setCurrentStep("crimson");

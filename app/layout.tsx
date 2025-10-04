@@ -7,7 +7,6 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -37,17 +36,18 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "h-screen text-foreground bg-background font-sans antialiased flex justify-center",
+          "text-foreground bg-background font-sans antialiased flex justify-center overflow-hidden fixed inset-0 w-full h-full",
           fontSans.variable
         )}
       >
-        <div className="relative flex flex-col h-screen w-full max-w-[500px]">
-          <main className="flex-grow">
-            {children}
-          </main>
-        </div>
+        <Providers>
+          <div className="relative flex flex-col h-full w-full max-w-[500px] overflow-hidden">
+            <main className="flex-grow overflow-hidden">
+              {children}
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );
 }
-

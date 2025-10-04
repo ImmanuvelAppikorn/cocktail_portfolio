@@ -12,3 +12,5 @@
 /* Import Tailwind's utilities */
 @import "tailwindcss/utilities.css" layer(utilities);
 
+/* Import custom scale view styles */
+@import "./scale-view.css";

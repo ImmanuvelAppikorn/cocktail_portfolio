@@ -1,53 +1,33 @@
-# Next.js & HeroUI Template
-
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
-
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
-
-## Technologies Used
-
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
-
-## How to Use
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
 ## License
 
 Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+
+## Viewport Scaling
+
+This application uses a custom scaling solution instead of traditional scrolling. The app will automatically scale to fit the viewport height, ensuring that all content is visible without requiring vertical scrolling.
+
+### Key Features
+
+- **Responsive Scaling**: The app automatically scales content to fit different screen sizes
+- **No Y-Axis Scrolling**: Content is scaled rather than scrolled vertically
+- **Maintains Aspect Ratio**: The design maintains its proportions across different devices
+
+### Implementation Details
+
+- `ScaleContainer`: A wrapper component that handles scaling logic
+- `useViewportScale`: A custom hook that calculates the appropriate scale factor
+- CSS modifications to prevent scrolling and enable scaling
+
+To use the scaling solution in a component:
+
+```jsx
+import ScaleContainer from "@/components/scale-container";
+
+export default function MyPage() {
+  return (
+    <ScaleContainer minScale={0.7} designHeight={850}>
+      {/* Your content here */}
+    </ScaleContainer>
+  );
+}
+```
