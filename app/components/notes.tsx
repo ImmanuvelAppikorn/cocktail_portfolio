@@ -45,7 +45,7 @@ const NutritionPage = () => {
       ].map((section, idx) => (
         <div key={idx}>
           {/* Title */}
-          <p className="text-[18px] font-bold text-center tracking-[2px] w-full border-b-1  pb-0 mb-2">
+          <p className="text-[18px] font-bold text-center tracking-[2px] w-full border-b-1 pb-0 mb-2 text-black">
             {section.title}
           </p>
 
@@ -63,7 +63,7 @@ const NutritionPage = () => {
                   width={22}
                   className="object-contain flex-shrink-0"
                 />
-                <p className="text-[12px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words">
+                <p className="text-[12px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words text-black">
                   {item.text}
                 </p>
               </div>
