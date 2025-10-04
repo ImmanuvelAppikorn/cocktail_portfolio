@@ -54,7 +54,7 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
           height={24}
           width={24}
         />
-        <p className="text-xl font-extrabold">4.0</p>
+        <p className="text-xl font-extrabold text-black">4.0</p>
         <div className="flex -space-x-4">
           {[
             "Ellipse2.svg",
@@ -76,7 +76,7 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
       </div>
 
       {/* Rating Bars */}
-      <div className="bg-[#F8F8F8] rounded-lg p-2 flex justify-between items-start">
+      <div className="bg-[#F8F8F8] rounded-lg p-2 flex justify-between items-start text-black">
         <div className="flex flex-col gap-1">
           {[5, 4, 3, 2, 1].map((num) => (
             <div key={num} className="flex items-center gap-2">
@@ -107,7 +107,7 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
         </div>
 
         <div className="flex flex-col items-end space-y-2">
-          <p className="text-3xl font-bold">4.0</p>
+          <p className="text-3xl font-bold text-black">4.0</p>
           <div className="flex gap-1">
             {[1, 2, 3, 4].map((i) => (
               <Image
@@ -125,7 +125,7 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               width={5}
             />
           </div>
-          <p className="text-sm font-semibold">15k Reviews</p>
+          <p className="text-sm font-semibold text-black">15k Reviews</p>
         </div>
       </div>
 
@@ -143,7 +143,7 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                   className="rounded-full"
                 />
                 <div>
-                  <p className="font-semibold text-sm">{r.user}</p>
+                  <p className="font-semibold text-sm text-black">{r.user}</p>
                   <div className="flex items-center gap-1.5">
                     <span className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
