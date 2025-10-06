@@ -98,7 +98,7 @@ export default function BottleCarousel() {
               >
                 ${activeBottle.price}
               </h2>
-              <h3 className="text-[16px]">{activeBottle.name}</h3>
+              <h3 className="text-[16px] text-black">{activeBottle.name}</h3>
             </motion.div>
           </AnimatePresence>
         </div>
