@@ -19,7 +19,7 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   ]);
 
   return (
-    <div className="px-4 pt-16 space-y-4 relative">
+    <div className="px-4 pt-16 space-y-4 relative overflow-hidden w-full">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -178,13 +178,13 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
           className="cursor-pointer mt-3"
         />
       </div>
-
-      {/* Carousel */}
-      <div className="w-full fixed bottom-0 left-1/2 transform -translate-x-1/2 ">
-        <div className="max-w-[420px] mx-auto px-0">
+{/* Carousel */}
+      <div className="w-full  bottom-20  ">
+        <div className=" mx-auto px-0">
           <BottleCarousel />
         </div>
       </div>
+      
     </div>
   );
 };

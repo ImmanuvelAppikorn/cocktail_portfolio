@@ -3,27 +3,28 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import CrimsonPage from "../crimson-reserve/page";
+import { useParams } from "next/navigation"; // <-- import useParams
+
 import AboutPage from "../about/page";
-import ReviewPage from "../review/page";
+import CrimsonReserve from "../crimson-reserve/crimson-reserve";
+import Reviewpage from "../review/page";
 import NutritionPage from "../nutrition/page";
-import NavigationBar from "../navigation_bar/page";
+import About from "../about/about";
+import Review from "../review/review";
+
+
 
 const colors = {
-  primary: "#EB235C", // pinkish red
+  primary: "#EB235C",   // pinkish red
   secondary: "#55EE81", // green
-  tertiary: "#6148E6", // purple
-  gold: "#FFB860", // yellow-gold
-  darkred: "#EF3F48", // red
-} as const;
+  tertiary: "#6148E6",  // purple
+  gold: "#FFB860",      // yellow-gold
+  darkred: "#EF3F48",        // red 
+};
 
-type ColorKey = keyof typeof colors;
 
-const bottles: Record<
-  string,
-  { colorKey: ColorKey; image: string }
-> = {
+// Manual QR code mapping
+const bottles: Record<string, { colorKey: keyof typeof colors; image: string }> = {
   "rose-vine": { colorKey: "primary", image: "/vinea/Rose.svg" },
   "gold-vine": { colorKey: "gold", image: "/vinea/Gold.svg" },
   "green-vine": { colorKey: "secondary", image: "/vinea/Green.svg" },
@@ -31,16 +32,13 @@ const bottles: Record<
   "red-vine": { colorKey: "darkred", image: "/vinea/Red.svg" },
 };
 
-export default function HomePage() {
-  const params = useParams();
-  const qrParam = Array.isArray(params.qrCode)
-    ? params.qrCode[0]
-    : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "rose-vine";
 
-  const [activeBottle, setActiveBottle] = useState<
-    { colorKey: ColorKey; image: string }
-  >(bottles[qrCode] || bottles["rose-vine"]);
+export default function Home() {
+const params = useParams();
+const qrParam = Array.isArray(params.qrCode) ? params.qrCode[0] : params.qrCode;
+const qrCode = qrParam?.toLowerCase() || "rose-vine"; // now safe
+
+  const [activeBottle, setActiveBottle] = useState(bottles[qrCode]);
 
   useEffect(() => {
     if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
@@ -103,65 +101,57 @@ export default function HomePage() {
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
 
+{/* Home Page Title */}
+<AnimatePresence>
+  {currentStep === "home" && !reverse && !showIntro && (
+    <motion.h1
+      className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
+      style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -200 }}
+      transition={{ duration: 1 }}
+    >
+      <Image
+        src={"/logo/logo.svg"}
+        alt="Vinea Logo"
+        width={250}
+        height={68}
+        className="mx-auto"
+      />
+    </motion.h1>
+  )}
+</AnimatePresence>
 
-{currentStep !== "home" && (
-  <div className="absolute bottom-2 w-full z-50">
-    <NavigationBar onStepChange={setCurrentStep} activeStep={currentStep} />
+{/* Home Page Button */}
+<AnimatePresence>
+  {currentStep === "home" && !reverse && !showIntro && (
+    <motion.div
+      className="absolute top-[45%] right-3 z-50"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <button
+        onClick={handleStartJourney}
+        className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[#1C1826] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
+      >
+        <span className="relative flex items-center">
+          Start the journey
+          <Image
+            src="/button-image/arrow-up-right.svg"
+            alt="arrow"
+            width={14}
+            height={14}
+            className="ml-1"
+          />
+        </span>
+      </button>
+    </motion.div>
+  )}
+</AnimatePresence>
 
-  </div>
-)}
-
-
-      {/* Home Page Title */}
-      <AnimatePresence>
-        {currentStep === "home" && !reverse && !showIntro && (
-          <motion.h1
-            className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
-            style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -200 }}
-            transition={{ duration: 1 }}
-          >
-            <Image
-              src={"/logo/logo.svg"}
-              alt="Vinea Logo"
-              width={250}
-              height={68}
-              className="mx-auto"
-            />
-          </motion.h1>
-        )}
-      </AnimatePresence>
-
-      {/* Home Page Button */}
-      <AnimatePresence>
-        {currentStep === "home" && !reverse && !showIntro && (
-          <motion.div
-            className="absolute top-[45%] right-3 z-50"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <button
-              onClick={handleStartJourney}
-              className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[#1C1826] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
-            >
-              <span className="relative flex items-center">
-                Start the journey
-                <Image
-                  src="/button-image/arrow-up-right.svg"
-                  alt="arrow"
-                  width={14}
-                  height={14}
-                  className="ml-1"
-                />
-              </span>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Bottle Image */}
@@ -271,20 +261,17 @@ export default function HomePage() {
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <motion.div
-            className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
-            animate={{
-              borderColor: colors[activeBottle.colorKey],
-              scale: [0.95, 1, 0.95],
-            }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <motion.div
-              className="w-full h-full rounded-full m-4"
-              animate={{ backgroundColor: colors[activeBottle.colorKey] }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </motion.div>
+<motion.div
+  className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
+  animate={{ borderColor: colors[activeBottle.colorKey], scale: [0.95, 1, 0.95] }}
+  transition={{ duration: 0.8, ease: "easeInOut" }}
+>
+  <motion.div
+    className="w-full h-full rounded-full m-4"
+    animate={{ backgroundColor: colors[activeBottle.colorKey] }}
+    transition={{ duration: 0.6, ease: "easeInOut" }}
+  />
+</motion.div>
         </motion.div>
 
         {/* Pages */}
@@ -298,20 +285,20 @@ export default function HomePage() {
               transition={{ duration: 1 }}
             >
               {currentStep === "crimson" && (
-                <CrimsonPage
+                <CrimsonReserve
                   onNextClick={handleCrimsonNext}
                   onPrevClick={handleCrimsonPrev}
                 />
               )}
               {currentStep === "about" && (
-                <AboutPage
+                <About
                   onNextClick={handleAboutNext}
                   onPrevClick={handleAboutPrev}
                 />
               )}
               {currentStep === "nutrition" && <NutritionPage />}
               {currentStep === "review" && (
-                <ReviewPage onPrevClick={handleReviewPrev} />
+                <Review onPrevClick={handleReviewPrev} />
               )}
             </motion.div>
           )}
