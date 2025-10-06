@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const NutritionPage = () => {
+const Nutrition = () => {
   return (
     <div className="px-2 space-y-1 mt-16">
       {/* Section Renderer */}
@@ -75,4 +75,4 @@ const NutritionPage = () => {
   );
 };
 
-export default NutritionPage;
+export default Nutrition;

@@ -4,11 +4,14 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation"; // <-- import useParams
-import CrimsonReserveCard from "./crimson-reserve";
-import About from "./about";
-import Review from "./review";
-import NutritionPage from "./notes";
-import SlideToggle from "./button";
+
+import AboutPage from "../about/page";
+import CrimsonReserve from "../crimson-reserve/crimson-reserve";
+import Reviewpage from "../review/page";
+import NutritionPage from "../nutrition/page";
+import About from "../about/about";
+import Review from "../review/review";
+
 
 
 const colors = {
@@ -30,7 +33,7 @@ const bottles: Record<string, { colorKey: keyof typeof colors; image: string }> 
 };
 
 
-export default function WineCardPage() {
+export default function Home() {
 const params = useParams();
 const qrParam = Array.isArray(params.qrCode) ? params.qrCode[0] : params.qrCode;
 const qrCode = qrParam?.toLowerCase() || "rose-vine"; // now safe
@@ -149,22 +152,6 @@ const qrCode = qrParam?.toLowerCase() || "rose-vine"; // now safe
   )}
 </AnimatePresence>
 
-
-      {/* Slide Toggle */}
-      {(currentStep === "about" ||
-        currentStep === "crimson" ||
-        currentStep === "nutrition" ||
-        currentStep === "review") && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4">
-          <SlideToggle
-            selected={currentStep === "nutrition" ? "nutrition" : "story"}
-            setSelected={(tab) => {
-              if (tab === "story") setCurrentStep("crimson");
-              else setCurrentStep("nutrition");
-            }}
-          />
-        </div>
-      )}
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Bottle Image */}
@@ -298,7 +285,7 @@ const qrCode = qrParam?.toLowerCase() || "rose-vine"; // now safe
               transition={{ duration: 1 }}
             >
               {currentStep === "crimson" && (
-                <CrimsonReserveCard
+                <CrimsonReserve
                   onNextClick={handleCrimsonNext}
                   onPrevClick={handleCrimsonPrev}
                 />

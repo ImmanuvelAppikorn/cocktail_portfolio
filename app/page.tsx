@@ -1,10 +1,12 @@
-import WineCard from "./components/home";
+import React from 'react'
+import HomePage from './components/home/page'
 
-
-export default function Home() {
+const Page = () => {
   return (
-    <main>
-      <WineCard />
-    </main>
-  );
+    <div>
+      <HomePage />
+    </div>
+  )
 }
+
+export default Page

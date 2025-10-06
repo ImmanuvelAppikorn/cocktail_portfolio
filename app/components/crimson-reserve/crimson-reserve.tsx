@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function CrimsonReserveCard({
+export default function CrimsonReserve({
   onNextClick,
   onPrevClick,
 }: {
