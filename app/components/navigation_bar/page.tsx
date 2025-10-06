@@ -1,6 +1,6 @@
 "use client";
 
-import { NavRouter } from "@/router";
+import { NavRouter } from "@/router"; 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
@@ -93,8 +93,8 @@ const NavigationBar: React.FC = () => {
                 isActive
                   ? "text-[#EB235C] font-medium"
                   : item.id === "home"
-                    ? "text-[#80808099] font-medium text-[10.24px]"
-                    : "text-[#80808099] font-light"
+                  ? "text-[#80808099] font-medium text-[10.24px]"
+                  : "text-[#80808099] font-light"
               }`}
             >
               {item.label}
