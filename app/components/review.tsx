@@ -18,7 +18,7 @@ const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   ]);
 
   return (
-    <div className="px-4 pt-16 space-y-4 relative">
+    <div className="px-4 pt-16 space-y-4 relative text-black">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">

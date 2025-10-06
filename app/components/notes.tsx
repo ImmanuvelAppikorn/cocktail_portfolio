@@ -45,7 +45,7 @@ const NutritionPage = () => {
       ].map((section, idx) => (
         <div key={idx}>
           {/* Title */}
-          <p className="text-[18px] font-bold text-center tracking-[2px] w-full border-b-1  pb-0 mb-2">
+          <p className="text-[18px] font-bold text-center tracking-[2px] w-full border-b-1  pb-0 mb-2 text-black">
             {section.title}
           </p>
 
@@ -54,7 +54,7 @@ const NutritionPage = () => {
             {section.items.map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1.5 w-full  px-3 py-0.5"
+                className="flex items-center gap-1.5 w-full px-3 py-0.5 text-black"
               >
                 <Image
                   src={item.icon}
