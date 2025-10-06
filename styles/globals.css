@@ -12,3 +12,9 @@
 /* Import Tailwind's utilities */
 @import "tailwindcss/utilities.css" layer(utilities);
 
+html,
+body {
+  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
+}
+

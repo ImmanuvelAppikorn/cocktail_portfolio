@@ -11,7 +11,7 @@ export default function SlideToggle({
   color?: string;
 }) {
   return (
-    <div className="relative bg-white/20 border border-white/40 rounded-[6px] px-[1px] flex items-center select-none w-full py-[2px] cursor-pointer">
+    <div className="relative bg-white/40 border-white/50 rounded-[6px] px-[1px] flex items-center select-none w-full py-[2px] cursor-pointer">
       {/* Animated slider */}
       <motion.div
         layout

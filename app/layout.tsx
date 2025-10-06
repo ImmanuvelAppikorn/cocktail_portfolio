@@ -36,17 +36,18 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body
-        className={clsx(
-          "h-screen text-foreground bg-background font-sans antialiased flex justify-center",
-          fontSans.variable
-        )}
-      >
-        <div className="relative flex flex-col h-screen w-full max-w-[500px]">
-          <main className="flex-grow">
-            {children}
-          </main>
-        </div>
-      </body>
+  className={clsx(
+    "min-h-[100dvh] text-foreground bg-background font-sans antialiased flex justify-center",
+    fontSans.variable
+  )}
+>
+  <div className="h-[75dvh] w-full max-w-[500px]">
+    <main className="flex-grow">
+      {children}
+    </main>
+  </div>
+</body>
+
     </html>
   );
 }
