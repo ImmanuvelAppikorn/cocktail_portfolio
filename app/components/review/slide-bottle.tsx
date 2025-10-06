@@ -60,7 +60,7 @@ export default function BottleCarousel() {
   const activeBottle = bottles[index];
 
   return (
-    <div className="relative w-full h-auto flex flex-col items-center justify-center overflow-hidden">
+    <div className=" relative w-full h-auto flex flex-col items-center justify-center overflow-hidden">
       {/* Navigation + Text */}
       <div className="relative w-full flex items-center justify-center">
         {/* Prev Button */}
@@ -123,10 +123,10 @@ export default function BottleCarousel() {
       </div>
 
       {/* Bottle Image + Circle Background */}
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-full h-[full] flex items-center justify-center">
         {/* Circle Background (behind bottle) */}
         <motion.div
-          className="w-[600px] h-[600px] absolute -bottom-[470px] rounded-full border flex items-center justify-center z-0"
+          className="w-[600px] h-[600px] absolute -bottom-[20px] rounded-full border flex items-center justify-center z-0"
           animate={{ borderColor: activeBottle.color, scale: [0.95, 1, 0.95] }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >

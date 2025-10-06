@@ -77,6 +77,25 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
+
+
+        {/* CTA Button at bottom but still visible */}
+      <div className=" mt-10 w-full flex items-end justify-end ">
+        <button
+          onClick={onNextClick}
+          className="inline-flex items-center justify-center px-4 py-3 rounded-full  bg-[var(--Text-Color,#1C1826)] text-white text-[12px] font-montagu font-medium hover:bg-gray-800 transition"
+        >
+          More
+          <Image
+            src="/button-image/arrow-up-right.svg"
+            alt="arrow"
+            width={14}
+            height={14}
+            className="ml-2"
+          />
+        </button>
+      </div>
+
         {/* Bottom Section */}
         <motion.div
           variants={bottomVariants}
@@ -118,22 +137,7 @@ export default function CrimsonPage({
         </motion.div>
       </div>
 
-      {/* CTA Button at bottom but still visible */}
-      <div className="w-full mt-6 mb-8">
-        <button
-          onClick={onNextClick}
-          className="inline-flex items-center justify-center px-3 py-3 rounded-full w-full bg-[var(--Text-Color,#1C1826)] text-white text-[12px] font-montagu font-medium hover:bg-gray-800 transition"
-        >
-          Go to story page
-          <Image
-            src="/button-image/arrow-up-right.svg"
-            alt="arrow"
-            width={14}
-            height={14}
-            className="ml-2"
-          />
-        </button>
-      </div>
+      
     </div>
   );
 }
