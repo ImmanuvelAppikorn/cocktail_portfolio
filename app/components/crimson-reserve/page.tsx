@@ -22,7 +22,7 @@ export default function CrimsonPage({
   };
 
   return (
- <div className="flex flex-col pt-10 min-h-screen px-4 max-w-2xl text-white relative mx-auto overflow-y-auto">
+    <div className="flex flex-col pt-10 min-h-screen px-4 max-w-2xl text-white relative mx-auto overflow-y-auto">
       {/* Center wrapper so animations meet in the middle */}
       <div className="flex flex-1 flex-col items-center justify-between ">
         {/* Top Section */}

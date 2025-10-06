@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={clsx(
           "min-h-[100dvh] text-foreground bg-background font-sans antialiased flex justify-center",
           fontSans.variable
-        )}
+        )} 
       >
         <div className="w-full max-w-[500px] flex flex-col min-h-[100dvh] relative">
           <main className="flex-grow">{children}</main>

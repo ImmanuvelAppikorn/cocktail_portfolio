@@ -28,13 +28,13 @@ const NavigationBar: React.FC = () => {
       active: "/navigation-bar/active/story.svg",
       href: NavRouter.CRIMSON,
     },
-    // {
-    //   id: "gallery",
-    //   label: "Gallery",
-    //   icon: "/navigation-bar/default/gallery.svg",
-    //   active: "/navigation-bar/active/gallery.svg",
-    //   href: NavRouter.GALLERY,
-    // },
+    {
+      id: "gallery",
+      label: "Gallery",
+      icon: "/navigation-bar/default/gallery.svg",
+      active: "/navigation-bar/active/gallery.svg",
+      href: NavRouter.GALLERY,
+    },
     {
       id: "home",
       label: "Home",
@@ -93,8 +93,8 @@ const NavigationBar: React.FC = () => {
                 isActive
                   ? "text-[#EB235C] font-medium"
                   : item.id === "home"
-                  ? "text-[#80808099] font-medium text-[10.24px]"
-                  : "text-[#80808099] font-light"
+                    ? "text-[#80808099] font-medium text-[10.24px]"
+                    : "text-[#80808099] font-light"
               }`}
             >
               {item.label}
