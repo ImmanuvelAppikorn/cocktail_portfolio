@@ -1,4 +1,5 @@
-import WineCardPage from "../components/home";
+
+import HomePage from "../components/home/page";
 
 
 // This tells Next.js which QR codes exist for static export
@@ -13,5 +14,5 @@ export function generateStaticParams() {
 }
 
 export default function QRPage() {
-  return <WineCardPage />;
+  return <HomePage />;
 }
