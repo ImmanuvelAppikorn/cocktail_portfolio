@@ -28,7 +28,13 @@ const NavigationBar: React.FC = () => {
       active: "/navigation-bar/active/story.svg",
       href: NavRouter.CRIMSON,
     },
-
+    {
+      id: "gallery",
+      label: "Gallery",
+      icon: "/navigation-bar/default/gallery.svg",
+      active: "/navigation-bar/active/gallery.svg",
+      href: NavRouter.GALLERY,
+    },
     {
       id: "home",
       label: "Home",
