@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import BottleCarousel from "./slide-bottle";
 
+
 const Review = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const [reviews] = useState([
     {

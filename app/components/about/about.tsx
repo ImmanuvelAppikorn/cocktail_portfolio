@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import CircularText from "./gallery";
+
 
 export default function About({
   onNextClick,
@@ -59,10 +59,7 @@ export default function About({
           </button>
         )}
       </div>
-      {/* circle text */}
-      <div className="w-full flex justify-start mt-2">
-        <CircularText />
-      </div>
+
     </div>
   );
 }
