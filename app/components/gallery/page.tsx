@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-const GalleryPage = () => {
+const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     ["/gallery/image 1.png", "/gallery/image 2.png", "/gallery/image 3.png"],
     ["/gallery/image 4.png", "/gallery/image 5.png", "/gallery/image 6.png"],
@@ -12,7 +12,6 @@ const GalleryPage = () => {
     ["/gallery/image 10.png", "/gallery/image 11.png", "/gallery/image 12.png"],
   ];
 
-  // Animation variants
   const slideFromLeft = {
     hidden: { x: -100, opacity: 0 },
     visible: { x: 0, opacity: 1 },
@@ -22,33 +21,46 @@ const GalleryPage = () => {
     visible: { x: 0, opacity: 1 },
   };
   const slideFromCenter = {
-    visible: { y: 0, opacity: 1 },
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
   };
 
   const transition = { duration: 0.6, ease: "easeOut" };
 
   return (
-    <div>
-      {/* Gallery Header */}
+    <div className="relative w-full h-screen bg-white overflow-hidden">
+      {/* Fixed Gallery Header */}
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="h-[55px] py-2 px-2"
+        className="fixed top-0 left-0 w-full z-20 bg-white py-2 px-2 border-b border-black"
       >
-        <p className="text-[#EB235C] text-[26.19px] font-bold text-center border-b border-black pb-1">
+        <p className="text-[#EB235C] text-[26.19px] font-bold text-center">
           GALLERY
         </p>
       </motion.div>
 
-      {/* Gallery Images */}
-      <div className="py-2 space-y-2">
+      {/* Scrollable Gallery Section */}
+      <div
+        className="absolute top-[60px] bottom-0 left-0 right-0 overflow-y-auto p-2 space-y-2"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        <style jsx>{`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+
         {images.map((section, idx) => {
-          const layoutType = idx % 3; // 0 → layout1, 1 → layout2, 2 → layout3
+          const layoutType = idx % 3;
           const [img1, img2, img3] = section;
 
+          // Layout 1: Big left, 2 small right
           if (layoutType === 0) {
-            // Big left, 2 small right
             return (
               <div key={idx} className="grid grid-cols-3 gap-2">
                 <motion.div
@@ -73,7 +85,7 @@ const GalleryPage = () => {
                       variants={slideFromRight}
                       initial="hidden"
                       animate="visible"
-                      transition={{ ...transition }}
+                      transition={{ ...transition, delay: i * 0.1 }}
                     >
                       <Image
                         src={img}
@@ -87,8 +99,10 @@ const GalleryPage = () => {
                 </div>
               </div>
             );
-          } else if (layoutType === 1) {
-            // 2 small left, big right
+          }
+
+          // Layout 2: 2 small left, big right
+          if (layoutType === 1) {
             return (
               <div key={idx} className="grid grid-cols-3 gap-2">
                 <div className="grid col-span-1 gap-2">
@@ -98,7 +112,7 @@ const GalleryPage = () => {
                       variants={slideFromLeft}
                       initial="hidden"
                       animate="visible"
-                      transition={{ ...transition }}
+                      transition={{ ...transition, delay: i * 0.1 }}
                     >
                       <Image
                         src={img}
@@ -127,55 +141,36 @@ const GalleryPage = () => {
                 </motion.div>
               </div>
             );
-          } else {
-            // 3 small images in a row
-            return (
-              <div key={idx} className="grid grid-cols-3 gap-2">
-                <motion.div
-                  variants={slideFromLeft}
-                  initial="hidden"
-                  animate="visible"
-                  transition={transition}
-                >
-                  <Image
-                    src={img1}
-                    alt=""
-                    height={120}
-                    width={122}
-                    className="w-full h-auto object-cover rounded-lg"
-                  />
-                </motion.div>
-                <motion.div
-                  variants={slideFromCenter}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ ...transition, delay: 0.2 }}
-                >
-                  <Image
-                    src={img2}
-                    alt=""
-                    height={120}
-                    width={122}
-                    className="w-full h-auto object-cover rounded-lg"
-                  />
-                </motion.div>
-                <motion.div
-                  variants={slideFromRight}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ ...transition, delay: 0.2 }}
-                >
-                  <Image
-                    src={img3}
-                    alt=""
-                    height={120}
-                    width={122}
-                    className="w-full h-auto object-cover rounded-lg"
-                  />
-                </motion.div>
-              </div>
-            );
           }
+
+          // Layout 3: 3 equal images
+          return (
+            <div key={idx} className="grid grid-cols-3 gap-2">
+              {[img1, img2, img3].map((img, i) => (
+                <motion.div
+                  key={i}
+                  variants={
+                    i === 0
+                      ? slideFromLeft
+                      : i === 1
+                      ? slideFromCenter
+                      : slideFromRight
+                  }
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ ...transition, delay: i * 0.1 }}
+                >
+                  <Image
+                    src={img}
+                    alt=""
+                    height={120}
+                    width={122}
+                    className="w-full h-auto object-cover rounded-lg"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          );
         })}
       </div>
     </div>
