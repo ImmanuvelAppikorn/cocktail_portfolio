@@ -9,6 +9,7 @@ import AboutPage from "../about/page";
 import ReviewPage from "../review/page";
 import NutritionPage from "../nutrition/page";
 import NavigationBar from "../navigation_bar/page";
+import GalleryPage from "../gallery/page";
 
 const colors = {
   primary: "#EB235C", // pinkish red
@@ -45,7 +46,7 @@ export default function HomePage() {
   }, [qrCode]);
 
   const [currentStep, setCurrentStep] = useState<
-    "home" | "crimson" | "about" | "review" | "nutrition"
+    "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   >("home");
   const [reverse, setReverse] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
@@ -154,6 +155,13 @@ export default function HomePage() {
     setReverse(true);
     setTimeout(() => {
       setCurrentStep("about");
+      setReverse(false);
+    }, 800);
+  };
+  const handleGalleryPrev = () => {
+    setReverse(true);
+    setTimeout(() => {
+      setCurrentStep("gallery");
       setReverse(false);
     }, 800);
   };
@@ -371,6 +379,9 @@ export default function HomePage() {
             {currentStep === "nutrition" && <NutritionPage />}
             {currentStep === "review" && (
               <ReviewPage onPrevClick={handleReviewPrev} />
+            )}
+            {currentStep === "gallery" && (
+              <GalleryPage onPrevClick={handleGalleryPrev} />
             )}
           </motion.div>
         )}

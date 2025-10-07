@@ -43,7 +43,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
 
       {/* Scrollable Gallery Section */}
       <div
-        className="absolute top-[60px] bottom-0 left-0 right-0 overflow-y-auto p-2 space-y-2"
+        className="absolute top-[60px] bottom-0 left-0 right-0 overflow-y-auto p-2 pb-20 space-y-2"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -63,6 +63,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
           if (layoutType === 0) {
             return (
               <div key={idx} className="grid grid-cols-3 gap-2">
+                {/* Big Left Image */}
                 <motion.div
                   variants={slideFromLeft}
                   initial="hidden"
@@ -70,14 +71,17 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                   transition={transition}
                   className="col-span-2"
                 >
-                  <Image
-                    src={img1}
-                    alt=""
-                    height={250}
-                    width={253}
-                    className="w-full h-auto object-cover rounded-lg"
-                  />
+                  <div className="relative w-full h-[250px] md:h-[280px] lg:h-[320px]">
+                    <Image
+                      src={img1}
+                      alt=""
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
                 </motion.div>
+
+                {/* Two Small Right Images */}
                 <div className="grid col-span-1 gap-2">
                   {[img2, img3].map((img, i) => (
                     <motion.div
@@ -86,13 +90,13 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                       initial="hidden"
                       animate="visible"
                       transition={{ ...transition, delay: i * 0.1 }}
+                      className="relative h-[120px] md:h-[140px] lg:h-[160px]"
                     >
                       <Image
                         src={img}
                         alt=""
-                        height={120}
-                        width={122}
-                        className="w-full h-auto object-cover rounded-lg"
+                        fill
+                        className="object-cover rounded-lg"
                       />
                     </motion.div>
                   ))}
