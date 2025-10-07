@@ -238,7 +238,7 @@ export default function HomePage() {
               currentStep === "home"
                 ? 900
                 : currentStep === "crimson"
-                  ? "68%"
+                  ? "50%"
                   : currentStep === "about" || currentStep === "nutrition"
                     ? 430
                     : 265,
@@ -324,7 +324,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "-80%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "-28%"
+                  ? "-20%"
                   : "-35%",
           rotate:
             currentStep === "home"

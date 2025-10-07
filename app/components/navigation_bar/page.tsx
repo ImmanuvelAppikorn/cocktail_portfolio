@@ -5,11 +5,15 @@ import React, { useState, useEffect } from "react";
 
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
-  onStepChange: (step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery") => void;
+  onStepChange: (
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
+  ) => void;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange }) => {
-
+const NavigationBar: React.FC<NavigationBarProps> = ({
+  activeStep,
+  onStepChange,
+}) => {
   const colors = {
     primary: "#EB235C",
     secondary: "#80808099",
@@ -19,11 +23,36 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange 
   };
 
   const navItems = [
-    { id: "crimson", label: "Story", icon: "/navigation-bar/default/story.svg", active: "/navigation-bar/active/story.svg" },
-    { id: "nutrition", label: "Nutritional Value", icon: "/navigation-bar/default/nutritional value.svg", active: "/navigation-bar/active/nutritional_value.svg" },
-    { id: "home", label: "Home", icon: "/navigation-bar/default/home.svg", active: "/navigation-bar/active/home.svg" },
-    { id: "review", label: "Reviews", icon: "/navigation-bar/default/reviews.svg", active: "/navigation-bar/active/reviews.svg" },
-    { id: "gallery", label: "Gallery", icon: "/navigation-bar/default/gallery.svg", active: "/navigation-bar/active/gallery.svg" },
+    {
+      id: "crimson",
+      label: "Story",
+      icon: "/navigation-bar/default/story.svg",
+      active: "/navigation-bar/active/story.svg",
+    },
+    {
+      id: "gallery",
+      label: "Gallery",
+      icon: "/navigation-bar/default/gallery.svg",
+      active: "/navigation-bar/active/gallery.svg",
+    },
+    {
+      id: "home",
+      label: "Home",
+      icon: "/navigation-bar/default/home.svg",
+      active: "/navigation-bar/active/home.svg",
+    },
+    {
+      id: "review",
+      label: "Reviews",
+      icon: "/navigation-bar/default/reviews.svg",
+      active: "/navigation-bar/active/reviews.svg",
+    },
+    {
+      id: "nutrition",
+      label: "Nutritional Value",
+      icon: "/navigation-bar/default/nutritional value.svg",
+      active: "/navigation-bar/active/nutritional_value.svg",
+    },
   ];
 
   return (
@@ -48,8 +77,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange 
                 isActive
                   ? "text-[#EB235C] font-medium"
                   : item.id === "home"
-                  ? "text-[#80808099] font-medium text-[10.24px]"
-                  : "text-[#80808099] font-light"
+                    ? "text-[#80808099] font-medium text-[10.24px]"
+                    : "text-[#80808099] font-light"
               }`}
             >
               {item.label}
