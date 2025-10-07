@@ -8,12 +8,12 @@ import NavigationBar from "./components/navigation_bar/page";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     function setAppHeight() {
-      document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+      const appHeight = window.innerHeight;
+      document.documentElement.style.setProperty("--app-height", `${appHeight}px`);
     }
 
     setAppHeight();
     window.addEventListener("resize", setAppHeight);
-
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
 
@@ -22,12 +22,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body
         className={clsx(
-          "min-h-[var(--app-height)] text-foreground bg-background font-sans antialiased flex justify-center",
+          "text-foreground bg-background font-sans antialiased flex justify-center",
           fontSans.variable
-        )} 
+        )}
+        style={{
+          height: "var(--app-height)",
+          overflow: "hidden", // stop body scroll; we'll scroll the inner content instead
+        }}
       >
-        <div className="w-full max-w-[500px] flex flex-col min-h-[var(--app-height)] relative">
-          <main className="flex-grow">{children}</main>
+        <div
+          className="w-full max-w-[500px] flex flex-col relative"
+          style={{
+            height: "var(--app-height)", // fixed height equal to visible screen
+          }}
+        >
+          {/* Scrollable content area */}
+          <main
+            className="flex-grow overflow-y-auto"
+           
+          >
+            {children}
+          </main>
+
+          {/* Fixed navigation bar */}
+
         </div>
       </body>
     </html>

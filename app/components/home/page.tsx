@@ -20,10 +20,7 @@ const colors = {
 
 type ColorKey = keyof typeof colors;
 
-const bottles: Record<
-  string,
-  { colorKey: ColorKey; image: string }
-> = {
+const bottles: Record<string, { colorKey: ColorKey; image: string }> = {
   "rose-vine": { colorKey: "primary", image: "/vinea/Rose.svg" },
   "gold-vine": { colorKey: "gold", image: "/vinea/Gold.svg" },
   "green-vine": { colorKey: "secondary", image: "/vinea/Green.svg" },
@@ -38,9 +35,10 @@ export default function HomePage() {
     : params.qrCode;
   const qrCode = qrParam?.toLowerCase() || "rose-vine";
 
-  const [activeBottle, setActiveBottle] = useState<
-    { colorKey: ColorKey; image: string }
-  >(bottles[qrCode] || bottles["rose-vine"]);
+  const [activeBottle, setActiveBottle] = useState<{
+    colorKey: ColorKey;
+    image: string;
+  }>(bottles[qrCode] || bottles["rose-vine"]);
 
   useEffect(() => {
     if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
@@ -102,15 +100,14 @@ export default function HomePage() {
 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
-
-
-{currentStep !== "home" && (
-  <div className="absolute bottom-2 w-full z-50">
-    <NavigationBar onStepChange={setCurrentStep} activeStep={currentStep} />
-
-  </div>
-)}
-
+      {currentStep !== "home" && (
+        <div className="absolute bottom-2 w-full z-50">
+          <NavigationBar
+            onStepChange={setCurrentStep}
+            activeStep={currentStep}
+          />
+        </div>
+      )}
 
       {/* Home Page Title */}
       <AnimatePresence>
@@ -144,19 +141,13 @@ export default function HomePage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <button
-              onClick={handleStartJourney}
-              className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[#1C1826] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
-            >
+<button
+  onClick={handleStartJourney}
+  className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+>
               <span className="relative flex items-center">
-                Start the journey
-                <Image
-                  src="/button-image/arrow-up-right.svg"
-                  alt="arrow"
-                  width={14}
-                  height={14}
-                  className="ml-1"
-                />
+                Explore More
+               
               </span>
             </button>
           </motion.div>
@@ -165,158 +156,160 @@ export default function HomePage() {
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Bottle Image */}
+        {/* Bottle Image */}{" "}
         <motion.div
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
           animate={{
             width:
               currentStep === "home"
-                ? 800
-                : currentStep === "crimson"
-                ? 200
-                : currentStep === "about" || currentStep === "nutrition"
-                ? 430
-                : 265,
-            height:
-              currentStep === "home"
                 ? 900
                 : currentStep === "crimson"
-                ? 229
-                : currentStep === "about" || currentStep === "nutrition"
-                ? 500
-                : 288,
+                  ? "50%"
+                  : currentStep === "about" || currentStep === "nutrition"
+                    ? 430
+                    : 265,
+            height:
+              currentStep === "home"
+                ? 1000
+                : currentStep === "crimson"
+                  ? "auto"
+                  : currentStep === "about" || currentStep === "nutrition"
+                    ? 500
+                    : 288,
             rotate:
               currentStep === "home"
                 ? -11
                 : currentStep === "crimson"
-                ? 0
-                : currentStep === "about" || currentStep === "nutrition"
-                ? -31
-                : 0,
+                  ? 0
+                  : currentStep === "about" || currentStep === "nutrition"
+                    ? -31
+                    : 0,
             top:
               currentStep === "home"
                 ? "120px"
                 : currentStep === "crimson"
-                ? "28%"
-                : currentStep === "about" || currentStep === "nutrition"
-                ? "50%"
-                : "66.2%",
+                  ? "35%"
+                  : currentStep === "about" || currentStep === "nutrition"
+                    ? "50%"
+                    : "66.2%",
             left:
               currentStep === "home"
                 ? "55%"
                 : currentStep === "crimson"
-                ? "50%"
-                : currentStep === "about" || currentStep === "nutrition"
-                ? "85%"
-                : "50%",
+                  ? "50%"
+                  : currentStep === "about" || currentStep === "nutrition"
+                    ? "85%"
+                    : "50%",
             opacity: currentStep === "review" ? 0 : 1,
           }}
           transition={{ duration: 1 }}
         >
+          {" "}
           <Image
             src={activeBottle.image}
             alt="bottle"
             width={1087}
             height={1183}
             className="object-contain w-full h-full"
-          />
+          />{" "}
         </motion.div>
+      </div>
 
-        {/* Background Circle */}
+      {/* Background Circle */}
+      <motion.div
+        className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
+        initial={{ width: 850, height: 850, rotate: 0 }}
+        animate={{
+          width:
+            currentStep === "home"
+              ? 750
+              : currentStep === "crimson"
+                ? 3000
+                : currentStep === "about" || currentStep === "nutrition"
+                  ? 450
+                  : 600,
+          height:
+            currentStep === "home"
+              ? 750
+              : currentStep === "crimson"
+                ? 3000
+                : currentStep === "about" || currentStep === "nutrition"
+                  ? 450
+                  : 600,
+          left:
+            currentStep === "home"
+              ? "50%"
+              : currentStep === "crimson"
+                ? "50%"
+                : currentStep === "about" || currentStep === "nutrition"
+                  ? "100%"
+                  : "50%",
+          bottom:
+            currentStep === "home"
+              ? "-55%"
+              : currentStep === "crimson"
+                ? "-80%"
+                : currentStep === "about" || currentStep === "nutrition"
+                  ? "-25%"
+                  : "-35%",
+          rotate:
+            currentStep === "home"
+              ? 0
+              : currentStep === "crimson"
+                ? 0
+                : currentStep === "about" || currentStep === "nutrition"
+                  ? 90
+                  : 0.05,
+          opacity: currentStep === "review" ? 0 : 1,
+        }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      >
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-          initial={{ width: 850, height: 850, rotate: 0 }}
+          className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
           animate={{
-            width:
-              currentStep === "home"
-                ? 750
-                : currentStep === "crimson"
-                ? 3000
-                : currentStep === "about" || currentStep === "nutrition"
-                ? 450
-                : 600,
-            height:
-              currentStep === "home"
-                ? 750
-                : currentStep === "crimson"
-                ? 3000
-                : currentStep === "about" || currentStep === "nutrition"
-                ? 450
-                : 600,
-            left:
-              currentStep === "home"
-                ? "50%"
-                : currentStep === "crimson"
-                ? "50%"
-                : currentStep === "about" || currentStep === "nutrition"
-                ? "100%"
-                : "50%",
-            bottom:
-              currentStep === "home"
-                ? "-450px"
-                : currentStep === "crimson"
-                ? "-800px"
-                : currentStep === "about" || currentStep === "nutrition"
-                ? "-220px"
-                : "-470px",
-            rotate:
-              currentStep === "home"
-                ? 0
-                : currentStep === "crimson"
-                ? 0
-                : currentStep === "about" || currentStep === "nutrition"
-                ? 90
-                : 0.05,
-            opacity: currentStep === "review" ? 0 : 1,
+            borderColor: colors[activeBottle.colorKey],
+            scale: [0.95, 1, 0.95],
           }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <motion.div
-            className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
-            animate={{
-              borderColor: colors[activeBottle.colorKey],
-              scale: [0.95, 1, 0.95],
-            }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <motion.div
-              className="w-full h-full rounded-full m-4"
-              animate={{ backgroundColor: colors[activeBottle.colorKey] }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </motion.div>
+            className="w-full h-full rounded-full m-4"
+            animate={{ backgroundColor: colors[activeBottle.colorKey] }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
         </motion.div>
+      </motion.div>
 
-        {/* Pages */}
-        <AnimatePresence>
-          {currentStep !== "home" && !reverse && (
-            <motion.div
-              className="absolute top-0 w-full h-full z-40"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 100 }}
-              transition={{ duration: 1 }}
-            >
-              {currentStep === "crimson" && (
-                <CrimsonPage
-                  onNextClick={handleCrimsonNext}
-                  onPrevClick={handleCrimsonPrev}
-                />
-              )}
-              {currentStep === "about" && (
-                <AboutPage
-                  onNextClick={handleAboutNext}
-                  onPrevClick={handleAboutPrev}
-                />
-              )}
-              {currentStep === "nutrition" && <NutritionPage />}
-              {currentStep === "review" && (
-                <ReviewPage onPrevClick={handleReviewPrev} />
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* Pages */}
+      <AnimatePresence>
+        {currentStep !== "home" && !reverse && (
+          <motion.div
+            className="absolute top-0 w-full h-full z-40"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 1 }}
+          >
+            {currentStep === "crimson" && (
+              <CrimsonPage
+                onNextClick={handleCrimsonNext}
+                onPrevClick={handleCrimsonPrev}
+              />
+            )}
+            {currentStep === "about" && (
+              <AboutPage
+                onNextClick={handleAboutNext}
+                onPrevClick={handleAboutPrev}
+              />
+            )}
+            {currentStep === "nutrition" && <NutritionPage />}
+            {currentStep === "review" && (
+              <ReviewPage onPrevClick={handleReviewPrev} />
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
