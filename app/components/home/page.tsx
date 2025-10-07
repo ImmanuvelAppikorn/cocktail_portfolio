@@ -156,7 +156,7 @@ export default function HomePage() {
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Bottle Image */}
-        {/* Bottle Image */}{" "}
+        {/* Bottle Image */}
         <motion.div
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
@@ -165,7 +165,7 @@ export default function HomePage() {
               currentStep === "home"
                 ? 900
                 : currentStep === "crimson"
-                  ? "50%"
+                  ? "68%"
                   : currentStep === "about" || currentStep === "nutrition"
                     ? 430
                     : 265,
@@ -189,9 +189,9 @@ export default function HomePage() {
               currentStep === "home"
                 ? "120px"
                 : currentStep === "crimson"
-                  ? "35%"
+                  ? "24%"
                   : currentStep === "about" || currentStep === "nutrition"
-                    ? "50%"
+                    ? "55%"
                     : "66.2%",
             left:
               currentStep === "home"
@@ -251,7 +251,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "-80%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "-25%"
+                  ? "-28%"
                   : "-35%",
           rotate:
             currentStep === "home"

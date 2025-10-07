@@ -22,8 +22,8 @@ export default function CrimsonPage({
   };
 
   return (
-    <div className="flex flex-col pt-[5vh] min-h-screen px-[5vw] max-w-[90vw] mx-auto text-black overflow-y-auto">
-      <div className="flex flex-1 flex-col items-center justify-between">
+    <div className="flex flex-col pt-[1vh]  h-[88%] px-[5vw]  text-black overflow-y-auto">
+      <div className="flex flex-1 flex-col  items-center justify-between">
         {/* Top Section */}
         <motion.div
           variants={topVariants}
@@ -41,7 +41,7 @@ export default function CrimsonPage({
                 width={30}
               />
             </button>
-            <h2 className="flex-1 text-center text-[3vw] font-bold">
+            <h2 className="flex-1 text-center text-[7vw] font-bold">
               CRIMSON RESERVE
             </h2>
           </div>
