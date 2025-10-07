@@ -59,40 +59,9 @@ export default function HomePage() {
     const html = document.documentElement;
     const body = document.body;
     
-    if (currentStep === "home") {
-      // Prevent all scrolling on home page
-      html.style.overflow = "hidden";
-      html.style.height = "100vh";
-      html.style.position = "fixed";
-      html.style.width = "100%";
-      html.style.top = "0";
-      html.style.left = "0";
-      
-      body.style.overflow = "hidden";
-      body.style.height = "100vh";
-      body.style.position = "fixed";
-      body.style.width = "100%";
-      body.style.top = "0";
-      body.style.left = "0";
-      body.style.margin = "0";
-      body.style.padding = "0";
-    } else if (currentStep !== "home" && !reverse) {
-      html.style.overflow = "hidden";
-      html.style.height = "auto";
-      html.style.position = "static";
-      html.style.width = "auto";
-      html.style.top = "auto";
-      html.style.left = "auto";
-      
-      body.style.overflow = "hidden";
-      body.style.height = "auto";
-      body.style.position = "static";
-      body.style.width = "auto";
-      body.style.top = "auto";
-      body.style.left = "auto";
-      body.style.margin = "";
-      body.style.padding = "";
-    } else {
+    // Only allow scrolling on crimson page, prevent on all others
+    if (currentStep === "crimson" && !reverse) {
+      // Allow scrolling only on crimson page
       html.style.overflow = "auto";
       html.style.height = "auto";
       html.style.position = "static";
@@ -108,6 +77,27 @@ export default function HomePage() {
       body.style.left = "auto";
       body.style.margin = "";
       body.style.padding = "";
+    } else {
+      // Prevent scrolling on all other pages (home, about, review, nutrition) and during transitions
+      html.style.overflow = "hidden";
+      html.style.height = "100vh";
+      html.style.position = "fixed";
+      html.style.width = "100%";
+      html.style.top = "0";
+      html.style.left = "0";
+      html.style.touchAction = "none";
+      html.style.overscrollBehavior = "none";
+      
+      body.style.overflow = "hidden";
+      body.style.height = "100vh";
+      body.style.position = "fixed";
+      body.style.width = "100%";
+      body.style.top = "0";
+      body.style.left = "0";
+      body.style.margin = "0";
+      body.style.padding = "0";
+      body.style.touchAction = "none";
+      body.style.overscrollBehavior = "none";
     }
 
     // Cleanup function
@@ -364,7 +354,7 @@ export default function HomePage() {
       <AnimatePresence>
         {currentStep !== "home" && !reverse && (
           <motion.div
-            className="absolute top-0 w-full h-full z-40"
+            className="absolute top-0 w-full h-screen z-40 overflow-hidden max-h-screen"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
