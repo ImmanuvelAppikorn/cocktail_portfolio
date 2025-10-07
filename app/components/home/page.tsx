@@ -9,6 +9,7 @@ import AboutPage from "../about/page";
 import ReviewPage from "../review/page";
 import NutritionPage from "../nutrition/page";
 import NavigationBar from "../navigation_bar/page";
+import GalleryPage from "../gallery/page";
 
 const colors = {
   primary: "#EB235C", // pinkish red
@@ -45,7 +46,7 @@ export default function HomePage() {
   }, [qrCode]);
 
   const [currentStep, setCurrentStep] = useState<
-    "home" | "crimson" | "about" | "review" | "nutrition"
+    "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   >("home");
   const [reverse, setReverse] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
@@ -157,6 +158,13 @@ export default function HomePage() {
       setReverse(false);
     }, 800);
   };
+    const handleGalleryPrev = () => {
+    setReverse(true);
+    setTimeout(() => {
+      setCurrentStep("gallery");
+      setReverse(false);
+    }, 800);
+  };
 
   return (
     <div 
@@ -224,131 +232,135 @@ export default function HomePage() {
       </AnimatePresence>
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
-        {/* Bottle Image */}
-        {/* Bottle Image */}
-        <motion.div
-          className="absolute z-10 flex items-center justify-center"
-          style={{ translateX: "-50%" }}
-          animate={{
-            width:
-              currentStep === "home"
-                ? 900
-                : currentStep === "crimson"
-                  ? "68%"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? 430
-                    : 265,
-            height:
-              currentStep === "home"
-                ? 1000
-                : currentStep === "crimson"
-                  ? "auto"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? 500
-                    : 288,
-            rotate:
-              currentStep === "home"
-                ? -11
-                : currentStep === "crimson"
-                  ? 0
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? -31
-                    : 0,
-            top:
-              currentStep === "home"
-                ? "120px"
-                : currentStep === "crimson"
-                  ? "24%"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? "55%"
-                    : "66.2%",
-            left:
-              currentStep === "home"
-                ? "55%"
-                : currentStep === "crimson"
-                  ? "50%"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? "85%"
-                    : "50%",
-            opacity: currentStep === "review" ? 0 : 1,
-          }}
-          transition={{ duration: 1 }}
-        >
-          {" "}
-          <Image
-            src={activeBottle.image}
-            alt="bottle"
-            width={1087}
-            height={1183}
-            className="object-contain w-full h-full"
-          />{" "}
-        </motion.div>
-      </div>
 
-      {/* Background Circle */}
-      <motion.div
-        className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-        initial={{ width: 850, height: 850, rotate: 0 }}
-        animate={{
-          width:
-            currentStep === "home"
-              ? 750
-              : currentStep === "crimson"
-                ? 3000
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? 450
-                  : 600,
-          height:
-            currentStep === "home"
-              ? 750
-              : currentStep === "crimson"
-                ? 3000
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? 450
-                  : 600,
-          left:
-            currentStep === "home"
-              ? "50%"
-              : currentStep === "crimson"
-                ? "50%"
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? "100%"
-                  : "50%",
-          bottom:
-            currentStep === "home"
-              ? "-55%"
-              : currentStep === "crimson"
-                ? "-80%"
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? "-28%"
-                  : "-35%",
-          rotate:
-            currentStep === "home"
+{/* Bottle Image and Background Circle — hidden in Gallery Page */}
+{currentStep !== "gallery" && (
+  <>
+    {/* Bottle Image */}
+    <motion.div
+      className="absolute z-10 flex items-center justify-center"
+      style={{ translateX: "-50%" }}
+      animate={{
+        width:
+          currentStep === "home"
+            ? 900
+            : currentStep === "crimson"
+              ? "68%"
+              : currentStep === "about" || currentStep === "nutrition"
+                ? 430
+                : 265,
+        height:
+          currentStep === "home"
+            ? 1000
+            : currentStep === "crimson"
+              ? "auto"
+              : currentStep === "about" || currentStep === "nutrition"
+                ? 500
+                : 288,
+        rotate:
+          currentStep === "home"
+            ? -11
+            : currentStep === "crimson"
               ? 0
-              : currentStep === "crimson"
-                ? 0
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? 90
-                  : 0.05,
-          opacity: currentStep === "review" ? 0 : 1,
+              : currentStep === "about" || currentStep === "nutrition"
+                ? -31
+                : 0,
+        top:
+          currentStep === "home"
+            ? "120px"
+            : currentStep === "crimson"
+              ? "24%"
+              : currentStep === "about" || currentStep === "nutrition"
+                ? "55%"
+                : "66.2%",
+        left:
+          currentStep === "home"
+            ? "55%"
+            : currentStep === "crimson"
+              ? "50%"
+              : currentStep === "about" || currentStep === "nutrition"
+                ? "85%"
+                : "50%",
+        opacity: currentStep === "review" ? 0 : 1,
+      }}
+      transition={{ duration: 1 }}
+    >
+      <Image
+        src={activeBottle.image}
+        alt="bottle"
+        width={1087}
+        height={1183}
+        className="object-contain w-full h-full"
+      />
+    </motion.div>
+
+    {/* Background Circle */}
+    <motion.div
+      className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
+      initial={{ width: 850, height: 850, rotate: 0 }}
+      animate={{
+        width:
+          currentStep === "home"
+            ? 750
+            : currentStep === "crimson"
+              ? 3000
+              : currentStep === "about" || currentStep === "nutrition"
+                ? 450
+                : 600,
+        height:
+          currentStep === "home"
+            ? 750
+            : currentStep === "crimson"
+              ? 3000
+              : currentStep === "about" || currentStep === "nutrition"
+                ? 450
+                : 600,
+        left:
+          currentStep === "home"
+            ? "50%"
+            : currentStep === "crimson"
+              ? "50%"
+              : currentStep === "about" || currentStep === "nutrition"
+                ? "100%"
+                : "50%",
+        bottom:
+          currentStep === "home"
+            ? "-55%"
+            : currentStep === "crimson"
+              ? "-80%"
+              : currentStep === "about" || currentStep === "nutrition"
+                ? "-28%"
+                : "-35%",
+        rotate:
+          currentStep === "home"
+            ? 0
+            : currentStep === "crimson"
+              ? 0
+              : currentStep === "about" || currentStep === "nutrition"
+                ? 90
+                : 0.05,
+        opacity: currentStep === "review" ? 0 : 1,
+      }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+    >
+      <motion.div
+        className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
+        animate={{
+          borderColor: colors[activeBottle.colorKey],
+          scale: [0.95, 1, 0.95],
         }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
       >
         <motion.div
-          className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
-          animate={{
-            borderColor: colors[activeBottle.colorKey],
-            scale: [0.95, 1, 0.95],
-          }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        >
-          <motion.div
-            className="w-full h-full rounded-full m-4"
-            animate={{ backgroundColor: colors[activeBottle.colorKey] }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-          />
-        </motion.div>
+          className="w-full h-full rounded-full m-4"
+          animate={{ backgroundColor: colors[activeBottle.colorKey] }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        />
       </motion.div>
+    </motion.div>
+  </>
+)}
+
 
       {/* Pages */}
       <AnimatePresence>
@@ -376,9 +388,13 @@ export default function HomePage() {
             {currentStep === "review" && (
               <ReviewPage onPrevClick={handleReviewPrev} />
             )}
+            {currentStep === "gallery" && (
+              <GalleryPage onPrevClick={handleGalleryPrev} />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
     </div>
   );
 }
