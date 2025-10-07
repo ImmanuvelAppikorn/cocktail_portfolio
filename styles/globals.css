@@ -12,9 +12,29 @@
 /* Import Tailwind's utilities */
 @import "tailwindcss/utilities.css" layer(utilities);
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: -webkit-fill-available;
   min-height: -webkit-fill-available;
+  background-color: white;
+}
+
+/* Ensure all components respect the 500px max width */
+@media (min-width: 501px) {
+  body {
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+  }
+  
+  body > div {
+    max-width: 500px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
 }
 

@@ -22,7 +22,7 @@ export default function CrimsonPage({
   };
 
   return (
-    <div className="flex flex-col pt-[1vh]  h-[88%] px-[5vw]  text-black overflow-y-auto">
+    <div className="flex flex-col pt-2 h-[88%] px-4 text-black overflow-y-auto max-w-[500px] mx-auto">
       <div className="flex flex-1 flex-col  items-center justify-between">
         {/* Top Section */}
         <motion.div
@@ -41,13 +41,13 @@ export default function CrimsonPage({
                 width={30}
               />
             </button>
-            <h2 className="flex-1 text-center text-[7vw] font-bold">
+            <h2 className="flex-1 text-center text-[28px] font-bold">
               CRIMSON RESERVE
             </h2>
           </div>
 
           {/* Wine Info Cards */}
-          <div className="flex flex-col gap-[2vh] text-[2.5vw] font-semibold mt-[3vh]">
+          <div className="flex flex-col gap-4 text-[12px] font-semibold mt-6">
             <div className="flex flex-row w-full justify-between">
               <InfoCard icon="/crimson-reserve-icons/origin.svg" title="ORIGIN" value="FRANCE" />
               <InfoCard icon="/crimson-reserve-icons/vintage.svg" title="VINTAGE" value="2018" />
@@ -60,10 +60,10 @@ export default function CrimsonPage({
         </motion.div>
 
         {/* CTA Button */}
-        <div className="mt-[5vh] w-full flex items-end justify-end">
+        <div className="mt-8 w-full flex items-end justify-end">
           <button
             onClick={onNextClick}
-            className="inline-flex items-center justify-center px-[4vw] py-[1.5vh] rounded-full bg-[var(--Text-Color,#1C1826)] text-white text-[3vw] font-montagu font-medium hover:bg-gray-800 transition"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[var(--Text-Color,#1C1826)] text-white text-[14px] font-montagu font-medium hover:bg-gray-800 transition"
           >
             More
             <Image
@@ -82,9 +82,9 @@ export default function CrimsonPage({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="flex flex-col space-y-[2vh] px-[1vw] w-full"
+          className="flex flex-col space-y-4 px-2 w-full"
         >
-          <div className="flex flex-row gap-[2vw] w-full justify-between">
+          <div className="flex flex-row gap-2 w-full justify-between">
             <InfoCard icon="/crimson-reserve-icons/alcohol.svg" title="ALCOHOL" value="13.5%" half />
             <InfoCard icon="/crimson-reserve-icons/processing.svg" title="PROCESSING" value="OAK BARREL AGED (18 MONTHS)" half />
           </div>
@@ -112,12 +112,12 @@ function InfoCard({
 }) {
   return (
     <div className={`flex flex-row items-start ${half ? "w-[48%]" : "w-full"} text-left`}>
-      <div className="w-[12vw] h-[12vw] max-w-[60px] max-h-[60px] rounded-full border border-white flex items-center justify-center flex-shrink-0">
+      <div className="w-[48px] h-[48px] rounded-full border border-white flex items-center justify-center flex-shrink-0">
         <Image src={icon} alt={title} width={20} height={20} className="object-contain" />
       </div>
-      <div className="flex flex-col justify-center ml-[2vw]">
-        <div className="text-[2.5vw] font-bold uppercase">{title}</div>
-        <div className="text-[3vw] font-normal">{value}</div>
+      <div className="flex flex-col justify-center ml-3">
+        <div className="text-[11px] font-bold uppercase">{title}</div>
+        <div className="text-[13px] font-normal">{value}</div>
       </div>
     </div>
   );

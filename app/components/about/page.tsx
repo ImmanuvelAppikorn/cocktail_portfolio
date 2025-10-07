@@ -11,7 +11,7 @@ export default function AboutPage({
   onPrevClick?: () => void;
 }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden pt-1 flex flex-col items-center max-h-screen" style={{ touchAction: 'none', overscrollBehavior: 'none', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+    <div className="relative w-full h-screen overflow-hidden pt-1 flex flex-col items-center max-h-screen max-w-[500px] mx-auto" style={{ touchAction: 'none', overscrollBehavior: 'none' }}>
       {/* Heading */}
       <div className="flex flex-row justify-start items-center w-full px-4">
         <button onClick={onPrevClick}>

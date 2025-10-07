@@ -160,13 +160,9 @@ export default function HomePage() {
 
   return (
     <div 
-      className="relative flex flex-col items-center justify-start bg-white overflow-hidden" 
+      className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto" 
       style={{ 
         height: "100vh",
-        width: "100vw",
-        position: currentStep === "home" ? "fixed" : "relative",
-        top: currentStep === "home" ? "0" : "auto",
-        left: currentStep === "home" ? "0" : "auto",
         touchAction: currentStep === "home" ? "none" : "auto",
         overscrollBehavior: currentStep === "home" ? "none" : "auto"
       }}

@@ -19,7 +19,7 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   ]);
 
   return (
-    <div className="px-4 pt-3 h-screen space-y-4 relative overflow-hidden w-full max-h-screen" style={{ touchAction: 'none', overscrollBehavior: 'none', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+    <div className="px-4 pt-3 h-screen space-y-4 relative overflow-hidden w-full max-h-screen max-w-[500px] mx-auto" style={{ touchAction: 'none', overscrollBehavior: 'none' }}>
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">

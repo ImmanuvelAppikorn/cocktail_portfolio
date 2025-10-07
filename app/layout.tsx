@@ -22,12 +22,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body
         className={clsx(
-          "text-foreground bg-background font-sans antialiased flex justify-center",
+          "text-foreground bg-white font-sans antialiased flex justify-center",
           fontSans.variable
         )}
         style={{
           height: "var(--app-height)",
           overflow: "hidden", // stop body scroll; we'll scroll the inner content instead
+          backgroundColor: "white"
         }}
       >
         <div
