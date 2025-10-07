@@ -99,9 +99,28 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
+    <div 
+      className="relative flex flex-col items-center justify-start bg-white"
+      style={{
+        height: "var(--app-height)",
+        maxHeight: "var(--app-height)",
+        overflow: "hidden",
+      }}
+    >
       {currentStep !== "home" && (
-        <div className="absolute bottom-2 w-full z-50">
+        <div 
+          className="absolute bottom-2 w-full z-50"
+          style={{
+            position: "fixed",
+            bottom: "8px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            maxWidth: "500px",
+            width: "100%",
+            paddingLeft: "8px",
+            paddingRight: "8px",
+          }}
+        >
           <NavigationBar
             onStepChange={setCurrentStep}
             activeStep={currentStep}
@@ -154,7 +173,13 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
-      <div className="relative w-full h-screen flex flex-col items-center justify-center">
+      <div 
+        className="relative w-full flex flex-col items-center justify-center"
+        style={{
+          height: "var(--app-height)",
+          maxHeight: "var(--app-height)",
+        }}
+      >
         {/* Bottle Image */}
         {/* Bottle Image */}{" "}
         <motion.div
@@ -285,7 +310,11 @@ export default function HomePage() {
       <AnimatePresence>
         {currentStep !== "home" && !reverse && (
           <motion.div
-            className="absolute top-0 w-full h-full z-40"
+            className="absolute top-0 w-full z-40"
+            style={{
+              height: "var(--app-height)",
+              maxHeight: "var(--app-height)",
+            }}
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}

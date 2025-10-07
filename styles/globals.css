@@ -12,9 +12,56 @@
 /* Import Tailwind's utilities */
 @import "tailwindcss/utilities.css" layer(utilities);
 
-html,
+/* Mobile viewport handling */
+:root {
+  --vh: 1vh;
+  --app-height: 100vh;
+}
+
+html {
+  height: 100%;
+  /* Prevent zoom on iOS */
+  -webkit-text-size-adjust: 100%;
+  /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+}
+
 body {
-  height: -webkit-fill-available;
-  min-height: -webkit-fill-available;
+  height: 100%;
+  height: var(--app-height);
+  min-height: 100%;
+  min-height: var(--app-height);
+  /* Prevent body scroll - we'll handle scrolling in components */
+  overflow: hidden;
+  /* Prevent bounce scrolling on iOS */
+  overscroll-behavior: none;
+  /* Prevent pull-to-refresh */
+  overscroll-behavior-y: contain;
+  /* Better font rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for iOS Safari address bar */
+@supports (-webkit-touch-callout: none) {
+  body {
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Prevent zoom on input focus (iOS) */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Hide scrollbars but keep functionality */
+.scrollable-content {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollable-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
