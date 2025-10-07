@@ -128,13 +128,13 @@ export default function BottleCarousel() {
 <div className="relative w-full h-[600px] flex items-center justify-center overflow-visible max-w-[500px] mx-auto px-4">
   {/* Outer Circle (border) */}
   <motion.div
-    className="absolute w-[400px] h-[400px] rounded-full border flex items-center justify-center"
+    className="absolute w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
     animate={{ borderColor: activeBottle.color, scale: [0.95, 1, 0.95] }}
     transition={{ duration: 0.8, ease: "easeInOut" }}
   >
     {/* Inner Circle (filled) */}
     <motion.div
-      className="w-[360px] h-[360px] rounded-full"
+      className="w-full h-full  rounded-full"
       animate={{ backgroundColor: activeBottle.color }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     />
@@ -151,7 +151,7 @@ export default function BottleCarousel() {
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: direction > 0 ? 120 : -120, scale: 0.8 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="h-[250px] object-contain drop-shadow-xl z-10 absolute top-0"
+      className="h-[35%] object-contain drop-shadow-xl z-10 absolute bottom-105"
     />
   </AnimatePresence>
 </div>
