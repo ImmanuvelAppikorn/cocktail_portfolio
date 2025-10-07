@@ -56,8 +56,78 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow =
-      currentStep !== "home" && !reverse ? "hidden" : "auto";
+    const html = document.documentElement;
+    const body = document.body;
+    
+    if (currentStep === "home") {
+      // Prevent all scrolling on home page
+      html.style.overflow = "hidden";
+      html.style.height = "100vh";
+      html.style.position = "fixed";
+      html.style.width = "100%";
+      html.style.top = "0";
+      html.style.left = "0";
+      
+      body.style.overflow = "hidden";
+      body.style.height = "100vh";
+      body.style.position = "fixed";
+      body.style.width = "100%";
+      body.style.top = "0";
+      body.style.left = "0";
+      body.style.margin = "0";
+      body.style.padding = "0";
+    } else if (currentStep !== "home" && !reverse) {
+      html.style.overflow = "hidden";
+      html.style.height = "auto";
+      html.style.position = "static";
+      html.style.width = "auto";
+      html.style.top = "auto";
+      html.style.left = "auto";
+      
+      body.style.overflow = "hidden";
+      body.style.height = "auto";
+      body.style.position = "static";
+      body.style.width = "auto";
+      body.style.top = "auto";
+      body.style.left = "auto";
+      body.style.margin = "";
+      body.style.padding = "";
+    } else {
+      html.style.overflow = "auto";
+      html.style.height = "auto";
+      html.style.position = "static";
+      html.style.width = "auto";
+      html.style.top = "auto";
+      html.style.left = "auto";
+      
+      body.style.overflow = "auto";
+      body.style.height = "auto";
+      body.style.position = "static";
+      body.style.width = "auto";
+      body.style.top = "auto";
+      body.style.left = "auto";
+      body.style.margin = "";
+      body.style.padding = "";
+    }
+
+    // Cleanup function
+    return () => {
+      html.style.overflow = "auto";
+      html.style.height = "auto";
+      html.style.position = "static";
+      html.style.width = "auto";
+      html.style.top = "auto";
+      html.style.left = "auto";
+      
+      body.style.overflow = "auto";
+      body.style.height = "auto";
+      body.style.position = "static";
+      body.style.width = "auto";
+      body.style.top = "auto";
+      body.style.left = "auto";
+      body.style.margin = "";
+      body.style.padding = "";
+    };
   }, [currentStep, reverse]);
 
   // Navigation handlers
@@ -99,14 +169,23 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-start min-h-screen bg-white overflow-hidden">
+    <div 
+      className="relative flex flex-col items-center justify-start bg-white overflow-hidden" 
+      style={{ 
+        height: "100vh",
+        width: "100vw",
+        position: currentStep === "home" ? "fixed" : "relative",
+        top: currentStep === "home" ? "0" : "auto",
+        left: currentStep === "home" ? "0" : "auto",
+        touchAction: currentStep === "home" ? "none" : "auto",
+        overscrollBehavior: currentStep === "home" ? "none" : "auto"
+      }}
+    >
       {currentStep !== "home" && (
-        <div className="absolute bottom-2 w-full z-50">
-          <NavigationBar
-            onStepChange={setCurrentStep}
-            activeStep={currentStep}
-          />
-        </div>
+        <NavigationBar
+          onStepChange={setCurrentStep}
+          activeStep={currentStep}
+        />
       )}
 
       {/* Home Page Title */}
