@@ -3,11 +3,16 @@ import Image from "next/image";
 
 const NutritionPage = () => {
   return (
-    <div className="px-2 space-y-1 mt-16">
+    <div className="px-2 space-y-4 mt-5 h-auto">
+      <div className="border-b border-black mx-3">
+        <p className="text-[#EB235C] text-[24px] font-bold text-center pb-1">
+          CRIMSON RESERVE
+        </p>
+      </div>
       {/* Section Renderer */}
       {[
         {
-          title: "NUTRITIONAL DECLARATION",
+          title: "Nutritional Declaration",
           items: [
             {
               icon: "/nutrition-icons/icon1.svg",
@@ -26,7 +31,7 @@ const NutritionPage = () => {
           ],
         },
         {
-          title: "ENVIRONMENTAL LABEL",
+          title: "Environmental Label",
           items: [
             {
               icon: "/nutrition-icons/icon1.svg",
@@ -42,33 +47,67 @@ const NutritionPage = () => {
             },
           ],
         },
+        {
+          title: "Ingredients",
+          isList: true,
+          items: [
+            {
+              text: "Grapes",
+            },
+            {
+              text: "additives: gum Arabic (E414)",
+            },
+            {
+              text: "potassium polyepitope",
+            },
+            {
+              text: "antioxidant preservatives: Potassium metabisulfite (sulfites)",
+            },
+          ],
+        },
       ].map((section, idx) => (
         <div key={idx}>
           {/* Title */}
-          <p className="text-[18px] font-bold text-center tracking-[2px] w-full border-b-1  pb-0 mb-2">
+          <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4">
             {section.title}
           </p>
 
           {/* Items */}
-          <div className="space-y-1">
-            {section.items.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-1.5 w-full  px-3 py-0.5"
-              >
-                <Image
-                  src={item.icon}
-                  alt=""
-                  height={22}
-                  width={22}
-                  className="object-contain flex-shrink-0"
-                />
-                <p className="text-[12px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words">
+          {section.isList ? (
+            // 👇 Render as bullet list
+            <ul className="list-disc pl-8 space-y-2 font-montagu">
+              {section.items.map((item, i) => (
+                <li
+                  key={i}
+                  className="text-[12px] font-medium leading-tight tracking-tight whitespace-normal break-words"
+                >
                   {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="space-y-1">
+              {section.items.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-1.5 w-full px-3 py-0.5"
+                >
+                  {"icon" in item && item.icon && (
+                    <Image
+                      src={item.icon}
+                      alt=""
+                      height={22}
+                      width={22}
+                      className="object-contain flex-shrink-0"
+                    />
+                  )}
+                  <p className="text-[12px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </div>
