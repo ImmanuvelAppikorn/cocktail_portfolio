@@ -62,14 +62,14 @@ export default function BottleCarousel() {
   return (
     <div className="relative w-full h-auto flex flex-col items-center justify-center overflow-hidden">
       {/* Navigation + Text */}
-      <div className="relative w-full flex items-center justify-center mb-1">
+      <div className="relative w-[80%] flex items-center justify-center mb-4 ">
         {/* Prev Button */}
         <div className="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 z-20">
           <button onClick={prevBottle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="28"
+              width="22"
+              height="26"
               viewBox="0 0 25 29"
               fill="none"
             >
@@ -82,7 +82,7 @@ export default function BottleCarousel() {
         </div>
 
         {/* Text Info */}
-        <div className="relative w-full h-full flex items-center justify-center z-10">
+        <div className="relative w-full h-full flex items-center justify-center z-10 ">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeBottle.id + "-text"}
@@ -93,9 +93,9 @@ export default function BottleCarousel() {
               className="flex flex-col items-center"
             >
 
-               <h3 className="text-xl font-bold text-black">{activeBottle.name}</h3>
+               <h3 className="text-[18px] font-bold text-black">{activeBottle.name}</h3>
               <h2
-                className="font-bold text-3xl"
+                className="font-bold text-[27px]"
                 style={{ color: activeBottle.color }}
               >
                 ${activeBottle.price}
@@ -110,13 +110,13 @@ export default function BottleCarousel() {
           <button onClick={nextBottle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="28"
+              width="22"
+              height="26"
               viewBox="0 0 25 29"
               fill="none"
             >
               <path
-                d="M2.26892 0.0612061C1.09842 0.0150191 0.125977 0.952818 0.125977 2.12421V26.8727C0.125977 28.4743 1.87369 29.4666 3.24713 28.6426L23.8734 16.2684C25.2104 15.4663 25.2104 13.5306 23.8734 12.7285L3.24713 0.35429C2.95062 0.176363 2.61442 0.0748284 2.26892 0.0612061Z"
+                d="M2.26892 0.0612061C1.09842 0.0150191 0.125977 0.952818 0.125977 4.12421V26.8727C0.125977 28.4743 1.87369 29.4666 3.24713 28.6426L23.8734 16.2684C25.2104 15.4663 25.2104 13.5306 23.8734 12.7285L3.24713 0.35429C2.95062 0.176363 2.61442 0.0748284 2.26892 0.0612061Z"
                 fill={activeBottle.color}
               />
             </svg>
