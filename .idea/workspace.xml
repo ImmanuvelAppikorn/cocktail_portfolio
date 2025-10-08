@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60991004-606e-4f87-9074-97612b636c63" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/about/AboutPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/about/AboutPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/gallery/GalleryPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/gallery/GalleryPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/navigation_bar/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/navigation_bar/NavigationBar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +40,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "new2",
+    "git-widget-placeholder": "master",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
