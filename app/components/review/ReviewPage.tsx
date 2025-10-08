@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+
 import BottleCarousel from "./slide-bottle";
 
 const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
@@ -52,9 +53,9 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
           <div className="flex items-center gap-3">
             <button onClick={onPrevClick}>
               <Image
-                src="/button-image/Icons.svg"
                 alt="Back Icon"
                 height={20}
+                src="/button-image/Icons.svg"
                 width={20}
               />
             </button>
@@ -63,9 +64,9 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
 
           <button className="bg-black px-3 py-1.5 rounded-md flex items-center text-white gap-2 hover:bg-gray-800 transition">
             <Image
-              src="/button-image/coffee.svg"
               alt="Review Icon"
               height={20}
+              src="/button-image/coffee.svg"
               width={20}
             />
             <p className="text-[10px] font-bold leading-none">Write a Review</p>
@@ -75,9 +76,9 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
         {/* Rating Overview */}
         <div className="bg-[#F8F8F8] w-full rounded-xl flex items-center px-3 py-2 justify-between  flex-shrink-0">
           <Image
-            src="/button-image/forward.svg"
             alt="Forward Icon"
             height={24}
+            src="/button-image/forward.svg"
             width={24}
           />
           <p className="text-xl font-extrabold">4.0</p>
@@ -91,11 +92,11 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
             ].map((img, i) => (
               <Image
                 key={i}
-                src={`/review-images/${img}`}
                 alt="Reviewer"
-                height={35}
-                width={35}
                 className="rounded-full object-cover"
+                height={35}
+                src={`/review-images/${img}`}
+                width={35}
               />
             ))}
           </div>
@@ -108,9 +109,9 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               <div key={num} className="flex items-center gap-2">
                 <p className="text-sm font-medium w-3">{num}</p>
                 <Image
-                  src="/start-rating-icons/start-rating-bottle-full.svg"
                   alt="Rating Bottle"
                   height={16}
+                  src="/start-rating-icons/start-rating-bottle-full.svg"
                   width={5}
                 />
                 <div
@@ -138,16 +139,16 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               {[1, 2, 3, 4].map((i) => (
                 <Image
                   key={i}
-                  src="/start-rating-icons/start-rating-bottle-full.svg"
                   alt="Full Bottle"
                   height={16}
+                  src="/start-rating-icons/start-rating-bottle-full.svg"
                   width={5}
                 />
               ))}
               <Image
-                src="/start-rating-icons/start-rating-bottle-empty.svg"
                 alt="Empty Bottle"
                 height={16}
+                src="/start-rating-icons/start-rating-bottle-empty.svg"
                 width={5}
               />
             </div>
@@ -165,11 +166,11 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-2">
                   <Image
-                    src={r.avatar}
                     alt={r.user}
-                    width={35}
-                    height={35}
                     className="rounded-full"
+                    height={35}
+                    src={r.avatar}
+                    width={35}
                   />
                   <div>
                     <p className="font-semibold text-sm">{r.user}</p>
@@ -178,14 +179,14 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                         {[...Array(5)].map((_, i) => (
                           <Image
                             key={i}
+                            alt="Rating Bottle"
+                            height={14}
                             src={
                               i < r.rating
                                 ? "/start-rating-icons/start-rating-bottle-full.svg"
                                 : "/start-rating-icons/start-rating-bottle-empty.svg"
                             }
-                            alt="Rating Bottle"
                             width={4}
-                            height={14}
                           />
                         ))}
                       </span>
@@ -195,11 +196,11 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                 </div>
 
                 <Image
-                  src="/button-image/setting-dots.svg"
                   alt="Options"
-                  width={16}
-                  height={16}
                   className="cursor-pointer"
+                  height={16}
+                  src="/button-image/setting-dots.svg"
+                  width={16}
                 />
               </div>
 

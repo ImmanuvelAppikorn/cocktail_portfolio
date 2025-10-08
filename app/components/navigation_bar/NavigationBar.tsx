@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery",
   ) => void;
 }
 
@@ -59,18 +59,19 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     <div className="fixed bottom-2 left-1/2 transform -translate-x-1/2 bg-white border border-[#EB235C] backdrop-blur-[20px] h-[70px] rounded-[50px] flex justify-evenly items-center z-50 max-w-[500px] w-[calc(100%-16px)]">
       {navItems.map((item) => {
         const isActive = activeStep === item.id;
+
         return (
           <button
             key={item.id}
-            onClick={() => onStepChange(item.id as any)}
             className="flex flex-col items-center transition-all duration-200"
+            onClick={() => onStepChange(item.id as any)}
           >
             <Image
-              src={isActive ? item.active : item.icon}
               alt={`${item.label} icon`}
-              width={44}
-              height={40}
               className="object-contain w-[44px] h-[40px]"
+              height={40}
+              src={isActive ? item.active : item.icon}
+              width={44}
             />
             <p
               className={`text-[9px] text-center transition-colors duration-200 ${

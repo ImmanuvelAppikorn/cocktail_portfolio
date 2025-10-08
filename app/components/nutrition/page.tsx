@@ -94,11 +94,11 @@ const NutritionPage = () => {
                 >
                   {"icon" in item && item.icon && (
                     <Image
-                      src={item.icon}
                       alt=""
-                      height={22}
-                      width={22}
                       className="object-contain flex-shrink-0"
+                      height={22}
+                      src={item.icon}
+                      width={22}
                     />
                   )}
                   <p className="text-[12px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words">

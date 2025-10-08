@@ -2,18 +2,27 @@
 import "@/styles/globals.css";
 import clsx from "clsx";
 import { useEffect } from "react";
-import { fontSans } from "@/config/fonts";
-import NavigationBar from "./components/navigation_bar/page";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import { fontSans } from "@/config/fonts";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   useEffect(() => {
     function setAppHeight() {
       const appHeight = window.innerHeight;
-      document.documentElement.style.setProperty("--app-height", `${appHeight}px`);
+
+      document.documentElement.style.setProperty(
+        "--app-height",
+        `${appHeight}px`,
+      );
     }
 
     setAppHeight();
     window.addEventListener("resize", setAppHeight);
+
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
 
@@ -23,12 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={clsx(
           "text-foreground bg-white font-sans antialiased flex justify-center",
-          fontSans.variable
+          fontSans.variable,
         )}
         style={{
           height: "var(--app-height)",
           overflow: "hidden", // stop body scroll; we'll scroll the inner content instead
-          backgroundColor: "white"
+          backgroundColor: "white",
         }}
       >
         <div
@@ -38,15 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         >
           {/* Scrollable content area */}
-          <main
-            className="flex-grow overflow-y-auto"
-           
-          >
-            {children}
-          </main>
+          <main className="flex-grow overflow-y-auto">{children}</main>
 
           {/* Fixed navigation bar */}
-
         </div>
       </body>
     </html>

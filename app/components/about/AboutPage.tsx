@@ -1,7 +1,5 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
-
 
 export default function AboutPage({
   onNextClick,
@@ -11,7 +9,10 @@ export default function AboutPage({
   onPrevClick?: () => void;
 }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden pt-1 flex flex-col items-center max-h-screen max-w-[500px] mx-auto" style={{ touchAction: 'none', overscrollBehavior: 'none' }}>
+    <div
+      className="relative w-full h-screen overflow-hidden pt-1 flex flex-col items-center max-h-screen max-w-[500px] mx-auto"
+      style={{ touchAction: "none", overscrollBehavior: "none" }}
+    >
       {/* Heading */}
 
       <div className="border-b border-black w-[95%] ">
@@ -23,9 +24,9 @@ export default function AboutPage({
       <div className="flex flex-row justify-start items-center w-full px-4">
         <button onClick={onPrevClick}>
           <Image
-            src="/button-image/back.svg"
             alt="Back Icon"
             height={30}
+            src="/button-image/back.svg"
             width={30}
           />
         </button>
@@ -44,8 +45,6 @@ export default function AboutPage({
         milk-based drink, it features notes of hazelnut and dark chocolate, with
         an extra caffeine hit unique to Robusta."
       </p>
-  
-
     </div>
   );
 }

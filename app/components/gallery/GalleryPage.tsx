@@ -31,10 +31,10 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
     <div className="relative w-full h-screen bg-white overflow-hidden">
       {/* Fixed Gallery Header */}
       <motion.div
-        initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
         className="fixed top-0 left-0 w-full z-20 bg-white py-2 px-2 border-b border-black"
+        initial={{ y: -50, opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <p className="text-[#EB235C] text-[26.19px] font-bold text-center">
           GALLERY
@@ -65,18 +65,18 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               <div key={idx} className="grid grid-cols-3 gap-2">
                 {/* Big Left Image */}
                 <motion.div
-                  variants={slideFromLeft}
-                  initial="hidden"
                   animate="visible"
-                  transition={transition}
                   className="col-span-2"
+                  initial="hidden"
+                  transition={transition}
+                  variants={slideFromLeft}
                 >
                   <div className="relative w-full h-[250px] md:h-[280px] lg:h-[320px]">
                     <Image
-                      src={img1}
-                      alt=""
                       fill
+                      alt=""
                       className="object-cover rounded-lg"
+                      src={img1}
                     />
                   </div>
                 </motion.div>
@@ -86,17 +86,17 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                   {[img2, img3].map((img, i) => (
                     <motion.div
                       key={i}
-                      variants={slideFromRight}
-                      initial="hidden"
                       animate="visible"
-                      transition={{ ...transition, delay: i * 0.1 }}
                       className="relative h-[120px] md:h-[140px] lg:h-[160px]"
+                      initial="hidden"
+                      transition={{ ...transition, delay: i * 0.1 }}
+                      variants={slideFromRight}
                     >
                       <Image
-                        src={img}
-                        alt=""
                         fill
+                        alt=""
                         className="object-cover rounded-lg"
+                        src={img}
                       />
                     </motion.div>
                   ))}
@@ -113,34 +113,34 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                   {[img1, img2].map((img, i) => (
                     <motion.div
                       key={i}
-                      variants={slideFromLeft}
-                      initial="hidden"
                       animate="visible"
+                      initial="hidden"
                       transition={{ ...transition, delay: i * 0.1 }}
+                      variants={slideFromLeft}
                     >
                       <Image
-                        src={img}
                         alt=""
-                        height={120}
-                        width={122}
                         className="w-full h-auto object-cover rounded-lg"
+                        height={120}
+                        src={img}
+                        width={122}
                       />
                     </motion.div>
                   ))}
                 </div>
                 <motion.div
-                  variants={slideFromRight}
-                  initial="hidden"
                   animate="visible"
-                  transition={transition}
                   className="col-span-2"
+                  initial="hidden"
+                  transition={transition}
+                  variants={slideFromRight}
                 >
                   <Image
-                    src={img3}
                     alt=""
-                    height={250}
-                    width={253}
                     className="w-full h-auto object-cover rounded-lg"
+                    height={250}
+                    src={img3}
+                    width={253}
                   />
                 </motion.div>
               </div>
@@ -153,23 +153,23 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               {[img1, img2, img3].map((img, i) => (
                 <motion.div
                   key={i}
+                  animate="visible"
+                  initial="hidden"
+                  transition={{ ...transition, delay: i * 0.1 }}
                   variants={
                     i === 0
                       ? slideFromLeft
                       : i === 1
-                      ? slideFromCenter
-                      : slideFromRight
+                        ? slideFromCenter
+                        : slideFromRight
                   }
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ ...transition, delay: i * 0.1 }}
                 >
                   <Image
-                    src={img}
                     alt=""
-                    height={120}
-                    width={122}
                     className="w-full h-auto object-cover rounded-lg"
+                    height={120}
+                    src={img}
+                    width={122}
                   />
                 </motion.div>
               ))}
