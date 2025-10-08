@@ -282,6 +282,7 @@ export default function HomePage() {
         <motion.div
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
+          initial={{ width: 900, height: 1000, rotate: -11, top: 640 ,left:"55%" }}
           animate={{
             width:
               currentStep === "home"
@@ -341,7 +342,7 @@ export default function HomePage() {
       {/* Background Circle */}
       <motion.div
         className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-        initial={{ width: 850, height: 850, rotate: 0 }}
+        initial={{ width: 750, height: 750, rotate: 0, opacity:0, bottom:"-80%" }}
         animate={{
           width:
             currentStep === "home"
@@ -369,7 +370,7 @@ export default function HomePage() {
                   : "50%",
           bottom:
             currentStep === "home"
-              ? "-55%"
+              ? "-40%"
               : currentStep === "crimson"
                 ? "-80%"
                 : currentStep === "about" || currentStep === "nutrition"
