@@ -86,16 +86,18 @@ export default function CrimsonPage({
         <div className="mt-8 w-full flex items-end justify-end">
           <button
             onClick={onNextClick}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#1C1826] text-white text-[13px] font-montagu font-medium hover:bg-gray-800 transition"
+            className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
           >
-            More
-            <Image
+            <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
+            
+            <span className="relative flex items-center">More <Image
               src="/button-image/arrow-up-right.svg"
               alt="arrow"
               width={14}
               height={14}
-              className="ml-2"
-            />
+              className="ml-2 z-10"
+            /></span>
+            
           </button>
         </div>
 
@@ -107,7 +109,7 @@ export default function CrimsonPage({
           exit="exit"
           className="flex flex-col space-y-4 px-1 w-full mt-6"
         >
-          <div className="flex flex-row gap-2 w-full justify-between">
+          <div className="grid grid-cols-2 gap-2 w-full">
             <InfoCard
               icon="/crimson-reserve-icons/alcohol.svg"
               title="ALCOHOL"
@@ -174,7 +176,7 @@ function InfoCard({
       </div>
       <div className="flex flex-col justify-center ml-3">
         <div className="text-[10px] font-bold uppercase">{title}</div>
-        <div className="text-[12px] font-normal">{value}</div>
+        <div className="text-[12px] font-normal text-white">{value}</div>
       </div>
     </div>
   );

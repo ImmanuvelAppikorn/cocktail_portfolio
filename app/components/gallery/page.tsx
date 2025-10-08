@@ -34,7 +34,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full z-20 bg-white py-2 px-2 border-b border-black"
+        className="top-0 left-0 w-full z-20 bg-white py-2 px-2 border-b border-black"
       >
         <p className="text-[#EB235C] text-[26.19px] font-bold text-center">
           GALLERY
