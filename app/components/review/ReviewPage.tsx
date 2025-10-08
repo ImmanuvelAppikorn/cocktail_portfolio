@@ -157,7 +157,7 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
         </div>
 
         {/* Scrollable Reviews (40% height) */}
-        <div className="space-y-3  border-gray-200  overflow-y-auto h-[25vh] pr-1">
+        <div className="space-y-3 border-gray-200 overflow-y-auto h-[25vh] pr-1 scrollbar-hide">
           {reviews.map((r) => (
             <div
               key={r.id}
