@@ -187,7 +187,7 @@ export default function HomePage() {
       )}
 
 {/* pop up screen button (language button) */}
-<div className="absolute top-8 left-4 z-50">
+{/* <div className="absolute top-8 left-4 z-50">
   <button
     onClick={() => setShowLanguagePopup(true)}
     className="focus:outline-none"
@@ -221,7 +221,7 @@ export default function HomePage() {
       </motion.div>
     </motion.div>
   )}
-</AnimatePresence>
+</AnimatePresence> */}
 
 
 

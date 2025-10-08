@@ -80,6 +80,8 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
+        <div className="w-[70%] aspect-square rounded-full" />
+
 
 <div className="pb-20">
         {/* CTA Button */}
