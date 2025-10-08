@@ -4,13 +4,14 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import CrimsonPage from "../crimson-reserve/page";
-import AboutPage from "../about/page";
-import ReviewPage from "../review/page";
-import NutritionPage from "../nutrition/page";
-import NavigationBar from "../navigation_bar/page";
-import GalleryPage from "../gallery/page";
-import LanguageToggle from "../language_toggle/page";
+import NavigationBar from "../navigation_bar/nav-page";
+import LanguageToggle from "../language_toggle/language-page";
+import CrimsonPage from "../crimson-reserve/crimson-page";
+import AboutPage from "../about/about-page";
+import ReviewPage from "../review/review-page";
+import GalleryPage from "../gallery/gallery-page";
+import NutritionPage from "../nutrition/nutrition-page";
+
 
 const colors = {
   primary: "#EB235C", // pinkish red
@@ -187,19 +188,24 @@ export default function HomePage() {
       )}
 
 {/* pop up screen button (language button) */}
-{/* <div className="absolute top-8 left-4 z-50">
-  <button
-    onClick={() => setShowLanguagePopup(true)}
-    className="focus:outline-none"
-  >
-    <Image
-      src={"/button-image/language-icon.svg"}
-      alt="language-button"
-      width={34}
-      height={34}
-    />
-  </button>
-</div>
+
+{/* pop up screen button (language button) */}
+{currentStep === "home" && (
+  <div className="absolute top-8 left-4 z-50">
+    <button
+      onClick={() => setShowLanguagePopup(true)}
+      className="focus:outline-none"
+    >
+      <Image
+        src={"/button-image/language-icon.svg"}
+        alt="language-button"
+        width={34}
+        height={34}
+      />
+    </button>
+  </div>
+)}
+
 
 <AnimatePresence>
   {showLanguagePopup && (
@@ -221,7 +227,7 @@ export default function HomePage() {
       </motion.div>
     </motion.div>
   )}
-</AnimatePresence> */}
+</AnimatePresence>
 
 
 

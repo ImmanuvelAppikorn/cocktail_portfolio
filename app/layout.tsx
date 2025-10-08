@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import clsx from "clsx";
 import { useEffect } from "react";
 import { fontSans } from "@/config/fonts";
-import NavigationBar from "./components/navigation_bar/page";
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
