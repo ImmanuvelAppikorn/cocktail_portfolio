@@ -10,6 +10,7 @@ import ReviewPage from "../review/page";
 import NutritionPage from "../nutrition/page";
 import NavigationBar from "../navigation_bar/page";
 import GalleryPage from "../gallery/page";
+import LanguageToggle from "../language_toggle/page";
 
 const colors = {
   primary: "#EB235C", // pinkish red
@@ -40,6 +41,9 @@ export default function HomePage() {
     colorKey: ColorKey;
     image: string;
   }>(bottles[qrCode] || bottles["rose-vine"]);
+
+  const [showLanguagePopup, setShowLanguagePopup] = useState(false);
+
 
   useEffect(() => {
     if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
@@ -181,6 +185,45 @@ export default function HomePage() {
           activeStep={currentStep}
         />
       )}
+
+{/* pop up screen button (language button) */}
+<div className="absolute top-8 left-4 z-50">
+  <button
+    onClick={() => setShowLanguagePopup(true)}
+    className="focus:outline-none"
+  >
+    <Image
+      src={"/button-image/language-icon.svg"}
+      alt="language-button"
+      width={34}
+      height={34}
+    />
+  </button>
+</div>
+
+<AnimatePresence>
+  {showLanguagePopup && (
+    <motion.div
+      className="fixed inset-0 bg-black/40 flex items-center justify-center z-[100]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.div
+        className="w-full px-4" // full width with padding
+        initial={{ scale: 0.85, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.85, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <LanguageToggle onClose={() => setShowLanguagePopup(false)} />
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
 
       {/* Home Page Title */}
       <AnimatePresence>
