@@ -43,9 +43,6 @@ export default function HomePage() {
     image: string;
   }>(bottles[qrCode] || bottles["rose-vine"]);
 
-  const [showLanguagePopup, setShowLanguagePopup] = useState(false);
-
-
   useEffect(() => {
     if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
   }, [qrCode]);
@@ -56,15 +53,18 @@ export default function HomePage() {
   const [reverse, setReverse] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
 
+  const [showLanguagePopup, setShowLanguagePopup] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => setShowIntro(false), 1500);
+
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
-    
+
     // Only allow scrolling on crimson page, prevent on all others
     if (currentStep === "crimson" && !reverse) {
       // Allow scrolling only on crimson page
@@ -74,7 +74,7 @@ export default function HomePage() {
       html.style.width = "auto";
       html.style.top = "auto";
       html.style.left = "auto";
-      
+
       body.style.overflow = "auto";
       body.style.height = "auto";
       body.style.position = "static";
@@ -93,7 +93,7 @@ export default function HomePage() {
       html.style.left = "0";
       html.style.touchAction = "none";
       html.style.overscrollBehavior = "none";
-      
+
       body.style.overflow = "hidden";
       body.style.height = "100vh";
       body.style.position = "fixed";
@@ -114,7 +114,7 @@ export default function HomePage() {
       html.style.width = "auto";
       html.style.top = "auto";
       html.style.left = "auto";
-      
+
       body.style.overflow = "auto";
       body.style.height = "auto";
       body.style.position = "static";
@@ -172,22 +172,19 @@ export default function HomePage() {
   };
 
   return (
-    <div 
-      className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto" 
-      style={{ 
+    <div
+      className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto"
+      style={{
         height: "100vh",
         touchAction: currentStep === "home" ? "none" : "auto",
-        overscrollBehavior: currentStep === "home" ? "none" : "auto"
+        overscrollBehavior: currentStep === "home" ? "none" : "auto",
       }}
     >
       {currentStep !== "home" && (
-        <NavigationBar
-          onStepChange={setCurrentStep}
-          activeStep={currentStep}
-        />
+        <NavigationBar activeStep={currentStep} onStepChange={setCurrentStep} />
       )}
 
-{/* pop up screen button (language button) */}
+
 
 {/* pop up screen button (language button) */}
 {currentStep === "home" && (
@@ -229,25 +226,23 @@ export default function HomePage() {
   )}
 </AnimatePresence>
 
-
-
       {/* Home Page Title */}
       <AnimatePresence>
         {currentStep === "home" && !reverse && !showIntro && (
           <motion.h1
-            className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
-            style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
-            initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
+            className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
             exit={{ opacity: 0, y: -200 }}
+            initial={{ opacity: 0, y: -50 }}
+            style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
             transition={{ duration: 1 }}
           >
             <Image
-              src={"/logo/logo.svg"}
               alt="Vinea Logo"
-              width={250}
-              height={68}
               className="mx-auto"
+              height={68}
+              src={"/logo/logo.svg"}
+              width={250}
             />
           </motion.h1>
         )}
@@ -257,20 +252,17 @@ export default function HomePage() {
       <AnimatePresence>
         {currentStep === "home" && !reverse && !showIntro && (
           <motion.div
-            className="absolute top-[45%] right-3 z-50"
-            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            className="absolute top-[45%] right-3 z-50"
             exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
-<button
-  onClick={handleStartJourney}
-  className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
->
-              <span className="relative flex items-center">
-                Explore More
-               
-              </span>
+            <button
+              className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              onClick={handleStartJourney}
+            >
+              <span className="relative flex items-center">Explore More</span>
             </button>
           </motion.div>
         )}
@@ -278,11 +270,13 @@ export default function HomePage() {
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Bottle Image */}
-        {/* Bottle Image */}
+
         <motion.div
+
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
           initial={{ width: 900, height: 1000, rotate: -11, top: 640 ,left:"55%" }}
+
           animate={{
             width:
               currentStep === "home"
@@ -328,14 +322,14 @@ export default function HomePage() {
           }}
           transition={{ duration: 1 }}
         >
-          {" "}
+ 
           <Image
-            src={activeBottle.image}
             alt="bottle"
-            width={1087}
-            height={1183}
             className="object-contain w-full h-full"
-          />{" "}
+            height={1183}
+            src={activeBottle.image}
+            width={1087}
+          />
         </motion.div>
       </div>
 
@@ -343,6 +337,7 @@ export default function HomePage() {
       <motion.div
         className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
         initial={{ width: 750, height: 750, rotate: 0, opacity:0, bottom:"-80%" }}
+
         animate={{
           width:
             currentStep === "home"
@@ -389,16 +384,16 @@ export default function HomePage() {
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <motion.div
-          className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
           animate={{
             borderColor: colors[activeBottle.colorKey],
             scale: [0.95, 1, 0.95],
           }}
+          className="w-full h-full rounded-full border flex items-center justify-center z-0 py-4"
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <motion.div
-            className="w-full h-full rounded-full m-4"
             animate={{ backgroundColor: colors[activeBottle.colorKey] }}
+            className="w-full h-full rounded-full m-4"
             transition={{ duration: 0.6, ease: "easeInOut" }}
           />
         </motion.div>
@@ -408,10 +403,10 @@ export default function HomePage() {
       <AnimatePresence>
         {currentStep !== "home" && !reverse && (
           <motion.div
-            className="absolute top-0 w-full h-screen z-40 overflow-hidden max-h-screen"
-            initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
+            className="absolute top-0 w-full h-screen z-40 overflow-hidden max-h-screen"
             exit={{ opacity: 0, y: 100 }}
+            initial={{ opacity: 0, y: 100 }}
             transition={{ duration: 1 }}
           >
             {currentStep === "crimson" && (

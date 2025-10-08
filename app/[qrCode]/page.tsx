@@ -1,5 +1,5 @@
-import HomePage from "../components/home/home-page";
 
+import HomePage from "../components/home/home-page";
 
 
 // This tells Next.js which QR codes exist for static export
