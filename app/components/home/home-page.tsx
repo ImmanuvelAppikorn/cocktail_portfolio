@@ -196,8 +196,8 @@ export default function HomePage() {
       <Image
         src={"/button-image/language-icon.svg"}
         alt="language-button"
-        width={34}
-        height={34}
+        width={30}
+        height={30}
       />
     </button>
   </div>
@@ -280,19 +280,19 @@ export default function HomePage() {
           animate={{
             width:
               currentStep === "home"
-                ? 900
+                ? "210%"
                 : currentStep === "crimson"
                   ? "50%"
                   : currentStep === "about" || currentStep === "nutrition"
-                    ? 430
+                    ? "115%"
                     : 265,
             height:
               currentStep === "home"
-                ? 1000
+                ? "auto"
                 : currentStep === "crimson"
                   ? "auto"
                   : currentStep === "about" || currentStep === "nutrition"
-                    ? 500
+                    ? "auto"
                     : 288,
             rotate:
               currentStep === "home"
@@ -308,11 +308,11 @@ export default function HomePage() {
                 : currentStep === "crimson"
                   ? "24%"
                   : currentStep === "about" || currentStep === "nutrition"
-                    ? "55%"
+                    ? "60%"
                     : "66.2%",
             left:
               currentStep === "home"
-                ? "55%"
+                ? "50%"
                 : currentStep === "crimson"
                   ? "50%"
                   : currentStep === "about" || currentStep === "nutrition"
@@ -341,7 +341,7 @@ export default function HomePage() {
         animate={{
           width:
             currentStep === "home"
-              ? 750
+              ? "150%"
               : currentStep === "crimson"
                 ? 3000
                 : currentStep === "about" || currentStep === "nutrition"
@@ -349,7 +349,7 @@ export default function HomePage() {
                   : 600,
           height:
             currentStep === "home"
-              ? 750
+              ? "100%"
               : currentStep === "crimson"
                 ? 3000
                 : currentStep === "about" || currentStep === "nutrition"
@@ -365,11 +365,11 @@ export default function HomePage() {
                   : "50%",
           bottom:
             currentStep === "home"
-              ? "-40%"
+              ? "-50%"
               : currentStep === "crimson"
                 ? "-80%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "-20%"
+                  ? "-25%"
                   : "-35%",
           rotate:
             currentStep === "home"
