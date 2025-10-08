@@ -4,13 +4,13 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import CrimsonPage from "../crimson-reserve/page";
-import AboutPage from "../about/page";
-import ReviewPage from "../review/page";
+import CrimsonPage from "../crimson-reserve/CrimsonPage";
+import AboutPage from "../about/AboutPage";
+import ReviewPage from "../review/ReviewPage";
 import NutritionPage from "../nutrition/page";
-import NavigationBar from "../navigation_bar/page";
-import GalleryPage from "../gallery/page";
-import LanguageToggle from "../language_toggle/page";
+import NavigationBar from "../navigation_bar/NavigationBar";
+import GalleryPage from "../gallery/GalleryPage";
+import LanguageToggle from "../language_toggle/LanguageToggle";
 
 const colors = {
   primary: "#EB235C", // pinkish red
