@@ -14,13 +14,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   activeStep,
   onStepChange,
 }) => {
-  const colors = {
-    primary: "#EB235C",
-    secondary: "#80808099",
-    tertiary: "#FFFFFF",
-    gold: "#FFD700",
-    darkred: "#8B0000",
-  };
 
   const navItems = [
     {

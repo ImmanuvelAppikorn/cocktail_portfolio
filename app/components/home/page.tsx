@@ -10,7 +10,6 @@ import ReviewPage from "../review/ReviewPage";
 import NutritionPage from "../nutrition/page";
 import NavigationBar from "../navigation_bar/NavigationBar";
 import GalleryPage from "../gallery/GalleryPage";
-import LanguageToggle from "../language_toggle/LanguageToggle";
 
 const colors = {
   primary: "#EB235C", // pinkish red
@@ -42,7 +41,6 @@ export default function HomePage() {
     image: string;
   }>(bottles[qrCode] || bottles["rose-vine"]);
 
-  const [showLanguagePopup, setShowLanguagePopup] = useState(false);
 
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
+const GalleryPage = ({ onPrevClick: _onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     ["/gallery/image 1.png", "/gallery/image 2.png", "/gallery/image 3.png"],
     ["/gallery/image 4.png", "/gallery/image 5.png", "/gallery/image 6.png"],
@@ -49,7 +49,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
           msOverflowStyle: "none",
         }}
       >
-        <style jsx>{`
+        <style>{`
           div::-webkit-scrollbar {
             display: none;
           }

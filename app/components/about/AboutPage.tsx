@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 export default function AboutPage({
-  onNextClick,
+  onNextClick: _onNextClick,
   onPrevClick,
 }: {
   onNextClick?: () => void;
@@ -38,12 +38,12 @@ export default function AboutPage({
 
       {/* Paragraph */}
       <p className="text-[14px] w-[95%] font-axiforma tracking-[1px]  font-medium mt-6 leading-7 text-left px-4">
-        "Sourced from the mineral-rich soil along the Bhadra River Belt, our
+        &ldquo;Sourced from the mineral-rich soil along the Bhadra River Belt, our
         house espresso is a single-origin specialty Robusta coffee from India,
         considered among the finest in the world. This Robusta is graded as
-        'Kaapi Royale,' the highest grade of Indian Robusta. When presented in a
+        &lsquo;Kaapi Royale,&rsquo; the highest grade of Indian Robusta. When presented in a
         milk-based drink, it features notes of hazelnut and dark chocolate, with
-        an extra caffeine hit unique to Robusta."
+        an extra caffeine hit unique to Robusta.&rdquo;
       </p>
     </div>
   );
