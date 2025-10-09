@@ -61,7 +61,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   };
 
   return (
-    <div className="fixed bottom-2 left-1/2 transform -translate-x-1/2 bg-white border border-[#EB235C] backdrop-blur-[20px] h-[70px] rounded-[50px] flex justify-evenly items-center z-50 max-w-[500px] w-[calc(100%-16px)]">
+    <div className="fixed bottom-2 left-1/2 transform -translate-x-1/2 bg-white border border-[#EB235C] backdrop-blur-[20px] h-[65px] rounded-[50px] flex justify-evenly items-center z-50 max-w-[500px] w-[calc(100%-16px)]">
       {navItems.map((item) => {
         const isActive = activeStep === item.id;
 

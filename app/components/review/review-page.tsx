@@ -85,9 +85,10 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   ]);
 
   return (
-    <div className="px-4 pt-3 h-screen relative overflow-hidden w-full max-w-[500px] mx-auto flex flex-col ">
+    <div className=" pt-3 h-screen relative overflow-hidden w-full max-w-[500px] mx-auto flex flex-col ">
       <div className="space-y-2">
         {/* Header */}
+        <div className="px-4 space-y-2">
         <div className="flex justify-between items-center flex-shrink-0 space-y-2">
           <div className="flex items-center gap-3">
             <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
@@ -196,7 +197,7 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
         </div>
 
         {/* Scrollable Reviews (40% height) */}
-        <div className="space-y-3  border-gray-200  overflow-y-auto h-[25vh] pr-1">
+        <div className="space-y-3  border-gray-200  overflow-y-auto h-[30vh] pr-1">
           {reviews.map((r) => (
             <div
               key={r.id}
@@ -247,14 +248,20 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
             </div>
           ))}
         </div>
-      </div>
+        </div>
 
+        <div className=" relative w-full h-auto">
       {/* Carousel (fixed bottom) */}
-      <div className="w-full absolute -bottom-[400px] left-1/2 transform -translate-x-1/2">
-        <div className="mx-auto px-0">
+      <div className="w-full absolute -bottom-[700px] left-1/2 transform -translate-x-1/2">
+        <div className="px-0">
           <BottleCarousel />
         </div>
       </div>
+</div>
+      </div>
+
+
+
     </div>
   );
 };

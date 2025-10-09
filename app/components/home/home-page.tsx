@@ -12,7 +12,6 @@ import ReviewPage from "../review/review-page";
 import GalleryPage from "../gallery/gallery-page";
 import NutritionPage from "../nutrition/nutrition-page";
 
-
 const colors = {
   primary: "#EB235C", // pinkish red
   secondary: "#55EE81", // green
@@ -171,6 +170,8 @@ export default function HomePage() {
     }, 800);
   };
 
+  
+
   return (
     <div
       className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto"
@@ -184,11 +185,14 @@ export default function HomePage() {
         <NavigationBar activeStep={currentStep} onStepChange={setCurrentStep} />
       )}
 
-
-
-{/* pop up screen button (language button) */}
-{currentStep === "home" && (
-  <div className="absolute top-8 left-4 z-50">
+      {/* pop up screen button (language button) */}
+   {currentStep === "home" && (
+  <motion.div
+    className="absolute top-8 left-4 z-50"
+    initial={{ x: -60, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+  >
     <button
       onClick={() => setShowLanguagePopup(true)}
       className="focus:outline-none"
@@ -200,31 +204,30 @@ export default function HomePage() {
         height={30}
       />
     </button>
-  </div>
+  </motion.div>
 )}
 
-
-<AnimatePresence>
-  {showLanguagePopup && (
-    <motion.div
-      className="fixed inset-0 bg-black/40 flex items-center justify-center z-[100]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <motion.div
-        className="w-full px-4" // full width with padding
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.85, opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <LanguageToggle onClose={() => setShowLanguagePopup(false)} />
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+      <AnimatePresence>
+        {showLanguagePopup && (
+          <motion.div
+            className="fixed inset-0 bg-black/40 flex items-center justify-center z-[100]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="w-full px-4" // full width with padding
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <LanguageToggle onClose={() => setShowLanguagePopup(false)} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Home Page Title */}
       <AnimatePresence>
@@ -249,51 +252,59 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* Home Page Button */}
-      <AnimatePresence>
-        {currentStep === "home" && !reverse && !showIntro && (
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute top-[45%] right-3 z-50"
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-          >
-            <button
-              className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
-              onClick={handleStartJourney}
-            >
-              <span className="relative flex items-center">Explore More</span>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <AnimatePresence>
+  {currentStep === "home" && !reverse && !showIntro && (
+    <motion.div
+      className="absolute top-[45%] right-3 z-50"
+      initial={{ x: 60, opacity: 0 }} // start off-screen right
+      animate={{ x: 0, opacity: 1 }}  // move to default position
+      exit={{ x: 60, opacity: 0 }}    // optional: slide out right on exit
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <button
+        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+        onClick={handleStartJourney}
+      >
+        <span className="relative flex items-center">Explore More</span>
+      </button>
+    </motion.div>
+  )}
+</AnimatePresence>
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Bottle Image */}
 
         <motion.div
-
           className="absolute z-10 flex items-center justify-center"
           style={{ translateX: "-50%" }}
-          initial={{ width: 900, height: 1000, rotate: -11, top: 640 ,left:"55%" }}
-
+          initial={{
+            width: 900,
+            height: 1000,
+            rotate: -11,
+            top: 640,
+            left: "55%",
+          }}
           animate={{
             width:
               currentStep === "home"
                 ? "210%"
                 : currentStep === "crimson"
                   ? "50%"
-                  : currentStep === "about" || currentStep === "nutrition"
+                  : currentStep === "about" 
                     ? "115%"
-                    : 265,
+                     :currentStep === "nutrition"
+                    ?"90%" 
+                    : 225,
             height:
               currentStep === "home"
                 ? "auto"
                 : currentStep === "crimson"
                   ? "auto"
-                  : currentStep === "about" || currentStep === "nutrition"
+                  : currentStep === "about" 
                     ? "auto"
-                    : 288,
+                     :currentStep === "nutrition"
+                    ?"auto" 
+                    : 244,
             rotate:
               currentStep === "home"
                 ? -11
@@ -307,22 +318,25 @@ export default function HomePage() {
                 ? "120px"
                 : currentStep === "crimson"
                   ? "24%"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? "60%"
-                    : "66.2%",
+                  : currentStep === "about"
+                    ? "50%"
+                    : currentStep === "nutrition"
+                      ? "65%"
+                      : "66.2%",
             left:
               currentStep === "home"
-                ? "50%"
+                ? "60%"
                 : currentStep === "crimson"
                   ? "50%"
-                  : currentStep === "about" || currentStep === "nutrition"
-                    ? "85%"
-                    : "50%",
+                  : currentStep === "about"
+                    ? "80%"
+                    : currentStep === "nutrition"
+                      ? "90%"
+                      : "50%",
             opacity: currentStep === "review" ? 0 : 1,
           }}
           transition={{ duration: 1 }}
         >
- 
           <Image
             alt="bottle"
             className="object-contain w-full h-full"
@@ -336,32 +350,43 @@ export default function HomePage() {
       {/* Background Circle */}
       <motion.div
         className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-        initial={{ width: 750, height: 750, rotate: 0, opacity:0, bottom:"-80%" }}
-
+        initial={{
+          width: 750,
+          height: 750,
+          rotate: 0,
+          opacity: 0,
+          bottom: "-80%",
+        }}
         animate={{
           width:
             currentStep === "home"
               ? "150%"
               : currentStep === "crimson"
                 ? 3000
-                : currentStep === "about" || currentStep === "nutrition"
+                : currentStep === "about"
                   ? 450
-                  : 600,
+                   :currentStep === "nutrition"
+                    ?350 
+                  : 350,
           height:
             currentStep === "home"
               ? "100%"
               : currentStep === "crimson"
                 ? 3000
-                : currentStep === "about" || currentStep === "nutrition"
+                : currentStep === "about"
                   ? 450
-                  : 600,
+                   :currentStep === "nutrition"
+                    ?350 
+                  : 350,
           left:
             currentStep === "home"
               ? "50%"
               : currentStep === "crimson"
                 ? "50%"
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? "100%"
+                : currentStep === "about" 
+                  ? "95%"
+                   :currentStep === "nutrition"
+                    ?"100%" 
                   : "50%",
           bottom:
             currentStep === "home"
@@ -369,8 +394,8 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "-80%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "-25%"
-                  : "-35%",
+                  ? "-20%"
+                  : "-38%",
           rotate:
             currentStep === "home"
               ? 0
