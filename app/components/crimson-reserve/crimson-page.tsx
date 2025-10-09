@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 export default function CrimsonPage({
   onNextClick,
@@ -9,6 +10,9 @@ export default function CrimsonPage({
   onNextClick: () => void;
   onPrevClick: () => void;
 }) {
+  const handleScrollToTopAndNavigate = () => {
+    scrollToTopAndNavigate(onNextClick);
+  };
   const topVariants = {
     hidden: { y: "-15vh", opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 1 } },
@@ -86,7 +90,7 @@ export default function CrimsonPage({
         {/* CTA Button */}
         <div className="mt-8 w-full flex items-end justify-end">
           <button
-            onClick={onNextClick}
+            onClick={handleScrollToTopAndNavigate}
             className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
           >
             <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
