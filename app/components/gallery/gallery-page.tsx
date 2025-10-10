@@ -157,8 +157,8 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                     i === 0
                       ? slideFromLeft
                       : i === 1
-                      ? slideFromCenter
-                      : slideFromRight
+                        ? slideFromCenter
+                        : slideFromRight
                   }
                   initial="hidden"
                   animate="visible"
