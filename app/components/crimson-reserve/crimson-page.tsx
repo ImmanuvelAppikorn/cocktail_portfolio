@@ -46,7 +46,7 @@ export default function CrimsonPage({
                 width={28}
               />
             </button>
-            <h2 className="flex-1 text-center text-white text-[24px] font-bold leading-tight">
+            <h2 className="flex-1 text-center text-white text-[24px] font-bold leading-tight font-montagu">
               CRIMSON RESERVE
             </h2>
           </div>
@@ -83,28 +83,27 @@ export default function CrimsonPage({
             </div>
           </div>
         </motion.div>
- <div className="mt-1 w-full flex items-end justify-end">
-            <button
-              onClick={handleScrollToTopAndNavigate}
-              className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
-            >
-              <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
+        <div className="mt-1 w-full flex items-end justify-end">
+          <button
+            onClick={handleScrollToTopAndNavigate}
+            className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
+          >
+            <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
 
-              <span className="relative flex items-center">
-                Explore More{" "}
-                <Image
-                  src="/button-image/arrow-up-right.svg"
-                  alt="arrow"
-                  width={14}
-                  height={14}
-                  className="ml-2 z-10"
-                />
-              </span>
-            </button>
-          </div>
+            <span className="relative flex items-center font-montagu">
+              More{" "}
+              <Image
+                src="/button-image/arrow-up-right.svg"
+                alt="arrow"
+                width={14}
+                height={14}
+                className="ml-2 z-10"
+              />
+            </span>
+          </button>
+        </div>
         <div className="pb-22">
           {/* CTA Button */}
-         
 
           {/* Bottom Section */}
           <motion.div
@@ -179,8 +178,12 @@ function InfoCard({
         />
       </div>
       <div className="flex flex-col justify-center ml-3">
-        <div className="text-[10px] font-bold uppercase">{title}</div>
-        <div className="text-[12px] font-normal text-white">{value}</div>
+        <div className="text-[10px] font-bold uppercase font-axiforma">
+          {title}
+        </div>
+        <div className="text-[12px] font-normal text-white font-axiforma">
+          {value}
+        </div>
       </div>
     </div>
   );

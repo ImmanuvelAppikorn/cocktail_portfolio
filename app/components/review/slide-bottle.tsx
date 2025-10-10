@@ -95,11 +95,11 @@ export default function BottleCarousel() {
                 initial={{ opacity: 0, y: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
-                <h3 className="text-[18px] font-bold text-black">
+                <h3 className="text-[18px] font-bold text-black font-montagu">
                   {activeBottle.name}
                 </h3>
                 <h2
-                  className="font-bold text-[27px]"
+                  className="font-bold text-[27px] font-montagu"
                   style={{ color: activeBottle.color }}
                 >
                   ${activeBottle.price}
