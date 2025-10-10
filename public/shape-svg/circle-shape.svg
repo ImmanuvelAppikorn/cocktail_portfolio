@@ -1,16 +1,16 @@
-<svg width="595" height="595" viewBox="0 0 595 595" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="297.5" cy="297.5" r="296.813" transform="rotate(-0.0455785 297.5 297.5)" stroke="url(#paint0_linear_49_1646)" stroke-width="0.901333"/>
-<circle cx="297.5" cy="297.5" r="270.84" transform="rotate(-0.0455785 297.5 297.5)" fill="#EB235C"/>
-<g opacity="0.3" filter="url(#filter0_f_49_1646)">
-<circle cx="297.725" cy="297.747" r="102.108" transform="rotate(-0.0455785 297.725 297.747)" fill="#FFB2C8"/>
+<svg width="839" height="839" viewBox="0 0 839 839" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="419.603" cy="419.622" r="418.593" transform="rotate(-0.0455785 419.603 419.622)" stroke="url(#paint0_linear_254_8053)" stroke-width="0.901333"/>
+<circle cx="419.602" cy="419.623" r="381.795" transform="rotate(-0.0455785 419.602 419.623)" fill="#EB235C"/>
+<g opacity="0.3" filter="url(#filter0_f_254_8053)">
+<circle cx="419.603" cy="419.624" r="143.938" transform="rotate(-0.0455785 419.603 419.624)" fill="#FFB2C8"/>
 </g>
 <defs>
-<filter id="filter0_f_49_1646" x="123.511" y="123.533" width="348.429" height="348.428" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_f_254_8053" x="203.558" y="203.58" width="432.089" height="432.089" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="36.0533" result="effect1_foregroundBlur_49_1646"/>
+<feGaussianBlur stdDeviation="36.0533" result="effect1_foregroundBlur_254_8053"/>
 </filter>
-<linearGradient id="paint0_linear_49_1646" x1="276.031" y1="0.236572" x2="286.6" y2="62.0014" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_254_8053" x1="389.338" y1="0.578643" x2="404.238" y2="87.6466" gradientUnits="userSpaceOnUse">
 <stop stop-color="#EB235C" stop-opacity="0"/>
 <stop offset="1" stop-color="#EB235C"/>
 </linearGradient>
