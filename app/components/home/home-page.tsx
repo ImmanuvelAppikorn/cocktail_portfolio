@@ -74,7 +74,7 @@ export default function HomePage() {
   const [reverse, setReverse] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [showLanguagePopup, setShowLanguagePopup] = useState(false);
-  
+  const [showNavigation, setShowNavigation] = useState(true);
 
   // Set bottle based on QR code
   useEffect(() => {
@@ -111,7 +111,7 @@ export default function HomePage() {
       style={{ height: "100vh" }}
     >
       {/* Navigation Bar */}
-      {currentStep !== "home" && (
+      {currentStep !== "home" && showNavigation && (
         <NavigationBar activeStep={currentStep} onStepChange={setCurrentStep} />
       )}
 
@@ -367,7 +367,12 @@ export default function HomePage() {
               />
             )}
             {currentStep === "nutrition" && <NutritionPage />}
-            {currentStep === "review" && <ReviewPage onPrevClick={handleReviewPrev} />}
+            {currentStep === "review" && (
+              <ReviewPage 
+                onPrevClick={handleReviewPrev}
+                onNavigationVisibilityChange={setShowNavigation}
+              />
+            )}
             {currentStep === "gallery" && <GalleryPage onPrevClick={handleGalleryPrev} />}
           </motion.div>
         )}
