@@ -36,7 +36,7 @@ export default function AboutPage({}: {
         </div>
 
         {/* Paragraph */}
-        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px]  font-medium mt-1 leading-7 text-left px-4">
+        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px]  font-medium mt-1 leading-7 text-left px-5 pt-2">
           "Sourced from the mineral-rich soil along the Bhadra River Belt, our
           house espresso is a single-origin specialty Robusta coffee from India,
           considered among the finest in the world. This Robusta is graded as

@@ -55,13 +55,13 @@ const NutritionPage = () => {
               text: "Grapes",
             },
             {
-              text: "additives: gum Arabic (E414)",
+              text: "Additives: Gum Arabic (E414)",
             },
             {
-              text: "potassium Polyepitope",
+              text: "Potassium Polyepitope",
             },
             {
-              text: "antioxidant preservatives: Potassium metabisulfite (sulfites)",
+              text: "Antioxidant Preservatives: Potassium Metabisulfite (sulfites)",
             },
           ],
         },
@@ -101,7 +101,7 @@ const NutritionPage = () => {
                       width={22}
                     />
                   )}
-                  <p className="text-[14px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words font-poppins">
+                  <p className="text-[14px] font-medium leading-[90%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
                     {item.text}
                   </p>
                 </div>
