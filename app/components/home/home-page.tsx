@@ -64,15 +64,17 @@ export default function HomePage() {
     const html = document.documentElement;
     const body = document.body;
 
-    // Only allow scrolling on crimson page, prevent on all others
-    if (currentStep === "crimson" && !reverse) {
-      // Allow scrolling only on crimson page
+    // Allow scrolling on home and crimson pages, prevent on others
+    if ((currentStep === "home" || currentStep === "crimson") && !reverse) {
+      // Allow scrolling on home and crimson pages
       html.style.overflow = "auto";
       html.style.height = "auto";
       html.style.position = "static";
       html.style.width = "auto";
       html.style.top = "auto";
       html.style.left = "auto";
+      html.style.touchAction = "auto";
+      html.style.overscrollBehavior = "auto";
 
       body.style.overflow = "auto";
       body.style.height = "auto";
@@ -82,8 +84,10 @@ export default function HomePage() {
       body.style.left = "auto";
       body.style.margin = "";
       body.style.padding = "";
+      body.style.touchAction = "auto";
+      body.style.overscrollBehavior = "auto";
     } else {
-      // Prevent scrolling on all other pages (home, about, review, nutrition) and during transitions
+      // Prevent scrolling on other pages (about, review, nutrition) and during transitions
       html.style.overflow = "hidden";
       html.style.height = "100vh";
       html.style.position = "fixed";
@@ -177,8 +181,8 @@ export default function HomePage() {
       className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto"
       style={{
         height: "100vh",
-        touchAction: currentStep === "home" ? "none" : "auto",
-        overscrollBehavior: currentStep === "home" ? "none" : "auto",
+        touchAction: (currentStep === "home" || currentStep === "crimson") ? "auto" : "none",
+        overscrollBehavior: (currentStep === "home" || currentStep === "crimson") ? "auto" : "none",
       }}
     >
       {currentStep !== "home" && (
