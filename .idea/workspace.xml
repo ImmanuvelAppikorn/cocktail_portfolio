@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60991004-606e-4f87-9074-97612b636c63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/components/home/home-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/home-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/review/review-pop-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/review/review-pop-up.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
