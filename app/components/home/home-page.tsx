@@ -238,7 +238,7 @@ export default function HomePage() {
         {currentStep === "home" && !reverse && !showIntro && (
           <motion.h1
             animate={{ opacity: 1, y: 0 }}
-            className="text-center font-montagu font-semibold absolute top-[5%] z-20"
+            className="text-center font-montagu font-semibold absolute top-[3%] z-20"
             exit={{ opacity: 0, y: -200 }}
             initial={{ opacity: 0, y: -50 }}
             style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
@@ -266,7 +266,7 @@ export default function HomePage() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <button
-        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group border-1"
+        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
         onClick={handleStartJourney}
       >
         <span className="relative flex items-center">Explore More</span>

@@ -32,7 +32,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "text-foreground bg-white font-sans antialiased flex justify-center",
+          "text-foreground bg-white antialiased flex justify-center",
           fontSans.variable,
         )}
         style={{
