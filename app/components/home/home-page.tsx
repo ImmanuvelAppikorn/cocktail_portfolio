@@ -266,7 +266,7 @@ export default function HomePage() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <button
-        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
         onClick={handleStartJourney}
       >
         <span className="relative flex items-center">Explore More</span>

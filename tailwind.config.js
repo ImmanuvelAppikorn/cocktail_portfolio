@@ -14,9 +14,11 @@ const config = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
 
-        // Custom fonts
-        montagu: ["Montagu Slab"], // Montagu with Axiforma fallback
-        axiforma: ["Axiforma"], // Direct Axiforma usage
+        // Custom fonts from public/fonts
+        montagu: ["Montagu Slab", "serif"], // Montagu Slab with serif fallback
+        mulish: ["Mulish", "sans-serif"], // Mulish with sans-serif fallback
+        poppins: ["Poppins", "sans-serif"], // Poppins with sans-serif fallback
+        axiforma: ["Axiforma", "sans-serif"], // Axiforma with sans-serif fallback
       },
       colors: {
         primary: "#EB235C", // pinkish red
