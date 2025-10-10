@@ -24,13 +24,13 @@ export default function AboutPage({}: {
         variants={topVariants}
       >
         <div className="border-b border-black w-[95%] mx-auto">
-          <p className="text-[#EB235C] text-[24px] font-bold text-center pb-1 ">
+          <p className="text-[#EB235C] text-[24px] font-bold text-center pb-1 font-montagu">
             CRIMSON RESERVE
           </p>
         </div>
 
         <div className="flex flex-row justify-start items-center w-full px-4">
-          <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 ">
+          <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
             About The Wine
           </p>
         </div>

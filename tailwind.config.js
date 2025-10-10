@@ -15,10 +15,10 @@ const config = {
         mono: ["var(--font-mono)"],
 
         // Custom fonts from public/fonts
-        montagu: ["Montagu Slab", "serif"], // Montagu Slab with serif fallback
-        mulish: ["Mulish", "sans-serif"], // Mulish with sans-serif fallback
-        poppins: ["Poppins", "sans-serif"], // Poppins with sans-serif fallback
-        axiforma: ["Axiforma", "sans-serif"], // Axiforma with sans-serif fallback
+        montagu: ["Montagu Slab"], // Montagu Slab with serif fallback
+        mulish: ["Mulish", ], // Mulish with sans-serif fallback
+        poppins: ["Poppins", ], // Poppins with sans-serif fallback
+        axiforma: ["Axiforma", ], // Axiforma with sans-serif fallback
       },
       colors: {
         primary: "#EB235C", // pinkish red

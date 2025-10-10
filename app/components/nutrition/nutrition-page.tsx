@@ -5,7 +5,7 @@ const NutritionPage = () => {
   return (
     <div className="px-2 space-y-4 mt-[5px] h-auto">
       <div className="border-b border-black mx-3">
-        <p className="text-[#EB235C] text-[24px] font-bold text-center pb-1">
+        <p className="text-[#EB235C] text-[24px] font-bold text-center pb-1 font-montagu">
           CRIMSON RESERVE
         </p>
       </div>
@@ -58,7 +58,7 @@ const NutritionPage = () => {
               text: "additives: gum Arabic (E414)",
             },
             {
-              text: "potassium polyepitope",
+              text: "potassium Polyepitope",
             },
             {
               text: "antioxidant preservatives: Potassium metabisulfite (sulfites)",
@@ -68,18 +68,18 @@ const NutritionPage = () => {
       ].map((section, idx) => (
         <div key={idx}>
           {/* Title */}
-          <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4">
+          <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4 font-montagu">
             {section.title}
           </p>
 
           {/* Items */}
           {section.isList ? (
             // 👇 Render as bullet list
-            <ul className="list-disc pl-8 space-y-2 font-montagu">
+            <ul className="list-disc pl-8 space-y-2 font-poppins">
               {section.items.map((item, i) => (
                 <li
                   key={i}
-                  className="text-[12px] font-medium leading-tight tracking-tight whitespace-normal break-words"
+                  className="text-[14px] font-medium leading-[150%] tracking-[-3%] whitespace-normal break-words font-poppins"
                 >
                   {item.text}
                 </li>
@@ -101,7 +101,7 @@ const NutritionPage = () => {
                       width={22}
                     />
                   )}
-                  <p className="text-[12px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words">
+                  <p className="text-[14px] font-medium leading-tight tracking-tight flex-1 whitespace-normal break-words font-poppins">
                     {item.text}
                   </p>
                 </div>
