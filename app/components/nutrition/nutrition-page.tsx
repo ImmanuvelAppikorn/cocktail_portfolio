@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const NutritionPage = () => {
   return (
-    <div className="px-2 space-y-4 mt-5 h-auto">
+    <div className="px-2 space-y-4 mt-[5px] h-auto">
       <div className="border-b border-black mx-3">
         <p className="text-[#EB235C] text-[24px] font-bold text-center pb-1">
           CRIMSON RESERVE
