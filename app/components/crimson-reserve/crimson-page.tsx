@@ -84,69 +84,68 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
+        <div className="pb-22">
+          {/* CTA Button */}
+          <div className="mt-8 w-full flex items-end justify-end">
+            <button
+              onClick={handleScrollToTopAndNavigate}
+              className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
+            >
+              <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
 
-
-<div className="pb-22">
-        {/* CTA Button */}
-        <div className="mt-8 w-full flex items-end justify-end">
-          <button
-            onClick={handleScrollToTopAndNavigate}
-            className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
-          >
-            <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
-            
-            <span className="relative flex items-center">More <Image
-              src="/button-image/arrow-up-right.svg"
-              alt="arrow"
-              width={14}
-              height={14}
-              className="ml-2 z-10"
-            /></span>
-            
-          </button>
-        </div>
-
-        {/* Bottom Section */}
-        <motion.div
-          variants={bottomVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="flex flex-col space-y-4 px-1 w-full mt-6"
-        >
-          <div className="grid grid-cols-2 gap-2 w-full">
-            <InfoCard
-              icon="/crimson-reserve-icons/alcohol.svg"
-              title="ALCOHOL"
-              value="13.5%"
-              half
-            />
-            <InfoCard
-              icon="/crimson-reserve-icons/processing.svg"
-              title="PROCESSING"
-              value="OAK BARREL AGED (18 MONTHS)"
-              half
-            />
+              <span className="relative flex items-center">
+                More{" "}
+                <Image
+                  src="/button-image/arrow-up-right.svg"
+                  alt="arrow"
+                  width={14}
+                  height={14}
+                  className="ml-2 z-10"
+                />
+              </span>
+            </button>
           </div>
 
-          <InfoCard
-            icon="/crimson-reserve-icons/winery.svg"
-            title="WINERY"
-            value="CHÂTEAU LUMIÈRE"
-          />
-          <InfoCard
-            icon="/crimson-reserve-icons/harvest.svg"
-            title="HARVEST"
-            value="SEPTEMBER – OCTOBER"
-          />
-          <InfoCard
-            icon="/crimson-reserve-icons/tasting-notes.svg"
-            title="TASTING NOTES"
-            value="BLACKBERRY, VANILLA, TOBACCO"
-          />
-        </motion.div>
-</div>
+          {/* Bottom Section */}
+          <motion.div
+            variants={bottomVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex flex-col space-y-4 px-1 w-full mt-6"
+          >
+            <div className="grid grid-cols-2 gap-2 w-full">
+              <InfoCard
+                icon="/crimson-reserve-icons/alcohol.svg"
+                title="ALCOHOL"
+                value="13.5%"
+                half
+              />
+              <InfoCard
+                icon="/crimson-reserve-icons/processing.svg"
+                title="PROCESSING"
+                value="OAK BARREL AGED (18 MONTHS)"
+                half
+              />
+            </div>
 
+            <InfoCard
+              icon="/crimson-reserve-icons/winery.svg"
+              title="WINERY"
+              value="CHÂTEAU LUMIÈRE"
+            />
+            <InfoCard
+              icon="/crimson-reserve-icons/harvest.svg"
+              title="HARVEST"
+              value="SEPTEMBER – OCTOBER"
+            />
+            <InfoCard
+              icon="/crimson-reserve-icons/tasting-notes.svg"
+              title="TASTING NOTES"
+              value="BLACKBERRY, VANILLA, TOBACCO"
+            />
+          </motion.div>
+        </div>
       </div>
     </div>
   );

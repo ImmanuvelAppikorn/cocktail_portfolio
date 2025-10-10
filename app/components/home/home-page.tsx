@@ -192,7 +192,7 @@ export default function HomePage() {
       {/* pop up screen button (language button) */}
    {currentStep === "home" && (
   <motion.div
-    className="absolute top-8 left-4 z-50"
+    className="absolute top-4 left-4 z-50"
     initial={{ x: -60, opacity: 0 }}
     animate={{ x: 0, opacity: 1 }}
     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -204,8 +204,8 @@ export default function HomePage() {
       <Image
         src={"/button-image/language-icon.svg"}
         alt="language-button"
-        width={30}
-        height={30}
+        width={23}
+        height={23}
       />
     </button>
   </motion.div>
@@ -238,7 +238,7 @@ export default function HomePage() {
         {currentStep === "home" && !reverse && !showIntro && (
           <motion.h1
             animate={{ opacity: 1, y: 0 }}
-            className="text-center font-montagu font-semibold absolute top-[4rem] z-20"
+            className="text-center font-montagu font-semibold absolute top-[5%] z-20"
             exit={{ opacity: 0, y: -200 }}
             initial={{ opacity: 0, y: -50 }}
             style={{ color: "#1C1826", fontSize: "66.94px", lineHeight: "80%" }}
@@ -266,10 +266,17 @@ export default function HomePage() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <button
-        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+        className="relative overflow-hidden inline-flex items-center justify-center px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group border-1"
         onClick={handleStartJourney}
       >
         <span className="relative flex items-center">Explore More</span>
+          <Image
+              src="/button-image/arrow-up-right.svg"
+              alt="arrow"
+              width={14}
+              height={14}
+              className="ml-2 z-10"
+            />
       </button>
     </motion.div>
   )}
@@ -396,7 +403,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "-50%"
               : currentStep === "crimson"
-                ? "-80%"
+                ? "-195%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-20%"
                   : "-38%",
@@ -422,11 +429,18 @@ export default function HomePage() {
         >
           <motion.div
             animate={{ backgroundColor: colors[activeBottle.colorKey] }}
-            className="w-full h-full rounded-full m-4"
+            className="w-full h-full rounded-full m-4 "
             transition={{ duration: 0.6, ease: "easeInOut" }}
-          />
+          >
+         
+        </motion.div>
         </motion.div>
       </motion.div>
+
+  {currentStep === "crimson" && (
+  <div className="absolute top-1/2 -translate-y-1/2 w-[50%] aspect-square bg-[#FFB2C8] blur-[90px] rounded-full z-0" />
+)}
+
 
       {/* Pages */}
       <AnimatePresence>
