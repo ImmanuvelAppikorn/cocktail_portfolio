@@ -1,11 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BottleCarousel from "./slide-bottle";
 import ReviewPopup from "./review-pop-up";
 
-const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
+interface ReviewPageProps {
+  onPrevClick?: () => void;
+  onNavigationVisibilityChange?: (isVisible: boolean) => void;
+}
+
+const ReviewPage = ({ onPrevClick, onNavigationVisibilityChange }: ReviewPageProps) => {
   const handleScrollToTopAndNavigate = (callback?: () => void) => {
     if (!callback) return;
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,6 +18,20 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   };
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    // Hide navigation when popup opens, show when it closes
+    if (isPopupOpen) {
+      onNavigationVisibilityChange?.(false);
+    } else {
+      onNavigationVisibilityChange?.(true);
+    }
+
+    // Cleanup function to show navigation when component unmounts
+    return () => {
+      onNavigationVisibilityChange?.(true);
+    };
+  }, [isPopupOpen, onNavigationVisibilityChange]);
 
   const [reviews] = useState([
     {
@@ -106,15 +125,18 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
             <p className="text-[16px] font-bold">Blossom Rose</p>
           </div>
 
-               <button
-        className="bg-[#5F1BE7] px-3 py-1.5 rounded-full flex items-center text-white gap-2 hover:bg-gray-800 transition mt-2"
-        onClick={() => setIsPopupOpen(true)}
-      >
-        Write a Review
-      </button>
+          <button
+            className="bg-[#5F1BE7] px-3 py-1.5 rounded-full flex items-center text-white gap-2 hover:bg-gray-800 transition mt-2"
+            onClick={() => setIsPopupOpen(true)}
+          >
+            Write a Review
+          </button>
         </div>
-     {/* Popup */}
-      <ReviewPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+        {/* Popup */}
+        <ReviewPopup
+          isOpen={isPopupOpen}
+          onClose={() => setIsPopupOpen(false)}
+        />
 
         {/* Reviews List */}
         <div className="space-y-3 border-gray-200 pr-1 h-[65vh] overflow-y-auto">
