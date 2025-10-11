@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 export default function CrimsonPage({
@@ -24,11 +24,44 @@ export default function CrimsonPage({
     visible: { y: 0, opacity: 1, transition: { duration: 1 } },
     exit: { y: "15vh", opacity: 0, transition: { duration: 0.8 } },
   };
-
+  const smoothTransition = {
+    duration: 1.5,
+    ease: [0.88, 0.01, 0.17, 0.99],
+  };
   return (
-    <div className="flex flex-col pt-2 h-full px-4 text-black overflow-y-auto w-full max-w-[500px] mx-auto">
+    <div className=" relative flex flex-col pt-2 h-full px-4 text-black overflow-y-auto w-full max-w-[500px] mx-auto">
+      
+      <AnimatePresence>
+        <motion.div
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50" // centered horizontally
+          initial={{ x: 150, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 150, opacity: 0 }}
+          transition={smoothTransition}
+        >
+          <button
+            onClick={handleScrollToTopAndNavigate}
+            className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
+          >
+            <span className="absolute w-30 h-30 bg-[#EB235C] rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
+
+            <span className="relative flex items-center font-montagu">
+              Explore More
+              <Image
+                src="/button-image/arrow-up-right.svg"
+                alt="arrow"
+                width={14}
+                height={14}
+                className="ml-2 z-10"
+              />
+            </span>
+          </button>
+        </motion.div>
+      </AnimatePresence>
+
       <div className="flex flex-1 flex-col items-center justify-between w-full">
         {/* Top Section */}
+
         <motion.div
           variants={topVariants}
           initial="hidden"
@@ -83,25 +116,7 @@ export default function CrimsonPage({
             </div>
           </div>
         </motion.div>
-        <div className="mt-1 w-full flex items-end justify-end">
-          <button
-            onClick={handleScrollToTopAndNavigate}
-            className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group  "
-          >
-            <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
 
-            <span className="relative flex items-center font-montagu">
-              Explore More
-              <Image
-                src="/button-image/arrow-up-right.svg"
-                alt="arrow"
-                width={14}
-                height={14}
-                className="ml-2 z-10"
-              />
-            </span>
-          </button>
-        </div>
         <div className="pb-22">
           {/* CTA Button */}
 

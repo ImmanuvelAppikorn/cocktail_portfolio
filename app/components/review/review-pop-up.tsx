@@ -102,7 +102,7 @@ const ReviewPopup = ({ isOpen, onClose, onOpen }: ReviewPopupProps) => {
               We’d love to hear your thoughts:
             </label>
             <textarea
-              className="w-full mt-2 h-[150px] md:h-[180px] border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-600 text-[#81858B] font-axiforma text-[16px] font-normal"
+              className="w-full mt-2 h-[150px]  border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-600 text-[#81858B] font-axiforma text-[16px] font-normal"
               placeholder="Share what you liked or any suggestions!"
               value={comment}
               onChange={(e) => setComment(e.target.value)}

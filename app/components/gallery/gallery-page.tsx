@@ -46,16 +46,19 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   return (
     <div className="relative w-full h-screen bg-white overflow-hidden px-4">
       {/* Fixed Gallery Header */}
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="top-0 left-0 w-full z-20 bg-white py-2 border-b border-black"
-      >
-        <p className="text-[#EB235C] text-[26.19px] font-bold text-center font-montagu ">
-          GALLERY
-        </p>
-      </motion.div>
+            <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
+              <button onClick={onPrevClick} className="flex-shrink-0">
+                <Image
+                  src="/button-image/black-back.svg"
+                  alt="Back Icon"
+                  height={28}
+                  width={28}
+                />
+              </button>
+              <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
+                GALLERY
+              </h2>
+            </div>
 
       {/* Scrollable Gallery Section */}
       <div
