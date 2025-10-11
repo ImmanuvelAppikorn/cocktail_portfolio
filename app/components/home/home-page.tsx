@@ -13,7 +13,7 @@ import ReviewPage from "../review/review-page";
 import GalleryPage from "../gallery/gallery-page";
 import NutritionPage from "../nutrition/nutrition-page";
 
-// Colors
+// -------------------- COLORS --------------------
 const colors = {
   primary: "#EB235C", // pinkish red
   secondary: "#55EE81", // green
@@ -24,7 +24,7 @@ const colors = {
 
 type ColorKey = keyof typeof colors;
 
-// Bottles
+// -------------------- BOTTLES --------------------
 const bottles: Record<
   string,
   { colorKey: ColorKey; image: string; bgImage: string }
@@ -56,9 +56,12 @@ const bottles: Record<
   },
 };
 
+// -------------------- MAIN COMPONENT --------------------
 export default function HomePage() {
   const params = useParams();
-  const qrParam = Array.isArray(params.qrCode) ? params.qrCode[0] : params.qrCode;
+  const qrParam = Array.isArray(params.qrCode)
+    ? params.qrCode[0]
+    : params.qrCode;
   const qrCode = qrParam?.toLowerCase() || "rose-vine";
 
   const [activeBottle, setActiveBottle] = useState<{
@@ -103,8 +106,9 @@ export default function HomePage() {
   const handleCrimsonPrev = () => navigateStep("home");
   const handleAboutPrev = () => navigateStep("crimson");
   const handleReviewPrev = () => navigateStep("about");
-  const handleGalleryPrev = () => navigateStep("gallery");
+  const handleGalleryPrev = () => navigateStep("review");
 
+  // -------------------- RETURN UI --------------------
   return (
     <div
       className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto"
@@ -210,96 +214,79 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* Bottle Image */}
-      <div className="relative w-full h-screen flex flex-col items-center justify-center">
-        <motion.div
-          className="absolute z-10 flex items-center justify-center"
-          style={{ translateX: "-50%" }}
-          initial={{
-            width: 900,
-            height: 1000,
-            rotate: -11,
-            top: 640,
-            left: "55%",
-          }}
-          animate={{
-            width:
-              currentStep === "home"
-                ? "210%"
-                : currentStep === "crimson"
-                ? "50%"
-                : currentStep === "about"
-                ? "115%"
-                : currentStep === "nutrition"
-                ? "90%"
-                : 225,
-            height:
-              currentStep === "home"
-                ? "auto"
-                : currentStep === "crimson"
-                ? "auto"
-                : currentStep === "about"
-                ? "auto"
-                : currentStep === "nutrition"
-                ? "auto"
-                : 244,
-            rotate:
-              currentStep === "home"
-                ? -11
-                : currentStep === "crimson"
-                ? 0
-                : currentStep === "about" || currentStep === "nutrition"
-                ? -31
-                : 0,
-            top:
-              currentStep === "home"
-                ? "120px"
-                : currentStep === "crimson"
-                ? "24%"
-                : currentStep === "about"
-                ? "50%"
-                : currentStep === "nutrition"
-                ? "65%"
-                : "66.2%",
-            left:
-              currentStep === "home"
-                ? "60%"
-                : currentStep === "crimson"
-                ? "50%"
-                : currentStep === "about"
-                ? "80%"
-                : currentStep === "nutrition"
-                ? "90%"
-                : "50%",
-            opacity: currentStep === "review" ? 0 : 1,
-          }}
-          transition={{ duration: 1 }}
-        >
+      <motion.div
+        className="absolute z-10 flex items-center justify-center overflow-hidden"
+        style={{ translateX: "-50%" }}
+        initial={{
+          height: 1000,
+          rotate: -11,
+          bottom: 0,
+          right: "0",
+        }}
+        animate={{
+          height:
+            currentStep === "home"
+              ? "125%"
+              : currentStep === "crimson"
+              ? "30%"
+              : currentStep === "about" || "nutrition"
+              ? "70%"
+
+              : 225,
+          aspectRatio: 0.5 / 1,
+          rotate:
+            currentStep === "home"
+              ? -11
+              : currentStep === "crimson"
+              ? 0
+              : currentStep === "about" || currentStep === "nutrition"
+              ? -31
+              : 0,
+          bottom:
+            currentStep === "home"
+              ? "-40%"
+              : currentStep === "crimson"
+              ? "40%"
+              : currentStep === "about" || "nutrition"
+              ? "-20%"
+              : "66.2%",
+          left:
+            currentStep === "home"
+              ? "50%"
+              : currentStep === "crimson"
+              ? "50%"
+              : currentStep === "about" || "nutrition"
+              ? "80%"
+              : "50%",
+          opacity: currentStep === "review" ? 0 : 1,
+        }}
+        transition={{ duration: 1 }}
+      >
+        <div className="relative w-full h-full">
           <Image
             alt="bottle"
-            className="object-contain w-full h-full"
-            height={1183}
             src={activeBottle.image}
-            width={1087}
+            fill
+            priority
+            className="object-cover"
           />
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
       {/* Background Circle */}
       <motion.div
         className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-        initial={{ scale: 5, rotate: 0, opacity: 0, bottom: "-80%" }}
+        initial={{ height: 5, rotate: 0, opacity: 0, bottom: "-80%" }}
         animate={{
-          width:
+          height:
             currentStep === "home"
-              ? "40%"
+              ? "90%"
               : currentStep === "crimson"
-              ? 3000
-              : currentStep === "about"
-              ? 450
-              : currentStep === "nutrition"
-              ? 350
+              ? "150%"
+              : currentStep === "about" || currentStep === "nutrition"
+              ? "58%"
               : 350,
-         aspectRatio:1/1,
+          aspectRatio: 1 / 1,
           left:
             currentStep === "home"
               ? "50%"
@@ -312,20 +299,12 @@ export default function HomePage() {
               : "50%",
           bottom:
             currentStep === "home"
-              ? "-10%"
+              ? "-40%"
               : currentStep === "crimson"
-              ? "-195%"
+              ? "-25%"
               : currentStep === "about" || currentStep === "nutrition"
               ? "-20%"
               : "-38%",
-          rotate:
-            currentStep === "home"
-              ? 0
-              : currentStep === "crimson"
-              ? 0
-              : currentStep === "about" || currentStep === "nutrition"
-              ? 90
-              : 0.05,
           opacity: currentStep === "review" ? 0 : 1,
         }}
         transition={{ duration: 1, ease: "easeInOut" }}
@@ -338,11 +317,6 @@ export default function HomePage() {
           width={1000}
         />
       </motion.div>
-
-      {/* Crimson Background Blur */}
-      {currentStep === "crimson" && (
-        <div className="absolute top-1/2 -translate-y-1/2 w-[50%] aspect-square bg-[#FFB2C8] blur-[90px] rounded-full z-0" />
-      )}
 
       {/* Pages */}
       <AnimatePresence>
@@ -368,12 +342,14 @@ export default function HomePage() {
             )}
             {currentStep === "nutrition" && <NutritionPage />}
             {currentStep === "review" && (
-              <ReviewPage 
+              <ReviewPage
                 onPrevClick={handleReviewPrev}
                 onNavigationVisibilityChange={setShowNavigation}
               />
             )}
-            {currentStep === "gallery" && <GalleryPage onPrevClick={handleGalleryPrev} />}
+            {currentStep === "gallery" && (
+              <GalleryPage onPrevClick={handleGalleryPrev} />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
