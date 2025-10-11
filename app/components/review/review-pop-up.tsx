@@ -7,9 +7,10 @@ interface ReviewPopupProps {
   isOpen: boolean;
   onClose: () => void;
   onOpen?: () => void;
+  onReviewSubmit: (rating: number, comment: string) => void;
 }
 
-const ReviewPopup = ({ isOpen, onClose, onOpen }: ReviewPopupProps) => {
+const ReviewPopup = ({ isOpen, onClose, onOpen, onReviewSubmit }: ReviewPopupProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
@@ -42,7 +43,9 @@ const ReviewPopup = ({ isOpen, onClose, onOpen }: ReviewPopupProps) => {
   const handleSubmit = () => {
     if (rating === 0 || !comment.trim()) return;
 
-    console.log("Rating:", rating, "Comment:", comment);
+    // Call the parent's onReviewSubmit with the rating and comment
+    onReviewSubmit(rating, comment);
+    
     setIsSubmitting(true);
 
     // Show success state for 1.5 seconds before closing
@@ -129,15 +132,17 @@ const ReviewPopup = ({ isOpen, onClose, onOpen }: ReviewPopupProps) => {
             </div>
           </>
         ) : (
-          <div className="flex flex-col items-center justify-center py-8">
-            <p className="text-center text-lg font-medium mb-6">
-              Thank you! Your wine review was submitted successfully.
-            </p>
-            <div className="w-40 h-40">
-              <video autoPlay loop muted playsInline className="w-full h-full">
-                <source src="/gif/tick.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+          <div className="flex flex-col items-center justify-center min-h-[400px] w-full">
+            <div className="text-center">
+              <p className="text-center text-lg font-medium mb-6">
+                Thank you! Your wine review was submitted successfully.
+              </p>
+              <div className="w-40 h-40 mx-auto">
+                <video autoPlay loop muted playsInline className="w-full h-full">
+                  <source src="/gif/tick.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
         )}
