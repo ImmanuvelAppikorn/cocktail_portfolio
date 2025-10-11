@@ -265,8 +265,8 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "-20%"
-                  : "-0%",
+                  ? "-25%"
+                  : "0%",
           left:
             currentStep === "home"
               ? "50%"
@@ -302,18 +302,16 @@ export default function HomePage() {
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
-                  : "40%",
+                  : "50%",
           aspectRatio: 1 / 1,
           left:
             currentStep === "home"
               ? "50%"
               : currentStep === "crimson"
                 ? "50%"
-                : currentStep === "about"
+                : currentStep === "about" || "nutrition"
                   ? "95%"
-                  : currentStep === "nutrition"
-                    ? "100%"
-                    : "10%",
+                    : "40%",
           bottom:
             currentStep === "home"
               ? "-35%"
@@ -321,7 +319,7 @@ export default function HomePage() {
                 ? "-25%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
-                  : "-38%",
+                  : "-35%",
           rotate:
             currentStep === "home"
               ? 5
