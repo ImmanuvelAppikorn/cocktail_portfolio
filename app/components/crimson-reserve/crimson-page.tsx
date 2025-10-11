@@ -91,7 +91,7 @@ export default function CrimsonPage({
             <span className="absolute w-30 h-30 bg-[#EB235C]    rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
 
             <span className="relative flex items-center font-montagu">
-              More{" "}
+              Explore More
               <Image
                 src="/button-image/arrow-up-right.svg"
                 alt="arrow"

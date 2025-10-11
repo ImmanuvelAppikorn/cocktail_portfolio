@@ -10,6 +10,7 @@ const NutritionPage = () => {
         </p>
       </div>
       {/* Section Renderer */}
+              <div className="w-full h-[45vh] overflow-y-auto">
       {[
         {
           title: "Nutritional Declaration",
@@ -101,7 +102,7 @@ const NutritionPage = () => {
                       width={22}
                     />
                   )}
-                  <p className="text-[14px] font-medium leading-[90%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
+                  <p className="text-[14px] font-medium leading-[150%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
                     {item.text}
                   </p>
                 </div>
@@ -109,8 +110,11 @@ const NutritionPage = () => {
             </div>
           )}
         </div>
+
+
       ))}
     </div>
+            </div>
   );
 };
 

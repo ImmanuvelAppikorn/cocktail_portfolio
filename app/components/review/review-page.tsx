@@ -1,50 +1,38 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import BottleCarousel from "./slide-bottle";
+import ReviewPopup from "./review-pop-up";
 
-const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
+interface ReviewPageProps {
+  onPrevClick?: () => void;
+  onNavigationVisibilityChange?: (isVisible: boolean) => void;
+}
+
+const ReviewPage = ({ onPrevClick, onNavigationVisibilityChange }: ReviewPageProps) => {
   const handleScrollToTopAndNavigate = (callback?: () => void) => {
     if (!callback) return;
-    
-    // Find all possible scrollable containers and scroll them to top
-    const scrollableSelectors = [
-      'main', // Main layout container
-      '.overflow-y-auto', // Any element with overflow-y-auto class
-      '[data-scrollable]', // Any element marked as scrollable
-    ];
-    
-    let scrolled = false;
-    
-    // Try to find and scroll each type of container
-    scrollableSelectors.forEach(selector => {
-      const containers = document.querySelectorAll(selector);
-      containers.forEach(container => {
-        if (container.scrollTop > 0) {
-          container.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-          scrolled = true;
-        }
-      });
-    });
-    
-    // Fallback to window scroll if no scrollable containers found or scrolled
-    if (!scrolled) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-    
-    // Small delay to allow scroll to start, then navigate
-    setTimeout(() => {
-      callback();
-    }, 150);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => callback(), 150);
   };
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    // Hide navigation when popup opens, show when it closes
+    if (isPopupOpen) {
+      onNavigationVisibilityChange?.(false);
+    } else {
+      onNavigationVisibilityChange?.(true);
+    }
+
+    // Cleanup function to show navigation when component unmounts
+    return () => {
+      onNavigationVisibilityChange?.(true);
+    };
+  }, [isPopupOpen, onNavigationVisibilityChange]);
+
   const [reviews] = useState([
     {
       id: 1,
@@ -82,14 +70,49 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
         "Exercitation veniam consequat sunt nostrud amet. Dolor sit amet officia.",
       avatar: "/review-images/Ellipse5.svg",
     },
+    {
+      id: 5,
+      user: "Gowsialex",
+      rating: 4,
+      time: "2 mins ago",
+      comment:
+        "Consequat velit qui adipisicing sunt do reprehenderit ad laborum tempor ullamco.",
+      avatar: "/review-images/Ellipse5.svg",
+    },
+    {
+      id: 6,
+      user: "Immanuvel",
+      rating: 4,
+      time: "2 mins ago",
+      comment:
+        "Consequat velit qui adipisicing sunt do reprehenderit ad laborum tempor ullamco.",
+      avatar: "/review-images/Ellipse5.svg",
+    },
+    {
+      id: 7,
+      user: "Shanmuga",
+      rating: 4,
+      time: "2 mins ago",
+      comment:
+        "Consequat velit qui adipisicing sunt do reprehenderit ad laborum tempor ullamco.",
+      avatar: "/review-images/Ellipse5.svg",
+    },
+    {
+      id: 8,
+      user: "Priya",
+      rating: 5,
+      time: "5 mins ago",
+      comment:
+        "Exercitation veniam consequat sunt nostrud amet. Dolor sit amet officia.",
+      avatar: "/review-images/Ellipse5.svg",
+    },
   ]);
 
   return (
-    <div className=" pt-3 h-screen relative overflow-hidden w-full max-w-[500px] mx-auto flex flex-col ">
-      <div className="space-y-2">
-        {/* Header */}
-        <div className="px-4 space-y-2">
-        <div className="flex justify-between items-center flex-shrink-0 space-y-2">
+    <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col overflow-y-auto">
+      {/* Top Header */}
+      <div className="px-4 space-y-2">
+        <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
               <Image
@@ -99,111 +122,83 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                 width={20}
               />
             </button>
-            <p className="text-[14px] font-bold">Blossom Rose</p>
+            <p className="text-[16px] font-bold">Blossom Rose</p>
           </div>
 
-          <button className="bg-black px-3 py-1.5 rounded-md flex items-center text-white gap-2 hover:bg-gray-800 transition">
-            <Image
-              alt="Review Icon"
-              height={20}
-              src="/button-image/coffee.svg"
-              width={20}
-            />
-            <p className="text-[10px] font-bold leading-none">Write a Review</p>
+          <button
+            className="bg-[#5F1BE7] px-3 py-1.5 rounded-full flex items-center text-white gap-2 hover:bg-gray-800 transition mt-2"
+            onClick={() => setIsPopupOpen(true)}
+          >
+            Write a Review
           </button>
         </div>
+        {/* Popup */}
+        <ReviewPopup
+          isOpen={isPopupOpen}
+          onClose={() => setIsPopupOpen(false)}
+        />
 
-        {/* Rating Overview */}
-        <div className="bg-[#F8F8F8] w-full rounded-xl flex items-center px-3 py-2 justify-between  flex-shrink-0">
-          <Image
-            alt="Forward Icon"
-            height={24}
-            src="/button-image/forward.svg"
-            width={24}
-          />
-          <p className="text-xl font-extrabold">4.0</p>
-          <div className="flex -space-x-4">
-            {[
-              "Ellipse2.svg",
-              "Ellipse3.svg",
-              "Ellipse4.svg",
-              "Ellipse5.svg",
-              "Group1.svg",
-            ].map((img, i) => (
-              <Image
-                key={i}
-                alt="Reviewer"
-                className="rounded-full object-cover"
-                height={35}
-                src={`/review-images/${img}`}
-                width={35}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Reviews List */}
+        <div className="space-y-3 border-gray-200 pr-1 h-[65vh] overflow-y-auto">
+          {/* Rating Bars */}
+          <div className="bg-[#F8F8F8] rounded-lg p-2 flex justify-between items-start my-2">
+            <div className="flex flex-col gap-1">
+              {[5, 4, 3, 2, 1].map((num) => (
+                <div key={num} className="flex items-center gap-2">
+                  <p className="text-sm font-medium w-3">{num}</p>
+                  <Image
+                    alt="Rating Bottle"
+                    height={16}
+                    src="/start-rating-icons/Full-star.svg"
+                    width={16}
+                  />
+                  <div
+                    className="h-[6px] rounded bg-[#006D60]"
+                    style={{
+                      width:
+                        num === 5
+                          ? "151px"
+                          : num === 4
+                            ? "106px"
+                            : num === 3
+                              ? "60px"
+                              : num === 2
+                                ? "19px"
+                                : "6px",
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
 
-        {/* Rating Bars */}
-        <div className="bg-[#F8F8F8] rounded-lg p-2 flex justify-between items-start  flex-shrink-0">
-          <div className="flex flex-col gap-1">
-            {[5, 4, 3, 2, 1].map((num) => (
-              <div key={num} className="flex items-center gap-2">
-                <p className="text-sm font-medium w-3">{num}</p>
+            <div className="flex flex-col items-end space-y-2">
+              <p className="text-3xl font-bold">4.0</p>
+              <div className="flex gap-1">
+                {[1, 2, 3, 4].map((i) => (
+                  <Image
+                    key={i}
+                    alt="Full Bottle"
+                    height={16}
+                    src="/start-rating-icons/Full-star.svg"
+                    width={16}
+                  />
+                ))}
                 <Image
-                  alt="Rating Bottle"
+                  alt="Empty Bottle"
                   height={16}
-                  src="/start-rating-icons/start-rating-bottle-full.svg"
-                  width={5}
-                />
-                <div
-                  className="h-[6px] rounded bg-[#7E8FB3]"
-                  style={{
-                    width:
-                      num === 5
-                        ? "151px"
-                        : num === 4
-                          ? "106px"
-                          : num === 3
-                            ? "60px"
-                            : num === 2
-                              ? "19px"
-                              : "6px",
-                  }}
+                  src="/start-rating-icons/Empty-star.svg"
+                  width={16}
                 />
               </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col items-end space-y-2">
-            <p className="text-3xl font-bold">4.0</p>
-            <div className="flex gap-1">
-              {[1, 2, 3, 4].map((i) => (
-                <Image
-                  key={i}
-                  alt="Full Bottle"
-                  height={16}
-                  src="/start-rating-icons/start-rating-bottle-full.svg"
-                  width={5}
-                />
-              ))}
-              <Image
-                alt="Empty Bottle"
-                height={16}
-                src="/start-rating-icons/start-rating-bottle-empty.svg"
-                width={5}
-              />
+              <p className="text-sm font-semibold">15k Reviews</p>
             </div>
-            <p className="text-sm font-semibold">15k Reviews</p>
           </div>
-        </div>
-
-        {/* Scrollable Reviews (40% height) */}
-        <div className="space-y-3  border-gray-200  overflow-y-auto h-[30vh] pr-1">
           {reviews.map((r) => (
             <div
               key={r.id}
-              className="border-b border-gray-300 pb-2 flex flex-col gap-1"
+              className="border-b border-gray-300 pb-2 flex flex-col gap-1 "
             >
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-end">
                 <div className="flex items-center gap-2">
                   <Image
                     alt={r.user}
@@ -220,13 +215,13 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                           <Image
                             key={i}
                             alt="Rating Bottle"
-                            height={14}
+                            height={16}
                             src={
                               i < r.rating
-                                ? "/start-rating-icons/start-rating-bottle-full.svg"
-                                : "/start-rating-icons/start-rating-bottle-empty.svg"
+                                ? "/start-rating-icons/Full-star.svg"
+                                : "/start-rating-icons/Empty-star.svg"
                             }
-                            width={4}
+                            width={16}
                           />
                         ))}
                       </span>
@@ -238,30 +233,23 @@ const ReviewPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                 <Image
                   alt="Options"
                   className="cursor-pointer"
-                  height={16}
+                  height={20}
                   src="/button-image/setting-dots.svg"
-                  width={16}
+                  width={20}
                 />
               </div>
-
-              <p className="text-xs text-gray-800">{r.comment}</p>
+              <p className="text-[13px] text-gray-800 w-[90%]">{r.comment}</p>
             </div>
           ))}
         </div>
-        </div>
+      </div>
 
-        <div className=" relative w-full h-auto">
       {/* Carousel (fixed bottom) */}
-      <div className="w-full absolute -bottom-[700px] left-1/2 transform -translate-x-1/2">
+      <div className="relative w-full h-auto mt-4">
         <div className="px-0">
           <BottleCarousel />
         </div>
       </div>
-</div>
-      </div>
-
-
-
     </div>
   );
 };
