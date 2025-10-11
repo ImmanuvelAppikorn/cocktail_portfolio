@@ -114,18 +114,18 @@ const ReviewPage = ({
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
-              <Image
-                alt="Back Icon"
-                height={20}
-                src="/button-image/Icons.svg"
-                width={20}
-              />
+            <Image
+                        src="/button-image/black-back.svg"
+                        alt="Back Icon"
+                        height={28}
+                        width={28}
+                      />
             </button>
             <p className="text-[16px] font-bold">Blossom Rose</p>
           </div>
 
           <button
-            className="bg-[#5F1BE7] px-3 py-1.5 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
+            className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
             onClick={() => setIsPopupOpen(true)}
           >
             <Image
