@@ -23,20 +23,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange 
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // Close menu when clicking outside
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (isOpen && !target.closest('.nav-container')) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
+  // Only handle menu open/close through the menu button
+  // No auto-close on outside clicks
 
   const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));

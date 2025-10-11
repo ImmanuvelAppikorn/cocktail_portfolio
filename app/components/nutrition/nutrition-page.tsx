@@ -5,7 +5,11 @@ interface NutritionPageProps {
   onPrevClick?: () => void; // Pass a function to go back
 }
 
-const NutritionPage: React.FC<NutritionPageProps> = ({ onPrevClick }) => {
+const NutritionPage: React.FC<NutritionPageProps> = ({
+  onPrevClick,
+}: {
+  onPrevClick?: () => void;
+}) => {
   return (
     <div className="px-2 space-y-4 mt-[5px] h-auto">
       {/* Header with back button */}
@@ -32,9 +36,18 @@ const NutritionPage: React.FC<NutritionPageProps> = ({ onPrevClick }) => {
           {
             title: "Nutritional Declaration",
             items: [
-              { icon: "/nutrition-icons/icon1.svg", text: "Energy : 78 kcal - 326 kj" },
-              { icon: "/nutrition-icons/icon2.svg", text: "Fats : 0 g for which Saturated fatty acids : 0 g" },
-              { icon: "/nutrition-icons/icon3.svg", text: "Carbohydrates : 1.2 g for which Sugars : 0.1 g" },
+              {
+                icon: "/nutrition-icons/icon1.svg",
+                text: "Energy : 78 kcal - 326 kj",
+              },
+              {
+                icon: "/nutrition-icons/icon2.svg",
+                text: "Fats : 0 g for which Saturated fatty acids : 0 g",
+              },
+              {
+                icon: "/nutrition-icons/icon3.svg",
+                text: "Carbohydrates : 1.2 g for which Sugars : 0.1 g",
+              },
               { icon: "/nutrition-icons/icon4.svg", text: "Proteins : 0 g" },
               { icon: "/nutrition-icons/icon5.svg", text: "Salt : 0 g" },
             ],
@@ -42,9 +55,18 @@ const NutritionPage: React.FC<NutritionPageProps> = ({ onPrevClick }) => {
           {
             title: "Environmental Label",
             items: [
-              { icon: "/nutrition-icons/icon1.svg", text: "Bottle (GLASS COLLECTION) GL 71" },
-              { icon: "/nutrition-icons/icon2.svg", text: "Cork (DEDICATED SEPARATE COLLECTION) FOR 51" },
-              { icon: "/nutrition-icons/icon3.svg", text: "Capsules (PLASTIC COLLECTION) C/PVC 90" },
+              {
+                icon: "/nutrition-icons/icon1.svg",
+                text: "Bottle (GLASS COLLECTION) GL 71",
+              },
+              {
+                icon: "/nutrition-icons/icon2.svg",
+                text: "Cork (DEDICATED SEPARATE COLLECTION) FOR 51",
+              },
+              {
+                icon: "/nutrition-icons/icon3.svg",
+                text: "Capsules (PLASTIC COLLECTION) C/PVC 90",
+              },
             ],
           },
           {
@@ -54,7 +76,9 @@ const NutritionPage: React.FC<NutritionPageProps> = ({ onPrevClick }) => {
               { text: "Grapes" },
               { text: "Additives: Gum Arabic (E414)" },
               { text: "Potassium Polyepitope" },
-              { text: "Antioxidant Preservatives: Potassium Metabisulfite (sulfites)" },
+              {
+                text: "Antioxidant Preservatives: Potassium Metabisulfite (sulfites)",
+              },
             ],
           },
         ].map((section, idx) => (
@@ -79,7 +103,10 @@ const NutritionPage: React.FC<NutritionPageProps> = ({ onPrevClick }) => {
             ) : (
               <div className="space-y-1">
                 {section.items.map((item, i) => (
-                  <div key={i} className="flex items-center gap-1.5 w-full px-3 py-0.5">
+                  <div
+                    key={i}
+                    className="flex items-center gap-1.5 w-full px-3 py-0.5"
+                  >
                     {"icon" in item && item.icon && (
                       <Image
                         alt=""

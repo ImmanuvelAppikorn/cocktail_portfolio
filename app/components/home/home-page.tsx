@@ -105,8 +105,9 @@ export default function HomePage() {
   const handleAboutNext = () => navigateStep("review");
   const handleCrimsonPrev = () => navigateStep("home");
   const handleAboutPrev = () => navigateStep("crimson");
-  const handleReviewPrev = () => navigateStep("about");
-  const handleGalleryPrev = () => navigateStep("review");
+  const handleReviewPrev = () => navigateStep("gallery");
+  const handleNutritionPrev = () => navigateStep("review");
+  const handleGalleryPrev = () => navigateStep("crimson");
 
   // Common animation transition
   const smoothTransition = {
@@ -363,7 +364,9 @@ export default function HomePage() {
                 onPrevClick={handleAboutPrev}
               />
             )}
-            {currentStep === "nutrition" && <NutritionPage />}
+            {currentStep === "nutrition" && (
+              <NutritionPage onPrevClick={handleNutritionPrev} />
+            )}
             {currentStep === "review" && (
               <ReviewPage
                 onPrevClick={handleReviewPrev}
