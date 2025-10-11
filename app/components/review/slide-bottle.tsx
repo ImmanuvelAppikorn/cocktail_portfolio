@@ -63,9 +63,9 @@ export default function BottleCarousel() {
 
   return (
     <div>
-      <div className="relative w-full  flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
         {/* Navigation + Text */}
-        <div className="relative w-[80%] flex items-center justify-center mb-4 ">
+        <div className="absolute top-0 w-[80%] flex items-center justify-center mb-4 ">
           {/* Prev Button */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 z-20">
             <button onClick={prevBottle}>
@@ -128,7 +128,26 @@ export default function BottleCarousel() {
         </div>
 
         {/* Bottle + Fixed Circles */}
-        <div className="relative w-full h-[600px] flex items-center justify-center overflow-visible max-w-[500px]">
+        <div className="relative top-23 w-full">
+          {/* Bottle */}
+          <AnimatePresence custom={direction} mode="wait">
+            <motion.img
+              key={activeBottle.id}
+              alt={activeBottle.name}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              className="h-[35%] object-contain drop-shadow-xl z-10 absolute -top-8 left-1/2 -translate-x-1/2"
+              custom={direction}
+              exit={{ opacity: 0, x: direction > 0 ? 120 : -120, scale: 0.8 }}
+              initial={{
+                opacity: 0,
+                x: direction > 0 ? -120 : 120,
+                scale: 0.8,
+              }}
+              src={activeBottle.img}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            />
+          </AnimatePresence>
+        <div className="relative top-2 w-full h-[600px] flex items-center justify-center overflow-visible max-w-[500px]">
           {/* Outer Circle (border) */}
           <motion.div
             animate={{
@@ -146,25 +165,10 @@ export default function BottleCarousel() {
             />
           </motion.div>
 
-          {/* Bottle */}
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.img
-              key={activeBottle.id}
-              alt={activeBottle.name}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              className="h-[35%] object-contain drop-shadow-xl z-10 absolute bottom-105"
-              custom={direction}
-              exit={{ opacity: 0, x: direction > 0 ? 120 : -120, scale: 0.8 }}
-              initial={{
-                opacity: 0,
-                x: direction > 0 ? -120 : 120,
-                scale: 0.8,
-              }}
-              src={activeBottle.img}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </AnimatePresence>
+          
         </div>
+        </div>
+
       </div>
     </div>
   );
