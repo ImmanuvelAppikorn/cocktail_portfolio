@@ -165,7 +165,7 @@ const ReviewPage = ({
                         width={16}
                         className="flex-shrink-0"
                       />
-                      <div className="h-[6px] bg-gray-200 rounded-full w-full max-w-[120px]">
+                      <div className="h-[6px] bg-gray-200/25 rounded-full w-full max-w-[120px]">
                         <div
                           className="h-full rounded-full bg-[#006D60]"
                           style={{
@@ -276,7 +276,7 @@ const ReviewPage = ({
 
           {/* Empty state */}
           {reviews.length === 0 && (
-            <div className="w-full max-w-[393px] mx-auto flex flex-col items-center py-5 space-y-4 overflow-y-auto">
+            <div className="w-full max-w-[393px] mt-8 mx-auto flex flex-col items-center py-5 space-y-4 overflow-y-auto">
               <div className="w-full flex flex-col items-center px-4">
                 <div className="w-[225px] h-[162px] relative">
                   <Image

@@ -111,7 +111,7 @@ export default function HomePage() {
 
   // Common animation transition
   const smoothTransition = {
-    duration: 1.4,
+    duration: 1.5,
     ease: [0.88, 0.01, 0.17, 0.99],
   };
 
@@ -130,24 +130,28 @@ export default function HomePage() {
       {currentStep === "home" && (
         <motion.div
           className="absolute top-4 left-4 z-50"
-          initial={{ x: -50, opacity: 0 }}
+          initial={{ x: -150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -50, opacity: 0 }}
+          exit={{ x: -150, opacity: 0 }}
           transition={smoothTransition}
         >
-          <div className="w-[30px] h-[30px] flex items-center justify-center">
-            <button
-              onClick={() => setShowLanguagePopup(true)}
-              className="focus:outline-none"
-            >
-              <Image
-                src="/button-image/language-icon.svg"
-                alt="language-button"
-                fill
-                className="object-contain"
-              />
-            </button>
-          </div>
+          <button
+            onClick={() => setShowLanguagePopup(true)}
+            className="focus:outline-none group relative flex items-center justify-center rounded-full hover:bg-white p-2 "
+            style={{
+              width: "clamp(30px, 8vw, 38px)", // responsive size (min 28px, max 38px)
+              height: "clamp(30px, 8vw, 38px)",
+            }}
+          >
+            <Image
+              src="/button-image/language-icon.svg"
+              alt="language-button"
+              fill
+              className="object-contain p-[4px]"
+              sizes="(max-width: 768px) 30px, (max-width: 1200px) 36px, 38px"
+              priority
+            />
+          </button>
         </motion.div>
       )}
 
@@ -179,9 +183,9 @@ export default function HomePage() {
         {currentStep === "home" && !reverse && !showIntro && (
           <div className="absolute top-[3.5%] z-20 w-[90%] aspect-[3/1] flex items-center justify-center overflow-hidden">
             <motion.h1
-              initial={{ opacity: 0, y: 100 }} // 👈 starts from bottom
-              animate={{ opacity: 1, y: 0 }} // 👈 moves to default position
-              exit={{ opacity: 0, y: 100 }} // 👈 exits downward
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }} 
+              exit={{ opacity: 0, y: 100 }} 
               transition={smoothTransition}
               className="text-center font-montagu font-semibold w-full flex items-center justify-center"
               style={{
@@ -267,7 +271,7 @@ export default function HomePage() {
                 ? "44%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
-                  : "0%",
+                  : "7%",
           left:
             currentStep === "home"
               ? "50%"
@@ -294,7 +298,7 @@ export default function HomePage() {
       {/* Background Circle */}
       <motion.div
         className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-        initial={{ height: "90%", rotate: 0, opacity: 0, bottom: "-180%" }}
+        initial={{ height: "90%", rotate: 0, opacity: 0, bottom: "-270%" }}
         animate={{
           height:
             currentStep === "home"
@@ -303,24 +307,24 @@ export default function HomePage() {
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
-                  : "50%",
+                  : "60%",
           aspectRatio: 1 / 1,
           left:
             currentStep === "home"
               ? "50%"
               : currentStep === "crimson"
                 ? "50%"
-                : currentStep === "about" || "nutrition"
+                : currentStep === "about" || currentStep === "nutrition"
                   ? "95%"
-                    : "40%",
+                  : "50%",
           bottom:
             currentStep === "home"
-              ? "-35%"
+              ? "-37%"
               : currentStep === "crimson"
                 ? "-25%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
-                  : "-35%",
+                  : "-38%",
           rotate:
             currentStep === "home"
               ? 5

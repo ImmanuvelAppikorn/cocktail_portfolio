@@ -137,7 +137,7 @@ export default function BottleCarousel() {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               className="h-[35%] object-contain drop-shadow-xl z-10 absolute -top-8 left-1/2 -translate-x-1/2"
               custom={direction}
-              exit={{ opacity: 0, x: direction > 0 ? 120 : -120, scale: 0.8 }}
+              exit={{ opacity: 0, x: direction > 0 ? 120 : -120, y: direction > 0 ? 30 : 30 ,scale: 0.8 }}
               initial={{
                 opacity: 0,
                 x: direction > 0 ? -120 : 120,
@@ -154,7 +154,7 @@ export default function BottleCarousel() {
               borderColor: activeBottle.color,
               scale: [0.95, 1, 0.95],
             }}
-            className="absolute w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
+            className="absolute w-[130%] aspect-square p-5 rounded-full border- flex items-center justify-center"
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             {/* Inner Circle (filled) */}
