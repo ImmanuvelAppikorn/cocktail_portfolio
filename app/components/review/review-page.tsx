@@ -10,7 +10,10 @@ interface ReviewPageProps {
   onNavigationVisibilityChange?: (isVisible: boolean) => void;
 }
 
-const ReviewPage = ({ onPrevClick, onNavigationVisibilityChange }: ReviewPageProps) => {
+const ReviewPage = ({
+  onPrevClick,
+  onNavigationVisibilityChange,
+}: ReviewPageProps) => {
   const handleScrollToTopAndNavigate = (callback?: () => void) => {
     if (!callback) return;
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -141,7 +144,7 @@ const ReviewPage = ({ onPrevClick, onNavigationVisibilityChange }: ReviewPagePro
         {/* Reviews List */}
         <div className="space-y-3 border-gray-200 pr-1 h-[65vh] overflow-y-auto">
           {/* Rating Bars */}
-          <div className="bg-[#F8F8F8] rounded-lg p-2 flex justify-between items-start my-2">
+          {/* <div className="bg-[#F8F8F8] rounded-lg p-2 flex justify-between items-start my-2">
             <div className="flex flex-col gap-1">
               {[5, 4, 3, 2, 1].map((num) => (
                 <div key={num} className="flex items-center gap-2">
@@ -192,8 +195,8 @@ const ReviewPage = ({ onPrevClick, onNavigationVisibilityChange }: ReviewPagePro
               </div>
               <p className="text-sm font-semibold">15k Reviews</p>
             </div>
-          </div>
-          {reviews.map((r) => (
+          </div> */}
+          {/* {reviews.map((r) => (
             <div
               key={r.id}
               className="border-b border-gray-300 pb-2 flex flex-col gap-1 "
@@ -240,7 +243,20 @@ const ReviewPage = ({ onPrevClick, onNavigationVisibilityChange }: ReviewPagePro
               </div>
               <p className="text-[13px] text-gray-800 w-[90%]">{r.comment}</p>
             </div>
-          ))}
+          ))} */}
+          <div className="w-[393px] h-auto bg-white flex flex-col items-center mt-5 space-y-2">
+            <Image
+              src={"/review-images/image.png"}
+              alt={""}
+              height={161.99}
+              width={225.23}
+            />
+            <p className="text-[22px] font-mulish font-bold">No reviews yet</p>
+            <p className="text-[15px] font-mulish font-medium text-center px-10 text-[#333333]">
+              Be the first to share your thoughts about this wine. Your review
+              can help other wine lovers discover something new!
+            </p>
+          </div>
         </div>
       </div>
 
