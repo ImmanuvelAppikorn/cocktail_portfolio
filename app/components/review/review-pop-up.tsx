@@ -84,22 +84,19 @@ const ReviewPopup = ({ isOpen, onClose, onOpen, onReviewSubmit }: ReviewPopupPro
               Did you enjoy it?
             </p>
 
-            <div className="flex justify-around gap-2 mt-3">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button key={star} onClick={() => setRating(star)}>
-                  <Image
-                    src={
-                      star <= rating
-                        ? "/start-rating-icons/Full-star.svg"
-                        : "/start-rating-icons/Empty-star.svg"
-                    }
-                    alt={`${star} Star`}
-                    width={32}
-                    height={32}
-                  />
-                </button>
-              ))}
-            </div>
+          <div className="flex justify-around gap-2 mt-3">
+  {[1, 2, 3, 4, 5].map((star) => (
+    <button key={star} onClick={() => setRating(star)}>
+      <img
+        src={star <= rating ? "/start-rating-icons/Full-Star.svg" : "/start-rating-icons/Empty-Star.svg"}
+        alt={`${star} Star`}
+        width={32}
+        height={32}
+      />
+    </button>
+  ))}
+</div>
+
 
             <label className="block text-[14px] font-semibold text-[#354259] mt-4 font-axiforma ">
               We’d love to hear your thoughts:
