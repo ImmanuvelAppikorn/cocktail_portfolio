@@ -161,7 +161,7 @@ const ReviewPage = ({
                       <Image
                         alt="Rating Star"
                         height={16}
-                        src="/start-rating-icons/Full-star.svg"
+                        src="/start-rating-icons/Full-Star.svg"
                         width={16}
                         className="flex-shrink-0"
                       />
@@ -205,10 +205,10 @@ const ReviewPage = ({
                         height={16}
                         src={
                           i <= avgRating
-                            ? "/start-rating-icons/Full-star.svg"
+                            ? "/start-rating-icons/Full-Star.svg"
                             : i - 0.5 <= avgRating
-                              ? "/start-rating-icons/Half-star.svg"
-                              : "/start-rating-icons/Empty-star.svg"
+                              ? "/start-rating-icons/Half-Star.svg"
+                              : "/start-rating-icons/Empty-Star.svg"
                         }
                         width={16}
                       />
@@ -248,8 +248,8 @@ const ReviewPage = ({
                             height={16}
                             src={
                               i < r.rating
-                                ? "/start-rating-icons/Full-star.svg"
-                                : "/start-rating-icons/Empty-star.svg"
+                                ? "/start-rating-icons/Full-Star.svg"
+                                : "/start-rating-icons/Empty-Star.svg"
                             }
                             width={16}
                           />
