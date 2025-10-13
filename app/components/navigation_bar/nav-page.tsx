@@ -12,13 +12,24 @@ interface NavigationBarProps {
   ) => void;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange }) => {
+const NavigationBar: React.FC<NavigationBarProps> = ({
+  activeStep,
+  onStepChange,
+}) => {
   const navItems = [
     { id: "crimson", label: "Story", icon: "/navigation-bar/new/Story.svg" },
-    { id: "gallery", label: "Gallery", icon: "/navigation-bar/new/Gallery.svg" },
+    {
+      id: "gallery",
+      label: "Gallery",
+      icon: "/navigation-bar/new/Gallery.svg",
+    },
     { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
     { id: "review", label: "Reviews", icon: "/navigation-bar/new/Review.svg" },
-    { id: "nutrition", label: "Nutrition Value", icon: "/navigation-bar/new/Nutrition.svg" },
+    {
+      id: "nutrition",
+      label: "Nutrition Value",
+      icon: "/navigation-bar/new/Nutrition.svg",
+    },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -42,18 +53,25 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange 
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") setIsOpen(!isOpen);
           }}
-          className="h-[58px] w-[58px] bg-[#EB235C] border border-white rounded-full flex items-center justify-center cursor-pointer relative z-20"
+          className="h-[50px] w-[50px] bg-white border border-white rounded-full flex items-center shadow-custom-double justify-center cursor-pointer relative z-20"
         >
-          <Image src="/navigation-bar/apps.svg" alt="menu" width={30} height={30} />
+          <Image
+            src="/navigation-bar/new/trigger_button.svg"
+            alt="menu"
+            width={46}
+            height={46}
+          />
         </div>
 
         {/* Expanding White Capsule */}
         <div
-          className={`absolute left-0 bottom-0 h-[58px] bg-white rounded-full flex items-center shadow-md overflow-hidden
+          className={`absolute left-0 bottom-0 h-[58px] rounded-full flex items-center overflow-hidden
             transition-all duration-[600ms] ease-in-out
             ${isOpen ? "w-full pl-12 pr-4" : "w-[58px] pl-0"}`}
         >
-          <div className={`flex w-full justify-between ${isOpen ? "px-2" : ""}`}>
+          <div
+            className={`flex w-full justify-between ${isOpen ? "px-2" : ""}`}
+          >
             {navItems.map((item, index) => (
               <button
                 key={item.id}
@@ -62,8 +80,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange 
                   ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}
                 style={{ transitionDelay: isOpen ? `${index * 100}ms` : "0ms" }}
               >
-                <Image src={item.icon} alt={item.label} width={32} height={32} className="object-contain" />
-                <p className="text-[8px] mt-1 text-[#EB235C] font-light font-axiforma whitespace-nowrap">
+                <Image
+                  src={item.icon}
+                  alt={item.label}
+                  width={32}
+                  height={32}
+                  className="object-contain pb-1"
+                />
+                <p className="text-[8px] text-center text-[#EB235C] bg-white p-0.5 px-2 rounded-[24.93px] font-light font-axiforma whitespace-nowrap">
                   {item.label}
                 </p>
               </button>
