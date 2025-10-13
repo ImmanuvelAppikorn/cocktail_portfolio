@@ -266,6 +266,8 @@ export default function HomePage() {
                   ? "70%"
                   : currentStep === "review"
                     ? "20%"
+                    : currentStep === "more_details"
+                    ? "28%"
                     : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
@@ -283,6 +285,8 @@ export default function HomePage() {
                 ? "44%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
+                   : currentStep === "more_details"
+                    ? "1%"
                   : "7%",
           left:
             currentStep === "home"
@@ -292,7 +296,7 @@ export default function HomePage() {
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "80%"
                   : "50%",
-          opacity: currentStep === "review" ? 0 : 1,
+          opacity: currentStep === "review" ? 0 :currentStep === "more_details" ? 0.6 :1,
         }}
         transition={smoothTransition}
       >
@@ -319,6 +323,8 @@ export default function HomePage() {
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
+                 : currentStep === "more_details" 
+                  ? "55%"
                   : "60%",
           aspectRatio: 1 / 1,
           left:
@@ -345,7 +351,7 @@ export default function HomePage() {
                 : currentStep === "about" || currentStep === "nutrition"
                   ? 0
                   : 0,
-          opacity: currentStep === "review" ? 0 : 1,
+ opacity: currentStep === "review" ? 0 :currentStep === "more_details" ? 0.6 :1,
         }}
         transition={smoothTransition}
       >
