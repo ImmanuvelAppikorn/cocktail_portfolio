@@ -1,12 +1,20 @@
 import Link from "next/link";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
+interface UserDetails {
+  name: string;
+  mobile: string;
+  email: string;
+  avatar: string;
+}
 
 interface OtpVerifyProps {
   onClose: () => void;
-  onSuccess?: () => void; // ✅ Added this new prop
+  onSuccess?: (details: UserDetails) => void;
+  userDetails?: UserDetails;
 }
 
-const OtpVerify = ({ onClose, onSuccess }: OtpVerifyProps) => {
+const OtpVerify = ({ onClose, onSuccess, userDetails }: OtpVerifyProps) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -42,20 +50,34 @@ const OtpVerify = ({ onClose, onSuccess }: OtpVerifyProps) => {
     // Show video success animation
     setIsSubmitted(true);
 
-    // ✅ After animation, call success handler from parent
+    // ✅ After animation, call success handler from parent with user details
     setTimeout(() => {
-      if (onSuccess) onSuccess(); // call parent to move to Review popup
+      if (onSuccess) {
+        onSuccess(userDetails || { name: '', mobile: '', email: '', avatar: '' });
+      }
     }, 1500);
   };
 
   // ✅ Success animation
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        if (onSuccess && userDetails) {
+          onSuccess(userDetails);
+        }
+      }, 2000); // Wait for animation to complete (2 seconds)
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted, onSuccess, userDetails]);
+
   if (isSubmitted) {
     return (
       <div className="flex flex-col items-center justify-center w-full min-h-[420px]">
         <div className="flex flex-col items-center justify-center">
           <div className="w-[90%] mb-6">
-            <p className="text-center text-[26.5px] font-axiforma font-bold text-[#5B5B5B]">
-              OTP Verification Successfully
+            <p className="text-center text-[26.5px] font-axiforma font-bold text-[#5B5D60]">
+              OTP Verified Successfully
             </p>
             <video
               autoPlay
@@ -63,6 +85,7 @@ const OtpVerify = ({ onClose, onSuccess }: OtpVerifyProps) => {
               muted
               playsInline
               className="w-full h-full object-contain"
+              onEnded={() => onSuccess && userDetails && onSuccess(userDetails)}
             >
               <source src="/gif/tick.mp4" type="video/mp4" />
             </video>

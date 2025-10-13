@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import BottleCarousel from "./slide-bottle";
-import GetDetailsPopupProps from "../otp/get-details";
+import GetDetailsPopup from "../otp/get-details";
 // import ReviewPopup from "./review-pop-up";
 
 interface ReviewPageProps {
@@ -95,18 +95,18 @@ const ReviewPage = ({
     return avatarImages[randomIndex];
   };
 
-  const addReview = (rating: number, comment: string) => {
-    const now = new Date();
-    const newReview = {
-      id: now.getTime(),
-      user: "Courtney Henry",
-      rating,
-      time: now,
-      comment,
-      avatar: getRandomAvatar(),
-    };
-    setReviews((prevReviews) => [newReview, ...prevReviews]);
+const addReview = (rating: number, comment: string, name: string, avatar: string) => {
+  const now = new Date();
+  const newReview = {
+    id: now.getTime(),
+    user: name,
+    rating,
+    time: now,
+    comment,
+    avatar: avatar,
   };
+  setReviews((prevReviews) => [newReview, ...prevReviews]);
+};
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
 
@@ -134,6 +134,8 @@ useEffect(() => {
     console.log("✅ Details received:", details);
     // You can save or send this info as needed (e.g., to backend or state)
   };
+
+  const [userDetails, setUserDetails] = useState<{name: string; avatar: string} | null>(null);
 
   return (
     <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col justify-between overflow-y-auto">
@@ -174,10 +176,25 @@ useEffect(() => {
           onReviewSubmit={addReview}
         /> */}
 
-        <GetDetailsPopupProps
+        <GetDetailsPopup
           isOpen={isDetailsPopupOpen}
           onClose={() => setIsDetailsPopupOpen(false)}
-          onSubmit={handleDetailsSubmit}
+          onSubmit={(details) => {
+            setUserDetails({
+              name: details.name,
+              avatar: details.avatar
+            });
+            
+            // If we have rating and comment, add the review
+            if (details.rating && details.comment) {
+              addReview(
+                details.rating,
+                details.comment,
+                details.name,
+                details.avatar
+              );
+            }
+          }}
         />
 
         {/* Reviews */}

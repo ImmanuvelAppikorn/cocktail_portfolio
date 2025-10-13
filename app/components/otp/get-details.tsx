@@ -13,10 +13,16 @@ interface GetDetailsPopupProps {
     mobile: string;
     email: string;
     avatar: string;
+    rating?: number;
+    comment?: string;
   }) => void;
 }
 
-const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) => {
+const GetDetailsPopup = ({
+  isOpen,
+  onClose,
+  onSubmit,
+}: GetDetailsPopupProps) => {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
@@ -28,13 +34,13 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
 
   // Disable background scroll
   useEffect(() => {
-    if (isOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
+  // Reset state when opened
   useEffect(() => {
     if (isOpen) {
       setName("");
@@ -62,24 +68,59 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !mobile.trim() || !email.trim() || !selectedAvatar) return;
-    if (onSubmit) onSubmit({ name, mobile, email, avatar: selectedAvatar });
+    if (!name.trim() || !mobile.trim() || !email.trim() || !selectedAvatar)
+      return;
+
+    const userDetails = { name, mobile, email, avatar: selectedAvatar };
+    if (onSubmit) onSubmit(userDetails);
     setShowOtp(true);
   };
+
+  const handleOtpSuccess = () => {
+    setShowOtp(false);
+    setShowReview(true);
+  };
+
+const handleReviewSubmit = (rating: number, comment: string) => {
+  if (onSubmit) {
+    onSubmit({
+      name,
+      mobile,
+      email,
+      avatar: selectedAvatar,
+      rating,
+      comment
+    });
+  }
+  handleClose();
+};
 
   if (!isOpen && !isClosing) return null;
 
   const avatars = [
-    "pirate", "mexican", "ninja", "elf", "mustache", "princess", "bear", "alien",
-    "magician", "demon", "mask", "maskf", "queen", "mime", "revived", "sailor", "witch",
+    "pirate",
+    "mexican",
+    "ninja",
+    "elf",
+    "mustache",
+    "princess",
+    "bear",
+    "alien",
+    "magician",
+    "demon",
+    "mask",
+    "maskf",
+    "queen",
+    "mime",
+    "revived",
+    "sailor",
+    "witch",
   ];
 
   return (
     <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
-      {/* Background overlay click to close */}
       <div className="absolute inset-0" onClick={handleClose}></div>
 
-      {/* Popup container */}
       <div
         ref={popupRef}
         className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]"
@@ -91,8 +132,16 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
       >
         {/* Close Button */}
         <div className="flex justify-end mb-2">
-          <button onClick={handleClose} className="p-1 hover:scale-110 transition">
-            <Image src={"/button-image/close.svg"} alt="close" width={24} height={24} />
+          <button
+            onClick={handleClose}
+            className="p-1 hover:scale-110 transition"
+          >
+            <Image
+              src={"/button-image/close.svg"}
+              alt="close"
+              width={24}
+              height={24}
+            />
           </button>
         </div>
 
@@ -100,19 +149,18 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
         {showOtp ? (
           <OtpVerify
             onClose={handleClose}
-            onSuccess={() => {
-              setShowOtp(false);
-              setShowReview(true); // show review popup after OTP
-            }}
+            onSuccess={() => handleOtpSuccess()}
+            userDetails={{ name, email, mobile, avatar: selectedAvatar }}
           />
         ) : showReview ? (
           <ReviewPopup
-
-              onClose={handleClose}
-              onReviewSubmit={(rating, comment) => {
-                console.log("Review submitted:", rating, comment);
-                handleClose();
-              } } name={""} avatar={""}          />
+            onClose={handleClose}
+            onReviewSubmit={(rating, comment) =>
+              handleReviewSubmit(rating, comment)
+            }
+            name={name}
+            avatar={`https://api.dicebear.com/7.x/bottts/svg?seed=${selectedAvatar}`}
+          />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Avatar Selector */}
@@ -125,8 +173,11 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
                   <div
                     key={avatar}
                     onClick={() => setSelectedAvatar(avatar)}
-                    className={`relative w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform
-                      ${selectedAvatar === avatar ? "ring-2 ring-[#EB235C] rounded-full" : ""}`}
+                    className={`relative w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform ${
+                      selectedAvatar === avatar
+                        ? "ring-2 ring-[#EB235C] rounded-full"
+                        : ""
+                    }`}
                   >
                     <Image
                       src={`/avator/${avatar}.png`}
@@ -140,7 +191,7 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
               </div>
             </div>
 
-            {/* Form Fields */}
+            {/* Name Field */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Name*
@@ -148,13 +199,16 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
               <input
                 type="text"
                 className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                style={{
+                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
+                }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
 
+            {/* Mobile Field */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Mobile Number*
@@ -162,13 +216,16 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
               <input
                 type="tel"
                 className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                style={{
+                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
+                }}
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
                 required
               />
             </div>
 
+            {/* Email Field */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Email*
@@ -176,19 +233,23 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
               <input
                 type="email"
                 className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                style={{
+                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
+                }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
 
-            {/* Action Buttons */}
+            {/* Buttons */}
             <div className="flex items-center justify-between gap-4 mt-6">
               <button
                 type="button"
                 onClick={handleClose}
-                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                style={{
+                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
+                }}
                 className="flex-1 h-[5vh] border border-[#E6E7EA] text-black rounded-md font-axiforma font-semibold hover:bg-[#f7f5ff] transition-all duration-200"
               >
                 Cancel
@@ -196,7 +257,12 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
 
               <button
                 type="submit"
-                disabled={!name.trim() || !mobile.trim() || !email.trim() || !selectedAvatar}
+                disabled={
+                  !name.trim() ||
+                  !mobile.trim() ||
+                  !email.trim() ||
+                  !selectedAvatar
+                }
                 className="flex-1 h-[5vh] bg-[#5F1BE7] text-white rounded-md font-axiforma font-semibold hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Submit
@@ -205,7 +271,7 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
           </form>
         )}
 
-        {/* Styles */}
+        {/* Animations */}
         <style jsx>{`
           .animate-slideUpBottom {
             animation: slideUpBottom 0.3s ease-out forwards;
@@ -213,7 +279,6 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
           .animate-slideDown {
             animation: slideDown 0.3s ease-out forwards;
           }
-
           @keyframes slideUpBottom {
             from {
               transform: translateY(100%);
@@ -224,7 +289,6 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
               opacity: 1;
             }
           }
-
           @keyframes slideDown {
             from {
               transform: translateY(0);
