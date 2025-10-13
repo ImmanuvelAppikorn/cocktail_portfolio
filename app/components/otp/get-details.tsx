@@ -75,25 +75,24 @@ const GetDetailsPopup = ({
     if (onSubmit) onSubmit(userDetails);
     setShowOtp(true);
   };
-
   const handleOtpSuccess = () => {
     setShowOtp(false);
     setShowReview(true);
   };
 
-const handleReviewSubmit = (rating: number, comment: string) => {
-  if (onSubmit) {
-    onSubmit({
-      name,
-      mobile,
-      email,
-      avatar: selectedAvatar,
-      rating,
-      comment
-    });
-  }
-  handleClose();
-};
+  const handleReviewSubmit = (rating: number, comment: string) => {
+    if (onSubmit) {
+      onSubmit({
+        name,
+        mobile,
+        email,
+        avatar: `/avator/${selectedAvatar}.png`,
+        rating,
+        comment
+      });
+    }
+    handleClose();
+  };
 
   if (!isOpen && !isClosing) return null;
 
@@ -159,7 +158,7 @@ const handleReviewSubmit = (rating: number, comment: string) => {
               handleReviewSubmit(rating, comment)
             }
             name={name}
-            avatar={`https://api.dicebear.com/7.x/bottts/svg?seed=${selectedAvatar}`}
+            avatar={`/avator/${selectedAvatar}.png`}
           />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">

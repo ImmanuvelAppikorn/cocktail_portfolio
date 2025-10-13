@@ -281,13 +281,20 @@ useEffect(() => {
             >
               <div className="flex justify-between items-end">
                 <div className="flex items-center gap-2">
-                  <Image
-                    alt={r.user}
-                    className="rounded-full"
-                    height={35}
-                    src={r.avatar}
-                    width={35}
-                  />
+                  <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden">
+                    <Image
+                      alt={r.user}
+                      src={r.avatar}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        // Fallback to a default avatar if the image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=default';
+                      }}
+                    />
+                  </div>
                   <div>
                     <p className="font-semibold text-sm">{r.user}</p>
                     <div className="flex items-center gap-1.5">
