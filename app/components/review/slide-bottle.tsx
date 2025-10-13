@@ -154,7 +154,7 @@ export default function BottleCarousel() {
               borderColor: activeBottle.color,
               scale: [0.95, 1, 0.95],
             }}
-            className="absolute w-[130%] aspect-square p-5 rounded-full border- flex items-center justify-center"
+            className="absolute top-[-10%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             {/* Inner Circle (filled) */}
