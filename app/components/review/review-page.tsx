@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import BottleCarousel from "./slide-bottle";
-import ReviewPopup from "./review-pop-up";
+import GetDetailsPopupProps from "../otp/get-details";
+// import ReviewPopup from "./review-pop-up";
 
 interface ReviewPageProps {
   onPrevClick?: () => void;
@@ -107,6 +108,13 @@ const ReviewPage = ({
     setReviews((prevReviews) => [newReview, ...prevReviews]);
   };
 
+  const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
+
+  const handleDetailsSubmit = (details: { name: string; mobile: string; email: string }) => {
+    console.log("✅ Details received:", details);
+    // You can save or send this info as needed (e.g., to backend or state)
+  };
+
   return (
     <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col overflow-y-auto">
       {/* Header */}
@@ -114,19 +122,19 @@ const ReviewPage = ({
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
-            <Image
-                        src="/button-image/black-back.svg"
-                        alt="Back Icon"
-                        height={28}
-                        width={28}
-                      />
+              <Image
+                src="/button-image/black-back.svg"
+                alt="Back Icon"
+                height={28}
+                width={28}
+              />
             </button>
             <p className="text-[16px] font-bold">Blossom Rose</p>
           </div>
 
           <button
             className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
-            onClick={() => setIsPopupOpen(true)}
+            onClick={() => setIsDetailsPopupOpen(true)}
           >
             <Image
               src="/button-image/review.svg"
@@ -140,10 +148,16 @@ const ReviewPage = ({
         </div>
 
         {/* Popup */}
-        <ReviewPopup
+        {/* <ReviewPopup
           isOpen={isPopupOpen}
           onClose={() => setIsPopupOpen(false)}
           onReviewSubmit={addReview}
+        /> */}
+
+        <GetDetailsPopupProps
+          isOpen={isDetailsPopupOpen}
+          onClose={() => setIsDetailsPopupOpen(false)}
+          onSubmit={handleDetailsSubmit}
         />
 
         {/* Reviews */}
