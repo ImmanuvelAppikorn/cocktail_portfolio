@@ -72,6 +72,47 @@ const GetDetailsPopup = ({
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+              Choose Avatar*
+            </label>
+
+            <div className="flex flex-row flex-wrap gap-2">
+              {[
+                "pirate",
+                "mexican",
+                "ninja",
+                "elf",
+                "mustache",
+                "princess",
+                "bear",
+                "alien",
+                "magician",
+                "demon",
+                "mask",
+                "maskf",
+                "queen",
+                "mime",
+                "revived",
+                "sailor",
+                "witch",
+              ].map((avatar) => (
+                <div
+                  key={avatar}
+                  className="relative w-10 h-10 cursor-pointer hover:scale-105 transition-transform"
+                >
+                  <Image
+                    src={`/avator/${avatar}.png`}
+                    alt={avatar}
+                    fill
+                    sizes="40px"
+                    className="object-contain rounded-full"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
               Name*
             </label>
             <input
