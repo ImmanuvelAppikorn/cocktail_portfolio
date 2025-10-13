@@ -62,8 +62,8 @@ export default function BottleCarousel() {
   const activeBottle = bottles[index];
 
   return (
-    <div>
-      <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
+    <div className="w-full h-[300px] overflow-hidden relative">
+      <div className="relative w-[125%] h-[full] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center overflow-hidden">
         {/* Navigation + Text */}
         <div className="absolute top-0 w-[80%] flex items-center justify-center mb-4 ">
           {/* Prev Button */}
@@ -135,7 +135,8 @@ export default function BottleCarousel() {
               key={activeBottle.id}
               alt={activeBottle.name}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              className="h-[35%] object-contain drop-shadow-xl z-10 absolute -top-8 left-1/2 -translate-x-1/2"
+              className="w-[25%] object-contain drop-shadow-xl z-10 absolute -top-8 left-1/2 -translate-x-1/2"
+              style={{ aspectRatio: "2/ 3" }}
               custom={direction}
               exit={{ opacity: 0, x: direction > 0 ? 120 : -120, y: direction > 0 ? 30 : 30 ,scale: 0.8 }}
               initial={{
@@ -147,15 +148,16 @@ export default function BottleCarousel() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             />
           </AnimatePresence>
-        <div className="relative top-2 w-full h-[600px] flex items-center justify-center overflow-visible max-w-[500px]">
+        <div className="relative top-2 w-full h-[400px] left-1/2 transform -translate-x-1/2 flex items-center justify-center overflow-visible max-w-[500px]">
           {/* Outer Circle (border) */}
           <motion.div
             animate={{
               borderColor: activeBottle.color,
               scale: [0.95, 1, 0.95],
             }}
-            className="absolute top-[-10%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
+            className="absolute top-[-2%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
             transition={{ duration: 0.8, ease: "easeInOut" }}
+            style={{ aspectRatio: "1.5/ 3" }}
           >
             {/* Inner Circle (filled) */}
             <motion.div

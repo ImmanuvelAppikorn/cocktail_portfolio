@@ -51,7 +51,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeStep, onStepChange 
         <div
           className={`absolute left-0 bottom-0 h-[58px] bg-white rounded-full flex items-center shadow-md overflow-hidden
             transition-all duration-[600ms] ease-in-out
-            ${isOpen ? "w-full pl-16 pr-4" : "w-[58px] pl-0"}`}
+            ${isOpen ? "w-full pl-12 pr-4" : "w-[58px] pl-0"}`}
         >
           <div className={`flex w-full justify-between ${isOpen ? "px-2" : ""}`}>
             {navItems.map((item, index) => (
