@@ -2,29 +2,44 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import OtpVerify from "./otp-verification";
 
 interface GetDetailsPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (details: { name: string; mobile: string; email: string }) => void;
+  onSubmit?: (details: {
+    name: string;
+    mobile: string;
+    email: string;
+    avatar: string;
+  }) => void;
 }
 
-const GetDetailsPopup = ({
-  isOpen,
-  onClose,
-  onSubmit,
-}: GetDetailsPopupProps) => {
+const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) => {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
+  const [selectedAvatar, setSelectedAvatar] = useState("");
   const [isClosing, setIsClosing] = useState(false);
+  const [showOtp, setShowOtp] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
+
+  // Disable background scroll
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
       setName("");
       setMobile("");
       setEmail("");
+      setSelectedAvatar("");
+      setShowOtp(false);
       setIsClosing(false);
     }
   }, [isOpen]);
@@ -44,155 +59,168 @@ const GetDetailsPopup = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !mobile.trim() || !email.trim()) return;
-    onSubmit({ name, mobile, email });
+    if (!name.trim() || !mobile.trim() || !email.trim() || !selectedAvatar) return;
+    if (onSubmit) onSubmit({ name, mobile, email, avatar: selectedAvatar });
+    setShowOtp(true);
   };
 
   if (!isOpen && !isClosing) return null;
 
+  const avatars = [
+    "pirate", "mexican", "ninja", "elf", "mustache", "princess", "bear", "alien",
+    "magician", "demon", "mask", "maskf", "queen", "mime", "revived", "sailor", "witch",
+  ];
+
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40">
-      <div className="fixed inset-0" onClick={handleClose}></div>
-      <div
-        ref={popupRef}
-        className="relative z-50 w-full max-w-md bg-white rounded-t-[9px] p-6 mx-1 animate-slideUp"
-      >
+    <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
+      {/* Background overlay click to close */}
+      <div className="absolute inset-0" onClick={handleClose}></div>
+
+      {/* Popup container */}
+<div
+  ref={popupRef}
+  className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]"
+  style={{
+    boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
+    minHeight: "480px", // 👈 ensures consistent height
+    transition: "height 0.3s ease", // smooth switch between form/OTP
+  }}
+>
+        {/* Close Button */}
         <div className="flex justify-end mb-2">
-          <button onClick={handleClose}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 640 640"
-              className="h-8 w-8"
-            >
-              <path d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM231 231C221.6 240.4 221.6 255.6 231 264.9L286 319.9L231 374.9C221.6 384.3 221.6 399.5 231 408.8C240.4 418.1 255.6 418.2 264.9 408.8L319.9 353.8L374.9 408.8C384.3 418.2 399.5 418.2 408.8 408.8C418.1 399.4 418.2 384.2 408.8 374.9L353.8 319.9L408.8 264.9C418.2 255.5 418.2 240.3 408.8 231C399.4 221.7 384.2 221.6 374.9 231L319.9 286L264.9 231C255.5 221.6 240.3 221.6 231 231z" />
-            </svg>
+          <button onClick={handleClose} className="p-1 hover:scale-110 transition">
+            <Image
+              src={"/button-image/close.svg"}
+              alt="close"
+              width={24}
+              height={24}
+            />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Choose Avatar*
-            </label>
+        {/* OTP or Form */}
+        {showOtp ? (
+          <OtpVerify onClose={handleClose} />
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Avatar Selector */}
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Choose Avatar*
+              </label>
 
-            <div className="flex flex-row flex-wrap gap-2">
-              {[
-                "pirate",
-                "mexican",
-                "ninja",
-                "elf",
-                "mustache",
-                "princess",
-                "bear",
-                "alien",
-                "magician",
-                "demon",
-                "mask",
-                "maskf",
-                "queen",
-                "mime",
-                "revived",
-                "sailor",
-                "witch",
-              ].map((avatar) => (
-                <div
-                  key={avatar}
-                  className="relative w-10 h-10 cursor-pointer hover:scale-105 transition-transform"
-                >
-                  <Image
-                    src={`/avator/${avatar}.png`}
-                    alt={avatar}
-                    fill
-                    sizes="40px"
-                    className="object-contain rounded-full"
-                  />
-                </div>
-              ))}
+              <div className="flex flex-row gap-2 flex-wrap sm:grid-cols-7 md:grid-cols-8">
+                {avatars.map((avatar) => (
+                  <div
+                    key={avatar}
+                    onClick={() => setSelectedAvatar(avatar)}
+                    className={`relative w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform
+                      ${selectedAvatar === avatar ? "ring-2 ring-[#EB235C] rounded-full" : ""}`}
+                  >
+                    <Image
+                      src={`/avator/${avatar}.png`}
+                      alt={avatar}
+                      fill
+                      sizes="48px"
+                      className="object-contain rounded-full"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Name*
-            </label>
-            <input
-              type="text"
-              className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
+            {/* Form Fields */}
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Name*
+              </label>
+              <input
+                type="text"
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
+                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Mobile Number*
-            </label>
-            <input
-              type="tel"
-              className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Mobile Number*
+              </label>
+              <input
+                type="tel"
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
+                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Email*
-            </label>
-            <input
-              type="text"
-              className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Email*
+              </label>
+              <input
+                type="email"
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
+                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
 
-          <div className="flex items-center justify-between gap-4 mt-6">
-            <button
-              type="button"
-              onClick={handleClose}
-              className="flex-1 h-[48px] border border-[#5F1BE7] text-[#5F1BE7] rounded-md font-medium hover:bg-[#f7f5ff] transition-all duration-200 flex items-center justify-center"
-            >
-              Cancel
-            </button>
+            {/* Action Buttons */}
+            <div className="flex items-center justify-between gap-4 mt-6">
+              <button
+                type="button"
+                onClick={handleClose}
+                style={{ boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)" }}
+                className="flex-1 h-[48px] border border-[#E6E7EA] text-black rounded-md font-axiforma font-semibold hover:bg-[#f7f5ff] transition-all duration-200"
+              >
+                Cancel
+              </button>
 
-            <button
-              type="submit"
-              disabled={!name.trim() || !mobile.trim() || !email.trim()}
-              className="flex-1 h-[48px] bg-[#5F1BE7] text-white rounded-md font-medium hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+              <button
+                type="submit"
+                disabled={!name.trim() || !mobile.trim() || !email.trim() || !selectedAvatar}
+                className="flex-1 h-[48px] bg-[#5F1BE7] text-white rounded-md font-axiforma font-semibold hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        )}
 
         <style jsx>{`
-          .animate-slideUp {
-            animation: slideUp 0.3s ease-out forwards;
+          .animate-slideUpBottom {
+            animation: slideUpBottom 0.3s ease-out forwards;
           }
-
           .animate-slideDown {
             animation: slideDown 0.3s ease-out forwards;
           }
 
-          @keyframes slideUp {
+          @keyframes slideUpBottom {
             from {
               transform: translateY(100%);
+              opacity: 0;
             }
             to {
               transform: translateY(0);
+              opacity: 1;
             }
           }
 
           @keyframes slideDown {
             from {
               transform: translateY(0);
+              opacity: 1;
             }
             to {
               transform: translateY(100%);
+              opacity: 0;
             }
           }
         `}</style>
