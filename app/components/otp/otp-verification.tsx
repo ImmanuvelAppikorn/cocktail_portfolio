@@ -1,42 +1,49 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 interface OtpVerifyProps {
-  onOtpSubmit: (otp: string) => void;
+  onClose: () => void; // Pass this from parent to close popup after video
 }
 
-const OtpVerify = ({ onOtpSubmit }: OtpVerifyProps) => {
+const OtpVerify = ({ onClose }: OtpVerifyProps) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (index: number, value: string) => {
-    if (/^\d*$/.test(value)) {
-      const newOtp = [...otp];
-      newOtp[index] = value;
-      setOtp(newOtp);
-
-      if (value && index < 3) {
-        inputRefs.current[index + 1]?.focus();
-      }
-    }
-  };
-
+  // OTP input logic is commented out
+  const handleChange = (index: number, value: string) => {};
   const handleKeyDown = (
     index: number,
     e: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-  };
+  ) => {};
 
   const handleSubmit = () => {
-    // if (otp.every((digit) => digit !== "")) {
-    //   onOtpSubmit(otp.join(""));
-    // } else {
-    //   alert("Please enter all 4 digits of OTP");
-    // }
+    // Show video immediately
+    setIsSubmitted(true);
+
+    // Close popup after 1.5s
+    setTimeout(() => {
+      if (onClose) onClose();
+    }, 1500);
   };
 
+  // Show video after submit
+  if (isSubmitted) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[300px] w-full">
+        <p className="text-center text-lg font-medium mb-6">
+          OTP Verified Successfully!
+        </p>
+        <div className="w-40 h-40 mx-auto">
+          <video autoPlay loop muted playsInline className="w-full h-full">
+            <source src="/gif/tick.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    );
+  }
+
+  // OTP form (logic disabled)
   return (
     <div className="w-full rounded-[8.12px] bg-white p-4">
       <div className="text-center flex flex-col mb-4">
@@ -49,14 +56,14 @@ const OtpVerify = ({ onOtpSubmit }: OtpVerifyProps) => {
       </div>
 
       <div className="flex justify-center gap-3 mb-4">
-        {otp.map((digit, index) => (
+        {otp.map((_, index) => (
           <input
             key={index}
             type="text"
             inputMode="numeric"
             maxLength={1}
             ref={(el) => (inputRefs.current[index] = el)}
-            value={digit}
+            value={otp[index]}
             onChange={(e) => handleChange(index, e.target.value)}
             onKeyDown={(e) => handleKeyDown(index, e)}
             className="w-12 h-12 text-center border-b-2 border-gray-300 focus:border-purple-600 focus:outline-none text-lg font-semibold"
