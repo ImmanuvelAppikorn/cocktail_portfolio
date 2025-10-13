@@ -6,7 +6,7 @@ import Image from "next/image";
 interface GetDetailsPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (details: { name: string; mobile: string }) => void;
+  onSubmit: (details: { name: string; mobile: string; email: string }) => void;
 }
 
 const GetDetailsPopup = ({
@@ -24,6 +24,7 @@ const GetDetailsPopup = ({
     if (isOpen) {
       setName("");
       setMobile("");
+      setEmail("");
       setIsClosing(false);
     }
   }, [isOpen]);
@@ -43,8 +44,8 @@ const GetDetailsPopup = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !mobile.trim()) return;
-    onSubmit({ name, mobile });
+    if (!name.trim() || !mobile.trim() || !email.trim()) return;
+    onSubmit({ name, mobile, email });
   };
 
   if (!isOpen && !isClosing) return null;
