@@ -110,13 +110,33 @@ const ReviewPage = ({
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
 
+useEffect(() => {
+  // Hide nav if the details popup is open
+  const shouldHideNav = isDetailsPopupOpen;
+  onNavigationVisibilityChange?.(!shouldHideNav);
+
+  // Ensure nav is visible when component unmounts
+  return () => onNavigationVisibilityChange?.(true);
+}, [isDetailsPopupOpen, onNavigationVisibilityChange]);
+
+useEffect(() => {
+  if (isDetailsPopupOpen) {
+    // Prevent background scrolling when the popup is open
+    document.body.style.overflow = "hidden";
+  } else {
+    // Restore scrolling when popup closes
+    document.body.style.overflow = "auto";
+  }
+}, [isDetailsPopupOpen]);
+
+
   const handleDetailsSubmit = (details: { name: string; mobile: string; email: string }) => {
     console.log("✅ Details received:", details);
     // You can save or send this info as needed (e.g., to backend or state)
   };
 
   return (
-    <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col overflow-y-auto">
+    <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col justify-between overflow-y-auto">
       {/* Header */}
       <div className="px-4 space-y-2">
         <div className="flex justify-between items-center">
@@ -313,7 +333,7 @@ const ReviewPage = ({
         </div>
       </div>
 
-      {/* Carousel */}
+      {/* slider-bottle */}
       <div className="relative w-full h-auto mt-4">
         <div className="px-0">
           <BottleCarousel />
