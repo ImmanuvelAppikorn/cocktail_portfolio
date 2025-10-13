@@ -12,6 +12,8 @@ import AboutPage from "../about/about-page";
 import ReviewPage from "../review/review-page";
 import GalleryPage from "../gallery/gallery-page";
 import NutritionPage from "../nutrition/nutrition-page";
+import { useRouter } from "next/navigation";
+import MoreDetails from "../about/more_details";
 
 // -------------------- COLORS --------------------
 const colors = {
@@ -58,6 +60,7 @@ const bottles: Record<
 
 // -------------------- MAIN COMPONENT --------------------
 export default function HomePage() {
+  const router = useRouter();
   const params = useParams();
   const qrParam = Array.isArray(params.qrCode)
     ? params.qrCode[0]
@@ -71,7 +74,13 @@ export default function HomePage() {
   }>(bottles[qrCode] || bottles["rose-vine"]);
 
   const [currentStep, setCurrentStep] = useState<
-    "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
+    | "home"
+    | "crimson"
+    | "about"
+    | "review"
+    | "nutrition"
+    | "gallery"
+    | "more_details"
   >("home");
 
   const [reverse, setReverse] = useState(false);
@@ -102,7 +111,7 @@ export default function HomePage() {
   };
 
   const handleCrimsonNext = () => navigateStep("about");
-  const handleAboutNext = () => navigateStep("review");
+  const handleAboutNext = () => navigateStep("more_details");
   const handleCrimsonPrev = () => navigateStep("home");
   const handleAboutPrev = () => navigateStep("crimson");
   const handleReviewPrev = () => navigateStep("gallery");
@@ -123,7 +132,10 @@ export default function HomePage() {
     >
       {/* Navigation Bar */}
       {currentStep !== "home" && showNavigation && (
-        <NavigationBar activeStep={currentStep} onStepChange={setCurrentStep} />
+        <NavigationBar
+          activeStep={currentStep as any}
+          onStepChange={setCurrentStep}
+        />
       )}
 
       {/* Language Button */}
@@ -184,8 +196,8 @@ export default function HomePage() {
           <div className="absolute top-[3.5%] z-20 w-[90%] aspect-[3/1] flex items-center justify-center overflow-hidden">
             <motion.h1
               initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }} 
-              exit={{ opacity: 0, y: 100 }} 
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
               transition={smoothTransition}
               className="text-center font-montagu font-semibold w-full flex items-center justify-center"
               style={{
@@ -368,6 +380,7 @@ export default function HomePage() {
                 onPrevClick={handleAboutPrev}
               />
             )}
+            {currentStep === "more_details" && <MoreDetails />}
             {currentStep === "nutrition" && (
               <NutritionPage onPrevClick={handleNutritionPrev} />
             )}

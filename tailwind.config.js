@@ -27,6 +27,9 @@ const config = {
         gold: "#FFB860", // yellow-gold
         darkred: "#EF3F48", // red
       },
+       boxShadow: {
+        "custom-double": "0 4px 4px 0 rgba(0,0,0,0.25), 4px 0 4px 0 rgba(0,0,0,0.25)"
+      },
     },
   },
   darkMode: "class", // class-based dark mode
