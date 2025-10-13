@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import OtpVerify from "../otp/otp-verification"; // import OTP component
 
 interface GetDetailsPopupProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ const GetDetailsPopup = ({
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [isClosing, setIsClosing] = useState(false);
+  const [step, setStep] = useState<"form" | "otp">("form"); // step state
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const GetDetailsPopup = ({
       setMobile("");
       setEmail("");
       setIsClosing(false);
+      setStep("form"); // reset to form on open
     }
   }, [isOpen]);
 
@@ -46,6 +49,7 @@ const GetDetailsPopup = ({
     e.preventDefault();
     if (!name.trim() || !mobile.trim() || !email.trim()) return;
     onSubmit({ name, mobile, email });
+    setStep("otp"); // switch to OTP screen
   };
 
   if (!isOpen && !isClosing) return null;
@@ -69,64 +73,72 @@ const GetDetailsPopup = ({
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Name*
-            </label>
-            <input
-              type="text"
-              className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
+        {step === "form" ? (
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Name*
+              </label>
+              <input
+                type="text"
+                className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                // required
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Mobile Number*
-            </label>
-            <input
-              type="tel"
-              className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Mobile Number*
+              </label>
+              <input
+                type="tel"
+                className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                // required
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
-              Email*
-            </label>
-            <input
-              type="text"
-              className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+                Email*
+              </label>
+              <input
+                type="text"
+                className="w-full border border-[#E6E7EA] rounded-md p-3 focus:ring-2 focus:ring-purple-600 outline-none h-[6vh]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                // required
+              />
+            </div>
 
-          <div className="flex items-center justify-between gap-4 mt-6">
-            <button
-              type="button"
-              onClick={handleClose}
-              className="flex-1 h-[48px] border border-[#5F1BE7] text-[#5F1BE7] rounded-md font-medium hover:bg-[#f7f5ff] transition-all duration-200 flex items-center justify-center"
-            >
-              Cancel
-            </button>
+            <div className="flex items-center justify-between gap-4 mt-6">
+              <button
+                type="button"
+                onClick={handleClose}
+                className="flex-1 h-[48px] border border-[#5F1BE7] text-[#5F1BE7] rounded-md font-medium hover:bg-[#f7f5ff] transition-all duration-200 flex items-center justify-center"
+              >
+                Cancel
+              </button>
 
-            <button
-              type="submit"
-              disabled={!name.trim() || !mobile.trim() || !email.trim()}
-              className="flex-1 h-[48px] bg-[#5F1BE7] text-white rounded-md font-medium hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+              <button
+                type="submit"
+                // disabled={!name.trim() || !mobile.trim() || !email.trim()}
+                className="flex-1 h-[48px] bg-[#5F1BE7] text-white rounded-md font-medium hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        ) : (
+          <OtpVerify
+            onOtpSubmit={function (otp: string): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        )}
 
         <style jsx>{`
           .animate-slideUp {
