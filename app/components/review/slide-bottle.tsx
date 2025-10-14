@@ -153,7 +153,7 @@ export default function BottleCarousel() {
           <motion.div
             animate={{
               borderColor: activeBottle.color,
-              scale: [0.95, 1, 0.95],
+              scale: [0.95],
             }}
             className="absolute top-[-2%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
             transition={{ duration: 0.8, ease: "easeInOut" }}

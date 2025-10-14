@@ -42,7 +42,7 @@ export default function RootLayout({
         }}
       >
         <div
-          className="w-full max-w-[500px] flex flex-col relative"
+          className="w-full max-w-[500px] flex flex-col relative bg-white"
           style={{
             height: "var(--app-height)", // fixed height equal to visible screen
           }}

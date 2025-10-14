@@ -29,7 +29,7 @@ export default function CrimsonPage({
     ease: [0.88, 0.01, 0.17, 0.99],
   };
   return (
-    <div className=" relative flex flex-col pt-2 h-full px-4 text-black overflow-y-auto w-full max-w-[500px] mx-auto">
+    <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       
       <AnimatePresence>
         <motion.div

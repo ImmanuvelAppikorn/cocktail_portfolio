@@ -18,11 +18,6 @@ export default function AboutPage({
     setTimeout(() => callback(), 150);
   };
 
-  const smoothTransition = {
-    duration: 1.5,
-    ease: [0.88, 0.01, 0.17, 0.99],
-  };
-
   const handleScrollToTopAndNavigate = () => {
     scrollToTopAndNavigate(onNextClick);
   };
@@ -35,7 +30,7 @@ export default function AboutPage({
 
   return (
     <div
-      className="relative w-full h-screen overflow-hidden mt-[5px] flex flex-col items-center max-h-screen max-w-[500px] mx-auto"
+      className="relative pt-2 px-4 w-full h-screen overflow-hidden  flex flex-col items-center max-h-screen max-w-[500px] mx-auto"
       style={{ touchAction: "none", overscrollBehavior: "none" }}
     >
       {/* Heading */}
@@ -45,7 +40,7 @@ export default function AboutPage({
         initial="hidden"
         variants={topVariants}
       >
-        <div className="relative border-b border-black w-[95%] mx-auto flex items-center py-2">
+        <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
           <button onClick={onPrevClick} className="flex-shrink-0">
             <Image
               src="/button-image/black-back.svg"
@@ -54,52 +49,34 @@ export default function AboutPage({
               width={28}
             />
           </button>
-
-          <p className="absolute left-1/2 -translate-x-1/2 text-[#EB235C] text-[24px] font-bold text-center pb-1 font-montagu whitespace-nowrap">
+          <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
             CRIMSON RESERVE
-          </p>
+          </h2>
         </div>
 
-        <div className="flex flex-row justify-start items-center w-full px-4">
+        <div className="flex flex-row justify-start items-center w-full px-2">
           <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
             About The Wine
           </p>
         </div>
 
         {/* Paragraph */}
-        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 leading-7 text-left px-5 pt-2">
-          Sourced from the mineral-rich soil along the Bhadra River Belt, our
+        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-3 pt-2">
+          "Sourced from the mineral-rich soil along the Bhadra River Belt, our
           house espresso is a single-origin specialty Robusta coffee from India,
           considered among the finest in the world. This Robusta is graded as
           'Kaapi Royale,' the highest grade of Indian Robusta. When presented in
           a milk-based drink, it features notes of hazelnut and dark chocolate,
-          with an extra caffeine hit unique to Robusta.
-        </p>
-      </motion.div>
-      <motion.div
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-50" // centered horizontally
-        initial={{ x: 150, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 150, opacity: 0 }}
-        transition={smoothTransition}
-      >
-        <button
-          onClick={handleScrollToTopAndNavigate}
-          className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
-        >
-          <span className="absolute w-30 h-30 bg-[#EB235C] rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
-
-          <span className="relative flex items-center font-montagu">
-            More
-            <Image
-              src="/button-image/arrow-up-right.svg"
-              alt="arrow"
-              width={14}
-              height={14}
-              className="ml-2 z-10"
-            />
-          </span>
-        </button>
+          with an extra caffeine hit unique to Robusta."
+        
+        <span>
+          <button
+            onClick={handleScrollToTopAndNavigate}
+            className="font-axiforma relative overflow-hidden hover:text-[#EB235C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
+          >
+            View More....
+          </button>
+        </span></p>
       </motion.div>
     </div>
   );

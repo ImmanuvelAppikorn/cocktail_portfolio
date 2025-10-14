@@ -205,7 +205,7 @@ export default function HomePage() {
                 lineHeight: "80%",
               }}
             >
-              <div className="relative w-[90%] aspect-[3/1] mx-auto">
+              <div className="relative w-[90%] aspect-[2.7/1] mx-auto">
                 <Image
                   alt="Vinea Logo"
                   src="/logo/logo.svg"
@@ -248,7 +248,7 @@ export default function HomePage() {
 
       {/* Bottle Image */}
       <motion.div
-        className="absolute z-10 flex items-center justify-center overflow-hidden"
+        className="absolute z-10 flex items-center justify-center overflow-hidden pt-0 xs:pt-2 sm:pt-8 md:pt-10 "
         style={{ translateX: "-50%" }}
         initial={{
           height: "125%",
@@ -283,18 +283,22 @@ export default function HomePage() {
               ? "-40%"
               : currentStep === "crimson"
                 ? "44%"
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? "-25%"
+                : currentStep === "about"
+                  ? "-15%"
+                  :currentStep === "nutrition"
+                  ? "-20%"
                    : currentStep === "more_details"
-                    ? "1%"
+                    ? "38%"
                   : "7%",
           left:
             currentStep === "home"
               ? "50%"
               : currentStep === "crimson"
                 ? "50%"
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? "80%"
+                : currentStep === "about" 
+                  ? "74%"
+                  :currentStep === "nutrition"
+                  ? "75%"
                   : "50%",
           opacity: currentStep === "review" ? 0 :currentStep === "more_details" ? 0.6 :1,
         }}
@@ -324,7 +328,7 @@ export default function HomePage() {
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
                  : currentStep === "more_details" 
-                  ? "55%"
+                  ? "150%"
                   : "60%",
           aspectRatio: 1 / 1,
           left:
@@ -341,6 +345,8 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "-25%"
                 : currentStep === "about" || currentStep === "nutrition"
+                  ? "-25%"
+                  : currentStep === "more_details"
                   ? "-25%"
                   : "-38%",
           rotate:
@@ -386,7 +392,11 @@ export default function HomePage() {
                 onPrevClick={handleAboutPrev}
               />
             )}
-            {currentStep === "more_details" && <MoreDetails />}
+           {currentStep === "more_details" && (
+  <MoreDetails
+    onPrevClick={handleAboutPrev} // <-- this goes back to AboutPage
+  />
+)}
             {currentStep === "nutrition" && (
               <NutritionPage onPrevClick={handleNutritionPrev} />
             )}
