@@ -8,11 +8,13 @@ interface ReviewPopupProps {
     rating: number,
     comment: string,
     name: string,
-    avatar: string,
+    avatar: string
   ) => void;
   name: string;
   avatar: string;
   onOpen?: () => void; // optional
+  defaultRating?: number; // ✅ added
+  defaultComment?: string; // ✅ added
 }
 
 const ReviewPopupContent = ({
@@ -21,19 +23,23 @@ const ReviewPopupContent = ({
   name,
   avatar,
   onOpen,
+  defaultRating = 0,
+  defaultComment = "",
 }: ReviewPopupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 const [hoverRating, setHoverRating] = useState(0);
 
 
   useEffect(() => {
-    setRating(0);
-    setComment("");
+    // ✅ Initialize form fields with defaults only once (or when popup opens)
+    setRating(defaultRating);
+    setComment(defaultComment);
     setIsSubmitting(false);
     if (onOpen) onOpen();
-  }, [onOpen]);
+  }, [defaultRating, defaultComment, onOpen]);
 
   const handleSubmit = () => {
     if (rating === 0 || !comment.trim()) return;

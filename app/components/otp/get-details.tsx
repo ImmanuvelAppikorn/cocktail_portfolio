@@ -183,7 +183,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     Choose Avatar*
   </label>
 
-  <div className="flex flex-col items-center mt-2">
+  <div className="grid grid-cols-1 items-center mt-2">
     {selectedAvatar ? (
       <>
         {/* Change Avatar Button */}
@@ -196,7 +196,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         {/* Selected Avatar Centered */}
         <div
-          className="relative rounded-full flex items-center justify-center transition-all duration-300 border-6 border-white"
+          className="relative left-1/2 -translate-x-1/2 rounded-full flex items-center justify-center transition-all duration-300 border-6 border-white"
           style={{
             width: "185px",
             height: "185px",
