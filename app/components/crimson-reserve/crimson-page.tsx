@@ -40,10 +40,8 @@ export default function CrimsonPage({
         >
           <button
             onClick={handleScrollToTopAndNavigate}
-            className="relative overflow-hidden inline-flex items-center justify-center px-[14px] py-[9px] rounded-[56px] bg-[var(--Text-Color,#1C1826)] text-white text-[11px] font-montagu font-semibold hover:bg-gray-800 transition group"
+            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
           >
-            <span className="absolute w-30 h-30 bg-[#EB235C] rounded-full -top-20 -left-32 transform transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-bottom-20 group-hover:-left-11"></span>
-
             <span className="relative flex items-center font-montagu">
               Explore More
               <Image
@@ -70,7 +68,7 @@ export default function CrimsonPage({
         >
           {/* Header */}
           <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-            <button onClick={onPrevClick} className="flex-shrink-0">
+            <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer hover:bg-black/10 rounded-full">
               <Image
                 src="/button-image/white_back.svg"
                 alt="Back Icon"
@@ -78,8 +76,8 @@ export default function CrimsonPage({
                 width={28}
               />
             </button>
-            <h2 className="flex-1 text-center text-white text-[24px] font-bold leading-tight font-montagu">
-              CRIMSON RESERVE
+            <h2 className="flex-1 text-center text-white text-[19px] font-bold leading-tight font-montagu">
+              CABERNET SAUVIGNON
             </h2>
           </div>
 

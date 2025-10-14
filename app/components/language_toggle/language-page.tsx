@@ -77,7 +77,7 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
       </div>
 
       {/* Continue Button */}
-      <div className="bg-[#EC2960] w-full sm:w-[85%] h-[45px] flex justify-center mx-auto rounded-[8px] mt-6 mb-6 active:scale-95 transition-transform duration-200">
+      <div className="bg-[#EC2960] cursor-pointer w-full sm:w-[85%] h-[45px] flex justify-center mx-auto rounded-[8px] mt-6 mb-6 active:scale-95 transition-transform duration-200">
         <button
           onClick={handleContinue}
           className="text-white text-[16px] font-bold leading-[23px]"

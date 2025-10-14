@@ -25,6 +25,8 @@ const ReviewPopupContent = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+const [hoverRating, setHoverRating] = useState(0);
+
 
   useEffect(() => {
     setRating(0);
@@ -70,23 +72,30 @@ const ReviewPopupContent = ({
         Did you enjoy it?
       </p>
 
-      {/* Stars */}
-      <div className="flex justify-around gap-2 mt-3">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <button key={star} onClick={() => setRating(star)}>
-            <img
-              src={
-                star <= rating
-                  ? "/start-rating-icons/Full-Star.svg"
-                  : "/start-rating-icons/Empty-Star.svg"
-              }
-              alt={`${star} Star`}
-              width={32}
-              height={32}
-            />
-          </button>
-        ))}
-      </div>
+     {/* Stars */}
+<div className="flex justify-around gap-2 mt-3">
+  {[1, 2, 3, 4, 5].map((star) => (
+    <button
+      key={star}
+      onClick={() => setRating(star)}
+      onMouseEnter={() => setHoverRating(star)}
+      onMouseLeave={() => setHoverRating(0)}
+      className="cursor-pointer transition-transform hover:scale-110"
+    >
+      <img
+        src={
+          star <= (hoverRating || rating)
+            ? "/start-rating-icons/Full-Star.svg"
+            : "/start-rating-icons/Empty-Star.svg"
+        }
+        alt={`${star} Star`}
+        width={32}
+        height={32}
+      />
+    </button>
+  ))}
+</div>
+
 
       {/* Comment */}
       <label
@@ -107,14 +116,14 @@ const ReviewPopupContent = ({
       <div className="flex justify-between mt-4">
         <button
           onClick={onClose}
-          className="px-5 py-2 border border-gray-400 rounded-md text-[16px] font-semibold"
+          className="px-5 py-2  border cursor-pointer border-gray-400 rounded-md text-[16px] font-semibold"
         >
           Cancel
         </button>
         <button
           onClick={handleSubmit}
           disabled={rating === 0 || !comment.trim()}
-          className={`px-5 py-2 rounded-md text-[16px] font-semibold ${
+          className={`px-5 py-2 rounded-md cursor-pointer text-[16px] font-semibold ${
             rating === 0 || !comment.trim()
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-[#5F1BE7] text-white"

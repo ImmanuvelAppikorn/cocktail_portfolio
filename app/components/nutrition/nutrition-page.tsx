@@ -22,12 +22,12 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
           <Image
             src="/button-image/black-back.svg"
             alt="Back Icon"
-            height={28}
-            width={28}
+            height={26}
+            width={26}
           />
         </button>
-        <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
-          CRIMSON RESERVE
+        <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
+          CABERNET SAUVIGNON
         </h2>
       </div>
 

@@ -83,6 +83,7 @@ const ReviewPage = ({
     return <span>{text}</span>;
   }
 
+
   const avatarImages = [
     "/review-images/Ellipse2.svg",
     "/review-images/Ellipse3.svg",
@@ -154,7 +155,7 @@ const ReviewPage = ({
       <div className="px-4 space-y-2">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
+            <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)} className="cursor-pointer">
               <Image
                 src="/button-image/black-back.svg"
                 alt="Back Icon"
@@ -166,7 +167,7 @@ const ReviewPage = ({
           </div>
 
           <button
-            className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
+            className="cursor-pointer bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-[#EB235C] transition"
             onClick={() => setIsDetailsPopupOpen(true)}
           >
             <Image

@@ -80,7 +80,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className={`flex flex-col items-center flex-1 min-w-0  transform transition-all duration-500 ease-out
+                className={` cursor-pointer flex flex-col items-center flex-1 min-w-0  transform transition-all duration-500 ease-out
                   ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}
                 style={{ transitionDelay: isOpen ? `${index * 100}ms` : "0ms" }}
               >

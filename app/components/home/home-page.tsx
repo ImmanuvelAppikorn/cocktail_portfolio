@@ -149,7 +149,7 @@ export default function HomePage() {
         >
           <button
             onClick={() => setShowLanguagePopup(true)}
-            className="focus:outline-none group relative flex items-center justify-center rounded-full hover:bg-white p-2 "
+            className="focus:outline-none group relative flex items-center justify-center rounded-full hover:bg-white p-2 cursor-pointer"
             style={{
               width: "clamp(30px, 8vw, 38px)", // responsive size (min 28px, max 38px)
               height: "clamp(30px, 8vw, 38px)",
@@ -205,7 +205,7 @@ export default function HomePage() {
                 lineHeight: "80%",
               }}
             >
-              <div className="relative w-[90%] aspect-[2.7/1] mx-auto">
+              <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
                 <Image
                   alt="Vinea Logo"
                   src="/logo/logo.svg"
@@ -231,7 +231,7 @@ export default function HomePage() {
           >
             <button
               onClick={handleStartJourney}
-              className="relative overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
             >
               <span className="relative flex items-center">Explore More</span>
               <Image
@@ -267,11 +267,11 @@ export default function HomePage() {
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
-                      ? "28%"
+                      ? "125%"
                       : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
-            currentStep === "home"
+            currentStep === "home" || currentStep === "more_details"
               ? -11
               : currentStep === "crimson"
                 ? 0
@@ -288,7 +288,7 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "-20%"
                     : currentStep === "more_details"
-                      ? "38%"
+                      ? "-32%"
                       : "7%",
           left:
             currentStep === "home"
@@ -299,12 +299,14 @@ export default function HomePage() {
                   ? "74%"
                   : currentStep === "nutrition"
                     ? "75%"
-                    : "50%",
+                    : currentStep === "more_details"
+                    ? "62%"
+                    :"50%",
           opacity:
             currentStep === "review"
               ? 0
               : currentStep === "more_details"
-                ? 0.6
+                ? 0.4
                 : 1,
         }}
         transition={smoothTransition}
@@ -333,7 +335,7 @@ export default function HomePage() {
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
                   : currentStep === "more_details"
-                    ? "150%"
+                    ? 0
                     : "60%",
           aspectRatio: 1 / 1,
           left:
