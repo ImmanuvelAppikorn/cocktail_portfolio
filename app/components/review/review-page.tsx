@@ -186,31 +186,72 @@ const ReviewPage = ({
 
         {/* Edit Review Popup */}
         {isEditPopupOpen && editingReview && (
-          <ReviewPopupContent
-            onClose={() => setIsEditPopupOpen(false)}
-            onReviewSubmit={(rating, comment, name, avatar) => {
-              setReviews((prev) =>
-                prev.map((r) =>
-                  r.id === editingReview.id
-                    ? {
-                        ...r,
-                        rating,
-                        comment,
-                        user: name,
-                        avatar,
-                        time: new Date(),
-                      }
-                    : r
-                )
-              );
-              setIsEditPopupOpen(false);
-            }}
-            name={editingReview.user}
-            avatar={editingReview.avatar}
-            defaultRating={editingReview.rating} // ✅ prefill rating
-            defaultComment={editingReview.comment} // ✅ prefill comment
-            onOpen={() => console.log("Editing review")}
-          />
+          <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
+            <button
+              className="absolute inset-0 bg-transparent border-none cursor-pointer"
+              onClick={() => setIsEditPopupOpen(false)}
+              aria-label="Close dialog"
+            />
+            <div className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]">
+              {/* Close button */}
+              <div className="flex justify-end mb-2">
+                <button
+                  onClick={() => setIsEditPopupOpen(false)}
+                  className="p-1 hover:scale-110 transition"
+                >
+                  <Image
+                    src="/button-image/close.svg"
+                    alt="close"
+                    width={24}
+                    height={24}
+                  />
+                </button>
+              </div>
+
+              {/* Review Content */}
+              <ReviewPopupContent
+                onClose={() => setIsEditPopupOpen(false)}
+                onReviewSubmit={(rating, comment, name, avatar) => {
+                  setReviews((prev) =>
+                    prev.map((r) =>
+                      r.id === editingReview.id
+                        ? {
+                            ...r,
+                            rating,
+                            comment,
+                            user: name,
+                            avatar,
+                            time: new Date(),
+                          }
+                        : r
+                    )
+                  );
+                  setIsEditPopupOpen(false);
+                }}
+                name={editingReview.user}
+                avatar={editingReview.avatar}
+                defaultRating={editingReview.rating}
+                defaultComment={editingReview.comment}
+                onOpen={() => console.log("Editing review")}
+              />
+            </div>
+
+            <style>{`
+              .animate-slideUpBottom {
+                animation: slideUpBottom 0.3s ease-out forwards;
+              }
+              @keyframes slideUpBottom {
+                from {
+                  transform: translateY(100%);
+                  opacity: 0;
+                }
+                to {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
+              }
+            `}</style>
+          </div>
         )}
 
         {/* Reviews List */}
