@@ -1,3 +1,4 @@
+import { ConfirmationResult } from "firebase/auth";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -12,12 +13,19 @@ interface OtpVerifyProps {
   onClose: () => void;
   onSuccess?: (details: UserDetails) => void;
   userDetails?: UserDetails;
+  confirmationResult: ConfirmationResult | null; // ✅ Add this
 }
 
-const OtpVerify = ({ onClose, onSuccess, userDetails }: OtpVerifyProps) => {
-  const [otp, setOtp] = useState(["", "", "", ""]);
+const OtpVerify = ({
+  onClose,
+  onSuccess,
+  userDetails,
+  confirmationResult,
+}: OtpVerifyProps) => {
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   // ✅ Handle input change
   const handleChange = (index: number, value: string) => {
@@ -42,20 +50,46 @@ const OtpVerify = ({ onClose, onSuccess, userDetails }: OtpVerifyProps) => {
     }
   };
 
-  // ✅ Handle Submit
-  const handleSubmit = () => {
-    const allFilled = otp.every((digit) => digit !== "");
-    // if (!allFilled) return;
+  // Handle Submit
+  const handleSubmit = async () => {
+    const code = otp.join("");
+    if (code.length < 6) {
+      alert("Please enter the full 6-digit OTP");
+      return;
+    }
 
-    // Show video success animation
-    setIsSubmitted(true);
+    if (!confirmationResult) {
+      alert("No OTP request found. Please try again.");
+      return;
+    }
 
-    // ✅ After animation, call success handler from parent with user details
-    setTimeout(() => {
-      if (onSuccess) {
-        onSuccess(userDetails || { name: '', mobile: '', email: '', avatar: '' });
+    try {
+      setHasError(false); // reset error on new attempt
+
+      // Test OTP verification
+      if ((confirmationResult as any).testOtp) {
+        if (code === (confirmationResult as any).testOtp) {
+          console.log("✅ Test OTP verified!");
+          setIsSubmitted(true);
+          return;
+        } else {
+          setHasError(true); // ❌ set error if wrong
+          alert("Invalid OTP");
+          return;
+        }
       }
-    }, 1500);
+
+      // Real Firebase verification
+      const result = await (confirmationResult as ConfirmationResult).confirm(
+        code
+      );
+      console.log("✅ OTP verified. User:", result.user);
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error("❌ OTP verification failed:", error);
+      setHasError(true); // ❌ set error if wrong
+      alert("Invalid OTP. Please try again.");
+    }
   };
 
   // ✅ Success animation
@@ -65,8 +99,8 @@ const OtpVerify = ({ onClose, onSuccess, userDetails }: OtpVerifyProps) => {
         if (onSuccess && userDetails) {
           onSuccess(userDetails);
         }
-      }, 2000); // Wait for animation to complete (2 seconds)
-      
+      }, 1500); // Wait for animation to complete (2 seconds)
+
       return () => clearTimeout(timer);
     }
   }, [isSubmitted, onSuccess, userDetails]);
@@ -101,7 +135,7 @@ const OtpVerify = ({ onClose, onSuccess, userDetails }: OtpVerifyProps) => {
       <div className="flex flex-col space-y-10 h-full mb-0">
         <div className="text-center flex flex-col mt-6">
           <p className="text-[#5B5B5B] text-[26px] font-axiforma font-bold pb-4">
-            OTP Verification
+            {hasError ? "OTP Verification Failed" : "OTP Verification"}
           </p>
           <p className="text-[17.5px] leading-[26px] text-[#3A3A3A] font-axiforma font-bold">
             We will send you one-time password to your mobile number
@@ -116,11 +150,15 @@ const OtpVerify = ({ onClose, onSuccess, userDetails }: OtpVerifyProps) => {
                 type="text"
                 inputMode="numeric"
                 maxLength={1}
-               ref={(el) => { inputRefs.current[index] = el; }}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className="w-12 h-12 text-center border-b-2 border-[#2743FD] focus:border-[#18288f] focus:outline-none text-lg font-semibold"
+                className={`w-12 h-12 text-center border-b-2 ${
+                  hasError ? "border-red-500" : "border-[#2743FD]"
+                } focus:outline-none focus:border-[#18288f] text-lg font-semibold`}
               />
             ))}
           </div>

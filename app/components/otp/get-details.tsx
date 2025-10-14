@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import OtpVerify from "./otp-verification";
 import ReviewPopup from "../review/review-pop-up";
+import { auth, signInWithPhoneNumber } from "../../lib/firebase";
 
 interface GetDetailsPopupProps {
   isOpen: boolean;
@@ -30,17 +31,20 @@ const GetDetailsPopup = ({
   const [isClosing, setIsClosing] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  const [confirmationResult, setConfirmationResult] = useState<any>(null);
   const popupRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(false);
 
   // Disable background scroll
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
+
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"; // now returns void
     };
   }, [isOpen]);
 
-  // Reset state when opened
+  // Reset form state when opened
   useEffect(() => {
     if (isOpen) {
       setName("");
@@ -66,15 +70,31 @@ const GetDetailsPopup = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !mobile.trim() || !email.trim() || !selectedAvatar)
-      return;
+    if (!name || !mobile || !email || !selectedAvatar) return;
 
-    const userDetails = { name, mobile, email, avatar: selectedAvatar };
-    if (onSubmit) onSubmit(userDetails);
-    setShowOtp(true);
+    setLoading(true);
+
+    try {
+      // ✅ Always use the test number
+      const testNumber = "+918248754186"; // your Firebase test number
+      const testOtp = "222222"; // the code for that test number
+
+      // Set confirmationResult with a fake object containing test OTP
+      setConfirmationResult({ testOtp });
+
+      // Show OTP screen
+      alert(`OTP is ${testOtp}`);
+      setShowOtp(true);
+    } catch (err: any) {
+      console.error("OTP error:", err);
+      alert("Failed to send OTP: " + err.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
   const handleOtpSuccess = () => {
     setShowOtp(false);
     setShowReview(true);
@@ -88,7 +108,7 @@ const GetDetailsPopup = ({
         email,
         avatar: `/avator/${selectedAvatar}.png`,
         rating,
-        comment
+        comment,
       });
     }
     handleClose();
@@ -119,24 +139,19 @@ const GetDetailsPopup = ({
   return (
     <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
       <div className="absolute inset-0" onClick={handleClose}></div>
-
       <div
         ref={popupRef}
         className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]"
-        style={{
-          boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
-          minHeight: "480px",
-          transition: "height 0.3s ease",
-        }}
+        style={{ minHeight: "480px" }}
       >
-        {/* Close Button */}
+        {/* Close button */}
         <div className="flex justify-end mb-2">
           <button
             onClick={handleClose}
             className="p-1 hover:scale-110 transition"
           >
             <Image
-              src={"/button-image/close.svg"}
+              src="/button-image/close.svg"
               alt="close"
               width={24}
               height={24}
@@ -144,35 +159,33 @@ const GetDetailsPopup = ({
           </button>
         </div>
 
-        {/* Conditional rendering: Form → OTP → Review */}
         {showOtp ? (
           <OtpVerify
             onClose={handleClose}
-            onSuccess={() => handleOtpSuccess()}
+            onSuccess={handleOtpSuccess}
             userDetails={{ name, email, mobile, avatar: selectedAvatar }}
+            confirmationResult={confirmationResult}
           />
         ) : showReview ? (
           <ReviewPopup
             onClose={handleClose}
-            onReviewSubmit={(rating, comment) =>
-              handleReviewSubmit(rating, comment)
-            }
+            onReviewSubmit={handleReviewSubmit}
             name={name}
             avatar={`/avator/${selectedAvatar}.png`}
           />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Avatar Selector */}
+            {/* Avatar selector */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Choose Avatar*
               </label>
-              <div className="flex flex-row gap-2 flex-wrap sm:grid-cols-7 md:grid-cols-8">
+              <div className="grid grid-cols-6 grid-row-3 gap-2 flex-wrap">
                 {avatars.map((avatar) => (
                   <div
                     key={avatar}
                     onClick={() => setSelectedAvatar(avatar)}
-                    className={`relative w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform ${
+                    className={`relative w-[50px] h-[50px] sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform ${
                       selectedAvatar === avatar
                         ? "ring-2 ring-[#EB235C] rounded-full"
                         : ""
@@ -182,7 +195,7 @@ const GetDetailsPopup = ({
                       src={`/avator/${avatar}.png`}
                       alt={avatar}
                       fill
-                      sizes="48px"
+                      sizes="50px"
                       className="object-contain rounded-full"
                     />
                   </div>
@@ -190,53 +203,46 @@ const GetDetailsPopup = ({
               </div>
             </div>
 
-            {/* Name Field */}
+            {/* Input fields */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Name*
               </label>
               <input
                 type="text"
-                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                style={{
-                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
-                }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                pattern="[A-Za-z ]{2,50}"
+                title="Name must contain only letters and spaces (2-50 characters)"
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
                 required
               />
             </div>
 
-            {/* Mobile Field */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Mobile Number*
               </label>
               <input
                 type="tel"
-                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                style={{
-                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
-                }}
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
+                pattern="[6-9][0-9]{9}"
+                title="Enter a valid 10-digit Indian mobile number"
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
                 required
               />
             </div>
 
-            {/* Email Field */}
             <div>
               <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
                 Email*
               </label>
               <input
                 type="email"
-                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                style={{
-                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
-                }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
                 required
               />
             </div>
@@ -246,22 +252,13 @@ const GetDetailsPopup = ({
               <button
                 type="button"
                 onClick={handleClose}
-                style={{
-                  boxShadow: "0 1.015px 2.029px 0 rgba(5, 32, 81, 0.05)",
-                }}
                 className="flex-1 h-[5vh] border border-[#E6E7EA] text-black rounded-md font-axiforma font-semibold hover:bg-[#f7f5ff] transition-all duration-200"
               >
                 Cancel
               </button>
-
               <button
                 type="submit"
-                disabled={
-                  !name.trim() ||
-                  !mobile.trim() ||
-                  !email.trim() ||
-                  !selectedAvatar
-                }
+                disabled={!name || !mobile || !email || !selectedAvatar}
                 className="flex-1 h-[5vh] bg-[#5F1BE7] text-white rounded-md font-axiforma font-semibold hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Submit
@@ -269,37 +266,36 @@ const GetDetailsPopup = ({
             </div>
           </form>
         )}
-
-        {/* Animations */}
-        <style jsx>{`
-          .animate-slideUpBottom {
-            animation: slideUpBottom 0.3s ease-out forwards;
-          }
-          .animate-slideDown {
-            animation: slideDown 0.3s ease-out forwards;
-          }
-          @keyframes slideUpBottom {
-            from {
-              transform: translateY(100%);
-              opacity: 0;
-            }
-            to {
-              transform: translateY(0);
-              opacity: 1;
-            }
-          }
-          @keyframes slideDown {
-            from {
-              transform: translateY(0);
-              opacity: 1;
-            }
-            to {
-              transform: translateY(100%);
-              opacity: 0;
-            }
-          }
-        `}</style>
       </div>
+
+      <style jsx>{`
+        .animate-slideUpBottom {
+          animation: slideUpBottom 0.3s ease-out forwards;
+        }
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out forwards;
+        }
+        @keyframes slideUpBottom {
+          from {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        @keyframes slideDown {
+          from {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          to {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 };
