@@ -6,14 +6,14 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBgWA_TA9URGxfbu5oXvYuhsgY4I7aCsOU",
-  authDomain: "vinea-connect-ff2fe.firebaseapp.com",
-  projectId: "vinea-connect-ff2fe",
-  storageBucket: "vinea-connect-ff2fe.firebasestorage.app",
-  messagingSenderId: "624356973331",
-  appId: "1:624356973331:web:dd2027a87ed56129eb58e6",
+  apiKey: "AIzaSyC0-f75VaCPlGOkSsA3PpSh0kCZANm6Dvo",
+  authDomain: "vinea-connect.firebaseapp.com",
+  projectId: "vinea-connect",
+  storageBucket: "vinea-connect.firebasestorage.app",
+  messagingSenderId: "405945940329",
+  appId: "1:405945940329:web:dfac20b74bc554c4b0a5f8",
+  measurementId: "G-ZMW68SYTVB"
 };
-
 // Ensure Firebase is initialized only once
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 

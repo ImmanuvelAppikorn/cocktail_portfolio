@@ -227,7 +227,7 @@ const GetDetailsPopup = ({
                 type="tel"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-                pattern="[6-9][0-9]{9}"
+                pattern="[1-9][0-9]{9}"
                 title="Enter a valid 10-digit Indian mobile number"
                 className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
                 required
