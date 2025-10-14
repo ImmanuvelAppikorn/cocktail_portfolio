@@ -21,7 +21,7 @@ const ReviewPage = ({
     setTimeout(() => callback(), 150);
   };
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopupOpen, _setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     onNavigationVisibilityChange?.(!isPopupOpen);
@@ -90,52 +90,63 @@ const ReviewPage = ({
     "/review-images/Ellipse5.svg",
   ];
 
-  const getRandomAvatar = () => {
+  const _getRandomAvatar = () => {
     const randomIndex = Math.floor(Math.random() * avatarImages.length);
     return avatarImages[randomIndex];
   };
 
-const addReview = (rating: number, comment: string, name: string, avatar: string) => {
-  const now = new Date();
-  const newReview = {
-    id: now.getTime(),
-    user: name,
-    rating,
-    time: now,
-    comment,
-    avatar: avatar,
+  const addReview = (
+    rating: number,
+    comment: string,
+    name: string,
+    avatar: string,
+  ) => {
+    const now = new Date();
+    const newReview = {
+      id: now.getTime(),
+      user: name,
+      rating,
+      time: now,
+      comment,
+      avatar: avatar,
+    };
+    setReviews((prevReviews) => [newReview, ...prevReviews]);
   };
-  setReviews((prevReviews) => [newReview, ...prevReviews]);
-};
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
 
-useEffect(() => {
-  // Hide nav if the details popup is open
-  const shouldHideNav = isDetailsPopupOpen;
-  onNavigationVisibilityChange?.(!shouldHideNav);
+  useEffect(() => {
+    // Hide nav if the details popup is open
+    const shouldHideNav = isDetailsPopupOpen;
+    onNavigationVisibilityChange?.(!shouldHideNav);
 
-  // Ensure nav is visible when component unmounts
-  return () => onNavigationVisibilityChange?.(true);
-}, [isDetailsPopupOpen, onNavigationVisibilityChange]);
+    // Ensure nav is visible when component unmounts
+    return () => onNavigationVisibilityChange?.(true);
+  }, [isDetailsPopupOpen, onNavigationVisibilityChange]);
 
-useEffect(() => {
-  if (isDetailsPopupOpen) {
-    // Prevent background scrolling when the popup is open
-    document.body.style.overflow = "hidden";
-  } else {
-    // Restore scrolling when popup closes
-    document.body.style.overflow = "auto";
-  }
-}, [isDetailsPopupOpen]);
+  useEffect(() => {
+    if (isDetailsPopupOpen) {
+      // Prevent background scrolling when the popup is open
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scrolling when popup closes
+      document.body.style.overflow = "auto";
+    }
+  }, [isDetailsPopupOpen]);
 
-
-  const handleDetailsSubmit = (details: { name: string; mobile: string; email: string }) => {
+  const _handleDetailsSubmit = (details: {
+    name: string;
+    mobile: string;
+    email: string;
+  }) => {
     console.log("✅ Details received:", details);
     // You can save or send this info as needed (e.g., to backend or state)
   };
 
-  const [userDetails, setUserDetails] = useState<{name: string; avatar: string} | null>(null);
+  const [_userDetails, _setUserDetails] = useState<{
+    name: string;
+    avatar: string;
+  } | null>(null);
 
   return (
     <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col justify-between overflow-y-auto">
@@ -180,18 +191,18 @@ useEffect(() => {
           isOpen={isDetailsPopupOpen}
           onClose={() => setIsDetailsPopupOpen(false)}
           onSubmit={(details) => {
-            setUserDetails({
+            _setUserDetails({
               name: details.name,
-              avatar: details.avatar
+              avatar: details.avatar,
             });
-            
+
             // If we have rating and comment, add the review
             if (details.rating && details.comment) {
               addReview(
                 details.rating,
                 details.comment,
                 details.name,
-                details.avatar
+                details.avatar,
               );
             }
           }}
@@ -291,7 +302,8 @@ useEffect(() => {
                         // Fallback to a default avatar if the image fails to load
                         const target = e.target as HTMLImageElement;
                         target.onerror = null;
-                        target.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=default';
+                        target.src =
+                          "https://api.dicebear.com/7.x/bottts/svg?seed=default";
                       }}
                     />
                   </div>

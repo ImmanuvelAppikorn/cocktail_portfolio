@@ -4,13 +4,24 @@ import React, { useState, useEffect } from "react";
 
 interface ReviewPopupProps {
   onClose: () => void;
-  onReviewSubmit: (rating: number, comment: string, name: string, avatar: string) => void;
+  onReviewSubmit: (
+    rating: number,
+    comment: string,
+    name: string,
+    avatar: string,
+  ) => void;
   name: string;
   avatar: string;
   onOpen?: () => void; // optional
 }
 
-const ReviewPopupContent = ({ onClose, onReviewSubmit, name, avatar, onOpen }: ReviewPopupProps) => {
+const ReviewPopupContent = ({
+  onClose,
+  onReviewSubmit,
+  name,
+  avatar,
+  onOpen,
+}: ReviewPopupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -55,14 +66,20 @@ const ReviewPopupContent = ({ onClose, onReviewSubmit, name, avatar, onOpen }: R
       <h2 className="text-lg font-semibold text-[19px] text-center">
         How would you rate your experience with our wine?
       </h2>
-      <p className="text-sm text-center text-[#354259] mt-1">Did you enjoy it?</p>
+      <p className="text-sm text-center text-[#354259] mt-1">
+        Did you enjoy it?
+      </p>
 
       {/* Stars */}
       <div className="flex justify-around gap-2 mt-3">
         {[1, 2, 3, 4, 5].map((star) => (
           <button key={star} onClick={() => setRating(star)}>
             <img
-              src={star <= rating ? "/start-rating-icons/Full-Star.svg" : "/start-rating-icons/Empty-Star.svg"}
+              src={
+                star <= rating
+                  ? "/start-rating-icons/Full-Star.svg"
+                  : "/start-rating-icons/Empty-Star.svg"
+              }
               alt={`${star} Star`}
               width={32}
               height={32}
@@ -72,10 +89,14 @@ const ReviewPopupContent = ({ onClose, onReviewSubmit, name, avatar, onOpen }: R
       </div>
 
       {/* Comment */}
-      <label className="block text-[14px] font-semibold text-[#354259] mt-4">
+      <label
+        htmlFor="comment-textarea"
+        className="block text-[14px] font-semibold text-[#354259] mt-4"
+      >
         We’d love to hear your thoughts:
       </label>
       <textarea
+        id="comment-textarea"
         className="w-full mt-2 h-[150px] border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-600 text-[#81858B] text-[16px]"
         placeholder="Share what you liked or any suggestions!"
         value={comment}

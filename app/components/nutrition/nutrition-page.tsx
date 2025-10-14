@@ -14,21 +14,22 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
     <div className="pt-2 px-4 space-y-4 mt-[5px] h-auto">
       {/* Header with back button */}
 
-
-
-        <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-                <button onClick={() => onPrevClick && onPrevClick()} className="flex-shrink-0">
-                  <Image
-                    src="/button-image/black-back.svg"
-                    alt="Back Icon"
-                    height={28}
-                    width={28}
-                  />
-                </button>
-                <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
-                  CRIMSON RESERVE
-                </h2>
-              </div>
+      <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
+        <button
+          onClick={() => onPrevClick && onPrevClick()}
+          className="flex-shrink-0"
+        >
+          <Image
+            src="/button-image/black-back.svg"
+            alt="Back Icon"
+            height={28}
+            width={28}
+          />
+        </button>
+        <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
+          CRIMSON RESERVE
+        </h2>
+      </div>
 
       {/* Section Renderer */}
       <div className="w-full h-[45vh] overflow-y-auto pt-2">

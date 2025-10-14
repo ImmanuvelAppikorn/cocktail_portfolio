@@ -4,8 +4,6 @@ import clsx from "clsx";
 import { useEffect } from "react";
 import { fontSans } from "@/config/fonts";
 
-
-
 export default function RootLayout({
   children,
 }: {

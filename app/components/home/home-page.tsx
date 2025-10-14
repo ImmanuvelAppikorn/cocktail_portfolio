@@ -16,15 +16,15 @@ import { useRouter } from "next/navigation";
 import MoreDetails from "../about/more_details";
 
 // -------------------- COLORS --------------------
-const colors = {
+type ColorKey = "primary" | "secondary" | "tertiary" | "gold" | "darkred";
+
+const colors: Record<ColorKey, string> = {
   primary: "#EB235C",
   secondary: "#55EE81",
   tertiary: "#6148E6",
   gold: "#FFB860",
   darkred: "#EF3F48",
 } as const;
-
-type ColorKey = keyof typeof colors;
 
 // -------------------- BOTTLES --------------------
 const bottles: Record<
@@ -60,7 +60,7 @@ const bottles: Record<
 
 // -------------------- MAIN COMPONENT --------------------
 export default function HomePage() {
-  const router = useRouter();
+  const _router = useRouter();
   const params = useParams();
   const qrParam = Array.isArray(params.qrCode)
     ? params.qrCode[0]
@@ -267,8 +267,8 @@ export default function HomePage() {
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
-                    ? "28%"
-                    : "10%",
+                      ? "28%"
+                      : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
             currentStep === "home"
@@ -285,22 +285,27 @@ export default function HomePage() {
                 ? "44%"
                 : currentStep === "about"
                   ? "-15%"
-                  :currentStep === "nutrition"
-                  ? "-20%"
-                   : currentStep === "more_details"
-                    ? "38%"
-                  : "7%",
+                  : currentStep === "nutrition"
+                    ? "-20%"
+                    : currentStep === "more_details"
+                      ? "38%"
+                      : "7%",
           left:
             currentStep === "home"
               ? "50%"
               : currentStep === "crimson"
                 ? "50%"
-                : currentStep === "about" 
+                : currentStep === "about"
                   ? "74%"
-                  :currentStep === "nutrition"
-                  ? "75%"
-                  : "50%",
-          opacity: currentStep === "review" ? 0 :currentStep === "more_details" ? 0.6 :1,
+                  : currentStep === "nutrition"
+                    ? "75%"
+                    : "50%",
+          opacity:
+            currentStep === "review"
+              ? 0
+              : currentStep === "more_details"
+                ? 0.6
+                : 1,
         }}
         transition={smoothTransition}
       >
@@ -327,9 +332,9 @@ export default function HomePage() {
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
-                 : currentStep === "more_details" 
-                  ? "150%"
-                  : "60%",
+                  : currentStep === "more_details"
+                    ? "150%"
+                    : "60%",
           aspectRatio: 1 / 1,
           left:
             currentStep === "home"
@@ -347,8 +352,8 @@ export default function HomePage() {
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
                   : currentStep === "more_details"
-                  ? "-25%"
-                  : "-38%",
+                    ? "-25%"
+                    : "-38%",
           rotate:
             currentStep === "home"
               ? 5
@@ -357,7 +362,12 @@ export default function HomePage() {
                 : currentStep === "about" || currentStep === "nutrition"
                   ? 0
                   : 0,
- opacity: currentStep === "review" ? 0 :currentStep === "more_details" ? 0.6 :1,
+          opacity:
+            currentStep === "review"
+              ? 0
+              : currentStep === "more_details"
+                ? 0.6
+                : 1,
         }}
         transition={smoothTransition}
       >
@@ -392,11 +402,11 @@ export default function HomePage() {
                 onPrevClick={handleAboutPrev}
               />
             )}
-           {currentStep === "more_details" && (
-  <MoreDetails
-    onPrevClick={handleAboutPrev} // <-- this goes back to AboutPage
-  />
-)}
+            {currentStep === "more_details" && (
+              <MoreDetails
+                onPrevClick={handleAboutPrev} // <-- this goes back to AboutPage
+              />
+            )}
             {currentStep === "nutrition" && (
               <NutritionPage onPrevClick={handleNutritionPrev} />
             )}

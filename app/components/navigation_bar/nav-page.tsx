@@ -8,12 +8,12 @@ import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery",
   ) => void;
 }
 
 const NavigationBar: React.FC<NavigationBarProps> = ({
-  activeStep,
+  activeStep: _activeStep,
   onStepChange,
 }) => {
   const navItems = [
@@ -46,27 +46,26 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     <div className="nav-container fixed bottom-2 left-1/2 -translate-x-1/2 w-full max-w-[500px] px-2 z-50">
       <div className="relative">
         {/* Trigger Button */}
-     <div
-  role="button"
-  tabIndex={0}
-  onClick={() => setIsOpen(!isOpen)}
-  onKeyDown={(e) => {
-    if (e.key === "Enter" || e.key === " ") setIsOpen(!isOpen);
-  }}
-  className="h-[50px] w-[50px] bg-white border border-white rounded-full flex items-center shadow-custom-double justify-center cursor-pointer relative z-20 bottom-[6px] left-[6px]"
-  style={{
-    boxShadow:
-      "0 4px 4px 0 rgba(0, 0, 0, 0.25), 4px 0 4px 0 rgba(0, 0, 0, 0.25)",
-  }}
->
-  <Image
-    src="/navigation-bar/new/trigger_button.svg"
-    alt="menu"
-    width={50}
-    height={50}
-  />
-</div>
-
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => setIsOpen(!isOpen)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") setIsOpen(!isOpen);
+          }}
+          className="h-[50px] w-[50px] bg-white border border-white rounded-full flex items-center shadow-custom-double justify-center cursor-pointer relative z-20 bottom-[6px] left-[6px]"
+          style={{
+            boxShadow:
+              "0 4px 4px 0 rgba(0, 0, 0, 0.25), 4px 0 4px 0 rgba(0, 0, 0, 0.25)",
+          }}
+        >
+          <Image
+            src="/navigation-bar/new/trigger_button.svg"
+            alt="menu"
+            width={50}
+            height={50}
+          />
+        </div>
 
         {/* Expanding White Capsule */}
         <div

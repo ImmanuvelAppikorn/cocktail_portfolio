@@ -46,19 +46,19 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   return (
     <div className="relative w-full h-screen bg-white overflow-hidden px-4">
       {/* Fixed Gallery Header */}
-            <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-              <button onClick={onPrevClick} className="flex-shrink-0">
-                <Image
-                  src="/button-image/black-back.svg"
-                  alt="Back Icon"
-                  height={28}
-                  width={28}
-                />
-              </button>
-              <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
-                GALLERY
-              </h2>
-            </div>
+      <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
+        <button onClick={onPrevClick} className="flex-shrink-0">
+          <Image
+            src="/button-image/black-back.svg"
+            alt="Back Icon"
+            height={28}
+            width={28}
+          />
+        </button>
+        <h2 className="flex-1 text-center text-[#EB235C] text-[24px] font-bold leading-tight font-montagu">
+          GALLERY
+        </h2>
+      </div>
 
       {/* Scrollable Gallery Section */}
       <div
@@ -68,7 +68,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
           msOverflowStyle: "none",
         }}
       >
-        <style jsx>{`
+        <style>{`
           div::-webkit-scrollbar {
             display: none;
           }

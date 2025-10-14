@@ -45,7 +45,7 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
         {languageItems.map((item, i) => {
           const isSelected = selectedLang === item.text;
           return (
-            <div
+            <button
               key={i}
               onClick={() => setSelectedLang(item.text)}
               className={`flex flex-col items-center justify-center cursor-pointer rounded-2xl p-3 border-2 transition-all duration-300 
@@ -71,7 +71,7 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
               >
                 {item.text}
               </p>
-            </div>
+            </button>
           );
         })}
       </div>

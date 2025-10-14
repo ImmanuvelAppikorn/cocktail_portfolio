@@ -12,7 +12,7 @@ const firebaseConfig = {
   storageBucket: "vinea-connect.firebasestorage.app",
   messagingSenderId: "405945940329",
   appId: "1:405945940329:web:dfac20b74bc554c4b0a5f8",
-  measurementId: "G-ZMW68SYTVB"
+  measurementId: "G-ZMW68SYTVB",
 };
 // Ensure Firebase is initialized only once
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();

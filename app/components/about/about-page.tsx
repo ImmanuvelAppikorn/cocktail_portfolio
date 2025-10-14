@@ -62,21 +62,21 @@ export default function AboutPage({
 
         {/* Paragraph */}
         <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-3 pt-2">
-          "Sourced from the mineral-rich soil along the Bhadra River Belt, our
+          &ldquo;Sourced from the mineral-rich soil along the Bhadra River Belt, our
           house espresso is a single-origin specialty Robusta coffee from India,
           considered among the finest in the world. This Robusta is graded as
-          'Kaapi Royale,' the highest grade of Indian Robusta. When presented in
+          &lsquo;Kaapi Royale,&rsquo; the highest grade of Indian Robusta. When presented in
           a milk-based drink, it features notes of hazelnut and dark chocolate,
-          with an extra caffeine hit unique to Robusta."
-        
-        <span>
-          <button
-            onClick={handleScrollToTopAndNavigate}
-            className="font-axiforma relative overflow-hidden hover:text-[#EB235C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
-          >
-            View More....
-          </button>
-        </span></p>
+          with an extra caffeine hit unique to Robusta.&rdquo;
+          <span>
+            <button
+              onClick={handleScrollToTopAndNavigate}
+              className="font-axiforma relative overflow-hidden hover:text-[#EB235C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
+            >
+              View More....
+            </button>
+          </span>
+        </p>
       </motion.div>
     </div>
   );

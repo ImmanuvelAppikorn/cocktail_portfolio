@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import OtpVerify from "./otp-verification";
 import ReviewPopup from "../review/review-pop-up";
-import { auth, signInWithPhoneNumber } from "../../lib/firebase";
+// import { auth, signInWithPhoneNumber } from "../../lib/firebase";
 
 interface GetDetailsPopupProps {
   isOpen: boolean;
@@ -33,7 +33,7 @@ const GetDetailsPopup = ({
   const [showReview, setShowReview] = useState(false);
   const [confirmationResult, setConfirmationResult] = useState<any>(null);
   const popupRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(false);
+  const [_loading, _setLoading] = useState(false);
 
   // Disable background scroll
   useEffect(() => {
@@ -74,11 +74,11 @@ const GetDetailsPopup = ({
     e.preventDefault();
     if (!name || !mobile || !email || !selectedAvatar) return;
 
-    setLoading(true);
+    _setLoading(true);
 
     try {
       // ✅ Always use the test number
-      const testNumber = "+918248754186"; // your Firebase test number
+      const _testNumber = "+918248754186"; // your Firebase test number
       const testOtp = "222222"; // the code for that test number
 
       // Set confirmationResult with a fake object containing test OTP
@@ -91,7 +91,7 @@ const GetDetailsPopup = ({
       console.error("OTP error:", err);
       alert("Failed to send OTP: " + err.message);
     } finally {
-      setLoading(false);
+      _setLoading(false);
     }
   };
 
@@ -138,7 +138,11 @@ const GetDetailsPopup = ({
 
   return (
     <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
-      <div className="absolute inset-0" onClick={handleClose}></div>
+      <button
+        className="absolute inset-0 bg-transparent border-none cursor-pointer"
+        onClick={handleClose}
+        aria-label="Close dialog"
+      />
       <div
         ref={popupRef}
         className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]"
@@ -177,14 +181,31 @@ const GetDetailsPopup = ({
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Avatar selector */}
             <div>
-              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+              <label
+                htmlFor="avatar-selector"
+                className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+              >
                 Choose Avatar*
               </label>
-              <div className="grid grid-cols-6 grid-row-3 gap-2 flex-wrap">
+              <div
+                id="avatar-selector"
+                role="radiogroup"
+                aria-labelledby="avatar-selector"
+                className="grid grid-cols-6 grid-row-3 gap-2 flex-wrap"
+              >
                 {avatars.map((avatar) => (
                   <div
                     key={avatar}
+                    role="radio"
+                    tabIndex={0}
+                    aria-checked={selectedAvatar === avatar}
                     onClick={() => setSelectedAvatar(avatar)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedAvatar(avatar);
+                      }
+                    }}
                     className={`relative w-[50px] h-[50px] sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform ${
                       selectedAvatar === avatar
                         ? "ring-2 ring-[#EB235C] rounded-full"
@@ -205,10 +226,14 @@ const GetDetailsPopup = ({
 
             {/* Input fields */}
             <div>
-              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+              <label
+                htmlFor="name-input"
+                className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+              >
                 Name*
               </label>
               <input
+                id="name-input"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -220,10 +245,14 @@ const GetDetailsPopup = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+              <label
+                htmlFor="mobile-input"
+                className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+              >
                 Mobile Number*
               </label>
               <input
+                id="mobile-input"
                 type="tel"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
@@ -235,10 +264,14 @@ const GetDetailsPopup = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#354259] mb-1 font-axiforma">
+              <label
+                htmlFor="email-input"
+                className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+              >
                 Email*
               </label>
               <input
+                id="email-input"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -268,7 +301,7 @@ const GetDetailsPopup = ({
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .animate-slideUpBottom {
           animation: slideUpBottom 0.3s ease-out forwards;
         }

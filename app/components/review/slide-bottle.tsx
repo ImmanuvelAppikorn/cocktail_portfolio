@@ -138,7 +138,12 @@ export default function BottleCarousel() {
               className="w-[25%] object-contain drop-shadow-xl z-10 absolute -top-8 left-1/2 -translate-x-1/2"
               style={{ aspectRatio: "2/ 3" }}
               custom={direction}
-              exit={{ opacity: 0, x: direction > 0 ? 120 : -120, y: direction > 0 ? 30 : 30 ,scale: 0.8 }}
+              exit={{
+                opacity: 0,
+                x: direction > 0 ? 120 : -120,
+                y: direction > 0 ? 30 : 30,
+                scale: 0.8,
+              }}
               initial={{
                 opacity: 0,
                 x: direction > 0 ? -120 : 120,
@@ -148,29 +153,26 @@ export default function BottleCarousel() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             />
           </AnimatePresence>
-        <div className="relative top-2 w-full h-[400px] left-1/2 transform -translate-x-1/2 flex items-center justify-center overflow-visible max-w-[500px]">
-          {/* Outer Circle (border) */}
-          <motion.div
-            animate={{
-              borderColor: activeBottle.color,
-              scale: [0.95],
-            }}
-            className="absolute top-[-2%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            style={{ aspectRatio: "1.5/ 3" }}
-          >
-            {/* Inner Circle (filled) */}
+          <div className="relative top-2 w-full h-[400px] left-1/2 transform -translate-x-1/2 flex items-center justify-center overflow-visible max-w-[500px]">
+            {/* Outer Circle (border) */}
             <motion.div
-              animate={{ backgroundColor: activeBottle.color }}
-              className="w-full h-full  rounded-full"
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </motion.div>
-
-          
+              animate={{
+                borderColor: activeBottle.color,
+                scale: [0.95],
+              }}
+              className="absolute top-[-2%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              style={{ aspectRatio: "1.5/ 3" }}
+            >
+              {/* Inner Circle (filled) */}
+              <motion.div
+                animate={{ backgroundColor: activeBottle.color }}
+                className="w-full h-full  rounded-full"
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </div>
         </div>
-        </div>
-
       </div>
     </div>
   );

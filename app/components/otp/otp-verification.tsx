@@ -17,7 +17,7 @@ interface OtpVerifyProps {
 }
 
 const OtpVerify = ({
-  onClose,
+  onClose: _onClose,
   onSuccess,
   userDetails,
   confirmationResult,
@@ -43,7 +43,7 @@ const OtpVerify = ({
   // ✅ Handle backspace navigation
   const handleKeyDown = (
     index: number,
-    e: React.KeyboardEvent<HTMLInputElement>
+    e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
@@ -81,7 +81,7 @@ const OtpVerify = ({
 
       // Real Firebase verification
       const result = await (confirmationResult as ConfirmationResult).confirm(
-        code
+        code,
       );
       console.log("✅ OTP verified. User:", result.user);
       setIsSubmitted(true);
