@@ -143,7 +143,7 @@ const OtpVerify = ({
         </div>
 
         <div className="flex flex-col gap-8">
-          <div className="flex justify-center gap-3 mb-4">
+          <div className="flex justify-center gap-2 mb-4">
             {otp.map((digit, index) => (
               <input
                 key={index}
@@ -156,7 +156,7 @@ const OtpVerify = ({
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className={`w-12 h-12 text-center border-b-2 ${
+                className={`w-9 h-12 text-center border-b-2 ${
                   hasError ? "border-red-500" : "border-[#2743FD]"
                 } focus:outline-none focus:border-[#18288f] text-lg font-semibold`}
               />

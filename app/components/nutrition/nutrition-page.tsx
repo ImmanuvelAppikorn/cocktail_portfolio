@@ -32,7 +32,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
       </div>
 
       {/* Section Renderer */}
-      <div className="w-full h-[45vh] overflow-y-auto pt-2">
+      <div className="w-full h-[65vh] overflow-y-auto pt-2">
         {[
           {
             title: "Nutritional Declaration",
@@ -124,8 +124,13 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 ))}
               </div>
             )}
+        
           </div>
+          
         ))}
+            <div className="w-full h-[20vh]">
+              {/* empty space */}
+            </div>
       </div>
     </div>
   );

@@ -10,10 +10,6 @@ const config = {
   ],
 
   theme: {
-    screens: {
-      "2xs": "300px",
-      xs: "375px",
-    },
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)"],
@@ -34,10 +30,15 @@ const config = {
         "custom-double":
           "0 4px 4px 0 rgba(0,0,0,0.25), 4px 0 4px 0 rgba(0,0,0,0.25)",
       },
+      screens: {
+        "2xs": "300px",
+        xs: "375px",
+      },
     },
   },
+
   darkMode: "class",
   plugins: [heroui()],
 };
 
-module.exports = config;
+export default config;
