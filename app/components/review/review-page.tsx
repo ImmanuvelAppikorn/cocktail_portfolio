@@ -21,12 +21,12 @@ const ReviewPage = ({
     setTimeout(() => callback(), 150);
   };
 
-  const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (!(event.target as HTMLElement).closest(".dropdown-menu")) {
         setOpenMenuId(null);
       }
     };
@@ -36,7 +36,7 @@ const ReviewPage = ({
 
   const [reviews, setReviews] = useState<
     Array<{
-      id: number;
+      id: string;
       user: string;
       rating: number;
       time: Date;
@@ -45,19 +45,52 @@ const ReviewPage = ({
     }>
   >([
     {
-      id: 1,
+      id: "1",
+      user: "Rim Sik Kram",
+      rating: 5,
+      time: new Date(),
+      comment: "This wine has a perfect balance of flavor and aroma!",
+      avatar: "/review-images/Ellipse2.svg",
+    },
+    {
+      id: "2",
       user: "John Doe",
       rating: 5,
       time: new Date(),
       comment: "This wine has a perfect balance of flavor and aroma!",
       avatar: "/review-images/Ellipse2.svg",
     },
+    {
+      id: "3",
+      user: "Jane Smith",
+      rating: 4,
+      time: new Date(),
+      comment: "Nice wine, smooth finish!",
+      avatar: "/review-images/Ellipse2.svg",
+    },
+    {
+      id: "4",
+      user: "Alice Johnson",
+      rating: 5,
+      time: new Date(),
+      comment: "Highly recommend this one for special occasions.",
+      avatar: "/review-images/Ellipse2.svg",
+    },
+    {
+      id: "5",
+      user: "Bob Williams",
+      rating: 5,
+      time: new Date(),
+      comment: "Excellent quality and taste!",
+      avatar: "/review-images/Ellipse2.svg",
+    },
   ]);
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+  const [activeReactionId, setActiveReactionId] = useState<string | null>(null);
   const [editingReview, setEditingReview] = useState<{
-    id: number;
+    id: string;
     user: string;
     rating: number;
     comment: string;
@@ -113,8 +146,9 @@ const ReviewPage = ({
     avatar: string
   ) => {
     const now = new Date();
+    const uniqueId = `${now.getTime()}_${Math.floor(Math.random() * 10000)}`;
     const newReview = {
-      id: now.getTime(),
+      id: uniqueId,
       user: name,
       rating,
       time: now,
@@ -124,114 +158,160 @@ const ReviewPage = ({
     setReviews((prev) => [newReview, ...prev]);
   };
 
-  const deleteReview = (id: number) => {
+  const wrapperRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setActiveReactionId(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const deleteReview = (id: string) => {
     if (confirm("Are you sure you want to delete this review?")) {
       setReviews((prev) => prev.filter((r) => r.id !== id));
       setOpenMenuId(null);
     }
   };
 
+  const [selectedEmojiById, setSelectedEmojiById] = useState<
+    Record<string, string>
+  >({});
+  const handleEmojiSelect = (reviewId: string, emojiSrc: string) => {
+    setSelectedEmojiById((prev) => {
+      const newState = { ...prev, [reviewId]: emojiSrc };
+      console.log("Updating emoji state:", newState);
+      return newState;
+    });
+    setActiveReactionId(null);
+  };
+
+  const [emojiPickerPosition, setEmojiPickerPosition] = useState<{
+    top: number;
+    left: number;
+  } | null>(null);
+  // Toggle dropdown visibility on heart click
+  const handleHeartClick = (
+    event: React.MouseEvent<HTMLDivElement>,
+    id: string
+  ) => {
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    setEmojiPickerPosition({ top: rect.top - 40, left: rect.left });
+    setActiveReactionId((prev) => (prev === id ? null : id));
+  };
+
   return (
-    <div className="pt-3 h-auto min-h-screen w-full max-w-[500px] mx-auto flex flex-col justify-between overflow-y-auto">
-      {/* Header */}
-      <div className="px-4 space-y-2">
-        <div className="flex justify-between items-center w-full">
-          <div className="flex items-center gap-3">
-            <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
-              <Image
-                src="/button-image/black-back.svg"
-                alt="Back Icon"
-                height={26}
-                width={26}
-              />
-            </button>
-            <p className=" text-[16px] font-bold font-mulish">CABERNET SAUVIGNON</p>
-
-          </div>
-
-          <button
-            className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
-            onClick={() => setIsDetailsPopupOpen(true)}
-          >
-            <Image
-              src="/button-image/review.svg"
-              alt="Review"
-              width={16}
-              height={16}
-              className="w-4 h-4"
-            />
-            Write a Review
-          </button>
-        </div>
-
-        {/* Create Review Popup */}
-        <GetDetailsPopup
-          isOpen={isDetailsPopupOpen}
-          onClose={() => setIsDetailsPopupOpen(false)}
-          onSubmit={(details) => {
-            if (details.rating && details.comment) {
-              addReview(
-                details.rating,
-                details.comment,
-                details.name,
-                details.avatar
-              );
-            }
-          }}
-        />
-
-        {/* Edit Review Popup */}
-        {isEditPopupOpen && editingReview && (
-          <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
-            <button
-              className="absolute inset-0 bg-transparent border-none cursor-pointer"
-              onClick={() => setIsEditPopupOpen(false)}
-              aria-label="Close dialog"
-            />
-            <div className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]">
-              <div className="flex justify-end mb-2">
-                <button
-                  onClick={() => setIsEditPopupOpen(false)}
-                  className="p-1 hover:scale-110 transition"
-                >
-                  <Image
-                    src="/button-image/close.svg"
-                    alt="close"
-                    width={24}
-                    height={24}
-                  />
-                </button>
-              </div>
-
-              <ReviewPopupContent
-                onClose={() => setIsEditPopupOpen(false)}
-                onReviewSubmit={(rating, comment, name, avatar) => {
-                  setReviews((prev) =>
-                    prev.map((r) =>
-                      r.id === editingReview.id
-                        ? {
-                            ...r,
-                            rating,
-                            comment,
-                            user: name,
-                            avatar,
-                            time: new Date(),
-                          }
-                        : r
-                    )
-                  );
-                  setIsEditPopupOpen(false);
-                }}
-                name={editingReview.user}
-                avatar={editingReview.avatar}
-                defaultRating={editingReview.rating}
-                defaultComment={editingReview.comment}
-                onOpen={() => console.log("Editing review")}
-              />
+    <>
+      {/* Main page content wrapped with dimming effect when emoji picker open */}
+      <div
+        className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 ${
+          activeReactionId ? "opacity-25" : "opacity-100"
+        }`}
+      >
+        {/* Top Section: header + summary */}
+        <div className="px-4 pt-3 space-y-2 flex-shrink-0">
+          <div className="flex justify-between items-center w-full">
+            <div className="flex items-center gap-3">
+              <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
+                <Image
+                  src="/button-image/black-back.svg"
+                  alt="Back Icon"
+                  height={26}
+                  width={26}
+                />
+              </button>
+              <p className="text-[16px] font-bold font-mulish">
+                CABERNET SAUVIGNON
+              </p>
             </div>
+
+            <button
+              className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
+              onClick={() => setIsDetailsPopupOpen(true)}
+            >
+              <Image
+                src="/button-image/review.svg"
+                alt="Review"
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+              Write a Review
+            </button>
           </div>
-        )}
-        <div>
+
+          {/* Create Review Popup */}
+          <GetDetailsPopup
+            isOpen={isDetailsPopupOpen}
+            onClose={() => setIsDetailsPopupOpen(false)}
+            onSubmit={(details) => {
+              if (details.rating && details.comment) {
+                addReview(
+                  details.rating,
+                  details.comment,
+                  details.name,
+                  details.avatar
+                );
+              }
+            }}
+          />
+
+          {/* Edit Review Popup */}
+          {isEditPopupOpen && editingReview && (
+            <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
+              <button
+                className="absolute inset-0 bg-transparent border-none cursor-pointer"
+                onClick={() => setIsEditPopupOpen(false)}
+                aria-label="Close dialog"
+              />
+              <div className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]">
+                <div className="flex justify-end mb-2">
+                  <button
+                    onClick={() => setIsEditPopupOpen(false)}
+                    className="p-1 hover:scale-110 transition"
+                  >
+                    <Image
+                      src="/button-image/close.svg"
+                      alt="close"
+                      width={24}
+                      height={24}
+                    />
+                  </button>
+                </div>
+
+                <ReviewPopupContent
+                  onClose={() => setIsEditPopupOpen(false)}
+                  onReviewSubmit={(rating, comment, name, avatar) => {
+                    setReviews((prev) =>
+                      prev.map((r) =>
+                        r.id === editingReview.id
+                          ? {
+                              ...r,
+                              rating,
+                              comment,
+                              user: name,
+                              avatar,
+                              time: new Date(),
+                            }
+                          : r
+                      )
+                    );
+                    setIsEditPopupOpen(false);
+                  }}
+                  name={editingReview.user}
+                  avatar={editingReview.avatar}
+                  defaultRating={editingReview.rating}
+                  defaultComment={editingReview.comment}
+                  onOpen={() => console.log("Editing review")}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Reviews Summary */}
           {reviews.length > 0 && (
             <div className="bg-[#F8F8F8] rounded-lg p-4 flex md:flex-row justify-between items-center my-2 w-full">
@@ -306,20 +386,18 @@ const ReviewPage = ({
               </div>
             </div>
           )}
+        </div>
 
-          {/* Reviews List */}
-          <div
-  className={`space-y-3 border-gray-200 pr-1 overflow-y-auto ${
-    reviews.length > 0 ? "h-[30vh]" : "h-[50vh]"
-  }`}
->
-
-            {reviews.map((r) => (
+        {/* Middle Section: Reviews List center and scrollable */}
+        <div className="overflow-y-auto px-4 h-[40vh]">
+          {reviews.length > 0 ? (
+            reviews.map((r) => (
               <div
                 key={r.id}
                 className="border-b border-gray-300 pb-2 flex flex-col gap-1 relative"
                 ref={menuRef}
               >
+                {/* Review content */}
                 <div className="flex justify-between items-end">
                   <div className="flex items-center gap-2">
                     <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden">
@@ -356,7 +434,7 @@ const ReviewPage = ({
                   </div>
 
                   {/* Three Dots Menu */}
-                  <div className="relative">
+                  <div className="relative flex flex-col justify-between">
                     <Image
                       className="cursor-pointer"
                       height={20}
@@ -368,9 +446,8 @@ const ReviewPage = ({
                       }
                     />
 
-                    {/* Dropdown */}
                     {openMenuId === r.id && (
-                      <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-xl shadow-md z-50">
+                      <div className="dropdown-menu absolute right-0 mt-2 w-24 bg-white border border-gray-200 rounded-xl shadow-md z-50">
                         {/* Edit Button */}
                         <button
                           className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
@@ -416,41 +493,154 @@ const ReviewPage = ({
                     )}
                   </div>
                 </div>
-                <p className="text-[13px] text-gray-800 w-[90%]">{r.comment}</p>
-              </div>
-            ))}
-
-{/* empty review component */}
-            {reviews.length === 0 && (
-              <div className="w-full max-w-[393px] mt-4 mx-auto flex flex-col items-center py-5 space-y-4">
-                <div className="w-full flex flex-col items-center ">
-                  <div className="w-[225px] h-[162px] relative">
+                {/* Comment */}
+                <div className="flex flex-row justify-between pt-2">
+                  <p className="text-[13px] text-gray-800 w-[90%]">
+                    {r.comment}
+                  </p>
+                  <div
+                    onClick={(e) => {
+                      handleHeartClick(e, r.id);
+                      console.log(`-------R.id-----${r.id}`);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
                     <Image
-                      src={"/review-images/image.png"}
-                      alt="No reviews yet"
-                      fill
-                      style={{ objectFit: "contain" }}
+                      src={
+                        selectedEmojiById[r.id] ??
+                        "/review-images/comment/heart.svg"
+                      }
+                      alt=""
+                      height={20}
+                      width={20}
                     />
                   </div>
-                  <p className="text-[20px] font-mulish font-bold mt-2">
-                    No reviews yet
-                  </p>
-                  <p className="text-[14px] font-mulish font-medium text-center  text-[#333333]">
-                    Be the first to share your thoughts about this wine. Your
-                    review can help other wine lovers discover something new!
-                  </p>
                 </div>
               </div>
-            )}
-          </div>
+            ))
+          ) : (
+            <div className="w-full max-w-[393px] mt-4 mx-auto flex flex-col items-center py-5 space-y-4">
+              {/* No reviews content */}
+              <div className="w-full flex flex-col items-center ">
+                <div className="w-[225px] h-[162px] relative">
+                  <Image
+                    src={"/review-images/image.png"}
+                    alt="No reviews yet"
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+                <p className="text-[20px] font-mulish font-bold mt-2">
+                  No reviews yet
+                </p>
+                <p className="text-[14px] font-mulish font-medium text-center text-[#333333]">
+                  Be the first to share your thoughts about this wine. Your
+                  review can help other wine lovers discover something new!
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Bottom Section: Bottle Carousel */}
+        <div className="flex-shrink-0 relative w-full h-[150px] mt-4">
+          <BottleCarousel />
         </div>
       </div>
 
-      {/* Bottle Carousel */}
-      <div className="relative w-full h-auto mt-4">
-        <BottleCarousel />
-      </div>
-    </div>
+      {/* Emoji picker rendered outside the dimmed content */}
+      {reviews.map(
+        (r) =>
+          activeReactionId === r.id &&
+          emojiPickerPosition && (
+            <div
+              key={`emoji-picker-${r.id}`}
+              className="fixed w-auto h-[27px] flex flex-row bg-white rounded shadow-lg space-x-1 z-50"
+              style={{
+                top: emojiPickerPosition.top + 30, // adjusts vertical position (move 10px up)
+                left: emojiPickerPosition.left - 150, // adjusts horizontal position (move 10px right)
+                transform: "translateY(-100%)", // position above the icon
+              }}
+              onClick={(e) => {
+                console.log("pressed..");
+                e.stopPropagation();
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Like.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() => {
+                  console.log("--------- ", r.id);
+                  handleEmojiSelect(r.id, "/review-images/comment/Like.svg");
+                }}
+              />
+              <Image
+                src={"/review-images/comment/RedHeart.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() =>
+                  handleEmojiSelect(r.id, "/review-images/comment/RedHeart.svg")
+                }
+              />
+              <Image
+                src={"/review-images/comment/Care.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() =>
+                  handleEmojiSelect(r.id, "/review-images/comment/Care.svg")
+                }
+              />
+              <Image
+                src={"/review-images/comment/Haha.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() =>
+                  handleEmojiSelect(r.id, "/review-images/comment/Haha.svg")
+                }
+              />
+              <Image
+                src={"/review-images/comment/Wow.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() =>
+                  handleEmojiSelect(r.id, "/review-images/comment/Wow.svg")
+                }
+              />
+              <Image
+                src={"/review-images/comment/Sad.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() =>
+                  handleEmojiSelect(r.id, "/review-images/comment/Sad.svg")
+                }
+              />
+              <Image
+                src={"/review-images/comment/Angry.svg"}
+                alt=""
+                height={20}
+                width={20}
+                className="transition-transform hover:scale-150 cursor-pointer"
+                onClick={() =>
+                  handleEmojiSelect(r.id, "/review-images/comment/Angry.svg")
+                }
+              />
+            </div>
+          )
+      )}
+    </>
   );
 };
 

@@ -18,7 +18,11 @@ interface GetDetailsPopupProps {
   }) => void;
 }
 
-const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) => {
+const GetDetailsPopup = ({
+  isOpen,
+  onClose,
+  onSubmit,
+}: GetDetailsPopupProps) => {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
@@ -62,48 +66,33 @@ const GetDetailsPopup = ({ isOpen, onClose, onSubmit }: GetDetailsPopupProps) =>
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    if (!name || !selectedAvatar) return;
 
-  // Ensure name and avatar are filled
-  if (!name || !selectedAvatar) return;
+    if (!mobile.trim()) {
+      alert("Please enter something in the Mobile number / Email field.");
+      return;
+    }
 
-  // Check if at least mobile or email is valid
-  if (!mobile && !email) {
-    alert("Please enter a mobile number or email.");
-    return;
-  }
+    _setLoading(true);
 
-  // Validate mobile if provided
-  if (mobile && !/^[1-9]\d{9}$/.test(mobile)) {
-    alert("Please enter a valid 10-digit mobile number starting with 6-9.");
-    return;
-  }
+    try {
+      const enteredValue = mobile.trim();
+      const testOtp = "222222";
 
-  // Validate email if provided
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+      setConfirmationResult({ testOtp, destination: enteredValue });
 
-  _setLoading(true);
-
-  try {
-    const testOtp = "222222";
-
-    setConfirmationResult({ testOtp });
-
-    alert(`OTP is ${testOtp}`);
-    setShowOtp(true);
-  } catch (err: any) {
-    console.error("OTP error:", err);
-    alert("Failed to send OTP: " + err.message);
-  } finally {
-    _setLoading(false);
-  }
-};
-
+      alert(`Your test OTP is ${testOtp}`);
+      setShowOtp(true);
+    } catch (err: any) {
+      console.error("OTP error:", err);
+      alert("Failed to send OTP: " + err.message);
+    } finally {
+      _setLoading(false);
+    }
+  };
 
   const handleOtpSuccess = () => {
     setShowOtp(false);
@@ -127,9 +116,23 @@ const handleSubmit = async (e: React.FormEvent) => {
   if (!isOpen && !isClosing) return null;
 
   const avatars = [
-    "pirate", "mexican", "ninja", "elf", "mustache", "princess",
-    "bear", "alien", "magician", "demon", "mask", "maskf",
-    "queen", "mime", "revived", "sailor", "witch",
+    "pirate",
+    "mexican",
+    "ninja",
+    "elf",
+    "mustache",
+    "princess",
+    "bear",
+    "alien",
+    "magician",
+    "demon",
+    "mask",
+    "maskf",
+    "queen",
+    "mime",
+    "revived",
+    "sailor",
+    "witch",
   ];
 
   return (
@@ -174,84 +177,79 @@ const handleSubmit = async (e: React.FormEvent) => {
           />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label
+                htmlFor="avatar-selector"
+                className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+              >
+                Choose Avatar*
+              </label>
 
-<div>
-  <label
-    htmlFor="avatar-selector"
-    className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
-  >
-    Choose Avatar*
-  </label>
+              <div className="grid grid-cols-1 items-center mt-2">
+                {selectedAvatar ? (
+                  <>
+                    {/* Change Avatar Button */}
+                    <button
+                      onClick={() => setSelectedAvatar("")}
+                      className="mb-2 font-axiforma  text-sm text-[#5F1BE7] font-semibold hover:text-[#EB235C]"
+                    >
+                      Change Avatar
+                    </button>
 
-  <div className="grid grid-cols-1 items-center mt-2">
-    {selectedAvatar ? (
-      <>
-        {/* Change Avatar Button */}
-        <button
-          onClick={() => setSelectedAvatar("")}
-          className="mb-2 font-axiforma  text-sm text-[#5F1BE7] font-semibold hover:text-[#EB235C]"
-        >
-          Change Avatar
-        </button>
-
-        {/* Selected Avatar Centered */}
-        <div
-          className="relative left-1/2 -translate-x-1/2 rounded-full flex items-center justify-center transition-all duration-300 border-6 border-white"
-          style={{
-            width: "185px",
-            height: "185px",
-            boxShadow: "4px 0 4px 0 rgba(0,0,0,0.25), 0 4px 4px 0 rgba(0,0,0,0.25)",
-            backgroundColor: "white",
-          }}
-        >
-          <Image
-            src={`/avator/${selectedAvatar}.svg`}
-            alt={selectedAvatar}
-            fill
-            className="object-contain rounded-full"
-          />
-        </div>
-      </>
-    ) : (
-      // Show all avatars in grid initially
-      <div
-        id="avatar-selector"
-        role="radiogroup"
-        aria-labelledby="avatar-selector"
-        className="grid grid-cols-6 gap-2 flex-wrap justify-center"
-      >
-        {avatars.map((avatar) => (
-          <div
-            key={avatar}
-            role="radio"
-            tabIndex={0}
-            aria-checked={false}
-            onClick={() => setSelectedAvatar(avatar)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setSelectedAvatar(avatar);
-              }
-            }}
-            className="relative w-[45px] h-[45px] sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform"
-          >
-            <Image
-              src={`/avator/${avatar}.svg`}
-              alt={avatar}
-              fill
-              className="object-contain rounded-full"
-            />
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-</div>
-
-
-
-
-
+                    {/* Selected Avatar Centered */}
+                    <div
+                      className="relative left-1/2 -translate-x-1/2 rounded-full flex items-center justify-center transition-all duration-300 border-6 border-white"
+                      style={{
+                        width: "185px",
+                        height: "185px",
+                        boxShadow:
+                          "4px 0 4px 0 rgba(0,0,0,0.25), 0 4px 4px 0 rgba(0,0,0,0.25)",
+                        backgroundColor: "white",
+                      }}
+                    >
+                      <Image
+                        src={`/avator/${selectedAvatar}.svg`}
+                        alt={selectedAvatar}
+                        fill
+                        className="object-contain rounded-full"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  // Show all avatars in grid initially
+                  <div
+                    id="avatar-selector"
+                    role="radiogroup"
+                    aria-labelledby="avatar-selector"
+                    className="grid grid-cols-6 gap-2 flex-wrap justify-center"
+                  >
+                    {avatars.map((avatar) => (
+                      <div
+                        key={avatar}
+                        role="radio"
+                        tabIndex={0}
+                        aria-checked={false}
+                        onClick={() => setSelectedAvatar(avatar)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelectedAvatar(avatar);
+                          }
+                        }}
+                        className="relative w-[45px] h-[45px] sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform"
+                      >
+                        <Image
+                          src={`/avator/${avatar}.svg`}
+                          alt={avatar}
+                          fill
+                          className="object-contain rounded-full"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
 
             <div>
               <label
@@ -272,31 +270,23 @@ const handleSubmit = async (e: React.FormEvent) => {
               />
             </div>
 
+            <div>
+              <label
+                htmlFor="mobile-input"
+                className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+              >
+                Mobile number/ Email*
+              </label>
+              <input
+                id="mobile-input"
+                type="text"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
+              />
+            </div>
 
-              <div>
-                <label
-                  htmlFor="mobile-input"
-                  className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
-                >
-                  Mobile number/ Email*
-                </label>
-                <input
-  id="mobile-input"
-  type="text"
-  value={mobile}
-  onChange={(e) => {
-    const value = e.target.value;
-    // Allow only numbers if starting with 1-9 or keep it as email
-    if (/^[1-9]\d*$/.test(value) || value.includes("@") || value === "") {
-      setMobile(value);
-    }
-  }}
-  className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-/>
-
-              </div>
-
-              {/* <div>
+            {/* <div>
                 <label
                   htmlFor="email-input"
                   className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
@@ -312,7 +302,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   placeholder="your@email.com"
                 />
               </div> */}
-  
+
             <div className="flex items-center justify-between gap-4 mt-6">
               <button
                 type="button"

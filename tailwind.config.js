@@ -1,4 +1,4 @@
-import { heroui } from "@heroui/theme";
+// import { heroui } from "@heroui/theme";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -11,6 +11,11 @@ const config = {
 
   theme: {
     extend: {
+      screens: {
+        "2xs": "300px",
+        xs: "375px",
+        ls: "400px",
+      },
       fontFamily: {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
@@ -30,15 +35,13 @@ const config = {
         "custom-double":
           "0 4px 4px 0 rgba(0,0,0,0.25), 4px 0 4px 0 rgba(0,0,0,0.25)",
       },
-      screens: {
-        "2xs": "300px",
-        xs: "375px",
-      },
     },
   },
 
   darkMode: "class",
-  plugins: [heroui()],
+  plugins: [
+    // heroui()
+  ],
 };
 
 export default config;
