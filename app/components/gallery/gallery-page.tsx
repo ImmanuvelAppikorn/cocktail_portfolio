@@ -26,6 +26,21 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
       "/gallery/new/image 11.png",
       "/gallery/new/image 12.png",
     ],
+    [
+      "/gallery/new/image 13.png",
+      "/gallery/new/image 14.png",
+      "/gallery/new/image 15.png",
+    ],
+    [
+      "/gallery/new/image 16.png",
+      "/gallery/new/image 17.png",
+      "/gallery/new/image 18.png",
+    ],
+    [
+      "/gallery/new/image 19.png",
+      "/gallery/new/image 20.png",
+      "/gallery/new/image 21.png",
+    ],
   ];
 
   const slideFromLeft = {
