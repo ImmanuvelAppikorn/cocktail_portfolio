@@ -186,13 +186,13 @@ const ReviewPage = ({
     console.log("📝 Review ID:", reviewId);
     console.log("😀 Emoji:", emojiSrc);
     console.log("📊 Current state before:", selectedEmojiById);
-    
+
     setSelectedEmojiById((prev) => {
       const newState = { ...prev, [reviewId]: emojiSrc };
       console.log("✅ NEW STATE:", newState);
       return newState;
     });
-    
+
     console.log("🔒 Closing picker...");
     setActiveReactionId(null);
     setEmojiPickerPosition(null);
@@ -218,39 +218,43 @@ const ReviewPage = ({
       {/* Main page content wrapped with dimming effect when emoji picker open */}
       <div
         className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 ${
-          activeReactionId ? "opacity-25" : "opacity-100"
+          activeReactionId ? "opacity-60" : "opacity-100"
         }`}
       >
         {/* Top Section: header + summary */}
-        <div className="px-4 pt-3 space-y-2 flex-shrink-0">
-          <div className="flex justify-between items-center w-full">
-            <div className="flex items-center gap-3">
+        <div className="px-1 pt-3 space-y-2 flex-shrink-0">
+          <div className="flex flex-wrap justify-between items-center w-full px-2 sm:px-2">
+            {/* Left side: back button + title */}
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
                 <Image
                   src="/button-image/black-back.svg"
                   alt="Back Icon"
-                  height={26}
-                  width={26}
+                  height={20}
+                  width={20}
                 />
               </button>
-              <p className="text-[16px] font-bold font-mulish">
+              <p className="text-[13px] sm:text-base font-bold font-mulish whitespace-nowrap">
                 CABERNET SAUVIGNON
               </p>
             </div>
 
-            <button
-              className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[12px] font-bold gap-2 hover:bg-gray-800 transition"
-              onClick={() => setIsDetailsPopupOpen(true)}
-            >
-              <Image
-                src="/button-image/review.svg"
-                alt="Review"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
-              Write a Review
-            </button>
+            {/* Right side: Write a Review button */}
+            <div className="flex-shrink-0">
+              <button
+                className="bg-[#5F1BE7] px-2 py-1 rounded-full flex items-center text-white text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-gray-800 transition whitespace-nowrap"
+                onClick={() => setIsDetailsPopupOpen(true)}
+              >
+                <Image
+                  src="/button-image/review.svg"
+                  alt="Review"
+                  width={14}
+                  height={14}
+                  className="w-3 h-3 sm:w-4 sm:h-4"
+                />
+                Write a Review
+              </button>
+            </div>
           </div>
 
           {/* Create Review Popup */}
@@ -560,202 +564,222 @@ const ReviewPage = ({
 
       {/* Emoji picker rendered outside the dimmed content */}
       {activeReactionId && emojiPickerPosition && (
-        <div
-          key={`emoji-picker-${activeReactionId}`}
-          className="fixed w-auto h-[27px] flex flex-row bg-white rounded shadow-lg space-x-1 z-50"
-          style={{
-            top: emojiPickerPosition.top + 30,
-            left: emojiPickerPosition.left - 150,
-            transform: "translateY(-100%)",
-          }}
-          onMouseDown={(e) => {
-            console.log("Emoji picker container mousedown");
-            // Don't stop propagation here - let emoji clicks through
-          }}
-        >
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+        <div className="relative left-30">
+          <div
+            key={`emoji-picker-${activeReactionId}`}
+            className="fixed w-auto h-[27px] flex flex-row bg-white rounded shadow-lg space-x-1 z-50"
+            style={{
+              top: emojiPickerPosition.top + 30,
+              left: emojiPickerPosition.left - 200,
+              transform: "translateY(-100%)",
+            }}
             onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Like MOUSEDOWN! Review ID:", activeReactionId);
-              
-              // Store the ID immediately to prevent it from being cleared
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect immediately...");
-                handleEmojiSelect(reviewId, "/review-images/comment/Like.svg");
-              } else {
-                console.log("❌ No reviewId!");
-              }
+              console.log("Emoji picker container mousedown");
+              // Don't stop propagation here - let emoji clicks through
             }}
           >
-            <Image
-              src={"/review-images/comment/Like.svg"}
-              alt="Like"
-              height={20}
-              width={20}
-            />
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Red Heart MOUSEDOWN! Review ID:", activeReactionId);
-              
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect for Red Heart...");
-                handleEmojiSelect(reviewId, "/review-images/comment/RedHeart.svg");
-              } else {
-                console.log("❌ No reviewId for Red Heart!");
-              }
-            }}
-          >
-            <Image
-              src={"/review-images/comment/RedHeart.svg"}
-              alt="Red Heart"
-              height={20}
-              width={20}
-            />
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Care MOUSEDOWN! Review ID:", activeReactionId);
-              
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect for Care...");
-                handleEmojiSelect(reviewId, "/review-images/comment/Care.svg");
-              } else {
-                console.log("❌ No reviewId for Care!");
-              }
-            }}
-          >
-            <Image
-              src={"/review-images/comment/Care.svg"}
-              alt="Care"
-              height={20}
-              width={20}
-            />
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Haha MOUSEDOWN! Review ID:", activeReactionId);
-              
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect for Haha...");
-                handleEmojiSelect(reviewId, "/review-images/comment/Haha.svg");
-              } else {
-                console.log("❌ No reviewId for Haha!");
-              }
-            }}
-          >
-            <Image
-              src={"/review-images/comment/Haha.svg"}
-              alt="Haha"
-              height={20}
-              width={20}
-            />
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Wow MOUSEDOWN! Review ID:", activeReactionId);
-              
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect for Wow...");
-                handleEmojiSelect(reviewId, "/review-images/comment/Wow.svg");
-              } else {
-                console.log("❌ No reviewId for Wow!");
-              }
-            }}
-          >
-            <Image
-              src={"/review-images/comment/Wow.svg"}
-              alt="Wow"
-              height={20}
-              width={20}
-            />
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Sad MOUSEDOWN! Review ID:", activeReactionId);
-              
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect for Sad...");
-                handleEmojiSelect(reviewId, "/review-images/comment/Sad.svg");
-              } else {
-                console.log("❌ No reviewId for Sad!");
-              }
-            }}
-          >
-            <Image
-              src={"/review-images/comment/Sad.svg"}
-              alt="Sad"
-              height={20}
-              width={20}
-            />
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("🔥 Angry MOUSEDOWN! Review ID:", activeReactionId);
-              
-              const reviewId = activeReactionId;
-              console.log("Stored reviewId:", reviewId);
-              
-              if (reviewId) {
-                console.log("Calling handleEmojiSelect for Angry...");
-                handleEmojiSelect(reviewId, "/review-images/comment/Angry.svg");
-              } else {
-                console.log("❌ No reviewId for Angry!");
-              }
-            }}
-          >
-            <Image
-              src={"/review-images/comment/Angry.svg"}
-              alt="Angry"
-              height={20}
-              width={20}
-            />
-          </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("🔥 Like MOUSEDOWN! Review ID:", activeReactionId);
+
+                // Store the ID immediately to prevent it from being cleared
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect immediately...");
+                  handleEmojiSelect(
+                    reviewId,
+                    "/review-images/comment/Like.svg"
+                  );
+                } else {
+                  console.log("❌ No reviewId!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Like.svg"}
+                alt="Like"
+                height={20}
+                width={20}
+              />
+            </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log(
+                  "🔥 Red Heart MOUSEDOWN! Review ID:",
+                  activeReactionId
+                );
+
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect for Red Heart...");
+                  handleEmojiSelect(
+                    reviewId,
+                    "/review-images/comment/RedHeart.svg"
+                  );
+                } else {
+                  console.log("❌ No reviewId for Red Heart!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/RedHeart.svg"}
+                alt="Red Heart"
+                height={20}
+                width={20}
+              />
+            </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("🔥 Care MOUSEDOWN! Review ID:", activeReactionId);
+
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect for Care...");
+                  handleEmojiSelect(
+                    reviewId,
+                    "/review-images/comment/Care.svg"
+                  );
+                } else {
+                  console.log("❌ No reviewId for Care!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Care.svg"}
+                alt="Care"
+                height={20}
+                width={20}
+              />
+            </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("🔥 Haha MOUSEDOWN! Review ID:", activeReactionId);
+
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect for Haha...");
+                  handleEmojiSelect(
+                    reviewId,
+                    "/review-images/comment/Haha.svg"
+                  );
+                } else {
+                  console.log("❌ No reviewId for Haha!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Haha.svg"}
+                alt="Haha"
+                height={20}
+                width={20}
+              />
+            </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("🔥 Wow MOUSEDOWN! Review ID:", activeReactionId);
+
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect for Wow...");
+                  handleEmojiSelect(reviewId, "/review-images/comment/Wow.svg");
+                } else {
+                  console.log("❌ No reviewId for Wow!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Wow.svg"}
+                alt="Wow"
+                height={20}
+                width={20}
+              />
+            </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("🔥 Sad MOUSEDOWN! Review ID:", activeReactionId);
+
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect for Sad...");
+                  handleEmojiSelect(reviewId, "/review-images/comment/Sad.svg");
+                } else {
+                  console.log("❌ No reviewId for Sad!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Sad.svg"}
+                alt="Sad"
+                height={20}
+                width={20}
+              />
+            </button>
+            <button
+              type="button"
+              className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("🔥 Angry MOUSEDOWN! Review ID:", activeReactionId);
+
+                const reviewId = activeReactionId;
+                console.log("Stored reviewId:", reviewId);
+
+                if (reviewId) {
+                  console.log("Calling handleEmojiSelect for Angry...");
+                  handleEmojiSelect(
+                    reviewId,
+                    "/review-images/comment/Angry.svg"
+                  );
+                } else {
+                  console.log("❌ No reviewId for Angry!");
+                }
+              }}
+            >
+              <Image
+                src={"/review-images/comment/Angry.svg"}
+                alt="Angry"
+                height={20}
+                width={20}
+              />
+            </button>
+          </div>
         </div>
       )}
     </>

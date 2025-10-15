@@ -13,8 +13,9 @@ const config = {
     extend: {
       screens: {
         "2xs": "300px",
-        xs: "375px",
-        ls: "400px",
+        'xs': "375px",
+        'ls': "400px",
+        'xxs': "300px",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
