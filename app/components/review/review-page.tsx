@@ -145,8 +145,9 @@ const ReviewPage = ({
                 width={26}
               />
             </button>
-            <p className=" text-[16px] 2xs:text-[14px] xs:text-[16px] font-bold font-mulish">CABERNET SAUVIGNON</p>
-
+            <p className=" text-[16px] 2xs:text-[14px] xs:text-[16px] font-bold font-mulish">
+              CABERNET SAUVIGNON
+            </p>
           </div>
 
           <button
@@ -309,11 +310,10 @@ const ReviewPage = ({
 
           {/* Reviews List */}
           <div
-  className={`space-y-3 border-gray-200 pr-1 overflow-y-auto ${
-    reviews.length > 0 ? "h-[35vh]" : "h-[50vh]"
-  }`}
->
-
+            className={`space-y-3 border-gray-200 pr-1 overflow-y-auto ${
+              reviews.length > 0 ? "h-[35vh]" : "h-[50vh]"
+            }`}
+          >
             {reviews.map((r) => (
               <div
                 key={r.id}
@@ -420,7 +420,7 @@ const ReviewPage = ({
               </div>
             ))}
 
-{/* empty review component */}
+            {/* empty review component */}
             {reviews.length === 0 && (
               <div className="w-full max-w-[393px] mt-4 mx-auto flex flex-col items-center py-5 space-y-4">
                 <div className="w-full flex flex-col items-center ">
