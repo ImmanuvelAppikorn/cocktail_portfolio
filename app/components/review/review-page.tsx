@@ -145,7 +145,7 @@ const ReviewPage = ({
                 width={26}
               />
             </button>
-            <p className=" text-[16px] 2xs:text-[14px] xs:text-[16px] font-bold font-mulish">CABERNET SAUVIGNON</p>
+            <p className=" text-[16px] font-bold font-mulish">CABERNET SAUVIGNON</p>
 
           </div>
 
@@ -310,7 +310,7 @@ const ReviewPage = ({
           {/* Reviews List */}
           <div
   className={`space-y-3 border-gray-200 pr-1 overflow-y-auto ${
-    reviews.length > 0 ? "h-[35vh]" : "h-[50vh]"
+    reviews.length > 0 ? "h-[30vh]" : "h-[50vh]"
   }`}
 >
 

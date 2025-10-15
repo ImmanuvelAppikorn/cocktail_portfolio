@@ -120,8 +120,8 @@ export default function HomePage() {
 
   // Common animation transition
   const smoothTransition = {
-    duration: 1.5,
-    ease: [0.88, 0.01, 0.17, 0.99],
+    duration: currentStep === "review" ? 0 : 1.5, // Instant for review page
+    ease: currentStep === "review" ? "linear" : [0.88, 0.01, 0.17, 0.99],
   };
 
   // -------------------- RETURN UI --------------------
