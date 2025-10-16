@@ -205,7 +205,7 @@ const ReviewPage = ({
   } | null>(null);
   // Toggle dropdown visibility on heart click
   const handleHeartClick = (
-    event: React.MouseEvent<HTMLDivElement>,
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
     id: string
   ) => {
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
@@ -511,13 +511,16 @@ const ReviewPage = ({
                   <p className="text-[13px] text-gray-800 w-[90%]">
                     {r.comment}
                   </p>
-                  <div
+                  <button
+                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleHeartClick(e, r.id);
                       console.log(`Heart clicked for review: ${r.id}`);
                     }}
                     style={{ cursor: "pointer" }}
+                    className="bg-transparent border-none p-0"
+                    aria-label="Add reaction emoji"
                   >
                     <Image
                       src={
@@ -528,7 +531,7 @@ const ReviewPage = ({
                       height={20}
                       width={20}
                     />
-                  </div>
+                  </button>
                 </div>
               </div>
             ))
@@ -573,7 +576,9 @@ const ReviewPage = ({
               left: emojiPickerPosition.left - 200,
               transform: "translateY(-100%)",
             }}
-            onMouseDown={(e) => {
+            role="toolbar"
+            aria-label="Emoji picker"
+            onMouseDown={(_e) => {
               console.log("Emoji picker container mousedown");
               // Don't stop propagation here - let emoji clicks through
             }}

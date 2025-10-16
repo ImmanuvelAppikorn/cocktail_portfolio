@@ -1,7 +1,8 @@
 "use client";
-import "@/styles/globals.css";
-import clsx from "clsx";
 import { useEffect } from "react";
+import clsx from "clsx";
+
+import "@/styles/globals.css";
 import { fontSans } from "@/config/fonts";
 
 export default function RootLayout({
