@@ -402,7 +402,7 @@ const ReviewPage = ({
         </div>
 
         {/* Middle Section: Reviews List center and scrollable */}
-        <div className="overflow-y-auto px-4 h-[40vh]">
+        <div className="overflow-y-auto px-4 h-[35vh]">
           {reviews.length > 0 ? (
             reviews.map((r) => (
               <div
@@ -536,7 +536,7 @@ const ReviewPage = ({
               </div>
             ))
           ) : (
-            <div className="w-full max-w-[393px] mt-4 mx-auto flex flex-col items-center py-5 space-y-4">
+            <div className="w-full  max-w-[393px] mt-4 mx-auto flex flex-col items-center py-5 space-y-4">
               {/* No reviews content */}
               <div className="w-full flex flex-col items-center ">
                 <div className="w-[225px] h-[162px] relative">
@@ -560,9 +560,10 @@ const ReviewPage = ({
         </div>
 
         {/* Bottom Section: Bottle Carousel */}
-        <div className="flex-shrink-0 relative w-full h-[150px] mt-4">
+        <div className="flex-shrink-0  absolute bottom-[10%] w-full h-[150px] ">
           <BottleCarousel />
         </div>
+        
       </div>
 
       {/* Emoji picker rendered outside the dimmed content */}
