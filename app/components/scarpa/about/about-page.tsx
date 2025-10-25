@@ -49,31 +49,26 @@ export default function AboutPage({
             width={26}
             />
           </button>
-          <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-            CABERNET SAUVIGNON
+          <h2 className="flex-1 text-center text-[#BF062F] text-[19px] font-bold leading-tight font-montagu">
+            LA BOGLIONA
           </h2>
         </div>
 
         <div className="flex flex-row justify-start items-center w-full px-2">
-          <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
+          <p className="text-[16px] text-[#BF062F] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
             About The Wine
           </p>
         </div>
 
         {/* Paragraph */}
-        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-3 pt-2">
-          &ldquo;Sourced from the mineral-rich soil along the Bhadra River Belt, our
-          house espresso is a single-origin specialty Robusta coffee from India,
-          considered among the finest in the world. This Robusta is graded as
-          &lsquo;Kaapi Royale,&rsquo; the highest grade of Indian Robusta. When presented in
-          a milk-based drink, it features notes of hazelnut and dark chocolate,
-          with an extra caffeine hit unique to Robusta.&rdquo;
+        <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-2 pt-2">
+          &ldquo;Produced with grapes coming from the estate "Bricchi" located on the border between Castel Rocchero and Acqui Terme. The vineyards range from 350 up to more than 400 meters above sea level and are mostly facing South-West, soil composition of sand with low percentages of clay and silt.&rdquo;
           <span>
             <button
               onClick={handleScrollToTopAndNavigate}
-              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#EB235C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
+              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#BF062F] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
             >
-              View More....
+              View More...
             </button>
           </span>
         </p>

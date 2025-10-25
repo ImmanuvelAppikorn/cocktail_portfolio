@@ -32,7 +32,7 @@ export default function CrimsonPage({
     <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       <AnimatePresence>
         <motion.div
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50" // centered horizontally
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
           initial={{ x: 150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 150, opacity: 0 }}
@@ -40,12 +40,12 @@ export default function CrimsonPage({
         >
           <button
             onClick={handleScrollToTopAndNavigate}
-            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#826026] bg-[linear-gradient(to_top,_#D8CCB4_100%,_#D8CCB4_36%)] hover:opacity-90 transition group"
           >
-            <span className="relative flex items-center font-montagu">
-              Explore More
+            <span className="relative flex items-center font-montagu text-[#BF062F]">
+              More
               <Image
-                src="/button-image/arrow-up-right.svg"
+                src="assets/scapra/button-image/arrow-up-right.svg"
                 alt="arrow"
                 width={14}
                 height={14}
@@ -68,16 +68,19 @@ export default function CrimsonPage({
         >
           {/* Header */}
           <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-            <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer hover:bg-black/10 rounded-full">
+            <button
+              onClick={onPrevClick}
+              className="flex-shrink-0 cursor-pointer hover:bg-black/10 rounded-full"
+            >
               <Image
-                src="/button-image/white_back.svg"
+                src="/button-image/black-back.svg"
                 alt="Back Icon"
                 height={28}
                 width={28}
               />
             </button>
-            <h2 className="flex-1 text-center text-white text-[19px] font-bold leading-tight font-montagu">
-              CABERNET SAUVIGNON
+            <h2 className="flex-1 text-center text-[#BF062F] text-[19px] font-bold leading-tight font-montagu">
+              LA BOGLIONA
             </h2>
           </div>
 
@@ -85,29 +88,29 @@ export default function CrimsonPage({
           <div className="flex flex-col gap-4 text-[12px] font-semibold mt-6">
             <div className="flex flex-row w-full justify-between">
               <InfoCard
-                icon="/crimson-reserve-icons/origin.svg"
+                icon="assets/scapra/crimson-reserve-icons/origin.svg"
                 title="ORIGIN"
-                value="FRANCE"
+                value="ITALY"
                 half
               />
               <InfoCard
-                icon="/crimson-reserve-icons/vintage.svg"
+                icon="assets/scapra/crimson-reserve-icons/vintage.svg"
                 title="VINTAGE"
-                value="2018"
+                value="2020"
                 half
               />
             </div>
             <div className="flex flex-row w-full justify-between">
               <InfoCard
-                icon="/crimson-reserve-icons/region.svg"
+                icon="assets/scapra/crimson-reserve-icons/region.svg"
                 title="REGION"
-                value="BORDEAUX"
+                value="Acqui Terme, Piedmont"
                 half
               />
               <InfoCard
-                icon="/crimson-reserve-icons/variety.svg"
+                icon="assets/scapra/crimson-reserve-icons/variety.svg"
                 title="VARIETY"
-                value="CABERNET SAUVIGNON"
+                value="Barbera"
                 half
               />
             </div>
@@ -127,33 +130,33 @@ export default function CrimsonPage({
           >
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
-                icon="/crimson-reserve-icons/alcohol.svg"
+                icon="assets/scapra/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
-                value="13.5%"
+                value="14.5%"
                 half
               />
               <InfoCard
-                icon="/crimson-reserve-icons/processing.svg"
+                icon="assets/scapra/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="OAK BARREL AGED (18 MONTHS)"
+                value="French Allier oak barrels AGED (32 months)"
                 half
               />
             </div>
 
             <InfoCard
-              icon="/crimson-reserve-icons/winery.svg"
+              icon="assets/scapra/crimson-reserve-icons/winery.svg"
               title="WINERY"
-              value="CHÂTEAU LUMIÈRE"
+              value="Scarpa"
             />
             <InfoCard
-              icon="/crimson-reserve-icons/harvest.svg"
+              icon="assets/scapra/crimson-reserve-icons/harvest.svg"
               title="HARVEST"
-              value="SEPTEMBER – OCTOBER"
+              value="Late September – October"
             />
             <InfoCard
-              icon="/crimson-reserve-icons/tasting-notes.svg"
+              icon="assets/scapra/crimson-reserve-icons/tasting-notes.svg"
               title="TASTING NOTES"
-              value="BLACKBERRY, VANILLA, TOBACCO"
+              value="Blackberry, plum, cherry,spice"
             />
           </motion.div>
         </div>
@@ -180,7 +183,7 @@ function InfoCard({
         half ? "w-full" : "w-full"
       } text-left`}
     >
-      <div className="w-[40px] h-[40px] rounded-full border border-white flex items-center justify-center flex-shrink-0">
+      <div className="w-[40px] h-[40px] rounded-full border border-[#1E1F1E] flex items-center justify-center flex-shrink-0">
         <Image
           src={icon}
           alt={title}
@@ -190,10 +193,10 @@ function InfoCard({
         />
       </div>
       <div className="flex flex-col justify-center ml-3">
-        <div className="text-[10px] font-bold uppercase font-axiforma">
+        <div className="text-[10px] text-[#BF062F] font-bold uppercase font-axiforma">
           {title}
         </div>
-        <div className="text-[12px] font-normal text-white font-axiforma">
+        <div className="text-[12px] font-normal text-black font-axiforma uppercase">
           {value}
         </div>
       </div>

@@ -19,8 +19,8 @@ import MoreDetails from "../about/more_details";
 type ColorKey = "primary" | "secondary" | "tertiary" | "gold" | "darkred";
 
 const colors: Record<ColorKey, string> = {
-  primary: "#EB235C",
-  secondary: "#55EE81",
+  primary: "#D8CCB4",
+  secondary: "#BF062F",
   tertiary: "#6148E6",
   gold: "#FFB860",
   darkred: "#EF3F48",
@@ -31,31 +31,31 @@ const bottles: Record<
   string,
   { colorKey: ColorKey; image: string; bgImage: string }
 > = {
-  "rose-vine": {
+  "scarpa-vine": {
     colorKey: "primary",
-    image: "/vinea/Rose.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
+    image: "assets/scapra/bottles/bottle_1.svg",
+    bgImage: "assets/scapra/shape-svg/circle_shape.svg",
   },
-  "gold-vine": {
-    colorKey: "gold",
-    image: "/vinea/Gold.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "green-vine": {
-    colorKey: "secondary",
-    image: "/vinea/Green.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "purple-vine": {
-    colorKey: "tertiary",
-    image: "/vinea/Purple.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "red-vine": {
-    colorKey: "darkred",
-    image: "/vinea/Red.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
+  // "gold-vine": {
+  //   colorKey: "gold",
+  //   image: "/vinea/Gold.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
+  // "green-vine": {
+  //   colorKey: "secondary",
+  //   image: "/vinea/Green.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
+  // "purple-vine": {
+  //   colorKey: "tertiary",
+  //   image: "/vinea/Purple.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
+  // "red-vine": {
+  //   colorKey: "darkred",
+  //   image: "/vinea/Red.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
 };
 
 // -------------------- MAIN COMPONENT --------------------
@@ -65,13 +65,13 @@ export default function HomePage() {
   const qrParam = Array.isArray(params.qrCode)
     ? params.qrCode[0]
     : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "rose-vine";
+  const qrCode = qrParam?.toLowerCase() || "scarpa-vine";
 
   const [activeBottle, setActiveBottle] = useState<{
     bgImage: string | StaticImageData;
     colorKey: ColorKey;
     image: string | StaticImageData;
-  }>(bottles[qrCode] || bottles["rose-vine"]);
+  }>(bottles[qrCode] || bottles["scarpa-vine"]);
 
   const [currentStep, setCurrentStep] = useState<
     | "home"
@@ -193,7 +193,7 @@ export default function HomePage() {
       {/* Home Page Title */}
       <AnimatePresence>
         {currentStep === "home" && !reverse && !showIntro && (
-          <div className="absolute top-[3.5%] z-20 w-[90%] aspect-[3/1] flex items-center justify-center overflow-hidden">
+          <div className="absolute top-[3.5%] z-20 w-[90%] h-auto flex items-center justify-center overflow-hidden">
             <motion.h1
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
@@ -205,10 +205,10 @@ export default function HomePage() {
                 lineHeight: "80%",
               }}
             >
-              <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
+              <div className="relative w-full aspect-[2.1/1] mx-auto">
                 <Image
-                  alt="Vinea Logo"
-                  src="/logo/logo.svg"
+                  alt="Scarpa Logo"
+                  src="assets/scapra/logo/logo.svg"
                   fill
                   priority
                   className="object-contain"
@@ -231,11 +231,13 @@ export default function HomePage() {
           >
             <button
               onClick={handleStartJourney}
-              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#826026] bg-[linear-gradient(to_top,_#D8CCB4_100%,_#D8CCB4_36%)] hover:opacity-90 transition group"
             >
-              <span className="relative flex items-center">Explore More</span>
+              <span className="relative flex items-center text-[#BF062F]">
+                Explore More
+              </span>
               <Image
-                src="/button-image/arrow-up-right.svg"
+                src="assets/scapra/button-image/arrow-up-right.svg"
                 alt="arrow"
                 width={14}
                 height={14}
@@ -259,36 +261,40 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "125%"
+              ? "90%"
               : currentStep === "crimson"
                 ? "30%"
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? "70%"
-                  : currentStep === "review"
-                    ? "20%"
-                    : currentStep === "more_details"
-                      ? "125%"
-                      : "10%",
+                : currentStep === "about"
+                  ? "75%"
+                  : currentStep === "nutrition"
+                    ? "72%"
+                    : currentStep === "review"
+                      ? "20%"
+                      : currentStep === "more_details"
+                        ? "95%"
+                        : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
-            currentStep === "home" || currentStep === "more_details"
+            currentStep === "home"
               ? -11
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? -31
-                  : 0,
+                  ? -27
+                  : currentStep === "more_details"
+                    ? -20
+                    : 0,
           bottom:
             currentStep === "home"
-              ? "-40%"
+              ? "-12%"
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
-                  ? "-15%"
+                  ? "-10%"
                   : currentStep === "nutrition"
                     ? "-20%"
                     : currentStep === "more_details"
-                      ? "-32%"
+                      ? "-10%"
                       : "7%",
           left:
             currentStep === "home"
@@ -296,12 +302,12 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
-                  ? "74%"
+                  ? "70%"
                   : currentStep === "nutrition"
                     ? "75%"
                     : currentStep === "more_details"
-                    ? "62%"
-                    :"50%",
+                      ? "62%"
+                      : "50%",
           opacity:
             currentStep === "review"
               ? 0
@@ -317,7 +323,7 @@ export default function HomePage() {
             src={activeBottle.image}
             fill
             priority
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </motion.div>
@@ -329,11 +335,11 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "85%"
+              ? "95%"
               : currentStep === "crimson"
-                ? "150%"
+                ? "200%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "60%"
+                  ? "80%"
                   : currentStep === "more_details"
                     ? 0
                     : "60%",
@@ -344,25 +350,27 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "95%"
+                  ? "90%"
                   : "50%",
           bottom:
             currentStep === "home"
-              ? "-37%"
+              ? "-43%"
               : currentStep === "crimson"
-                ? "-25%"
-                : currentStep === "about" || currentStep === "nutrition"
+                ? "-40%"
+                : currentStep === "about"
                   ? "-25%"
-                  : currentStep === "more_details"
-                    ? "-25%"
-                    : "-38%",
+                  : currentStep === "nutrition"
+                    ? "-35%"
+                    : currentStep === "more_details"
+                      ? "-25%"
+                      : "-38%",
           rotate:
             currentStep === "home"
               ? 5
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? 0
+                  ? -20
                   : 0,
           opacity:
             currentStep === "review"

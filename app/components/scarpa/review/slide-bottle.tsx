@@ -6,38 +6,38 @@ import { motion, AnimatePresence } from "framer-motion";
 const bottles = [
   {
     id: 1,
-    name: "Blossom Rose",
-    price: 179,
-    img: "/vinea/Rose.svg",
-    color: "#EB235C",
+    name: "LA BOGLIONA",
+    price: 43,
+    img: "assets/scapra/bottles/bottle_1.svg",
+    color: "#D8CCB4",
   },
   {
     id: 2,
-    name: "Verdant Grove",
-    price: 189,
-    img: "/vinea/Green.svg",
-    color: "#22C55E",
+    name: "BAROLO",
+    price: 55,
+    img: "assets/scapra/bottles/bottle_2.svg",
+    color: "#B89577",
   },
   {
     id: 3,
-    name: "Purple Malbe",
-    price: 149,
-    img: "/vinea/Purple.svg",
-    color: "#9333EA",
+    name: "VERMOUTH DI TORINO",
+    price: 25,
+    img: "assets/scapra/bottles/bottle_3.svg",
+    color: "#D2B358",
   },
   {
     id: 4,
-    name: "Golden Chard",
-    price: 129,
-    img: "/vinea/Gold.svg",
-    color: "#EAB308",
+    name: "MOSCATO D’ASTI",
+    price: 13,
+    img: "assets/scapra/bottles/bottle_4.svg",
+    color: "#EABF9A",
   },
   {
     id: 5,
-    name: "Scarlet Merlot",
-    price: 149,
-    img: "/vinea/Red.svg",
-    color: "#DC2626",
+    name: "VERMOUTH DI TORINO ROSSO",
+    price: 25,
+    img: "assets/scapra/bottles/bottle_5.svg",
+    color: "#A9E57D",
   },
 ];
 
@@ -102,7 +102,7 @@ export default function BottleCarousel() {
                   className="font-bold text-[27px] font-montagu"
                   style={{ color: activeBottle.color }}
                 >
-                  ${activeBottle.price}
+                  {activeBottle.price} €
                 </h2>
               </motion.div>
             </AnimatePresence>
