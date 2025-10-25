@@ -32,7 +32,7 @@ export default function CrimsonPage({
     <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       <AnimatePresence>
         <motion.div
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50" // centered horizontally
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
           initial={{ x: 150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 150, opacity: 0 }}

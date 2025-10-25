@@ -11,6 +11,8 @@ export function generateStaticParams() {
     // { qrCode: "red-vine" },
     // vite_clote
     { qrCode: "red-vine-vite" },
+    { qrCode: "ferrarisagricola" },
+    { qrCode: "scarpa-vine" },
   ];
 }
 

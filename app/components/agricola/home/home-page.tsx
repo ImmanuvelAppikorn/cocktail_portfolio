@@ -31,31 +31,31 @@ const bottles: Record<
   string,
   { colorKey: ColorKey; image: string; bgImage: string }
 > = {
-  "rose-vine": {
+  "ferrarisagricola": {
     colorKey: "primary",
-    image: "/vinea/Rose.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
+    image: "assets/agricola/vinea/bottle-1.svg",
+    bgImage: "assets/agricola/shape-svg/circle-shape.svg",
   },
-  "gold-vine": {
-    colorKey: "gold",
-    image: "/vinea/Gold.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "green-vine": {
-    colorKey: "secondary",
-    image: "/vinea/Green.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "purple-vine": {
-    colorKey: "tertiary",
-    image: "/vinea/Purple.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "red-vine": {
-    colorKey: "darkred",
-    image: "/vinea/Red.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
+  // "gold-vine": {
+  //   colorKey: "gold",
+  //   image: "/vinea/Gold.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
+  // "green-vine": {
+  //   colorKey: "secondary",
+  //   image: "/vinea/Green.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
+  // "purple-vine": {
+  //   colorKey: "tertiary",
+  //   image: "/vinea/Purple.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
+  // "red-vine": {
+  //   colorKey: "darkred",
+  //   image: "/vinea/Red.svg",
+  //   bgImage: "/shape-svg/circle-shape.svg",
+  // },
 };
 
 // -------------------- MAIN COMPONENT --------------------
@@ -65,13 +65,13 @@ export default function HomePage() {
   const qrParam = Array.isArray(params.qrCode)
     ? params.qrCode[0]
     : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "rose-vine";
+  const qrCode = qrParam?.toLowerCase() || "ferrarisagricola";
 
   const [activeBottle, setActiveBottle] = useState<{
     bgImage: string | StaticImageData;
     colorKey: ColorKey;
     image: string | StaticImageData;
-  }>(bottles[qrCode] || bottles["rose-vine"]);
+  }>(bottles[qrCode] || bottles["ferrarisagricola"]);
 
   const [currentStep, setCurrentStep] = useState<
     | "home"
@@ -205,10 +205,10 @@ export default function HomePage() {
                 lineHeight: "80%",
               }}
             >
-              <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
+              <div className="relative w-[80%] aspect-[2/1] mx-auto">
                 <Image
                   alt="Vinea Logo"
-                  src="/logo/logo.svg"
+                  src="assets/agricola/logo/logo.svg"
                   fill
                   priority
                   className="object-contain"
@@ -231,7 +231,7 @@ export default function HomePage() {
           >
             <button
               onClick={handleStartJourney}
-              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#DCBC7F] from-[#443a3baa] to-[#443A3B] hover:opacity-90 transition group"
             >
               <span className="relative flex items-center">Explore More</span>
               <Image
@@ -261,7 +261,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "125%"
               : currentStep === "crimson"
-                ? "30%"
+                ? "27%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "70%"
                   : currentStep === "review"
@@ -292,7 +292,7 @@ export default function HomePage() {
                       : "7%",
           left:
             currentStep === "home"
-              ? "50%"
+              ? "60%"
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
@@ -317,7 +317,7 @@ export default function HomePage() {
             src={activeBottle.image}
             fill
             priority
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </motion.div>
@@ -329,7 +329,7 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "85%"
+              ? "100%"
               : currentStep === "crimson"
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
@@ -348,7 +348,7 @@ export default function HomePage() {
                   : "50%",
           bottom:
             currentStep === "home"
-              ? "-37%"
+              ? "-35%"
               : currentStep === "crimson"
                 ? "-25%"
                 : currentStep === "about" || currentStep === "nutrition"

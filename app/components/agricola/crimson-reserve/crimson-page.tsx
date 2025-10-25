@@ -32,7 +32,7 @@ export default function CrimsonPage({
     <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       <AnimatePresence>
         <motion.div
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50" // centered horizontally
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
           initial={{ x: 150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 150, opacity: 0 }}
@@ -40,10 +40,10 @@ export default function CrimsonPage({
         >
           <button
             onClick={handleScrollToTopAndNavigate}
-            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#DCBC7F] from-[#dcbb7f9b] to-[#443A3B] hover:opacity-90 transition group"
           >
             <span className="relative flex items-center font-montagu">
-              Explore More
+              More
               <Image
                 src="/button-image/arrow-up-right.svg"
                 alt="arrow"
@@ -77,7 +77,7 @@ export default function CrimsonPage({
               />
             </button>
             <h2 className="flex-1 text-center text-white text-[19px] font-bold leading-tight font-montagu">
-              CABERNET SAUVIGNON
+              CLÀSIC
             </h2>
           </div>
 
@@ -87,13 +87,13 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/origin.svg"
                 title="ORIGIN"
-                value="FRANCE"
+                value="ITALY"
                 half
               />
               <InfoCard
                 icon="/crimson-reserve-icons/vintage.svg"
                 title="VINTAGE"
-                value="2018"
+                value="-"
                 half
               />
             </div>
@@ -101,13 +101,13 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/region.svg"
                 title="REGION"
-                value="BORDEAUX"
+                value="CASTAGNOLE MONF., ASTI"
                 half
               />
               <InfoCard
                 icon="/crimson-reserve-icons/variety.svg"
                 title="VARIETY"
-                value="CABERNET SAUVIGNON"
+                value="RUCHE"
                 half
               />
             </div>
@@ -127,7 +127,7 @@ export default function CrimsonPage({
           >
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
-                icon="/crimson-reserve-icons/alcohol.svg"
+                icon="assets/agricola/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
                 value="13.5%"
                 half
@@ -135,7 +135,7 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="OAK BARREL AGED (18 MONTHS)"
+                value="REFINED IN BOTTLE (3MO)"
                 half
               />
             </div>
@@ -143,7 +143,7 @@ export default function CrimsonPage({
             <InfoCard
               icon="/crimson-reserve-icons/winery.svg"
               title="WINERY"
-              value="CHÂTEAU LUMIÈRE"
+              value="FERRARIS AGRICOLA"
             />
             <InfoCard
               icon="/crimson-reserve-icons/harvest.svg"
@@ -153,7 +153,7 @@ export default function CrimsonPage({
             <InfoCard
               icon="/crimson-reserve-icons/tasting-notes.svg"
               title="TASTING NOTES"
-              value="BLACKBERRY, VANILLA, TOBACCO"
+              value="FRESH,LIGHT TANNIN,FRESHLY PICKED CHERRIES"
             />
           </motion.div>
         </div>
@@ -193,7 +193,7 @@ function InfoCard({
         <div className="text-[10px] font-bold uppercase font-axiforma">
           {title}
         </div>
-        <div className="text-[12px] font-normal text-white font-axiforma">
+        <div className="text-[10px] font-normal text-white font-axiforma">
           {value}
         </div>
       </div>

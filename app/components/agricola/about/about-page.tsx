@@ -50,7 +50,7 @@ export default function AboutPage({
             />
           </button>
           <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-            CABERNET SAUVIGNON
+            CLÀSIC
           </h2>
         </div>
 
@@ -61,7 +61,7 @@ export default function AboutPage({
         </div>
 
         {/* Paragraph */}
-        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-3 pt-2">
+        <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6   pt-2">
           &ldquo;Sourced from the mineral-rich soil along the Bhadra River Belt, our
           house espresso is a single-origin specialty Robusta coffee from India,
           considered among the finest in the world. This Robusta is graded as

@@ -1,5 +1,7 @@
 import React from "react";
-import HomePage from "./components/scarpa/home/home-page";
+import HomePage from "./components/agricola/home/home-page";
+
+
 
 const Page = () => {
   return (
