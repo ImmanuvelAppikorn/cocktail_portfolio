@@ -33,7 +33,7 @@ const bottles: Record<
 > = {
   "atla-vine": {
     colorKey: "primary",
-    image: "/assets/brandini/vinea/brandini_img.svg",
+    image: "assets/brandini/vinea/image_1.svg",
     bgImage: "/shape-svg/circle-shape.svg",
   },
 };
@@ -239,7 +239,7 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "105%"
+              ? "100%"
               : currentStep === "crimson"
                 ? "30%"
                 : currentStep === "about" || currentStep === "nutrition"
@@ -247,12 +247,14 @@ export default function HomePage() {
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
-                      ? "125%"
+                      ? "85%"
                       : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
-            currentStep === "home" || currentStep === "more_details"
-              ? -14
+            currentStep === "home"
+              ? -14 :
+              currentStep === "more_details" ?
+                  -23
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
@@ -268,11 +270,11 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "-20%"
                     : currentStep === "more_details"
-                      ? "-32%"
+                      ? "0%"
                       : "7%",
           left:
             currentStep === "home"
-              ? "42%"
+              ? "53%"
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
@@ -311,7 +313,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "85%"
               : currentStep === "crimson"
-                ? "150%"
+                ? "200%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "60%"
                   : currentStep === "more_details"
@@ -330,7 +332,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "-37%"
               : currentStep === "crimson"
-                ? "-25%"
+                ? "-35%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
                   : currentStep === "more_details"

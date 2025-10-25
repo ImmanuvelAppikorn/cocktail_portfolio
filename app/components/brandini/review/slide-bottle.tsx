@@ -6,38 +6,38 @@ import { motion, AnimatePresence } from "framer-motion";
 const bottles = [
   {
     id: 1,
-    name: "Blossom Rose",
+    name: "Brut Blanc de Blancs 655",
     price: 179,
-    img: "/vinea/Rose.svg",
-    color: "#EB235C",
+    img: "assets/brandini/vinea/image_1.svg",
+    color: "#252C00",
   },
   {
     id: 2,
-    name: "Verdant Grove",
-    price: 189,
-    img: "/vinea/Green.svg",
-    color: "#22C55E",
+    name: "Brut Rosé",
+    price: 149,
+    img: "assets/brandini/vinea/image_2.svg",
+    color: "#A99787",
   },
   {
     id: 3,
-    name: "Purple Malbe",
-    price: 149,
-    img: "/vinea/Purple.svg",
-    color: "#9333EA",
+    name: "Rocche Del Santo",
+    price: 129,
+    img: "assets/brandini/vinea/image_3.svg",
+    color: "#3D6971",
   },
   {
     id: 4,
-    name: "Golden Chard",
-    price: 129,
-    img: "/vinea/Gold.svg",
-    color: "#EAB308",
+    name: "Le Coccinelle",
+    price: 149,
+    img: "assets/brandini/vinea/image_4.svg",
+    color: "#529530",
   },
   {
     id: 5,
-    name: "Scarlet Merlot",
+    name: "Filari Corti",
     price: 149,
-    img: "/vinea/Red.svg",
-    color: "#DC2626",
+    img: "assets/brandini/vinea/image_5.svg",
+    color: "#7F5A0B",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function BottleCarousel() {
     <div className="w-full h-[300px] overflow-hidden relative">
       <div className="relative w-[125%] h-[full] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center overflow-hidden">
         {/* Navigation + Text */}
-        <div className="absolute top-0 w-[70%] flex items-center justify-center mb-4 ">
+        <div className="absolute top-0 w-[80%] flex items-center justify-center mb-4 ">
           {/* Prev Button */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 z-20">
             <button onClick={prevBottle}>

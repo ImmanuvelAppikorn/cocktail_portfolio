@@ -65,7 +65,7 @@ export default function BottleCarousel() {
     <div className="w-full h-[300px] overflow-hidden relative">
       <div className="relative w-[125%] h-[full] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center overflow-hidden">
         {/* Navigation + Text */}
-        <div className="absolute top-0 w-[70%] flex items-center justify-center mb-4 ">
+        <div className="absolute top-0 w-[80%] flex items-center justify-center mb-4 ">
           {/* Prev Button */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 px-4 z-20">
             <button onClick={prevBottle}>
@@ -95,7 +95,7 @@ export default function BottleCarousel() {
                 initial={{ opacity: 0, y: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
-                <h3 className="text-[18px] font-bold text-black font-montagu">
+                <h3 className="text-[16px] font-bold text-black font-montagu">
                   {activeBottle.name}
                 </h3>
                 <h2
