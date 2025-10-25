@@ -217,12 +217,12 @@ const ReviewPage = ({
     <>
       {/* Main page content wrapped with dimming effect when emoji picker open */}
       <div
-        className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 ${
+        className={`flex p-4 flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 ${
           activeReactionId ? "opacity-60" : "opacity-100"
         }`}
       >
         {/* Top Section: header + summary */}
-        <div className="px-1 pt-3 space-y-2 flex-shrink-0">
+        <div className=" space-y-2 flex-shrink-0">
           <div className="flex flex-wrap justify-between items-center w-full px-2 sm:px-2">
             {/* Left side: back button + title */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
@@ -235,7 +235,7 @@ const ReviewPage = ({
                 />
               </button>
               <p className="text-[13px] sm:text-base font-bold font-mulish whitespace-nowrap">
-                CABERNET SAUVIGNON
+                BARBERA D,ASTI
               </p>
             </div>
 
@@ -327,7 +327,7 @@ const ReviewPage = ({
 
           {/* Reviews Summary */}
           {reviews.length > 0 && (
-            <div className="bg-[#F8F8F8] rounded-lg p-4 flex md:flex-row justify-between items-center my-2 w-full">
+            <div className="bg-[#ffffffa5] rounded-lg p-4 flex md:flex-row justify-between items-center my-2 w-full">
               {/* Rating Bars */}
               <div className="flex flex-col gap-1 w-full max-w-[250px]">
                 {[5, 4, 3, 2, 1].map((num) => {
@@ -560,7 +560,7 @@ const ReviewPage = ({
         </div>
 
         {/* Bottom Section: Bottle Carousel */}
-        <div className="flex-shrink-0  absolute bottom-[10%] w-full h-[150px] ">
+        <div className="flex-shrink-0  absolute bottom-[10%] left-1/2 -translate-x-1/2 w-full h-[150px] ">
           <BottleCarousel />
         </div>
         

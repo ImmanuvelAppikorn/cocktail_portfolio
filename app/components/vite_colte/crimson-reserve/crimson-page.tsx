@@ -40,7 +40,7 @@ export default function CrimsonPage({
         >
           <button
             onClick={handleScrollToTopAndNavigate}
-            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#4B0013] from-[#C9214E] to-[#C9214E] hover:opacity-90 transition group"
+            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#4B0013] from-[#c9214e92] to-[#C9214E] hover:opacity-90 transition group"
           >
             <span className="relative flex items-center font-montagu">
               More
