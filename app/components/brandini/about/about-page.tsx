@@ -41,37 +41,43 @@ export default function AboutPage({
         variants={topVariants}
       >
         <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-          <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer">
+          <button
+            onClick={onPrevClick}
+            className="flex-shrink-0 cursor-pointer"
+          >
             <Image
               src="/button-image/black-back.svg"
               alt="Back Icon"
-            height={26}
-            width={26}
+              height={26}
+              width={26}
             />
           </button>
-          <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-            CABERNET SAUVIGNON
+          <h2 className="flex-1 text-center text-[#58660C] text-[19px] font-bold leading-tight font-montagu">
+            ALTA LANGA
           </h2>
         </div>
 
         <div className="flex flex-row justify-start items-center w-full px-2">
-          <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
+          <p className="text-[16px] text-[#58660C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
             About The Wine
           </p>
         </div>
 
         {/* Paragraph */}
         <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-3 pt-2">
-          &ldquo;Sourced from the mineral-rich soil along the Bhadra River Belt, our
-          house espresso is a single-origin specialty Robusta coffee from India,
-          considered among the finest in the world. This Robusta is graded as
-          &lsquo;Kaapi Royale,&rsquo; the highest grade of Indian Robusta. When presented in
-          a milk-based drink, it features notes of hazelnut and dark chocolate,
-          with an extra caffeine hit unique to Robusta.&rdquo;
+          Our Blanc de Blancs is made for 100% Chardonnay grapes harvested at
+          the start of September. The grapes are brought into the cellar where
+          they are fed directly into a state-of-the-art press for Alta Langa.
+          This machine allows us to affect a slow and gentle press. We can
+          control the temperature whilst keeping the grape must under vacuum
+          meaning that we can avoid oxidation resulting in increased aromas and
+          freshness. The fermentation begins in used wooden barrels where the
+          wine remains until tirage which is done at the end of Spring. After 38
+          months ‘sur-lie’ the wine is disgorged and prepared to be tasted.
           <span>
             <button
               onClick={handleScrollToTopAndNavigate}
-              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#EB235C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
+              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#58660C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
             >
               View More....
             </button>

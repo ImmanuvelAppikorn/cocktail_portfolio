@@ -217,12 +217,12 @@ const ReviewPage = ({
     <>
       {/* Main page content wrapped with dimming effect when emoji picker open */}
       <div
-        className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 ${
+        className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 p-4 ${
           activeReactionId ? "opacity-60" : "opacity-100"
         }`}
       >
         {/* Top Section: header + summary */}
-        <div className="px-1 pt-3 space-y-2 flex-shrink-0">
+        <div className="space-y-2 flex-shrink-0">
           <div className="flex flex-wrap justify-between items-center w-full px-2 sm:px-2">
             {/* Left side: back button + title */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
@@ -235,18 +235,18 @@ const ReviewPage = ({
                 />
               </button>
               <p className="text-[13px] sm:text-base font-bold font-mulish whitespace-nowrap">
-                CABERNET SAUVIGNON
+                LA BOGLIONA
               </p>
             </div>
 
             {/* Right side: Write a Review button */}
             <div className="flex-shrink-0">
               <button
-                className="bg-[#5F1BE7] px-2 py-1 rounded-full flex items-center text-white text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-gray-800 transition whitespace-nowrap"
+                className="bg-[#D8CCB4] px-2 py-1 rounded-full flex items-center text-[#BF062F] text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-gray-800 transition whitespace-nowrap"
                 onClick={() => setIsDetailsPopupOpen(true)}
               >
                 <Image
-                  src="/button-image/review.svg"
+                  src="assets/scapra/button-image/review_button.svg"
                   alt="Review"
                   width={14}
                   height={14}
@@ -560,10 +560,9 @@ const ReviewPage = ({
         </div>
 
         {/* Bottom Section: Bottle Carousel */}
-        <div className="flex-shrink-0  absolute bottom-[10%] w-full h-[150px] ">
+        <div className="flex-shrink-0  absolute left-1/2 -translate-x-1/2 bottom-[10%] w-full h-[170px] ">
           <BottleCarousel />
         </div>
-        
       </div>
 
       {/* Emoji picker rendered outside the dimmed content */}

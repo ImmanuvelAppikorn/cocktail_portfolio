@@ -19,7 +19,7 @@ import MoreDetails from "../about/more_details";
 type ColorKey = "primary" | "secondary" | "tertiary" | "gold" | "darkred";
 
 const colors: Record<ColorKey, string> = {
-  primary: "#EB235C",
+  primary: "#252C00",
   secondary: "#55EE81",
   tertiary: "#6148E6",
   gold: "#FFB860",
@@ -31,29 +31,9 @@ const bottles: Record<
   string,
   { colorKey: ColorKey; image: string; bgImage: string }
 > = {
-  "rose-vine": {
+  "atla-vine": {
     colorKey: "primary",
-    image: "/vinea/Rose.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "gold-vine": {
-    colorKey: "gold",
-    image: "/vinea/Gold.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "green-vine": {
-    colorKey: "secondary",
-    image: "/vinea/Green.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "purple-vine": {
-    colorKey: "tertiary",
-    image: "/vinea/Purple.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "red-vine": {
-    colorKey: "darkred",
-    image: "/vinea/Red.svg",
+    image: "/assets/brandini/vinea/brandini_img.svg",
     bgImage: "/shape-svg/circle-shape.svg",
   },
 };
@@ -65,13 +45,13 @@ export default function HomePage() {
   const qrParam = Array.isArray(params.qrCode)
     ? params.qrCode[0]
     : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "rose-vine";
+  const qrCode = qrParam?.toLowerCase() || "atla-vine";
 
   const [activeBottle, setActiveBottle] = useState<{
     bgImage: string | StaticImageData;
     colorKey: ColorKey;
     image: string | StaticImageData;
-  }>(bottles[qrCode] || bottles["rose-vine"]);
+  }>(bottles[qrCode] || bottles["atla-vine"]);
 
   const [currentStep, setCurrentStep] = useState<
     | "home"
@@ -207,8 +187,8 @@ export default function HomePage() {
             >
               <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
                 <Image
-                  alt="Vinea Logo"
-                  src="/logo/logo.svg"
+                  alt="Brandini Logo"
+                  src="/assets/brandini/logo/brandini_logo.svg"
                   fill
                   priority
                   className="object-contain"
@@ -231,7 +211,7 @@ export default function HomePage() {
           >
             <button
               onClick={handleStartJourney}
-              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#252C00] to-[#252c00d0] hover:opacity-90 transition group"
             >
               <span className="relative flex items-center">Explore More</span>
               <Image
@@ -259,7 +239,7 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "125%"
+              ? "105%"
               : currentStep === "crimson"
                 ? "30%"
                 : currentStep === "about" || currentStep === "nutrition"
@@ -272,7 +252,7 @@ export default function HomePage() {
           aspectRatio: 0.5 / 1,
           rotate:
             currentStep === "home" || currentStep === "more_details"
-              ? -11
+              ? -14
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
@@ -280,7 +260,7 @@ export default function HomePage() {
                   : 0,
           bottom:
             currentStep === "home"
-              ? "-40%"
+              ? "-16%"
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
@@ -292,7 +272,7 @@ export default function HomePage() {
                       : "7%",
           left:
             currentStep === "home"
-              ? "50%"
+              ? "42%"
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
@@ -300,8 +280,8 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "75%"
                     : currentStep === "more_details"
-                    ? "62%"
-                    :"50%",
+                      ? "62%"
+                      : "50%",
           opacity:
             currentStep === "review"
               ? 0
@@ -317,7 +297,7 @@ export default function HomePage() {
             src={activeBottle.image}
             fill
             priority
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </motion.div>
