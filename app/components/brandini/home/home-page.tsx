@@ -34,7 +34,7 @@ const bottles: Record<
   "atla-vine": {
     colorKey: "primary",
     image: "assets/brandini/vinea/image_1.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
+    bgImage: "/assets/brandini/shape-svg/circle-shape.svg",
   },
 };
 
@@ -252,14 +252,14 @@ export default function HomePage() {
           aspectRatio: 0.5 / 1,
           rotate:
             currentStep === "home"
-              ? -14 :
-              currentStep === "more_details" ?
-                  -23
-              : currentStep === "crimson"
-                ? 0
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? -31
-                  : 0,
+              ? -14
+              : currentStep === "more_details"
+                ? -23
+                : currentStep === "crimson"
+                  ? 0
+                  : currentStep === "about" || currentStep === "nutrition"
+                    ? -31
+                    : 0,
           bottom:
             currentStep === "home"
               ? "-16%"
