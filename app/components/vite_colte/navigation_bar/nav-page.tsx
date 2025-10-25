@@ -17,18 +17,18 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   onStepChange,
 }) => {
   const navItems = [
-    { id: "crimson", label: "Story", icon: "/navigation-bar/new/Story.svg" },
+    { id: "crimson", label: "Story", icon: "assets/vite_colte/navigation-bar/new/Story.svg" },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "/navigation-bar/new/Gallery.svg",
+      icon: "assets/vite_colte/navigation-bar/new/Gallery.svg",
     },
-    { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
-    { id: "review", label: "Reviews", icon: "/navigation-bar/new/Review.svg" },
+    { id: "home", label: "Home", icon: "assets/vite_colte/navigation-bar/new/Home.svg" },
+    { id: "review", label: "Reviews", icon: "assets/vite_colte/navigation-bar/new/Review.svg" },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "/navigation-bar/new/Nutrition.svg",
+      icon: "assets/vite_colte/navigation-bar/new/Nutrition.svg",
     },
   ];
 
@@ -60,7 +60,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           }}
         >
           <Image
-            src="/navigation-bar/new/trigger_button.svg"
+            src="assets/vite_colte/navigation-bar/new/trigger_button.svg"
             alt="menu"
             width={50}
             height={50}

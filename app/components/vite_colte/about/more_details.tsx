@@ -25,7 +25,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           />
         </button>
         <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-          CABERNET SAUVIGNON
+          BARBERA D'ASTI
         </h2>
       </div>
 

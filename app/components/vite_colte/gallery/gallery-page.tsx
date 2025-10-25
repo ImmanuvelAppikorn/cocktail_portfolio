@@ -7,40 +7,41 @@ import { motion } from "framer-motion";
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     [
-      "/gallery/new/image 1.png",
-      "/gallery/new/image 2.png",
-      "/gallery/new/image 3.png",
+      "/assets/vite_colte/gallery/image-1.png",
+      "/assets/vite_colte/gallery/image-2.png",
+      "/assets/vite_colte/gallery/image-3.png",
     ],
     [
-      "/gallery/new/image 4.png",
-      "/gallery/new/image 5.png",
-      "/gallery/new/image 6.png",
+      "/assets/vite_colte/gallery/image-4.png",
+      "/assets/vite_colte/gallery/image-5.png",
+      "/assets/vite_colte/gallery/image-6.png",
+    ],
+        [
+      "/assets/vite_colte/gallery/image-19.png",
+      "/assets/vite_colte/gallery/image-20.png",
+      "/assets/vite_colte/gallery/image-21.png",
     ],
     [
-      "/gallery/new/image 7.png",
-      "/gallery/new/image 8.png",
-      "/gallery/new/image 9.png",
+      "/assets/vite_colte/gallery/image-7.png",
+      "/assets/vite_colte/gallery/image-8.png",
+      "/assets/vite_colte/gallery/image-9.png",
     ],
     [
-      "/gallery/new/image 10.png",
-      "/gallery/new/image 11.png",
-      "/gallery/new/image 12.png",
+      "/assets/vite_colte/gallery/image-10.png",
+      "/assets/vite_colte/gallery/image-11.png",
+      "/assets/vite_colte/gallery/image-12.png",
     ],
     [
-      "/gallery/new/image 13.png",
-      "/gallery/new/image 14.png",
-      "/gallery/new/image 15.png",
+      "/assets/vite_colte/gallery/image-13.png",
+      "/assets/vite_colte/gallery/image-14.png",
+      "/assets/vite_colte/gallery/image-15.png",
     ],
     [
-      "/gallery/new/image 16.png",
-      "/gallery/new/image 17.png",
-      "/gallery/new/image 18.png",
+      "/assets/vite_colte/gallery/image-16.png",
+      "/assets/vite_colte/gallery/image-17.png",
+      "/assets/vite_colte/gallery/image-18.png",
     ],
-    [
-      "/gallery/new/image 19.png",
-      "/gallery/new/image 20.png",
-      "/gallery/new/image 21.png",
-    ],
+
   ];
 
   const slideFromLeft = {

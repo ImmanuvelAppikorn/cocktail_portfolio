@@ -27,7 +27,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
           />
         </button>
         <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-          CABERNET SAUVIGNON
+          BARBERA D,ASTI
         </h2>
       </div>
 
@@ -39,15 +39,15 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             items: [
               {
                 icon: "/nutrition-icons/icon1.svg",
-                text: "Energy : 78 kcal - 326 kj",
+                text: "Energy: 85 kcal – 356 kJ",
               },
               {
                 icon: "/nutrition-icons/icon2.svg",
-                text: "Fats : 0 g for which Saturated fatty acids : 0 g",
+                text: "Fats : 0 g for which Saturated fatty acids : 0 g ",
               },
               {
                 icon: "/nutrition-icons/icon3.svg",
-                text: "Carbohydrates : 1.2 g for which Sugars : 0.1 g",
+                text: "Carbohydrates : 0.9 g for which Sugars : 0.3 g ",
               },
               { icon: "/nutrition-icons/icon4.svg", text: "Proteins : 0 g" },
               { icon: "/nutrition-icons/icon5.svg", text: "Salt : 0 g" },
@@ -58,15 +58,15 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             items: [
               {
                 icon: "/nutrition-icons/icon1.svg",
-                text: "Bottle (GLASS COLLECTION) GL 71",
+                text: "Bottle (GLASS COLLECTION) GL 75",
               },
               {
                 icon: "/nutrition-icons/icon2.svg",
-                text: "Cork (DEDICATED SEPARATE COLLECTION) FOR 51",
+                text: "Cork (SEPARATE COLLECTION): FOR 52",
               },
               {
                 icon: "/nutrition-icons/icon3.svg",
-                text: "Capsules (PLASTIC COLLECTION) C/PVC 90",
+                text: "Capsule (PLASTIC COLLECTION): C/PVC 90",
               },
             ],
           },
@@ -74,12 +74,8 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             title: "Ingredients",
             isList: true,
             items: [
-              { text: "Grapes" },
-              { text: "Additives: Gum Arabic (E414)" },
-              { text: "Potassium Polyepitope" },
-              {
-                text: "Antioxidant Preservatives: Potassium Metabisulfite (sulfites)",
-              },
+              { text: "Organic Barbera grapes" },
+              { text: "Preservative: Potassium metabisulfite (contains sulfites)" },
             ],
           },
         ].map((section, idx) => (

@@ -212,7 +212,7 @@ export default function HomePage() {
           >
             <button
               onClick={handleStartJourney}
-              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#4B0013] from-[#c9214e9f] to-[#c9214e] hover:opacity-90 transition group"
             >
               <span className="relative flex items-center">Explore More</span>
               <Image
@@ -248,17 +248,19 @@ export default function HomePage() {
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
-                      ? "125%"
+                      ? "95%"
                       : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
-            currentStep === "home" || currentStep === "more_details"
+            currentStep === "home" 
               ? -11
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? -31
-                  : 0,
+                  ? -25
+                  :currentStep === "more_details"
+                    ? -16
+                    : 0,
           bottom:
             currentStep === "home"
               ? "-45%"
@@ -269,7 +271,7 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "-20%"
                     : currentStep === "more_details"
-                      ? "-32%"
+                      ? "-12%"
                       : "7%",
           left:
             currentStep === "home"
@@ -277,9 +279,9 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
-                  ? "74%"
+                  ? "78%"
                   : currentStep === "nutrition"
-                    ? "75%"
+                    ? "78%"
                     : currentStep === "more_details"
                     ? "62%"
                     :"50%",
@@ -314,7 +316,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "60%"
+                  ? "67%"
                   : currentStep === "more_details"
                     ? 0
                     : "60%",
@@ -343,7 +345,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? 0
+                  ? -20
                   : 0,
           opacity:
             currentStep === "review"
