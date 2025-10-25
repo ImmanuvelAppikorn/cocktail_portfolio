@@ -25,7 +25,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           />
         </button>
         <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-          CABERNET SAUVIGNON
+          ALTA LANGA
         </h2>
       </div>
 
@@ -36,43 +36,21 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
         </p>
 
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 leading-7  pl-4 pr-2 pt-2 text-justify">
-          Lorem ipsum dolor sit amet consectetur. Sit sapien vulputate egestas
-          nunc quis. Tortor aenean nisl nullam purus donec dolor sit. Vestibulum
-          vestibulum vel ut libero volutpat magna gravida. Malesuada feugiat
-          amet ultrices elit vulputate eu. Sed leo a lectus enim faucibus
-          adipiscing ipsum.
-          <br /> Suspendisse tempus tempor ut laoreet cursus. Cras nulla arcu
-          leo sagittis amet tincidunt neque. Malesuada et tellus scelerisque
-          ipsum eu ornare lorem tempus rutrum.
-          <br /> Aliquam id sit gravida vulputate semper. Cras suscipit in
-          elementum ipsum. Senectus integer id ut sagittis lectus. Tempus arcu
-          nibh posuere lacus augue. Malesuada pellentesque phasellus proin
-          vestibulum. Vestibulum proin sed tempor imperdiet tempus urna.
-          Sagittis sed gravida massa dolor ultrices dictum convallis fermentum
-          amet. Dignissim volutpat non arcu tincidunt. Laoreet leo urna non eget
-          tincidunt. Lectus mus adipiscing sollicitudin in.
-          <br /> Arcu nisl at tincidunt augue in. Nulla mauris pretium imperdiet
-          amet sagittis at vestibulum venenatis. Diam ut viverra nullam dapibus
-          pretium sit sollicitudin pharetra a. Consequat placerat faucibus sed
-          arcu ipsum pretium dignissim. Et id auctor mauris sed. Lorem ipsum
-          dolor sit amet consectetur. Sit sapien vulputate egestas nunc quis.
-          Tortor aenean nisl nullam purus donec dolor sit. Vestibulum vestibulum
-          vel ut libero volutpat magna gravida. Malesuada feugiat amet ultrices
-          elit vulputate eu. Sed leo a lectus enim faucibus adipiscing ipsum.
-          Suspendisse tempus tempor ut laoreet cursus. Cras nulla arcu leo
-          sagittis amet tincidunt neque. Malesuada et tellus scelerisque ipsum
-          eu ornare lorem tempus rutrum. Aliquam id sit gravida vulputate
-          semper. Cras suscipit in elementum ipsum. Senectus integer id ut
-          sagittis lectus. Tempus arcu nibh posuere lacus augue. Malesuada
-          pellentesque phasellus proin vestibulum.
-          <br /> Vestibulum proin sed tempor imperdiet tempus urna. Sagittis sed
-          gravida massa dolor ultrices dictum convallis fermentum amet.
-          Dignissim volutpat non arcu tincidunt. Laoreet leo urna non eget
-          tincidunt. Lectus mus adipiscing sollicitudin in. Arcu nisl at
-          tincidunt augue in. Nulla mauris pretium imperdiet amet sagittis at
-          vestibulum venenatis. Diam ut viverra nullam dapibus pretium sit
-          sollicitudin pharetra a. Consequat placerat faucibus sed arcu ipsum
-          pretium dignissim. Et id auctor mauris sed.
+          Alta Langa Brut Blanc de Blancs 655 is a premium sparkling wine made
+          entirely from 100% Chardonnay grapes sourced from Lequio Berria at 655
+          meters above sea level. Harvested at the start of September, the
+          grapes are gently pressed under vacuum in a state-of-the-art press to
+          preserve freshness and aromatic intensity while avoiding oxidation.
+          Fermentation takes place in used wooden barrels, where the wine
+          remains until tirage, carried out at the end of spring. The wine then
+          ages 38 months sur-lie before disgorgement, resulting in a refined and
+          elegant sparkling wine. On the nose, it reveals fine aromas of citrus
+          peel, toasted hazelnuts, orange blossom, honey, freshly baked bread,
+          and a subtle saline note reminiscent of a sea breeze. The palate is
+          structured and crisp, with a delicate mousse that fills the mouth
+          horizontally and finishes dry, fresh, and persistent. Its golden
+          yellow color and fine perlage complete the experience, making it an
+          exceptional representation of the Alta Langa terroir.
         </p>
       </div>
     </div>

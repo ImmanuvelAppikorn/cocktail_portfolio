@@ -26,8 +26,8 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             width={26}
           />
         </button>
-        <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-          CABERNET SAUVIGNON
+        <h2 className="flex-1 text-center text-[#58660C] text-[19px] font-bold leading-tight font-montagu">
+          ALTA LANGA
         </h2>
       </div>
 
@@ -39,15 +39,15 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             items: [
               {
                 icon: "/nutrition-icons/icon1.svg",
-                text: "Energy : 78 kcal - 326 kj",
+                text: "Energy: 85 kcal – 356 kJ",
               },
               {
                 icon: "/nutrition-icons/icon2.svg",
-                text: "Fats : 0 g for which Saturated fatty acids : 0 g",
+                text: "Fats : 0 g for which Saturated fatty acids : 0 g ",
               },
               {
                 icon: "/nutrition-icons/icon3.svg",
-                text: "Carbohydrates : 1.2 g for which Sugars : 0.1 g",
+                text: "Carbohydrates : 1.8 g for which Sugars : 0.5 g ",
               },
               { icon: "/nutrition-icons/icon4.svg", text: "Proteins : 0 g" },
               { icon: "/nutrition-icons/icon5.svg", text: "Salt : 0 g" },
@@ -58,11 +58,11 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             items: [
               {
                 icon: "/nutrition-icons/icon1.svg",
-                text: "Bottle (GLASS COLLECTION) GL 71",
+                text: "Bottle (GLASS COLLECTION): GL 75",
               },
               {
                 icon: "/nutrition-icons/icon2.svg",
-                text: "Cork (DEDICATED SEPARATE COLLECTION) FOR 51",
+                text: "Cork (DEDICATED SEPARATE COLLECTION): FOR 52",
               },
               {
                 icon: "/nutrition-icons/icon3.svg",
@@ -74,18 +74,14 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             title: "Ingredients",
             isList: true,
             items: [
-              { text: "Grapes" },
-              { text: "Additives: Gum Arabic (E414)" },
-              { text: "Potassium Polyepitope" },
-              {
-                text: "Antioxidant Preservatives: Potassium Metabisulfite (sulfites)",
-              },
+              { text: "Chardonnay grapes" },
+              { text: "Preservative: Potassium metabisulfite (sulfites)" },
             ],
           },
         ].map((section, idx) => (
           <div key={idx}>
             {/* Title */}
-            <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4 font-montagu">
+            <p className="text-[16px] text-[#58660C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4 font-montagu">
               {section.title}
             </p>
 
@@ -124,13 +120,9 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 ))}
               </div>
             )}
-        
           </div>
-          
         ))}
-            <div className="w-full h-[20vh]">
-              {/* empty space */}
-            </div>
+        <div className="w-full h-[20vh]">{/* empty space */}</div>
       </div>
     </div>
   );

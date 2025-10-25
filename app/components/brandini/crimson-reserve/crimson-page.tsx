@@ -40,7 +40,7 @@ export default function CrimsonPage({
         >
           <button
             onClick={handleScrollToTopAndNavigate}
-            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#252C00] to-[#252c00d0] hover:opacity-90 transition group"
           >
             <span className="relative flex items-center font-montagu">
               Explore More
@@ -68,7 +68,10 @@ export default function CrimsonPage({
         >
           {/* Header */}
           <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-            <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer hover:bg-black/10 rounded-full">
+            <button
+              onClick={onPrevClick}
+              className="flex-shrink-0 cursor-pointer hover:bg-black/10 rounded-full"
+            >
               <Image
                 src="/button-image/white_back.svg"
                 alt="Back Icon"
@@ -77,7 +80,7 @@ export default function CrimsonPage({
               />
             </button>
             <h2 className="flex-1 text-center text-white text-[19px] font-bold leading-tight font-montagu">
-              CABERNET SAUVIGNON
+              ALTA LANGA
             </h2>
           </div>
 
@@ -87,7 +90,7 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/origin.svg"
                 title="ORIGIN"
-                value="FRANCE"
+                value="ITALY"
                 half
               />
               <InfoCard
@@ -101,13 +104,13 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/region.svg"
                 title="REGION"
-                value="BORDEAUX"
+                value="Lequio Berria"
                 half
               />
               <InfoCard
                 icon="/crimson-reserve-icons/variety.svg"
                 title="VARIETY"
-                value="CABERNET SAUVIGNON"
+                value="Chardonnay GRAPES"
                 half
               />
             </div>
@@ -129,13 +132,13 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
-                value="13.5%"
+                value="-"
                 half
               />
               <InfoCard
                 icon="/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="OAK BARREL AGED (18 MONTHS)"
+                value="Wooden Barrels (38 months)"
                 half
               />
             </div>
@@ -143,17 +146,17 @@ export default function CrimsonPage({
             <InfoCard
               icon="/crimson-reserve-icons/winery.svg"
               title="WINERY"
-              value="CHÂTEAU LUMIÈRE"
+              value="-"
             />
             <InfoCard
               icon="/crimson-reserve-icons/harvest.svg"
               title="HARVEST"
-              value="SEPTEMBER – OCTOBER"
+              value="Early September"
             />
             <InfoCard
               icon="/crimson-reserve-icons/tasting-notes.svg"
               title="TASTING NOTES"
-              value="BLACKBERRY, VANILLA, TOBACCO"
+              value="toasted hazelnuts, orange blossom, honey, freshly baked bread"
             />
           </motion.div>
         </div>
@@ -193,7 +196,7 @@ function InfoCard({
         <div className="text-[10px] font-bold uppercase font-axiforma">
           {title}
         </div>
-        <div className="text-[12px] font-normal text-white font-axiforma">
+        <div className="text-[12px] font-normal uppercase text-white font-axiforma">
           {value}
         </div>
       </div>
