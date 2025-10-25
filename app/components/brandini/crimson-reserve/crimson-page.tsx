@@ -32,7 +32,7 @@ export default function CrimsonPage({
     <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       <AnimatePresence>
         <motion.div
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50" // centered horizontally
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
           initial={{ x: 150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 150, opacity: 0 }}
@@ -42,8 +42,8 @@ export default function CrimsonPage({
             onClick={handleScrollToTopAndNavigate}
             className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#252C00] to-[#252c00d0] hover:opacity-90 transition group"
           >
-            <span className="relative flex items-center font-montagu">
-              Explore More
+            <span className="relative flex items-center font-montagu ">
+              More
               <Image
                 src="/button-image/arrow-up-right.svg"
                 alt="arrow"
@@ -130,7 +130,7 @@ export default function CrimsonPage({
           >
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
-                icon="/crimson-reserve-icons/alcohol.svg"
+                icon="assets/brandini/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
                 value="-"
                 half

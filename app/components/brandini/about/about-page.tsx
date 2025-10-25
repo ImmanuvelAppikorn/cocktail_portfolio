@@ -64,16 +64,13 @@ export default function AboutPage({
         </div>
 
         {/* Paragraph */}
-        <p className="text-[12px] w-[95%] font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-3 pt-2">
-          Our Blanc de Blancs is made for 100% Chardonnay grapes harvested at
-          the start of September. The grapes are brought into the cellar where
-          they are fed directly into a state-of-the-art press for Alta Langa.
-          This machine allows us to affect a slow and gentle press. We can
-          control the temperature whilst keeping the grape must under vacuum
-          meaning that we can avoid oxidation resulting in increased aromas and
-          freshness. The fermentation begins in used wooden barrels where the
-          wine remains until tirage which is done at the end of Spring. After 38
-          months ‘sur-lie’ the wine is disgorged and prepared to be tasted.
+        <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6 pt-2 px-2">
+          Our Blanc de Blancs is made from 100% Chardonnay grapes harvested in
+          early September. The grapes are gently pressed in a state-of-the-art
+          Alta Langa machine under controlled temperature and vacuum to preserve
+          freshness and aromas. Fermentation occurs in used wooden barrels until
+          tirage in late spring. After 38 months “sur-lie,” the wine is
+          disgorged and ready to taste.
           <span>
             <button
               onClick={handleScrollToTopAndNavigate}

@@ -217,12 +217,12 @@ const ReviewPage = ({
     <>
       {/* Main page content wrapped with dimming effect when emoji picker open */}
       <div
-        className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 ${
+        className={`flex flex-col min-h-screen max-w-[500px] mx-auto transition-opacity duration-300 p-4 ${
           activeReactionId ? "opacity-60" : "opacity-100"
         }`}
       >
         {/* Top Section: header + summary */}
-        <div className="px-1 pt-3 space-y-2 flex-shrink-0">
+        <div className="space-y-2 flex-shrink-0">
           <div className="flex flex-wrap justify-between items-center w-full px-2 sm:px-2">
             {/* Left side: back button + title */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
@@ -560,7 +560,7 @@ const ReviewPage = ({
         </div>
 
         {/* Bottom Section: Bottle Carousel */}
-        <div className="flex-shrink-0  absolute bottom-[10%] w-full h-[150px] ">
+        <div className="flex-shrink-0  absolute left-1/2 -translate-x-1/2 bottom-[10%] w-full h-[170px] ">
           <BottleCarousel />
         </div>
       </div>

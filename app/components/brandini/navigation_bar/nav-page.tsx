@@ -8,7 +8,7 @@ import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery",
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
 }
 
@@ -17,18 +17,30 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   onStepChange,
 }) => {
   const navItems = [
-    { id: "crimson", label: "Story", icon: "/navigation-bar/new/Story.svg" },
+    {
+      id: "crimson",
+      label: "Story",
+      icon: "assets/brandini/navigation-bar/new/story.svg",
+    },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "/navigation-bar/new/Gallery.svg",
+      icon: "assets/brandini/navigation-bar/new/gallery.svg",
     },
-    { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
-    { id: "review", label: "Reviews", icon: "/navigation-bar/new/Review.svg" },
+    {
+      id: "home",
+      label: "Home",
+      icon: "assets/brandini/navigation-bar/new/home.svg",
+    },
+    {
+      id: "review",
+      label: "Reviews",
+      icon: "assets/brandini/navigation-bar/new/reviews.svg",
+    },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "/navigation-bar/new/Nutrition.svg",
+      icon: "assets/brandini/navigation-bar/new/nutrition.svg",
     },
   ];
 
@@ -60,7 +72,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           }}
         >
           <Image
-            src="/navigation-bar/new/trigger_button.svg"
+            src="assets/brandini/navigation-bar/new/trigger_button.svg"
             alt="menu"
             width={50}
             height={50}
@@ -91,7 +103,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   height={38}
                   className="object-contain "
                 />
-                <p className="text-[8px]  text-center text-[#EB235C]  p-0.5 px-2  font-light font-axiforma whitespace-nowrap">
+                <p className="text-[8px]  text-center text-[#252C00]  p-0.5 px-2  font-light font-axiforma whitespace-nowrap">
                   {item.label}
                 </p>
               </button>

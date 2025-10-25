@@ -1,5 +1,5 @@
 import React from "react";
-import HomePage from "./components/scarpa/home/home-page";
+import HomePage from "./components/brandini/home/home-page";
 
 const Page = () => {
   return (
