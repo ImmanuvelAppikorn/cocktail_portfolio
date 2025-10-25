@@ -31,31 +31,12 @@ const bottles: Record<
   string,
   { colorKey: ColorKey; image: string; bgImage: string }
 > = {
-  "rose-vine": {
+  "rose-vine-vite": {
     colorKey: "primary",
-    image: "/vinea/Rose.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
+    image: "/assets/vite_colte/vinea/red_vine.svg",
+    bgImage: "/assets/vite_colte/shape-svg/circle-shape.svg",
   },
-  "gold-vine": {
-    colorKey: "gold",
-    image: "/vinea/Gold.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "green-vine": {
-    colorKey: "secondary",
-    image: "/vinea/Green.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "purple-vine": {
-    colorKey: "tertiary",
-    image: "/vinea/Purple.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
-  "red-vine": {
-    colorKey: "darkred",
-    image: "/vinea/Red.svg",
-    bgImage: "/shape-svg/circle-shape.svg",
-  },
+
 };
 
 // -------------------- MAIN COMPONENT --------------------
@@ -65,13 +46,13 @@ export default function HomePage() {
   const qrParam = Array.isArray(params.qrCode)
     ? params.qrCode[0]
     : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "rose-vine";
+  const qrCode = qrParam?.toLowerCase() || "rose-vine-vite";
 
   const [activeBottle, setActiveBottle] = useState<{
     bgImage: string | StaticImageData;
     colorKey: ColorKey;
     image: string | StaticImageData;
-  }>(bottles[qrCode] || bottles["rose-vine"]);
+  }>(bottles[qrCode] || bottles["rose-vine-vite"]);
 
   const [currentStep, setCurrentStep] = useState<
     | "home"
@@ -127,7 +108,7 @@ export default function HomePage() {
   // -------------------- RETURN UI --------------------
   return (
     <div
-      className="relative flex flex-col items-center justify-start bg-white overflow-hidden max-w-[500px] mx-auto h-screen"
+      className="relative flex flex-col items-center justify-start bg-[#E9E5E4] overflow-hidden max-w-[500px] mx-auto h-screen"
       style={{ height: "100vh" }}
     >
       {/* Navigation Bar */}
@@ -193,7 +174,7 @@ export default function HomePage() {
       {/* Home Page Title */}
       <AnimatePresence>
         {currentStep === "home" && !reverse && !showIntro && (
-          <div className="absolute top-[3.5%] z-20 w-[90%] aspect-[3/1] flex items-center justify-center overflow-hidden">
+          <div className="absolute top-[6%] z-20 w-[90%] aspect-[3/1] flex items-center justify-center overflow-hidden">
             <motion.h1
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
@@ -208,7 +189,7 @@ export default function HomePage() {
               <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
                 <Image
                   alt="Vinea Logo"
-                  src="/logo/logo.svg"
+                  src="/assets/vite_colte/logo/logo.svg"
                   fill
                   priority
                   className="object-contain"
@@ -280,7 +261,7 @@ export default function HomePage() {
                   : 0,
           bottom:
             currentStep === "home"
-              ? "-40%"
+              ? "-45%"
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
@@ -317,7 +298,7 @@ export default function HomePage() {
             src={activeBottle.image}
             fill
             priority
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </motion.div>
@@ -329,7 +310,7 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "85%"
+              ? "90%"
               : currentStep === "crimson"
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
