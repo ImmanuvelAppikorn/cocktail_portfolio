@@ -40,10 +40,10 @@ export default function CrimsonPage({
         >
           <button
             onClick={handleScrollToTopAndNavigate}
-            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+            className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#4B0013] from-[#C9214E] to-[#C9214E] hover:opacity-90 transition group"
           >
             <span className="relative flex items-center font-montagu">
-              Explore More
+              More
               <Image
                 src="/button-image/arrow-up-right.svg"
                 alt="arrow"
@@ -77,7 +77,7 @@ export default function CrimsonPage({
               />
             </button>
             <h2 className="flex-1 text-center text-white text-[19px] font-bold leading-tight font-montagu">
-              CABERNET SAUVIGNON
+              BARBERRA D'ASTI
             </h2>
           </div>
 
@@ -85,29 +85,29 @@ export default function CrimsonPage({
           <div className="flex flex-col gap-4 text-[12px] font-semibold mt-6">
             <div className="flex flex-row w-full justify-between">
               <InfoCard
-                icon="/crimson-reserve-icons/origin.svg"
+                icon="/assets/vite_colte/crimson-reserve-icons/origin.svg"
                 title="ORIGIN"
-                value="FRANCE"
+                value="ITALY"
                 half
               />
               <InfoCard
-                icon="/crimson-reserve-icons/vintage.svg"
+                icon="/assets/vite_colte/crimson-reserve-icons/vintage.svg"
                 title="VINTAGE"
-                value="2018"
+                value="2023/2021"
                 half
               />
             </div>
             <div className="flex flex-row w-full justify-between">
               <InfoCard
-                icon="/crimson-reserve-icons/region.svg"
+                icon="/assets/vite_colte/crimson-reserve-icons/region.svg"
                 title="REGION"
-                value="BORDEAUX"
+                value="PIEDMONT"
                 half
               />
               <InfoCard
-                icon="/crimson-reserve-icons/variety.svg"
+                icon="/assets/vite_colte/crimson-reserve-icons/variety.svg"
                 title="VARIETY"
-                value="CABERNET SAUVIGNON"
+                value="BARBERA"
                 half
               />
             </div>
@@ -127,33 +127,33 @@ export default function CrimsonPage({
           >
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
-                icon="/crimson-reserve-icons/alcohol.svg"
+                icon="/assets/vite_colte/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
-                value="13.5%"
+                value="14.0%"
                 half
               />
               <InfoCard
-                icon="/crimson-reserve-icons/processing.svg"
+                icon="/assets/vite_colte/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="OAK BARREL AGED (18 MONTHS)"
+                value="WOODEN BARRELS (38 MONTHS)"
                 half
               />
             </div>
 
             <InfoCard
-              icon="/crimson-reserve-icons/winery.svg"
+              icon="/assets/vite_colte/crimson-reserve-icons/winery.svg"
               title="WINERY"
-              value="CHÂTEAU LUMIÈRE"
+              value="VITE COLTE,VIA BERGESIA 6, BAROLO (CN)"
             />
             <InfoCard
-              icon="/crimson-reserve-icons/harvest.svg"
+              icon="/assets/vite_colte/crimson-reserve-icons/harvest.svg"
               title="HARVEST"
-              value="SEPTEMBER – OCTOBER"
+              value="EARLY SEPTEMBER"
             />
             <InfoCard
-              icon="/crimson-reserve-icons/tasting-notes.svg"
+              icon="/assets/vite_colte/crimson-reserve-icons/tasting-notes.svg"
               title="TASTING NOTES"
-              value="BLACKBERRY, VANILLA, TOBACCO"
+              value="DARK BERRIES, WALNUTS,AND SPICE"
             />
           </motion.div>
         </div>
