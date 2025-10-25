@@ -235,7 +235,7 @@ const ReviewPage = ({
                 />
               </button>
               <p className="text-[13px] sm:text-base font-bold font-mulish whitespace-nowrap">
-                CABERNET SAUVIGNON
+                ALTA LANGA
               </p>
             </div>
 
@@ -563,7 +563,6 @@ const ReviewPage = ({
         <div className="flex-shrink-0  absolute bottom-[10%] w-full h-[150px] ">
           <BottleCarousel />
         </div>
-        
       </div>
 
       {/* Emoji picker rendered outside the dimmed content */}

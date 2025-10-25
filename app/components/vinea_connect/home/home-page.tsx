@@ -300,8 +300,8 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "75%"
                     : currentStep === "more_details"
-                    ? "62%"
-                    :"50%",
+                      ? "62%"
+                      : "50%",
           opacity:
             currentStep === "review"
               ? 0

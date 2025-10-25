@@ -70,7 +70,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
             width={26}
           />
         </button>
-        <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
+        <h2 className="flex-1 text-center text-[#58660C] text-[19px] font-bold leading-tight font-montagu">
           GALLERY
         </h2>
       </div>
