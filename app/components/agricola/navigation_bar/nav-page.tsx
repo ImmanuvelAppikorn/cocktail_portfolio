@@ -17,18 +17,18 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   onStepChange,
 }) => {
   const navItems = [
-    { id: "crimson", label: "Story", icon: "/navigation-bar/new/Story.svg" },
+    { id: "crimson", label: "Story", icon: "assets/agricola/navigation-bar/new/Story.svg" },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "/navigation-bar/new/Gallery.svg",
+      icon: "assets/agricola/navigation-bar/new/Gallery.svg",
     },
-    { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
-    { id: "review", label: "Reviews", icon: "/navigation-bar/new/Review.svg" },
+    { id: "home", label: "Home", icon: "assets/agricola/navigation-bar/new/Home.svg" },
+    { id: "review", label: "Reviews", icon: "assets/agricola/navigation-bar/new/Review.svg" },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "/navigation-bar/new/Nutrition.svg",
+      icon: "assets/agricola/navigation-bar/new/Nutrition.svg",
     },
   ];
 
@@ -60,7 +60,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           }}
         >
           <Image
-            src="/navigation-bar/new/trigger_button.svg"
+            src="assets/agricola/navigation-bar/new/trigger_button.svg"
             alt="menu"
             width={50}
             height={50}
@@ -91,7 +91,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   height={38}
                   className="object-contain "
                 />
-                <p className="text-[8px]  text-center text-[#EB235C]  p-0.5 px-2  font-light font-axiforma whitespace-nowrap">
+                <p className="text-[8px]  text-center text-[#443A3B]  p-0.5 px-2  font-light font-axiforma whitespace-nowrap">
                   {item.label}
                 </p>
               </button>

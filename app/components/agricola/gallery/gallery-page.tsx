@@ -7,41 +7,32 @@ import { motion } from "framer-motion";
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     [
-      "/gallery/new/image 1.png",
-      "/gallery/new/image 2.png",
-      "/gallery/new/image 3.png",
+      "assets/agricola/gallery/image-1.png",
+      "assets/agricola/gallery/image-2.png",
+      "assets/agricola/gallery/image-3.png",
     ],
     [
-      "/gallery/new/image 4.png",
-      "/gallery/new/image 5.png",
-      "/gallery/new/image 6.png",
+      "assets/agricola/gallery/image-4.png",
+      "assets/agricola/gallery/image-5.png",
+      "assets/agricola/gallery/image-6.png",
     ],
     [
-      "/gallery/new/image 7.png",
-      "/gallery/new/image 8.png",
-      "/gallery/new/image 9.png",
+      "assets/agricola/gallery/image-7.png",
+      "assets/agricola/gallery/image-8.png",
+      "assets/agricola/gallery/image-9.png",
     ],
     [
-      "/gallery/new/image 10.png",
-      "/gallery/new/image 11.png",
-      "/gallery/new/image 12.png",
+      "assets/agricola/gallery/image-10.png",
+      "assets/agricola/gallery/image-11.png",
+         "assets/agricola/gallery/image-17.png",
     ],
     [
-      "/gallery/new/image 13.png",
-      "/gallery/new/image 14.png",
-      "/gallery/new/image 15.png",
-    ],
-    [
-      "/gallery/new/image 16.png",
-      "/gallery/new/image 17.png",
-      "/gallery/new/image 18.png",
-    ],
-    [
-      "/gallery/new/image 19.png",
-      "/gallery/new/image 20.png",
-      "/gallery/new/image 21.png",
+      "assets/agricola/gallery/image-15.png",
+           "assets/agricola/gallery/image-16.png",
+"assets/agricola/gallery/image-6.png",
     ],
   ];
+
 
   const slideFromLeft = {
     hidden: { x: -100, opacity: 0 },
@@ -70,7 +61,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
             width={26}
           />
         </button>
-        <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
+        <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
           GALLERY
         </h2>
       </div>

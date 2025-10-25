@@ -223,7 +223,7 @@ export default function HomePage() {
       <AnimatePresence>
         {currentStep === "home" && !reverse && !showIntro && (
           <motion.div
-            className="absolute top-[45%] right-3 z-50 mb-3"
+            className="absolute top-[40%] right-3 z-50 mb-3 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]"
             initial={{ x: 150, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 150, opacity: 0 }}
@@ -231,7 +231,7 @@ export default function HomePage() {
           >
             <button
               onClick={handleStartJourney}
-              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#DCBC7F] from-[#443a3baa] to-[#443A3B] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#DCBC7F] from-[#dcbb7fd5] to-[#443A3B] hover:opacity-90 transition group"
             >
               <span className="relative flex items-center">Explore More</span>
               <Image
@@ -292,7 +292,7 @@ export default function HomePage() {
                       : "7%",
           left:
             currentStep === "home"
-              ? "60%"
+              ? "55%"
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
@@ -348,7 +348,7 @@ export default function HomePage() {
                   : "50%",
           bottom:
             currentStep === "home"
-              ? "-35%"
+              ? "-40%"
               : currentStep === "crimson"
                 ? "-25%"
                 : currentStep === "about" || currentStep === "nutrition"

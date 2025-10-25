@@ -49,31 +49,26 @@ export default function AboutPage({
             width={26}
             />
           </button>
-          <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
+          <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
             CLÀSIC
           </h2>
         </div>
 
-        <div className="flex flex-row justify-start items-center w-full px-2">
-          <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
+        <div className="flex flex-row justify-start items-center w-full ">
+          <p className="text-[16px] text-[#443A3B] font-extrabold tracking-[2px] w-full pb-0 mt-3 font-montagu">
             About The Wine
           </p>
         </div>
 
         {/* Paragraph */}
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6   pt-2">
-          &ldquo;Sourced from the mineral-rich soil along the Bhadra River Belt, our
-          house espresso is a single-origin specialty Robusta coffee from India,
-          considered among the finest in the world. This Robusta is graded as
-          &lsquo;Kaapi Royale,&rsquo; the highest grade of Indian Robusta. When presented in
-          a milk-based drink, it features notes of hazelnut and dark chocolate,
-          with an extra caffeine hit unique to Robusta.&rdquo;
+          Made from pure Ruchè grapes, Sant’Eufemia represents the most straightforward, immediate and valuable version of this unique and particular grape.A wine with no frills, straightforward and sincere like a peasant’s handshake, ready to drink, ideal for a snack or paired with an informal meal.
           <span>
             <button
               onClick={handleScrollToTopAndNavigate}
-              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#EB235C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
+              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#443A3B] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
             >
-              View More....
+              View More...
             </button>
           </span>
         </p>

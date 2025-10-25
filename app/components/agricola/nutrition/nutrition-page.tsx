@@ -26,8 +26,8 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             width={26}
           />
         </button>
-        <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-          CABERNET SAUVIGNON
+        <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
+      CLÀSIC
         </h2>
       </div>
 
@@ -39,7 +39,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             items: [
               {
                 icon: "/nutrition-icons/icon1.svg",
-                text: "Energy : 78 kcal - 326 kj",
+                text: "Energy : 77 kcal - 326 kj",
               },
               {
                 icon: "/nutrition-icons/icon2.svg",
@@ -47,9 +47,9 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
               },
               {
                 icon: "/nutrition-icons/icon3.svg",
-                text: "Carbohydrates : 1.2 g for which Sugars : 0.1 g",
+                text: "Carbohydrates : 0.8g for which Sugars : 0.3 g",
               },
-              { icon: "/nutrition-icons/icon4.svg", text: "Proteins : 0 g" },
+              { icon: "/nutrition-icons/icon4.svg", text: "Proteins : 0.1 g" },
               { icon: "/nutrition-icons/icon5.svg", text: "Salt : 0 g" },
             ],
           },
@@ -75,7 +75,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             isList: true,
             items: [
               { text: "Grapes" },
-              { text: "Additives: Gum Arabic (E414)" },
+              { text: "Additives: gum Arabic (E414)" },
               { text: "Potassium Polyepitope" },
               {
                 text: "Antioxidant Preservatives: Potassium Metabisulfite (sulfites)",
@@ -85,13 +85,13 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
         ].map((section, idx) => (
           <div key={idx}>
             {/* Title */}
-            <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4 font-montagu">
+            <p className="text-[16px] text-[#443A3B] font-bold tracking-[2px] w-full pb-0 mb-2  font-montagu">
               {section.title}
             </p>
 
             {/* Items */}
             {section.isList ? (
-              <ul className="list-disc pl-8 space-y-2 font-poppins">
+              <ul className="list-disc  space-y-2 font-poppins">
                 {section.items.map((item, i) => (
                   <li
                     key={i}
@@ -106,7 +106,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 {section.items.map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-1.5 w-full px-3 py-0.5"
+                    className="flex items-center gap-1.5 w-full  py-0.5"
                   >
                     {"icon" in item && item.icon && (
                       <Image
