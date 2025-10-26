@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
@@ -117,7 +117,7 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
-        <div className="pb-22">
+        <div className="pb-20">
           {/* CTA Button */}
 
           {/* Bottom Section */}
@@ -138,7 +138,7 @@ export default function CrimsonPage({
               <InfoCard
                 icon="assets/scapra/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="French Allier oak barrels AGED (32 months)"
+                value="French Allier oak barrels AGED (32mo)"
                 half
               />
             </div>
@@ -166,6 +166,8 @@ export default function CrimsonPage({
 }
 
 // Reusable Info Card (Mobile Optimized)
+import Image from "next/image";
+
 function InfoCard({
   icon,
   title,
@@ -179,11 +181,12 @@ function InfoCard({
 }) {
   return (
     <div
-      className={`flex flex-row items-center ${
+      className={`grid grid-cols-[auto_1fr] gap-2 items-start ${
         half ? "w-full" : "w-full"
       } text-left`}
     >
-      <div className="w-[40px] h-[40px] rounded-full border border-[#1E1F1E] flex items-center justify-center flex-shrink-0">
+      {/* Icon Section */}
+      <div className="w-[40px] h-[40px] rounded-full border border-[#1E1F1E] flex items-center justify-center">
         <Image
           src={icon}
           alt={title}
@@ -192,14 +195,17 @@ function InfoCard({
           className="object-contain"
         />
       </div>
-      <div className="flex flex-col justify-center ml-3">
+
+      {/* Text Section */}
+      <div className="flex flex-col justify-center">
         <div className="text-[10px] text-[#BF062F] font-bold uppercase font-axiforma">
           {title}
         </div>
-        <div className="text-[12px] font-normal text-black font-axiforma uppercase">
+        <div className="text-[10px] font-normal text-black font-axiforma uppercase">
           {value}
         </div>
       </div>
     </div>
   );
 }
+

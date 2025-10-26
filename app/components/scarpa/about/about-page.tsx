@@ -55,7 +55,7 @@ export default function AboutPage({
         </div>
 
         <div className="flex flex-row justify-start items-center w-full px-2">
-          <p className="text-[16px] text-[#BF062F] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
+          <p className="text-[16px] text-[#BF062F] font-extrabold tracking-[2px] w-full pb-0 mt-3 font-montagu">
             About The Wine
           </p>
         </div>

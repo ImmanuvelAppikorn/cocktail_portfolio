@@ -85,7 +85,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
         ].map((section, idx) => (
           <div key={idx}>
             {/* Title */}
-            <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2 pl-4 font-montagu">
+            <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2  font-montagu">
               {section.title}
             </p>
 
@@ -106,7 +106,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 {section.items.map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-1.5 w-full px-3 py-0.5"
+                    className="flex items-center gap-1.5 w-full  py-0.5"
                   >
                     {"icon" in item && item.icon && (
                       <Image

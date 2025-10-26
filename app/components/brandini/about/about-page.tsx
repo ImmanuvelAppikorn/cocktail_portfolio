@@ -58,7 +58,7 @@ export default function AboutPage({
         </div>
 
         <div className="flex flex-row justify-start items-center w-full px-2">
-          <p className="text-[16px] text-[#58660C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">
+          <p className="text-[16px] text-[#58660C] font-extrabold tracking-[2px] w-full pb-0 mt-3 font-montagu">
             About The Wine
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function AboutPage({
           <span>
             <button
               onClick={handleScrollToTopAndNavigate}
-              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#58660C] inline-flex items-center justify-center px-[4px]  text-[#787878] text-[12px] font-montagu font-semibold transition group"
+              className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#58660C] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
             >
               View More....
             </button>

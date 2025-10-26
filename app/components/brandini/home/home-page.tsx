@@ -247,7 +247,7 @@ export default function HomePage() {
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
-                      ? "85%"
+                      ? "95%"
                       : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
@@ -270,7 +270,7 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "-20%"
                     : currentStep === "more_details"
-                      ? "0%"
+                      ? "-10%"
                       : "7%",
           left:
             currentStep === "home"
@@ -282,7 +282,7 @@ export default function HomePage() {
                   : currentStep === "nutrition"
                     ? "75%"
                     : currentStep === "more_details"
-                      ? "62%"
+                      ? "55%"
                       : "50%",
           opacity:
             currentStep === "review"

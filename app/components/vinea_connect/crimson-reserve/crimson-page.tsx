@@ -43,7 +43,7 @@ export default function CrimsonPage({
             className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
           >
             <span className="relative flex items-center font-montagu">
-              Explore More
+              More
               <Image
                 src="/button-image/arrow-up-right.svg"
                 alt="arrow"

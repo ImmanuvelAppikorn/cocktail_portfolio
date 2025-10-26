@@ -6,38 +6,38 @@ import { motion, AnimatePresence } from "framer-motion";
 const bottles = [
   {
     id: 1,
-    name: "Blossom Rose",
+    name: "CLASIC",
     price: 179,
-    img: "/vinea/Rose.svg",
-    color: "#EB235C",
+    img: "assets/agricola/vinea/bottle-1.svg",
+    color: "#443A3B",
   },
   {
     id: 2,
-    name: "Verdant Grove",
+    name: "VICNA DEL PARROCO",
     price: 189,
-    img: "/vinea/Green.svg",
-    color: "#22C55E",
+    img: "assets/agricola/vinea/bottle-2.svg",
+    color: "#9C3133",
   },
   {
     id: 3,
-    name: "Purple Malbe",
+    name: "ROSE DE NOIR",
     price: 149,
-    img: "/vinea/Purple.svg",
-    color: "#9333EA",
+    img: "assets/agricola/vinea/bottle-3.svg",
+    color: "#A4813E ",
   },
   {
     id: 4,
-    name: "Golden Chard",
+    name: "LUNA",
     price: 129,
-    img: "/vinea/Gold.svg",
-    color: "#EAB308",
+    img: "assets/agricola/vinea/bottle-4.svg",
+    color: "#E6E4E5",
   },
   {
     id: 5,
-    name: "Scarlet Merlot",
+    name: "IL GIAJ",
     price: 149,
-    img: "/vinea/Red.svg",
-    color: "#DC2626",
+    img: "assets/agricola/vinea/bottle-5.svg",
+    color: "#937141",
   },
 ];
 
@@ -95,11 +95,11 @@ export default function BottleCarousel() {
                 initial={{ opacity: 0, y: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
-                <h3 className="text-[18px] font-bold text-black font-montagu">
+                <h3 className="text-[18px] font-bold text-[#1E1F1E] font-montagu">
                   {activeBottle.name}
                 </h3>
                 <h2
-                  className="font-bold text-[27px] font-montagu"
+                  className="font-bold text-[26px] font-montagu"
                   style={{ color: activeBottle.color }}
                 >
                   ${activeBottle.price}

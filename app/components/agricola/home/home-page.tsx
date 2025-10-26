@@ -205,7 +205,7 @@ export default function HomePage() {
                 lineHeight: "80%",
               }}
             >
-              <div className="relative w-[80%] aspect-[2/1] mx-auto">
+              <div className="relative w-[80%] aspect-[2.3/1] mx-auto">
                 <Image
                   alt="Vinea Logo"
                   src="assets/agricola/logo/logo.svg"
@@ -267,28 +267,30 @@ export default function HomePage() {
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
-                      ? "125%"
+                      ? "95%"
                       : "10%",
           aspectRatio: 0.5 / 1,
           rotate:
-            currentStep === "home" || currentStep === "more_details"
+            currentStep === "home"
               ? -11
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
                   ? -31
-                  : 0,
+                  :currentStep === "more_details"
+              ? -18
+              : 0,
           bottom:
             currentStep === "home"
               ? "-40%"
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
-                  ? "-15%"
+                  ? "-20%"
                   : currentStep === "nutrition"
                     ? "-20%"
                     : currentStep === "more_details"
-                      ? "-32%"
+                      ? "-15%"
                       : "7%",
           left:
             currentStep === "home"
@@ -296,9 +298,9 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
-                  ? "74%"
+                  ? "77%"
                   : currentStep === "nutrition"
-                    ? "75%"
+                    ? "77%"
                     : currentStep === "more_details"
                     ? "62%"
                     :"50%",
@@ -333,7 +335,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "150%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "60%"
+                  ? "65%"
                   : currentStep === "more_details"
                     ? 0
                     : "60%",
@@ -362,7 +364,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? 0
+                  ? -25
                   : 0,
           opacity:
             currentStep === "review"

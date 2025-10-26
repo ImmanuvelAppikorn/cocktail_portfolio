@@ -108,7 +108,7 @@ export default function HomePage() {
   // -------------------- RETURN UI --------------------
   return (
     <div
-      className="relative flex flex-col items-center justify-start bg-[#E9E5E4] overflow-hidden max-w-[500px] mx-auto h-screen"
+      className="relative flex flex-col items-center justify-start bg-[#dfdddc] overflow-hidden max-w-[500px] mx-auto h-screen"
       style={{ height: "100vh" }}
     >
       {/* Navigation Bar */}
@@ -189,7 +189,7 @@ export default function HomePage() {
               <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
                 <Image
                   alt="Vinea Logo"
-                  src="/assets/vite_colte/logo/logo.svg"
+                  src="/assets/vite_colte/logo/text-logo.png"
                   fill
                   priority
                   className="object-contain"

@@ -117,7 +117,7 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
-        <div className="pb-22">
+        <div className="pb-20">
           {/* CTA Button */}
 
           {/* Bottom Section */}
@@ -138,7 +138,7 @@ export default function CrimsonPage({
               <InfoCard
                 icon="/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="Wooden Barrels (38 months)"
+                value="Wooden Barrels-38mo"
                 half
               />
             </div>
@@ -192,11 +192,11 @@ function InfoCard({
           className="object-contain"
         />
       </div>
-      <div className="flex flex-col justify-center ml-3">
+      <div className="flex flex-col justify-center ml-2">
         <div className="text-[10px] font-bold uppercase font-axiforma">
           {title}
         </div>
-        <div className="text-[12px] font-normal uppercase text-white font-axiforma">
+        <div className="text-[11px] font-normal uppercase text-white font-axiforma">
           {value}
         </div>
       </div>

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const bottles = [
   {
     id: 1,
-    name: "rossofuoco",
+    name: "Rossofuoco",
     price: 179,
     img: "/assets/vite_colte/vinea/red_vine.svg",
     color: "#B43C54",
@@ -99,7 +99,7 @@ export default function BottleCarousel() {
                   {activeBottle.name}
                 </h3>
                 <h2
-                  className="font-bold text-[27px] font-montagu"
+                  className="font-bold text-[26px] font-montagu"
                   style={{ color: activeBottle.color }}
                 >
                   ${activeBottle.price}

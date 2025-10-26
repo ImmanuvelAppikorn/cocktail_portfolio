@@ -60,30 +60,7 @@ const ReviewPage = ({
       comment: "This wine has a perfect balance of flavor and aroma!",
       avatar: "/review-images/Ellipse2.svg",
     },
-    {
-      id: "3",
-      user: "Jane Smith",
-      rating: 4,
-      time: new Date(),
-      comment: "Nice wine, smooth finish!",
-      avatar: "/review-images/Ellipse2.svg",
-    },
-    {
-      id: "4",
-      user: "Alice Johnson",
-      rating: 5,
-      time: new Date(),
-      comment: "Highly recommend this one for special occasions.",
-      avatar: "/review-images/Ellipse2.svg",
-    },
-    {
-      id: "5",
-      user: "Bob Williams",
-      rating: 5,
-      time: new Date(),
-      comment: "Excellent quality and taste!",
-      avatar: "/review-images/Ellipse2.svg",
-    },
+
   ]);
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
@@ -223,7 +200,7 @@ const ReviewPage = ({
       >
         {/* Top Section: header + summary */}
         <div className="space-y-2 flex-shrink-0">
-          <div className="flex flex-wrap justify-between items-center w-full px-2 sm:px-2">
+          <div className="flex flex-wrap justify-between items-center w-full  sm:px-2">
             {/* Left side: back button + title */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
@@ -402,7 +379,7 @@ const ReviewPage = ({
         </div>
 
         {/* Middle Section: Reviews List center and scrollable */}
-        <div className="overflow-y-auto px-4 h-[35vh]">
+        <div className="overflow-y-auto  h-[35vh]">
           {reviews.length > 0 ? (
             reviews.map((r) => (
               <div
