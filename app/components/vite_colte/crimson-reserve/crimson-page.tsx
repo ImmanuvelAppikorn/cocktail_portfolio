@@ -56,7 +56,7 @@ export default function CrimsonPage({
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex flex-1 flex-col items-center justify-between w-full">
+      <div className="flex flex-1 flex-col items-start justify-between w-full">
         {/* Top Section */}
 
         <motion.div
@@ -123,7 +123,7 @@ export default function CrimsonPage({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="flex flex-col space-y-4 px-1 w-full mt-6"
+            className="flex flex-col space-y-4  w-full mt-6"
           >
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard

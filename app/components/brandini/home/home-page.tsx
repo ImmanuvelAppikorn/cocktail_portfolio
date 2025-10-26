@@ -27,31 +27,31 @@ const colors: Record<ColorKey, string> = {
 } as const;
 
 // -------------------- BOTTLES --------------------
-const bottles: Record<
-  string,
-  { colorKey: ColorKey; image: string; bgImage: string }
-> = {
-  "atla-vine": {
-    colorKey: "primary",
-    image: "assets/brandini/vinea/image_1.svg",
-    bgImage: "/assets/brandini/shape-svg/circle-shape.svg",
-  },
-};
+// const bottles: Record<
+//   string,
+//   { colorKey: ColorKey; image: string; bgImage: string }
+// > = {
+//   "atla-vine": {
+//     colorKey: "primary",
+//     image: "assets/brandini/vinea/image_1.svg",
+//     bgImage: "/assets/brandini/shape-svg/circle-shape.svg",
+//   },
+// };
 
 // -------------------- MAIN COMPONENT --------------------
 export default function HomePage() {
   const _router = useRouter();
   const params = useParams();
-  const qrParam = Array.isArray(params.qrCode)
-    ? params.qrCode[0]
-    : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "atla-vine";
+  // const qrParam = Array.isArray(params.qrCode)
+  //   ? params.qrCode[0]
+  //   : params.qrCode;
+  // const qrCode = qrParam?.toLowerCase() || "atla-vine";
 
-  const [activeBottle, setActiveBottle] = useState<{
-    bgImage: string | StaticImageData;
-    colorKey: ColorKey;
-    image: string | StaticImageData;
-  }>(bottles[qrCode] || bottles["atla-vine"]);
+  // const [activeBottle, setActiveBottle] = useState<{
+  //   bgImage: string | StaticImageData;
+  //   colorKey: ColorKey;
+  //   image: string | StaticImageData;
+  // }>(bottles[qrCode] || bottles["atla-vine"]);
 
   const [currentStep, setCurrentStep] = useState<
     | "home"
@@ -69,9 +69,9 @@ export default function HomePage() {
   const [showNavigation, setShowNavigation] = useState(true);
 
   // Set bottle based on QR code
-  useEffect(() => {
-    if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
-  }, [qrCode]);
+  // useEffect(() => {
+  //   if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
+  // }, [qrCode]);
 
   // Hide intro after 1.5s
   useEffect(() => {
@@ -296,7 +296,7 @@ export default function HomePage() {
         <div className="relative w-full h-full">
           <Image
             alt="bottle"
-            src={activeBottle.image}
+            src="assets/brandini/vinea/image_1.svg"
             fill
             priority
             className="object-contain"
@@ -359,7 +359,7 @@ export default function HomePage() {
           alt="Circle"
           className="object-contain w-full h-full"
           height={1000}
-          src={activeBottle.bgImage}
+          src="/assets/brandini/shape-svg/circle-shape.svg"
           width={1000}
         />
       </motion.div>

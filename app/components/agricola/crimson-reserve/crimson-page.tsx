@@ -56,7 +56,7 @@ export default function CrimsonPage({
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex flex-1 flex-col items-center justify-between w-full">
+      <div className="flex flex-1 flex-col items-start justify-between w-full">
         {/* Top Section */}
 
         <motion.div

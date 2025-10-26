@@ -27,32 +27,32 @@ const colors: Record<ColorKey, string> = {
 } as const;
 
 // -------------------- BOTTLES --------------------
-const bottles: Record<
-  string,
-  { colorKey: ColorKey; image: string; bgImage: string }
-> = {
-  "rose-vine-vite": {
-    colorKey: "primary",
-    image: "/assets/vite_colte/vinea/red_vine.svg",
-    bgImage: "/assets/vite_colte/shape-svg/circle-shape.svg",
-  },
+// const bottles: Record<
+//   string,
+//   { colorKey: ColorKey; image: string; bgImage: string }
+// > = {
+//   "rose-vine-vite": {
+//     colorKey: "primary",
+//     image: "/assets/vite_colte/vinea/red_vine.svg",
+//     bgImage: "/assets/vite_colte/shape-svg/circle-shape.svg",
+//   },
 
-};
+// };
 
 // -------------------- MAIN COMPONENT --------------------
 export default function HomePage() {
   const _router = useRouter();
   const params = useParams();
-  const qrParam = Array.isArray(params.qrCode)
-    ? params.qrCode[0]
-    : params.qrCode;
-  const qrCode = qrParam?.toLowerCase() || "rose-vine-vite";
+  // const qrParam = Array.isArray(params.qrCode)
+  //   ? params.qrCode[0]
+  //   : params.qrCode;
+  // const qrCode = qrParam?.toLowerCase() || "rose-vine-vite";
 
-  const [activeBottle, setActiveBottle] = useState<{
-    bgImage: string | StaticImageData;
-    colorKey: ColorKey;
-    image: string | StaticImageData;
-  }>(bottles[qrCode] || bottles["rose-vine-vite"]);
+  // const [activeBottle, setActiveBottle] = useState<{
+  //   bgImage: string | StaticImageData;
+  //   colorKey: ColorKey;
+  //   image: string | StaticImageData;
+  // }>(bottles[qrCode] || bottles["rose-vine-vite"]);
 
   const [currentStep, setCurrentStep] = useState<
     | "home"
@@ -70,9 +70,9 @@ export default function HomePage() {
   const [showNavigation, setShowNavigation] = useState(true);
 
   // Set bottle based on QR code
-  useEffect(() => {
-    if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
-  }, [qrCode]);
+  // useEffect(() => {
+  //   if (bottles[qrCode]) setActiveBottle(bottles[qrCode]);
+  // }, [qrCode]);
 
   // Hide intro after 1.5s
   useEffect(() => {
@@ -297,7 +297,7 @@ export default function HomePage() {
         <div className="relative w-full h-full">
           <Image
             alt="bottle"
-            src={activeBottle.image}
+            src="/assets/vite_colte/vinea/red_vine.svg"
             fill
             priority
             className="object-contain"
@@ -314,7 +314,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "90%"
               : currentStep === "crimson"
-                ? "150%"
+                ? "200%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "67%"
                   : currentStep === "more_details"
@@ -333,7 +333,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "-37%"
               : currentStep === "crimson"
-                ? "-25%"
+                ? "-45%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "-25%"
                   : currentStep === "more_details"
@@ -360,7 +360,7 @@ export default function HomePage() {
           alt="Circle"
           className="object-contain w-full h-full"
           height={1000}
-          src={activeBottle.bgImage}
+          src="/assets/vite_colte/shape-svg/circle-shape.svg"
           width={1000}
         />
       </motion.div>
