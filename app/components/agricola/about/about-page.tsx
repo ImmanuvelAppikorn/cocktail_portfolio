@@ -69,13 +69,13 @@ export default function AboutPage({
           straightforward, immediate and valuable version of this unique and
           particular grape.A wine with no frills, straightforward and sincere
           like a peasant’s handshake, ready to drink, ideal for a snack or
-          paired with an informal meal.
+          paired with an informal meal. 
           <span>
             <button
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#443A3B] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
               onClick={handleScrollToTopAndNavigate}
             >
-              View More...
+              Read More...
             </button>
           </span>
         </p>

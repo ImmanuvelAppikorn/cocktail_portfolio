@@ -3,8 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import NavigationBar from "../navigation_bar/nav-page";
 import LanguageToggle from "../language_toggle/language-page";
@@ -83,6 +82,8 @@ export default function HomePage() {
     | "more_details"
   >("home");
 
+  const [navStack, setNavStack] = useState<(typeof currentStep)[]>(["home"]); // <--- new stack
+
   const [reverse, setReverse] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [showLanguagePopup, setShowLanguagePopup] = useState(false);
@@ -96,32 +97,46 @@ export default function HomePage() {
   // Hide intro after 1.5s
   useEffect(() => {
     const timer = setTimeout(() => setShowIntro(false), 1500);
-
     return () => clearTimeout(timer);
   }, []);
 
-  // Navigation handlers
-  const handleStartJourney = () => setCurrentStep("crimson");
+  // -------------------- Navigation --------------------
+  const handleStartJourney = () => {
+    setCurrentStep("crimson");
+    setNavStack(["home", "crimson"]);
+  };
 
   const navigateStep = (nextStep: typeof currentStep, delay = 800) => {
     setReverse(true);
     setTimeout(() => {
       setCurrentStep(nextStep);
+      setNavStack((prev) => [...prev, nextStep]); // push to stack
       setReverse(false);
     }, delay);
   };
 
+  // ✅ universal "go back" logic
+  const goBack = (delay = 800) => {
+    if (navStack.length <= 1) return; // nothing to go back to
+    setReverse(true);
+    setTimeout(() => {
+      setNavStack((prev) => {
+        const newStack = prev.slice(0, -1);
+        const previousStep = newStack[newStack.length - 1];
+        setCurrentStep(previousStep);
+        return newStack;
+      });
+      setReverse(false);
+    }, delay);
+  };
+
+  // “Next” handlers stay exactly as before
   const handleCrimsonNext = () => navigateStep("about");
   const handleAboutNext = () => navigateStep("more_details");
-  const handleCrimsonPrev = () => navigateStep("home");
-  const handleAboutPrev = () => navigateStep("crimson");
-  const handleReviewPrev = () => navigateStep("gallery");
-  const handleNutritionPrev = () => navigateStep("review");
-  const handleGalleryPrev = () => navigateStep("crimson");
 
   // Common animation transition
   const smoothTransition = {
-    duration: currentStep === "review" ? 0 : 1.5, // Instant for review page
+    duration: currentStep === "review" ? 0 : 1.5,
     ease: currentStep === "review" ? "linear" : [0.88, 0.01, 0.17, 0.99],
   };
 
@@ -132,10 +147,12 @@ export default function HomePage() {
       style={{ height: "100vh" }}
     >
       {/* Navigation Bar */}
-      {currentStep !== "home" && showNavigation && (
+      {currentStep !== "home" && showNavigation && ( 
         <NavigationBar
           activeStep={currentStep as any}
-          onStepChange={setCurrentStep}
+          onStepChange={(nextStep) => {
+            if (nextStep !== currentStep) navigateStep(nextStep);
+          }}
         />
       )}
 
@@ -151,7 +168,7 @@ export default function HomePage() {
           <button
             className="focus:outline-none group relative flex items-center justify-center rounded-full hover:bg-white p-2 cursor-pointer"
             style={{
-              width: "clamp(30px, 8vw, 38px)", // responsive size (min 28px, max 38px)
+              width: "clamp(30px, 8vw, 38px)",
               height: "clamp(30px, 8vw, 38px)",
             }}
             onClick={() => setShowLanguagePopup(true)}
@@ -231,7 +248,7 @@ export default function HomePage() {
             transition={smoothTransition}
           >
             <button
-              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1 px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
               onClick={handleStartJourney}
             >
               <span className="relative flex items-center">Explore More</span>
@@ -355,14 +372,7 @@ export default function HomePage() {
                   : currentStep === "more_details"
                     ? "-25%"
                     : "-38%",
-          rotate:
-            currentStep === "home"
-              ? 5
-              : currentStep === "crimson"
-                ? 0
-                : currentStep === "about" || currentStep === "nutrition"
-                  ? 0
-                  : 0,
+          rotate: currentStep === "home" ? 5 : 0,
           opacity:
             currentStep === "review"
               ? 0
@@ -396,32 +406,25 @@ export default function HomePage() {
             {currentStep === "crimson" && (
               <CrimsonPage
                 onNextClick={handleCrimsonNext}
-                onPrevClick={handleCrimsonPrev}
+                onPrevClick={goBack}
               />
             )}
             {currentStep === "about" && (
-              <AboutPage
-                onNextClick={handleAboutNext}
-                onPrevClick={handleAboutPrev}
-              />
+              <AboutPage onNextClick={handleAboutNext} onPrevClick={goBack} />
             )}
             {currentStep === "more_details" && (
-              <MoreDetails
-                onPrevClick={handleAboutPrev} // <-- this goes back to AboutPage
-              />
+              <MoreDetails onPrevClick={goBack} />
             )}
             {currentStep === "nutrition" && (
-              <NutritionPage onPrevClick={handleNutritionPrev} />
+              <NutritionPage onPrevClick={goBack} />
             )}
             {currentStep === "review" && (
               <ReviewPage
                 onNavigationVisibilityChange={setShowNavigation}
-                onPrevClick={handleReviewPrev}
+                onPrevClick={goBack}
               />
             )}
-            {currentStep === "gallery" && (
-              <GalleryPage onPrevClick={handleGalleryPrev} />
-            )}
+            {currentStep === "gallery" && <GalleryPage onPrevClick={goBack} />}
           </motion.div>
         )}
       </AnimatePresence>

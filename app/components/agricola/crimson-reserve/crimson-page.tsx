@@ -9,7 +9,7 @@ export default function CrimsonPage({
   onPrevClick,
 }: {
   onNextClick: () => void;
-  onPrevClick: () => void;
+  onPrevClick: () => void; 
 }) {
   const handleScrollToTopAndNavigate = () => {
     scrollToTopAndNavigate(onNextClick);
@@ -45,7 +45,7 @@ export default function CrimsonPage({
             onClick={handleScrollToTopAndNavigate}
           >
             <span className="relative flex items-center font-montagu">
-              More
+              Story
               <Image
                 alt="arrow"
                 className="ml-2 z-10"

@@ -75,7 +75,7 @@ export default function AboutPage({
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#BF062F] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
               onClick={handleScrollToTopAndNavigate}
             >
-              View More...
+              Read More...
             </button>
           </span>
         </p>

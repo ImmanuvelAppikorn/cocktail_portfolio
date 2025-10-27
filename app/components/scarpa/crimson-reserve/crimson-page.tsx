@@ -45,7 +45,7 @@ export default function CrimsonPage({
             onClick={handleScrollToTopAndNavigate}
           >
             <span className="relative flex items-center font-montagu text-[#BF062F]">
-              More
+              Story
               <Image
                 alt="arrow"
                 className="ml-2 z-10"

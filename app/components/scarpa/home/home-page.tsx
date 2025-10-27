@@ -115,6 +115,8 @@ export default function HomePage() {
   const handleAboutNext = () => navigateStep("more_details");
   const handleCrimsonPrev = () => navigateStep("home");
   const handleAboutPrev = () => navigateStep("crimson");
+  const handleStoryPrev = () => navigateStep("about");
+  
   const handleReviewPrev = () => navigateStep("gallery");
   const handleNutritionPrev = () => navigateStep("review");
   const handleGalleryPrev = () => navigateStep("crimson");
@@ -415,7 +417,7 @@ export default function HomePage() {
             )}
             {currentStep === "more_details" && (
               <MoreDetails
-                onPrevClick={handleAboutPrev} // <-- this goes back to AboutPage
+                onPrevClick={handleStoryPrev} 
               />
             )}
             {currentStep === "nutrition" && (
