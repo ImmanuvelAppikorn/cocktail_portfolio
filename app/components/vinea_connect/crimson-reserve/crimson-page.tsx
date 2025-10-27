@@ -83,7 +83,7 @@ export default function CrimsonPage({
                                             width={26}
                                           />
                                         </button>
-                                        <h2 className="w-full text-center text-white text-[19px] font-bold leading-tight font-montagu">
+                                        <h2 className="w-full text-center text-white text-[16px] font-bold leading-tight font-montagu">
                                            CABERNET SAUVIGNON
                                         </h2>
                                       </div>

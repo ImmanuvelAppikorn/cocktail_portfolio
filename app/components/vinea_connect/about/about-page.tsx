@@ -54,7 +54,7 @@ export default function AboutPage({
       width={26}
     />
   </button>
-  <h2 className="w-full text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
+  <h2 className="w-full text-center text-[#EB235C] text-[16px] font-bold leading-tight font-montagu">
      CABERNET SAUVIGNON
   </h2>
 </div>

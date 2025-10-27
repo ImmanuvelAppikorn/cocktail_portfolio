@@ -85,7 +85,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
         ].map((section, idx) => (
           <div key={idx}>
             {/* Title */}
-            <p className="text-[16px] text-[#443A3B] font-bold tracking-[2px] w-full pb-0 mb-4  font-montagu">
+            <p className="text-[16px] text-[#443A3B] font-bold tracking-[0px] w-full pb-0 mb-4  font-montagu uppercase">
               {section.title}
             </p>
 
