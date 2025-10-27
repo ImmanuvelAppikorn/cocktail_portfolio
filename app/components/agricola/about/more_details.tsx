@@ -67,6 +67,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           cheeses, cold cuts, fish, and even sushi. Best enjoyed at 16–18°C,
           Sant’Eufemia is a sincere and joyful expression of
           Ruchè—uncomplicated, honest, and full of character.
+                  <div className="w-full h-[25vh]">{/* empty space */}</div>
         </p>
       </div>
     </div>

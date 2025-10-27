@@ -79,6 +79,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           vestibulum venenatis. Diam ut viverra nullam dapibus pretium sit
           sollicitudin pharetra a. Consequat placerat faucibus sed arcu ipsum
           pretium dignissim. Et id auctor mauris sed.
+              <div className="w-full h-[25vh]">{/* empty space */}</div>
         </p>
       </div>
     </div>

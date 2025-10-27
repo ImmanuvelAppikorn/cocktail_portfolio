@@ -55,6 +55,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           horizontally and finishes dry, fresh, and persistent. Its golden
           yellow color and fine perlage complete the experience, making it an
           exceptional representation of the Alta Langa terroir.
+              <div className="w-full h-[25vh]">{/* empty space */}</div>
         </p>
       </div>
     </div>
