@@ -69,12 +69,8 @@ export default function AboutPage({
 
         {/* Paragraph */}
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6 pt-2 px-2">
-          Our Blanc de Blancs is made from 100% Chardonnay grapes harvested in
-          early September. The grapes are gently pressed in a state-of-the-art
-          Alta Langa machine under controlled temperature and vacuum to preserve
-          freshness and aromas. Fermentation occurs in used wooden barrels until
-          tirage in late spring. After 38 months “sur-lie,” the wine is
-          disgorged and ready to taste.
+Our Blanc de Blancs is made exclusively from 100% Chardonnay grapes, carefully handpicked in early September to capture the perfect balance of ripeness and acidity. The grapes are gently pressed using a modern Alta Langa machine under controlled temperature and vacuum, ensuring the preservation of their natural freshness and delicate aromas. The wine ferments in used wooden barrels, which add subtle layers of flavor while maintaining the purity of the Chardonnay.
+
           <span>
             <button
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#58660C] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
