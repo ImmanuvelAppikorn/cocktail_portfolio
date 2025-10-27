@@ -48,22 +48,7 @@ const ReviewPage = ({
       avatar: string;
     }>
   >([
-    {
-      id: "1",
-      user: "Rim Sik Kram",
-      rating: 5,
-      time: new Date(),
-      comment: "This wine has a perfect balance of flavor and aroma!",
-      avatar: "/review-images/Ellipse2.svg",
-    },
-    {
-      id: "2",
-      user: "John Doe",
-      rating: 5,
-      time: new Date(),
-      comment: "This wine has a perfect balance of flavor and aroma!",
-      avatar: "/review-images/Ellipse2.svg",
-    },
+ 
   ]);
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
@@ -398,7 +383,7 @@ const ReviewPage = ({
         </div>
 
         {/* Middle Section: Reviews List center and scrollable */}
-        <div className="overflow-y-auto  h-[35vh]">
+        <div className="h-[45vh]">
           {reviews.length > 0 ? (
             reviews.map((r) => (
               <div
@@ -539,7 +524,7 @@ const ReviewPage = ({
                   <Image
                     fill
                     alt="No reviews yet"
-                    src={"/review-images/image.png"}
+                    src={"/review-images/image.svg"}
                     style={{ objectFit: "contain" }}
                   />
                 </div>
@@ -556,7 +541,7 @@ const ReviewPage = ({
         </div>
 
         {/* Bottom Section: Bottle Carousel */}
-        <div className="flex-shrink-0  absolute left-1/2 -translate-x-1/2 bottom-[10%] w-full h-[170px] ">
+        <div className="flex-shrink-0  absolute left-1/2 -translate-x-1/2 bottom-[13%] w-full h-[170px] ">
           <BottleCarousel />
         </div>
       </div>

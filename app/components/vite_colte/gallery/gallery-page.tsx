@@ -7,39 +7,39 @@ import { motion } from "framer-motion";
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     [
-      "/assets/vite_colte/gallery/image-1.png",
-      "/assets/vite_colte/gallery/image-2.png",
-      "/assets/vite_colte/gallery/image-3.png",
+      "/assets/vite_colte/gallery/image-1.svg",
+      "/assets/vite_colte/gallery/image-2.svg",
+      "/assets/vite_colte/gallery/image-3.svg",
     ],
     [
-      "/assets/vite_colte/gallery/image-4.png",
-      "/assets/vite_colte/gallery/image-5.png",
-      "/assets/vite_colte/gallery/image-6.png",
+      "/assets/vite_colte/gallery/image-4.svg",
+      "/assets/vite_colte/gallery/image-5.svg",
+      "/assets/vite_colte/gallery/image-6.svg",
     ],
     [
-      "/assets/vite_colte/gallery/image-19.png",
-      "/assets/vite_colte/gallery/image-20.png",
-      "/assets/vite_colte/gallery/image-21.png",
+      "/assets/vite_colte/gallery/image-19.svg",
+      "/assets/vite_colte/gallery/image-20.svg",
+      "/assets/vite_colte/gallery/image-21.svg",
     ],
     [
-      "/assets/vite_colte/gallery/image-7.png",
-      "/assets/vite_colte/gallery/image-8.png",
-      "/assets/vite_colte/gallery/image-9.png",
+      "/assets/vite_colte/gallery/image-7.svg",
+      "/assets/vite_colte/gallery/image-8.svg",
+      "/assets/vite_colte/gallery/image-9.svg",
     ],
     [
-      "/assets/vite_colte/gallery/image-10.png",
-      "/assets/vite_colte/gallery/image-11.png",
-      "/assets/vite_colte/gallery/image-12.png",
+      "/assets/vite_colte/gallery/image-10.svg",
+      "/assets/vite_colte/gallery/image-11.svg",
+      "/assets/vite_colte/gallery/image-12.svg",
     ],
     [
-      "/assets/vite_colte/gallery/image-13.png",
-      "/assets/vite_colte/gallery/image-14.png",
-      "/assets/vite_colte/gallery/image-15.png",
+      "/assets/vite_colte/gallery/image-13.svg",
+      "/assets/vite_colte/gallery/image-14.svg",
+      "/assets/vite_colte/gallery/image-15.svg",
     ],
     [
-      "/assets/vite_colte/gallery/image-16.png",
-      "/assets/vite_colte/gallery/image-17.png",
-      "/assets/vite_colte/gallery/image-18.png",
+      "/assets/vite_colte/gallery/image-16.svg",
+      "/assets/vite_colte/gallery/image-17.svg",
+      "/assets/vite_colte/gallery/image-18.svg",
     ],
   ];
 

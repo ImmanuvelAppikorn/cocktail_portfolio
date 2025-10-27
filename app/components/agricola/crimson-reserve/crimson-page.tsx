@@ -133,7 +133,7 @@ export default function CrimsonPage({
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
                 half
-                icon="assets/agricola/crimson-reserve-icons/alcohol.svg"
+                icon="/assets/agricola/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
                 value="13.5%"
               />

@@ -7,39 +7,39 @@ import { motion } from "framer-motion";
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     [
-      "assets/scapra/gallery/image-1.png",
-      "assets/scapra/gallery/image-2.png",
-      "assets/scapra/gallery/image-3.png",
+      "/assets/scapra/gallery/image-1.svg",
+      "/assets/scapra/gallery/image-2.svg",
+      "/assets/scapra/gallery/image-3.svg",
     ],
     [
-      "assets/scapra/gallery/image-4.png",
-      "assets/scapra/gallery/image-5.png",
-      "assets/scapra/gallery/image-6.png",
+      "/assets/scapra/gallery/image-4.svg",
+      "/assets/scapra/gallery/image-5.svg",
+      "/assets/scapra/gallery/image-6.svg",
     ],
     [
-      "assets/scapra/gallery/image-7.png",
-      "assets/scapra/gallery/image-8.png",
-      "assets/scapra/gallery/image-9.png",
+      "/assets/scapra/gallery/image-7.svg",
+      "/assets/scapra/gallery/image-8.svg",
+      "/assets/scapra/gallery/image-9.svg",
     ],
     [
-      "assets/scapra/gallery/image-10.png",
-      "assets/scapra/gallery/image-11.png",
-      "assets/scapra/gallery/image-12.png",
+      "/assets/scapra/gallery/image-10.svg",
+      "/assets/scapra/gallery/image-11.svg",
+      "/assets/scapra/gallery/image-12.svg",
     ],
     [
-      "assets/scapra/gallery/image-13.png",
-      "assets/scapra/gallery/image-14.png",
-      "assets/scapra/gallery/image-15.png",
+      "/assets/scapra/gallery/image-13.svg",
+      "/assets/scapra/gallery/image-14.svg",
+      "/assets/scapra/gallery/image-15.svg",
     ],
     [
-      "assets/scapra/gallery/image-16.png",
-      "assets/scapra/gallery/image-17.png",
-      "assets/scapra/gallery/image-18.png",
+      "/assets/scapra/gallery/image-16.svg",
+      "/assets/scapra/gallery/image-17.svg",
+      "/assets/scapra/gallery/image-18.svg",
     ],
     [
-      "assets/scapra/gallery/image-19.png",
-      "assets/scapra/gallery/image-20.png",
-      "assets/scapra/gallery/image-21.png",
+      "/assets/scapra/gallery/image-19.svg",
+      "/assets/scapra/gallery/image-20.svg",
+      "/assets/scapra/gallery/image-21.svg",
     ],
   ];
 

@@ -7,29 +7,29 @@ import { motion } from "framer-motion";
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     [
-      "assets/agricola/gallery/image-1.png",
-      "assets/agricola/gallery/image-2.png",
-      "assets/agricola/gallery/image-3.png",
+      "/assets/agricola/gallery/image-1.svg",
+      "/assets/agricola/gallery/image-2.svg",
+      "/assets/agricola/gallery/image-3.svg",
     ],
     [
-      "assets/agricola/gallery/image-4.png",
-      "assets/agricola/gallery/image-5.png",
-      "assets/agricola/gallery/image-6.png",
+      "/assets/agricola/gallery/image-4.svg",
+      "/assets/agricola/gallery/image-5.svg",
+      "/assets/agricola/gallery/image-6.svg",
     ],
     [
-      "assets/agricola/gallery/image-7.png",
-      "assets/agricola/gallery/image-8.png",
-      "assets/agricola/gallery/image-9.png",
+      "/assets/agricola/gallery/image-7.svg",
+      "/assets/agricola/gallery/image-8.svg",
+      "/assets/agricola/gallery/image-9.svg",
     ],
     [
-      "assets/agricola/gallery/image-10.png",
-      "assets/agricola/gallery/image-11.png",
-      "assets/agricola/gallery/image-17.png",
+      "/assets/agricola/gallery/image-10.svg",
+      "/assets/agricola/gallery/image-11.svg",
+      "/assets/agricola/gallery/image-12.svg",
     ],
     [
-      "assets/agricola/gallery/image-15.png",
-      "assets/agricola/gallery/image-16.png",
-      "assets/agricola/gallery/image-6.png",
+      "/assets/agricola/gallery/image-13.svg",
+      "/assets/agricola/gallery/image-17.svg",
+      "/assets/agricola/gallery/image-15.svg",
     ],
   ];
 

@@ -50,7 +50,7 @@ export default function CrimsonPage({
                 alt="arrow"
                 className="ml-2 z-10"
                 height={14}
-                src="assets/scapra/button-image/arrow-up-right.svg"
+                src="/assets/scapra/button-image/arrow-up-right.svg"
                 width={14}
               />
             </span>
@@ -91,13 +91,13 @@ export default function CrimsonPage({
             <div className="flex flex-row w-full justify-between">
               <InfoCard
                 half
-                icon="assets/scapra/crimson-reserve-icons/origin.svg"
+                icon="/assets/scapra/crimson-reserve-icons/origin.svg"
                 title="ORIGIN"
                 value="ITALY"
               />
               <InfoCard
                 half
-                icon="assets/scapra/crimson-reserve-icons/vintage.svg"
+                icon="/assets/scapra/crimson-reserve-icons/vintage.svg"
                 title="VINTAGE"
                 value="2020"
               />
@@ -105,13 +105,13 @@ export default function CrimsonPage({
             <div className="flex flex-row w-full justify-between">
               <InfoCard
                 half
-                icon="assets/scapra/crimson-reserve-icons/region.svg"
+                icon="/assets/scapra/crimson-reserve-icons/region.svg"
                 title="REGION"
                 value="Acqui Terme, Piedmont"
               />
               <InfoCard
                 half
-                icon="assets/scapra/crimson-reserve-icons/variety.svg"
+                icon="/assets/scapra/crimson-reserve-icons/variety.svg"
                 title="VARIETY"
                 value="Barbera"
               />
@@ -133,30 +133,30 @@ export default function CrimsonPage({
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
                 half
-                icon="assets/scapra/crimson-reserve-icons/alcohol.svg"
+                icon="/assets/scapra/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
                 value="14.5%"
               />
               <InfoCard
                 half
-                icon="assets/scapra/crimson-reserve-icons/processing.svg"
+                icon="/assets/scapra/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
                 value="French Allier oak barrels AGED (32mo)"
               />
             </div>
 
             <InfoCard
-              icon="assets/scapra/crimson-reserve-icons/winery.svg"
+              icon="/assets/scapra/crimson-reserve-icons/winery.svg"
               title="WINERY"
               value="Scarpa"
             />
             <InfoCard
-              icon="assets/scapra/crimson-reserve-icons/harvest.svg"
+              icon="/assets/scapra/crimson-reserve-icons/harvest.svg"
               title="HARVEST"
               value="Late September – October"
             />
             <InfoCard
-              icon="assets/scapra/crimson-reserve-icons/tasting-notes.svg"
+              icon="/assets/scapra/crimson-reserve-icons/tasting-notes.svg"
               title="TASTING NOTES"
               value="Blackberry, plum, cherry,spice"
             />

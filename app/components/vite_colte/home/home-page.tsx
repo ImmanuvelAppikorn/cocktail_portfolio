@@ -193,7 +193,7 @@ export default function HomePage() {
                   priority
                   alt="Vinea Logo"
                   className="object-contain"
-                  src="/assets/vite_colte/logo/text-logo.png"
+                  src="/assets/vite_colte/logo/text-logo.svg"
                 />
               </div>
             </motion.h1>

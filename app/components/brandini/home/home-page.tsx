@@ -300,7 +300,7 @@ export default function HomePage() {
             priority
             alt="bottle"
             className="object-contain"
-            src="assets/brandini/vinea/image_1.svg"
+            src="/assets/brandini/vinea/image_1.svg"
           />
         </div>
       </motion.div>

@@ -212,7 +212,7 @@ export default function HomePage() {
                   priority
                   alt="Scarpa Logo"
                   className="object-contain"
-                  src="assets/scapra/logo/logo.svg"
+                  src="/assets/scapra/logo/logo.svg"
                 />
               </div>
             </motion.h1>
@@ -241,7 +241,7 @@ export default function HomePage() {
                 alt="arrow"
                 className="ml-2 z-10"
                 height={14}
-                src="assets/scapra/button-image/arrow-up-right.svg"
+                src="/assets/scapra/button-image/arrow-up-right.svg"
                 width={14}
               />
             </button>
@@ -279,7 +279,7 @@ export default function HomePage() {
                     : 0,
           bottom:
             currentStep === "home"
-              ? "-12%"
+              ? "-15%"
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
@@ -324,7 +324,7 @@ export default function HomePage() {
             priority
             alt="bottle"
             className="object-contain"
-            src="assets/scapra/bottles/bottle_1.svg"
+            src="/assets/scapra/bottles/bottle_1.svg"
           />
         </div>
       </motion.div>
@@ -386,7 +386,7 @@ export default function HomePage() {
           alt="Circle"
           className="object-contain w-full h-full"
           height={1000}
-          src="assets/scapra/shape-svg/circle_shape.svg"
+          src="/assets/scapra/shape-svg/circle_shape.svg"
           width={1000}
         />
       </motion.div>

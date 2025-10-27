@@ -7,24 +7,24 @@ import { motion } from "framer-motion";
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
     [
-      "assets/brandini/gallery/image-1.svg",
-      "assets/brandini/gallery/image-2.svg",
-      "assets/brandini/gallery/image-3.svg",
+      "/assets/brandini/gallery/image-1.svg",
+      "/assets/brandini/gallery/image-2.svg",
+      "/assets/brandini/gallery/image-3.svg",
     ],
     [
-      "assets/brandini/gallery/image-4.svg",
-      "assets/brandini/gallery/image-10.svg",
-      "assets/brandini/gallery/image-5.svg",
+      "/assets/brandini/gallery/image-4.svg",
+      "/assets/brandini/gallery/image-10.svg",
+      "/assets/brandini/gallery/image-5.svg",
     ],
     [
-      "assets/brandini/gallery/image-6.svg",
-      "assets/brandini/gallery/image-7.svg",
-      "assets/brandini/gallery/image-8.svg",
+      "/assets/brandini/gallery/image-6.svg",
+      "/assets/brandini/gallery/image-7.svg",
+      "/assets/brandini/gallery/image-8.svg",
     ],
     [
-      "assets/brandini/gallery/image-9.svg",
-      "assets/brandini/gallery/image-7.svg",
-      "assets/brandini/gallery/image-8.svg",
+      "/assets/brandini/gallery/image-9.svg",
+      "/assets/brandini/gallery/image-7.svg",
+      "/assets/brandini/gallery/image-8.svg",
     ],
   ];
 
