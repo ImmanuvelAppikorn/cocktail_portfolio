@@ -4,12 +4,10 @@ import React, { useState } from "react";
 
 const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
   const languageItems = [
-
     { image: "/language-image/italian.svg", text: "Italian" },
-    { image: "/language-image/english.svg", text: "English" },
-    { image: "/language-image/french.svg", text: "French" },
     { image: "/language-image/spanish.svg", text: "Spanish" },
-
+    { image: "/language-image/french.svg", text: "French" },
+    { image: "/language-image/english.svg", text: "English" },
   ];
 
   // Default selected language → English
@@ -44,41 +42,41 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
 
       {/* Language Selection */}
       <div className="grid grid-cols-2 gap-4 px-2 sm:px-4">
-              {languageItems.map((item, i) => {
-                const isEnglish = item.text === "English";
-      
-                return ( 
-                  <button
-                    key={i}
-                    disabled={!isEnglish}
-                    className={`flex flex-col items-center justify-center rounded-2xl p-3 border-2 transition-all duration-300 
+        {languageItems.map((item, i) => {
+          const isEnglish = item.text === "English";
+
+          return (
+            <button
+              key={i}
+              disabled={!isEnglish}
+              className={`flex flex-col items-center justify-center rounded-2xl p-3 border-2 transition-all duration-300 
                 ${
                   isEnglish
                     ? "opacity-100 cursor-pointer border-[#EC2960] bg-[#EC2960]/10 scale-105"
                     : "opacity-50 pointer-events-none border-transparent"
                 }`}
-                    onClick={() => isEnglish && setSelectedLang(item.text)}
-                  >
-                    <Image
-                      alt={item.text}
-                      className={`transition-transform duration-300 ${
-                        isEnglish ? "scale-110" : "scale-100"
-                      }`}
-                      height={90}
-                      src={item.image}
-                      width={90}
-                    />
-                    <p
-                      className={`text-[18px] font-bold mt-2 transition-colors ${
-                        isEnglish ? "text-[#EC2960]" : "text-black"
-                      }`}
-                    >
-                      {item.text}
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
+              onClick={() => isEnglish && setSelectedLang(item.text)}
+            >
+              <Image
+                alt={item.text}
+                className={`transition-transform duration-300 ${
+                  isEnglish ? "scale-110" : "scale-100"
+                }`}
+                height={90}
+                src={item.image}
+                width={90}
+              />
+              <p
+                className={`text-[18px] font-bold mt-2 transition-colors ${
+                  isEnglish ? "text-[#EC2960]" : "text-black"
+                }`}
+              >
+                {item.text}
+              </p>
+            </button>
+          );
+        })}
+      </div>
 
       {/* Continue Button */}
       <div className="bg-[#5F1BE7] cursor-pointer w-full sm:w-[85%] h-[45px] flex justify-center mx-auto rounded-[8px] mt-6 mb-6 active:scale-95 transition-transform duration-200">
