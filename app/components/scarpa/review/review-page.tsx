@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import BottleCarousel from "./slide-bottle";
+
 import GetDetailsPopup from "../otp/get-details";
+
+import BottleCarousel from "./slide-bottle";
 import ReviewPopupContent from "./review-pop-up";
 
 interface ReviewPageProps {
@@ -30,7 +32,9 @@ const ReviewPage = ({
         setOpenMenuId(null);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
@@ -60,7 +64,6 @@ const ReviewPage = ({
       comment: "This wine has a perfect balance of flavor and aroma!",
       avatar: "/review-images/Ellipse2.svg",
     },
-
   ]);
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
@@ -76,6 +79,7 @@ const ReviewPage = ({
 
   useEffect(() => {
     const isAnyPopupOpen = isDetailsPopupOpen || isEditPopupOpen;
+
     onNavigationVisibilityChange?.(!isAnyPopupOpen);
     document.body.style.overflow = isAnyPopupOpen ? "hidden" : "auto";
   }, [isDetailsPopupOpen, isEditPopupOpen, onNavigationVisibilityChange]);
@@ -90,14 +94,17 @@ const ReviewPage = ({
     if (diffInSeconds < minute) return "Just now";
     if (diffInSeconds < hour) {
       const mins = Math.floor(diffInSeconds / minute);
+
       return `${mins} ${mins === 1 ? "min" : "mins"} ago`;
     }
     if (diffInSeconds < day) {
       const hours = Math.floor(diffInSeconds / hour);
+
       return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
     }
 
     const days = Math.floor(diffInSeconds / day);
+
     if (days < 7) return `${days} ${days === 1 ? "day" : "days"} ago`;
 
     return date.toLocaleDateString("en-US", {
@@ -109,10 +116,13 @@ const ReviewPage = ({
 
   const TimeAgo = ({ date }: { date: Date }) => {
     const [text, setText] = useState(formatTimeAgo(date));
+
     useEffect(() => {
       const interval = setInterval(() => setText(formatTimeAgo(date)), 60000);
+
       return () => clearInterval(interval);
     }, [date]);
+
     return <span>{text}</span>;
   };
 
@@ -120,7 +130,7 @@ const ReviewPage = ({
     rating: number,
     comment: string,
     name: string,
-    avatar: string
+    avatar: string,
   ) => {
     const now = new Date();
     const uniqueId = `${now.getTime()}_${Math.floor(Math.random() * 10000)}`;
@@ -132,17 +142,21 @@ const ReviewPage = ({
       comment,
       avatar,
     };
+
     setReviews((prev) => [newReview, ...prev]);
   };
 
   const wrapperRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setActiveReactionId(null);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -166,7 +180,9 @@ const ReviewPage = ({
 
     setSelectedEmojiById((prev) => {
       const newState = { ...prev, [reviewId]: emojiSrc };
+
       console.log("✅ NEW STATE:", newState);
+
       return newState;
     });
 
@@ -183,9 +199,10 @@ const ReviewPage = ({
   // Toggle dropdown visibility on heart click
   const handleHeartClick = (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
-    id: string
+    id: string,
   ) => {
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+
     setEmojiPickerPosition({ top: rect.top - 40, left: rect.left });
     setActiveReactionId((prev) => (prev === id ? null : id));
   };
@@ -205,9 +222,9 @@ const ReviewPage = ({
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
                 <Image
-                  src="/button-image/black-back.svg"
                   alt="Back Icon"
                   height={20}
+                  src="/button-image/black-back.svg"
                   width={20}
                 />
               </button>
@@ -223,11 +240,11 @@ const ReviewPage = ({
                 onClick={() => setIsDetailsPopupOpen(true)}
               >
                 <Image
-                  src="assets/scapra/button-image/review_button.svg"
                   alt="Review"
-                  width={14}
-                  height={14}
                   className="w-3 h-3 sm:w-4 sm:h-4"
+                  height={14}
+                  src="assets/scapra/button-image/review_button.svg"
+                  width={14}
                 />
                 Write a Review
               </button>
@@ -244,7 +261,7 @@ const ReviewPage = ({
                   details.rating,
                   details.comment,
                   details.name,
-                  details.avatar
+                  details.avatar,
                 );
               }
             }}
@@ -254,27 +271,32 @@ const ReviewPage = ({
           {isEditPopupOpen && editingReview && (
             <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
               <button
+                aria-label="Close dialog"
                 className="absolute inset-0 bg-transparent border-none cursor-pointer"
                 onClick={() => setIsEditPopupOpen(false)}
-                aria-label="Close dialog"
               />
               <div className="relative flex flex-col justify-between z-50 w-full max-w-md bg-white rounded-[8px] mx-2 p-4 mb-2 sm:mx-auto animate-slideUpBottom overflow-y-auto max-h-[90vh]">
                 <div className="flex justify-end mb-2">
                   <button
-                    onClick={() => setIsEditPopupOpen(false)}
                     className="p-1 hover:scale-110 transition"
+                    onClick={() => setIsEditPopupOpen(false)}
                   >
                     <Image
-                      src="/button-image/close.svg"
                       alt="close"
-                      width={24}
                       height={24}
+                      src="/button-image/close.svg"
+                      width={24}
                     />
                   </button>
                 </div>
 
                 <ReviewPopupContent
+                  avatar={editingReview.avatar}
+                  defaultComment={editingReview.comment}
+                  defaultRating={editingReview.rating}
+                  name={editingReview.user}
                   onClose={() => setIsEditPopupOpen(false)}
+                  onOpen={() => console.log("Editing review")}
                   onReviewSubmit={(rating, comment, name, avatar) => {
                     setReviews((prev) =>
                       prev.map((r) =>
@@ -287,16 +309,11 @@ const ReviewPage = ({
                               avatar,
                               time: new Date(),
                             }
-                          : r
-                      )
+                          : r,
+                      ),
                     );
                     setIsEditPopupOpen(false);
                   }}
-                  name={editingReview.user}
-                  avatar={editingReview.avatar}
-                  defaultRating={editingReview.rating}
-                  defaultComment={editingReview.comment}
-                  onOpen={() => console.log("Editing review")}
                 />
               </div>
             </div>
@@ -312,15 +329,16 @@ const ReviewPage = ({
                   const total = reviews.length;
                   const percentage =
                     total > 0 ? Math.round((count / total) * 100) : 0;
+
                   return (
                     <div key={num} className="flex items-center gap-2 w-full">
                       <p className="text-sm font-medium w-3">{num}</p>
                       <Image
                         alt="Rating Star"
-                        height={16}
-                        width={16}
-                        src="/start-rating-icons/Full-Star.svg"
                         className="flex-shrink-0"
+                        height={16}
+                        src="/start-rating-icons/Full-Star.svg"
+                        width={16}
                       />
                       <div className="h-[6px] bg-gray-200/25 rounded-full w-full max-w-[120px]">
                         <div
@@ -349,6 +367,7 @@ const ReviewPage = ({
                     const avgRating =
                       reviews.reduce((sum, r) => sum + r.rating, 0) /
                       reviews.length;
+
                     return (
                       <Image
                         key={i}
@@ -358,7 +377,6 @@ const ReviewPage = ({
                             : "Empty Star"
                         }
                         height={16}
-                        width={16}
                         src={
                           i <= avgRating
                             ? "/start-rating-icons/Full-Star.svg"
@@ -366,6 +384,7 @@ const ReviewPage = ({
                               ? "/start-rating-icons/Half-Star.svg"
                               : "/start-rating-icons/Empty-Star.svg"
                         }
+                        width={16}
                       />
                     );
                   })}
@@ -384,18 +403,18 @@ const ReviewPage = ({
             reviews.map((r) => (
               <div
                 key={r.id}
-                className="border-b border-gray-300 pb-2 flex flex-col gap-1 relative"
                 ref={menuRef}
+                className="border-b border-gray-300 pb-2 flex flex-col gap-1 relative"
               >
                 {/* Review content */}
                 <div className="flex justify-between items-end">
                   <div className="flex items-center gap-2">
                     <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden">
                       <Image
-                        alt={r.user}
-                        src={r.avatar}
                         fill
+                        alt={r.user}
                         className="object-cover"
+                        src={r.avatar}
                       />
                     </div>
                     <div>
@@ -407,12 +426,12 @@ const ReviewPage = ({
                               key={i}
                               alt="Rating Star"
                               height={16}
-                              width={16}
                               src={
                                 i < r.rating
                                   ? "/start-rating-icons/Full-Star.svg"
                                   : "/start-rating-icons/Empty-Star.svg"
                               }
+                              width={16}
                             />
                           ))}
                         </span>
@@ -426,11 +445,11 @@ const ReviewPage = ({
                   {/* Three Dots Menu */}
                   <div className="relative flex flex-col justify-between">
                     <Image
+                      alt="Settings"
                       className="cursor-pointer"
                       height={20}
-                      width={20}
                       src="/button-image/setting-dots.svg"
-                      alt="Settings"
+                      width={20}
                       onClick={() =>
                         setOpenMenuId(openMenuId === r.id ? null : r.id)
                       }
@@ -449,9 +468,9 @@ const ReviewPage = ({
                         >
                           <div className="flex flex-row gap-2">
                             <Image
-                              src={"/review-images/edit icon.svg"}
                               alt="Edit"
                               height={16}
+                              src={"/review-images/edit icon.svg"}
                               width={16}
                             />
                             <p className="font-mulish text-[14px] font-medium">
@@ -460,7 +479,7 @@ const ReviewPage = ({
                           </div>
                         </button>
 
-                        <div className="w-full border-[1px]"></div>
+                        <div className="w-full border-[1px]" />
 
                         {/* Delete Button */}
                         <button
@@ -469,9 +488,9 @@ const ReviewPage = ({
                         >
                           <div className="flex flex-row gap-2">
                             <Image
-                              src={"/review-images/delete icon.svg"}
                               alt="Delete"
                               height={16}
+                              src={"/review-images/delete icon.svg"}
                               width={16}
                             />
                             <p className="font-mulish text-[14px] font-medium">
@@ -489,23 +508,23 @@ const ReviewPage = ({
                     {r.comment}
                   </p>
                   <button
+                    aria-label="Add reaction emoji"
+                    className="bg-transparent border-none p-0"
+                    style={{ cursor: "pointer" }}
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleHeartClick(e, r.id);
                       console.log(`Heart clicked for review: ${r.id}`);
                     }}
-                    style={{ cursor: "pointer" }}
-                    className="bg-transparent border-none p-0"
-                    aria-label="Add reaction emoji"
                   >
                     <Image
+                      alt="Reaction"
+                      height={20}
                       src={
                         selectedEmojiById[r.id] ||
                         "/review-images/comment/heart.svg"
                       }
-                      alt="Reaction"
-                      height={20}
                       width={20}
                     />
                   </button>
@@ -518,9 +537,9 @@ const ReviewPage = ({
               <div className="w-full flex flex-col items-center ">
                 <div className="w-[225px] h-[162px] relative">
                   <Image
-                    src={"/review-images/image.png"}
-                    alt="No reviews yet"
                     fill
+                    alt="No reviews yet"
+                    src={"/review-images/image.png"}
                     style={{ objectFit: "contain" }}
                   />
                 </div>
@@ -547,22 +566,22 @@ const ReviewPage = ({
         <div className="relative left-30">
           <div
             key={`emoji-picker-${activeReactionId}`}
+            aria-label="Emoji picker"
             className="fixed w-auto h-[27px] flex flex-row bg-white rounded shadow-lg space-x-1 z-50"
+            role="toolbar"
             style={{
               top: emojiPickerPosition.top + 30,
               left: emojiPickerPosition.left - 200,
               transform: "translateY(-100%)",
             }}
-            role="toolbar"
-            aria-label="Emoji picker"
             onMouseDown={(_e) => {
               console.log("Emoji picker container mousedown");
               // Don't stop propagation here - let emoji clicks through
             }}
           >
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -570,13 +589,14 @@ const ReviewPage = ({
 
                 // Store the ID immediately to prevent it from being cleared
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
                   console.log("Calling handleEmojiSelect immediately...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Like.svg"
+                    "/review-images/comment/Like.svg",
                   );
                 } else {
                   console.log("❌ No reviewId!");
@@ -584,31 +604,32 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/Like.svg"}
                 alt="Like"
                 height={20}
+                src={"/review-images/comment/Like.svg"}
                 width={20}
               />
             </button>
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log(
                   "🔥 Red Heart MOUSEDOWN! Review ID:",
-                  activeReactionId
+                  activeReactionId,
                 );
 
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
                   console.log("Calling handleEmojiSelect for Red Heart...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/RedHeart.svg"
+                    "/review-images/comment/RedHeart.svg",
                   );
                 } else {
                   console.log("❌ No reviewId for Red Heart!");
@@ -616,28 +637,29 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/RedHeart.svg"}
                 alt="Red Heart"
                 height={20}
+                src={"/review-images/comment/RedHeart.svg"}
                 width={20}
               />
             </button>
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log("🔥 Care MOUSEDOWN! Review ID:", activeReactionId);
 
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
                   console.log("Calling handleEmojiSelect for Care...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Care.svg"
+                    "/review-images/comment/Care.svg",
                   );
                 } else {
                   console.log("❌ No reviewId for Care!");
@@ -645,28 +667,29 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/Care.svg"}
                 alt="Care"
                 height={20}
+                src={"/review-images/comment/Care.svg"}
                 width={20}
               />
             </button>
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log("🔥 Haha MOUSEDOWN! Review ID:", activeReactionId);
 
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
                   console.log("Calling handleEmojiSelect for Haha...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Haha.svg"
+                    "/review-images/comment/Haha.svg",
                   );
                 } else {
                   console.log("❌ No reviewId for Haha!");
@@ -674,21 +697,22 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/Haha.svg"}
                 alt="Haha"
                 height={20}
+                src={"/review-images/comment/Haha.svg"}
                 width={20}
               />
             </button>
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log("🔥 Wow MOUSEDOWN! Review ID:", activeReactionId);
 
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
@@ -700,21 +724,22 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/Wow.svg"}
                 alt="Wow"
                 height={20}
+                src={"/review-images/comment/Wow.svg"}
                 width={20}
               />
             </button>
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log("🔥 Sad MOUSEDOWN! Review ID:", activeReactionId);
 
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
@@ -726,28 +751,29 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/Sad.svg"}
                 alt="Sad"
                 height={20}
+                src={"/review-images/comment/Sad.svg"}
                 width={20}
               />
             </button>
             <button
-              type="button"
               className="cursor-pointer transition-transform hover:scale-150 p-1 bg-transparent border-none"
+              type="button"
               onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log("🔥 Angry MOUSEDOWN! Review ID:", activeReactionId);
 
                 const reviewId = activeReactionId;
+
                 console.log("Stored reviewId:", reviewId);
 
                 if (reviewId) {
                   console.log("Calling handleEmojiSelect for Angry...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Angry.svg"
+                    "/review-images/comment/Angry.svg",
                   );
                 } else {
                   console.log("❌ No reviewId for Angry!");
@@ -755,9 +781,9 @@ const ReviewPage = ({
               }}
             >
               <Image
-                src={"/review-images/comment/Angry.svg"}
                 alt="Angry"
                 height={20}
+                src={"/review-images/comment/Angry.svg"}
                 width={20}
               />
             </button>

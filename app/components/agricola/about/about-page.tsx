@@ -41,12 +41,15 @@ export default function AboutPage({
         variants={topVariants}
       >
         <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-          <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer">
+          <button
+            className="flex-shrink-0 cursor-pointer"
+            onClick={onPrevClick}
+          >
             <Image
-              src="/button-image/black-back.svg"
               alt="Back Icon"
-            height={26}
-            width={26}
+              height={26}
+              src="/button-image/black-back.svg"
+              width={26}
             />
           </button>
           <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
@@ -62,11 +65,15 @@ export default function AboutPage({
 
         {/* Paragraph */}
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6   pt-2">
-          Made from pure Ruchè grapes, Sant’Eufemia represents the most straightforward, immediate and valuable version of this unique and particular grape.A wine with no frills, straightforward and sincere like a peasant’s handshake, ready to drink, ideal for a snack or paired with an informal meal.
+          Made from pure Ruchè grapes, Sant’Eufemia represents the most
+          straightforward, immediate and valuable version of this unique and
+          particular grape.A wine with no frills, straightforward and sincere
+          like a peasant’s handshake, ready to drink, ideal for a snack or
+          paired with an informal meal.
           <span>
             <button
-              onClick={handleScrollToTopAndNavigate}
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#443A3B] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
+              onClick={handleScrollToTopAndNavigate}
             >
               View More...
             </button>

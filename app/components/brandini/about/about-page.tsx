@@ -42,13 +42,13 @@ export default function AboutPage({
       >
         <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
           <button
-            onClick={onPrevClick}
             className="flex-shrink-0 cursor-pointer"
+            onClick={onPrevClick}
           >
             <Image
-              src="/button-image/black-back.svg"
               alt="Back Icon"
               height={26}
+              src="/button-image/black-back.svg"
               width={26}
             />
           </button>
@@ -73,8 +73,8 @@ export default function AboutPage({
           disgorged and ready to taste.
           <span>
             <button
-              onClick={handleScrollToTopAndNavigate}
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#58660C] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
+              onClick={handleScrollToTopAndNavigate}
             >
               View More....
             </button>

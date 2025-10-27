@@ -136,7 +136,6 @@ export default function BottleCarousel() {
               alt={activeBottle.name}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               className="w-[25%] object-contain drop-shadow-xl z-10 absolute -top-8 left-1/2 -translate-x-1/2"
-              style={{ aspectRatio: "2/ 3" }}
               custom={direction}
               exit={{
                 opacity: 0,
@@ -150,6 +149,7 @@ export default function BottleCarousel() {
                 scale: 0.8,
               }}
               src={activeBottle.img}
+              style={{ aspectRatio: "2/ 3" }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             />
           </AnimatePresence>
@@ -161,8 +161,8 @@ export default function BottleCarousel() {
                 scale: [0.95],
               }}
               className="absolute top-[-2%] w-[130%] aspect-square p-5 rounded-full border flex items-center justify-center"
-              transition={{ duration: 0.8, ease: "easeInOut" }}
               style={{ aspectRatio: "1.5/ 3" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
             >
               {/* Inner Circle (filled) */}
               <motion.div

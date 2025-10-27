@@ -8,7 +8,7 @@ interface ReviewPopupProps {
     rating: number,
     comment: string,
     name: string,
-    avatar: string
+    avatar: string,
   ) => void;
   name: string;
   avatar: string;
@@ -30,8 +30,7 @@ const ReviewPopupContent = ({
 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-const [hoverRating, setHoverRating] = useState(0);
-
+  const [hoverRating, setHoverRating] = useState(0);
 
   useEffect(() => {
     // ✅ Initialize form fields with defaults only once (or when popup opens)
@@ -78,41 +77,40 @@ const [hoverRating, setHoverRating] = useState(0);
         Did you enjoy it?
       </p>
 
-     {/* Stars */}
-<div className="flex justify-around gap-2 mt-3">
-  {[1, 2, 3, 4, 5].map((star) => (
-    <button
-      key={star}
-      onClick={() => setRating(star)}
-      onMouseEnter={() => setHoverRating(star)}
-      onMouseLeave={() => setHoverRating(0)}
-      className="cursor-pointer transition-transform hover:scale-110"
-    >
-      <img
-        src={
-          star <= (hoverRating || rating)
-            ? "/start-rating-icons/Full-Star.svg"
-            : "/start-rating-icons/Empty-Star.svg"
-        }
-        alt={`${star} Star`}
-        width={32}
-        height={32}
-      />
-    </button>
-  ))}
-</div>
-
+      {/* Stars */}
+      <div className="flex justify-around gap-2 mt-3">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <button
+            key={star}
+            className="cursor-pointer transition-transform hover:scale-110"
+            onClick={() => setRating(star)}
+            onMouseEnter={() => setHoverRating(star)}
+            onMouseLeave={() => setHoverRating(0)}
+          >
+            <img
+              alt={`${star} Star`}
+              height={32}
+              src={
+                star <= (hoverRating || rating)
+                  ? "/start-rating-icons/Full-Star.svg"
+                  : "/start-rating-icons/Empty-Star.svg"
+              }
+              width={32}
+            />
+          </button>
+        ))}
+      </div>
 
       {/* Comment */}
       <label
-        htmlFor="comment-textarea"
         className="block text-[14px] font-semibold text-[#354259] mt-4"
+        htmlFor="comment-textarea"
       >
         We’d love to hear your thoughts:
       </label>
       <textarea
-        id="comment-textarea"
         className="w-full mt-2 h-[150px] border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-600 text-[#81858B] text-[16px]"
+        id="comment-textarea"
         placeholder="Share what you liked or any suggestions!"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
@@ -121,19 +119,19 @@ const [hoverRating, setHoverRating] = useState(0);
       {/* Buttons */}
       <div className="flex justify-between mt-4">
         <button
-          onClick={onClose}
           className="px-5 py-2  border cursor-pointer border-gray-400 rounded-md text-[16px] font-semibold"
+          onClick={onClose}
         >
           Cancel
         </button>
         <button
-          onClick={handleSubmit}
-          disabled={rating === 0 || !comment.trim()}
           className={`px-5 py-2 rounded-md cursor-pointer text-[16px] font-semibold ${
             rating === 0 || !comment.trim()
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-[#5F1BE7] text-white"
           }`}
+          disabled={rating === 0 || !comment.trim()}
+          onClick={handleSubmit}
         >
           Submit
         </button>

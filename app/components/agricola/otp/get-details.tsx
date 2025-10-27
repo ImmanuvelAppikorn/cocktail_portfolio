@@ -2,8 +2,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import OtpVerify from "./otp-verification";
+
 import ReviewPopup from "../review/review-pop-up";
+
+import OtpVerify from "./otp-verification";
 
 interface GetDetailsPopupProps {
   isOpen: boolean;
@@ -36,6 +38,7 @@ const GetDetailsPopup = ({
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
+
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -73,6 +76,7 @@ const GetDetailsPopup = ({
 
     if (!mobile.trim()) {
       alert("Please enter something in the Mobile number / Email field.");
+
       return;
     }
 
@@ -138,9 +142,9 @@ const GetDetailsPopup = ({
   return (
     <div className="fixed inset-0 z-[999] h-full flex items-end justify-center bg-black/40 backdrop-blur-sm">
       <button
+        aria-label="Close dialog"
         className="absolute inset-0 bg-transparent border-none cursor-pointer"
         onClick={handleClose}
-        aria-label="Close dialog"
       />
       <div
         ref={popupRef}
@@ -149,38 +153,38 @@ const GetDetailsPopup = ({
       >
         <div className="flex justify-end mb-2">
           <button
-            onClick={handleClose}
             className="p-1 hover:scale-110 transition cursor-pointer"
+            onClick={handleClose}
           >
             <Image
-              src="/button-image/close.svg"
               alt="close"
-              width={24}
               height={24}
+              src="/button-image/close.svg"
+              width={24}
             />
           </button>
         </div>
 
         {showOtp ? (
           <OtpVerify
+            confirmationResult={confirmationResult}
+            userDetails={{ name, email, mobile, avatar: selectedAvatar }}
             onClose={handleClose}
             onSuccess={handleOtpSuccess}
-            userDetails={{ name, email, mobile, avatar: selectedAvatar }}
-            confirmationResult={confirmationResult}
           />
         ) : showReview ? (
           <ReviewPopup
+            avatar={`/avator/${selectedAvatar}.svg`}
+            name={name}
             onClose={handleClose}
             onReviewSubmit={handleReviewSubmit}
-            name={name}
-            avatar={`/avator/${selectedAvatar}.svg`}
           />
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label
-                htmlFor="avatar-selector"
                 className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+                htmlFor="avatar-selector"
               >
                 Choose Avatar*
               </label>
@@ -190,8 +194,8 @@ const GetDetailsPopup = ({
                   <>
                     {/* Change Avatar Button */}
                     <button
-                      onClick={() => setSelectedAvatar("")}
                       className="mb-2 font-axiforma  text-sm text-[#5F1BE7] font-semibold hover:text-[#EB235C]"
+                      onClick={() => setSelectedAvatar("")}
                     >
                       Change Avatar
                     </button>
@@ -208,27 +212,28 @@ const GetDetailsPopup = ({
                       }}
                     >
                       <Image
-                        src={`/avator/${selectedAvatar}.svg`}
-                        alt={selectedAvatar}
                         fill
+                        alt={selectedAvatar}
                         className="object-contain rounded-full"
+                        src={`/avator/${selectedAvatar}.svg`}
                       />
                     </div>
                   </>
                 ) : (
                   // Show all avatars in grid initially
                   <div
-                    id="avatar-selector"
-                    role="radiogroup"
                     aria-labelledby="avatar-selector"
                     className="grid grid-cols-6 gap-2 flex-wrap justify-center"
+                    id="avatar-selector"
+                    role="radiogroup"
                   >
                     {avatars.map((avatar) => (
                       <div
                         key={avatar}
+                        aria-checked={false}
+                        className="relative w-[45px] h-[45px] sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform"
                         role="radio"
                         tabIndex={0}
-                        aria-checked={false}
                         onClick={() => setSelectedAvatar(avatar)}
                         onKeyDown={(e) => {
                           if (e.key === "Enter" || e.key === " ") {
@@ -236,13 +241,12 @@ const GetDetailsPopup = ({
                             setSelectedAvatar(avatar);
                           }
                         }}
-                        className="relative w-[45px] h-[45px] sm:w-12 sm:h-12 cursor-pointer hover:scale-105 transition-transform"
                       >
                         <Image
-                          src={`/avator/${avatar}.svg`}
-                          alt={avatar}
                           fill
+                          alt={avatar}
                           className="object-contain rounded-full"
+                          src={`/avator/${avatar}.svg`}
                         />
                       </div>
                     ))}
@@ -253,36 +257,36 @@ const GetDetailsPopup = ({
 
             <div>
               <label
-                htmlFor="name-input"
                 className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+                htmlFor="name-input"
               >
                 Name*
               </label>
               <input
+                required
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
                 id="name-input"
+                pattern="[A-Za-z ]{2,50}"
+                title="Name must contain only letters and spaces (2-50 characters)"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                pattern="[A-Za-z ]{2,50}"
-                title="Name must contain only letters and spaces (2-50 characters)"
-                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
-                required
               />
             </div>
 
             <div>
               <label
-                htmlFor="mobile-input"
                 className="block text-sm font-medium text-[#354259] mb-1 font-axiforma"
+                htmlFor="mobile-input"
               >
                 Mobile number/ Email*
               </label>
               <input
+                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
                 id="mobile-input"
                 type="text"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-                className="w-full h-[5vh] border border-[#E6E7EA] rounded-[8px] p-3 focus:ring-2 focus:ring-purple-600 outline-none"
               />
             </div>
 
@@ -305,15 +309,15 @@ const GetDetailsPopup = ({
 
             <div className="flex items-center justify-between gap-4 mt-6">
               <button
+                className="cursor-pointer flex-1 h-[5vh] border border-[#E6E7EA] text-black rounded-md font-axiforma font-semibold hover:bg-[#f7f5ff] transition-all duration-200"
                 type="button"
                 onClick={handleClose}
-                className="cursor-pointer flex-1 h-[5vh] border border-[#E6E7EA] text-black rounded-md font-axiforma font-semibold hover:bg-[#f7f5ff] transition-all duration-200"
               >
                 Cancel
               </button>
               <button
-                type="submit"
                 className="cursor-pointer flex-1 h-[5vh] bg-[#5F1BE7] text-white rounded-md font-axiforma font-semibold hover:bg-[#4c13c8] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                type="submit"
               >
                 Submit
               </button>

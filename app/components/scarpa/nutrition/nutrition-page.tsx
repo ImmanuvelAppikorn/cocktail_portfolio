@@ -16,13 +16,13 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
 
       <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
         <button
-          onClick={() => onPrevClick && onPrevClick()}
           className="flex-shrink-0"
+          onClick={() => onPrevClick && onPrevClick()}
         >
           <Image
-            src="/button-image/black-back.svg"
             alt="Back Icon"
             height={26}
+            src="/button-image/black-back.svg"
             width={26}
           />
         </button>
@@ -51,7 +51,10 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
               },
               { icon: "/nutrition-icons/icon4.svg", text: "Proteins : 0 g" },
               { icon: "/nutrition-icons/icon5.svg", text: "Salt : 0 g" },
-              { icon: "/nutrition-icons/icon5.svg", text: "Alcohol: 14.5% (contributes ~82 kcal/100 ml)" },
+              {
+                icon: "/nutrition-icons/icon5.svg",
+                text: "Alcohol: 14.5% (contributes ~82 kcal/100 ml)",
+              },
             ],
           },
           {
@@ -125,13 +128,9 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 ))}
               </div>
             )}
-        
           </div>
-          
         ))}
-            <div className="w-full h-[20vh]">
-              {/* empty space */}
-            </div>
+        <div className="w-full h-[20vh]">{/* empty space */}</div>
       </div>
     </div>
   );

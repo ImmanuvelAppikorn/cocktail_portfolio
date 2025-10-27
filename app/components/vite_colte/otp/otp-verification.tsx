@@ -31,6 +31,7 @@ const OtpVerify = ({
   const handleChange = (index: number, value: string) => {
     if (!/^[0-9]?$/.test(value)) return; // only digits
     const newOtp = [...otp];
+
     newOtp[index] = value;
     setOtp(newOtp);
 
@@ -53,13 +54,16 @@ const OtpVerify = ({
   // Handle Submit
   const handleSubmit = async () => {
     const code = otp.join("");
+
     if (code.length < 6) {
       alert("Please enter the full 6-digit OTP");
+
       return;
     }
 
     if (!confirmationResult) {
       alert("No OTP request found. Please try again.");
+
       return;
     }
 
@@ -71,10 +75,12 @@ const OtpVerify = ({
         if (code === (confirmationResult as any).testOtp) {
           console.log("✅ Test OTP verified!");
           setIsSubmitted(true);
+
           return;
         } else {
           setHasError(true); // ❌ set error if wrong
           alert("Invalid OTP");
+
           return;
         }
       }
@@ -83,6 +89,7 @@ const OtpVerify = ({
       const result = await (confirmationResult as ConfirmationResult).confirm(
         code,
       );
+
       console.log("✅ OTP verified. User:", result.user);
       setIsSubmitted(true);
     } catch (error: any) {
@@ -147,33 +154,33 @@ const OtpVerify = ({
             {otp.map((digit, index) => (
               <input
                 key={index}
-                type="text"
-                inputMode="numeric"
-                maxLength={1}
                 ref={(el) => {
                   inputRefs.current[index] = el;
                 }}
-                value={digit}
-                onChange={(e) => handleChange(index, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(index, e)}
                 className={`w-9 h-12 text-center border-b-2 ${
                   hasError ? "border-red-500" : "border-[#2743FD]"
                 } focus:outline-none focus:border-[#18288f] text-lg font-semibold`}
+                inputMode="numeric"
+                maxLength={1}
+                type="text"
+                value={digit}
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
               />
             ))}
           </div>
 
           <p className="text-center mb-4 text-[15px] font-axiforma font-bold text-[#B9B9B9]">
             Didn’t receive the OTP?{" "}
-            <Link href={""} className="text-[#1D3BFF]">
+            <Link className="text-[#1D3BFF]" href={""}>
               Resend OTP
             </Link>
           </p>
         </div>
 
         <button
-          onClick={handleSubmit}
           className="w-full bg-[#5F1BE7] text-white py-3 rounded-lg font-semibold hover:bg-[#320e79] transition"
+          onClick={handleSubmit}
         >
           Submit
         </button>

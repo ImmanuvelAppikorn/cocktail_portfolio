@@ -16,13 +16,13 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
 
       <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
         <button
-          onClick={() => onPrevClick && onPrevClick()}
           className="flex-shrink-0"
+          onClick={() => onPrevClick && onPrevClick()}
         >
           <Image
-            src="/button-image/black-back.svg"
             alt="Back Icon"
             height={26}
+            src="/button-image/black-back.svg"
             width={26}
           />
         </button>

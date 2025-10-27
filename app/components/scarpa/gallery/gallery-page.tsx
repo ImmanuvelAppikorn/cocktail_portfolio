@@ -62,11 +62,11 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
     <div className="relative w-full h-screen bg-white overflow-hidden px-4">
       {/* Fixed Gallery Header */}
       <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-        <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer">
+        <button className="flex-shrink-0 cursor-pointer" onClick={onPrevClick}>
           <Image
-            src="/button-image/black-back.svg"
             alt="Back Icon"
             height={26}
+            src="/button-image/black-back.svg"
             width={26}
           />
         </button>
@@ -99,18 +99,18 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               <div key={idx} className="grid grid-cols-3 gap-2 items-start">
                 {/* Big Left Image (fixed height) */}
                 <motion.div
-                  variants={slideFromLeft}
-                  initial="hidden"
                   animate="visible"
-                  transition={transition}
                   className="col-span-2 flex justify-center"
+                  initial="hidden"
+                  transition={transition}
+                  variants={slideFromLeft}
                 >
                   <div className="relative w-full h-[250px]">
                     <Image
-                      src={img1}
-                      alt=""
                       fill
+                      alt=""
                       className="object-cover rounded-lg"
+                      src={img1}
                     />
                   </div>
                 </motion.div>
@@ -120,18 +120,18 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                   {[img2, img3].map((img, i) => (
                     <motion.div
                       key={i}
-                      variants={slideFromRight}
-                      initial="hidden"
                       animate="visible"
-                      transition={{ ...transition, delay: i * 0.1 }}
                       className="col-span-2 flex justify-center"
+                      initial="hidden"
+                      transition={{ ...transition, delay: i * 0.1 }}
+                      variants={slideFromRight}
                     >
                       <div className="relative w-full h-[120px]">
                         <Image
-                          src={img}
-                          alt=""
                           fill
+                          alt=""
                           className="object-cover rounded-lg"
+                          src={img}
                         />
                       </div>
                     </motion.div>
@@ -150,18 +150,18 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                   {[img1, img2].map((img, i) => (
                     <motion.div
                       key={i}
-                      variants={slideFromLeft}
-                      initial="hidden"
                       animate="visible"
-                      transition={{ ...transition, delay: i * 0.1 }}
                       className="flex justify-center"
+                      initial="hidden"
+                      transition={{ ...transition, delay: i * 0.1 }}
+                      variants={slideFromLeft}
                     >
                       <div className="relative w-full h-[120px]">
                         <Image
-                          src={img}
-                          alt=""
                           fill
+                          alt=""
                           className="object-cover rounded-lg"
+                          src={img}
                         />
                       </div>
                     </motion.div>
@@ -170,18 +170,18 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
 
                 {/* Big Right Image */}
                 <motion.div
-                  variants={slideFromRight}
-                  initial="hidden"
                   animate="visible"
-                  transition={transition}
                   className="col-span-2 flex justify-center"
+                  initial="hidden"
+                  transition={transition}
+                  variants={slideFromRight}
                 >
                   <div className="relative w-full h-[250px]">
                     <Image
-                      src={img3}
-                      alt=""
                       fill
+                      alt=""
                       className="object-cover rounded-lg"
+                      src={img3}
                     />
                   </div>
                 </motion.div>
@@ -195,6 +195,10 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
               {[img1, img2, img3].map((img, i) => (
                 <motion.div
                   key={i}
+                  animate="visible"
+                  className="flex justify-center"
+                  initial="hidden"
+                  transition={{ ...transition, delay: i * 0.1 }}
                   variants={
                     i === 0
                       ? slideFromLeft
@@ -202,17 +206,13 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                         ? slideFromCenter
                         : slideFromRight
                   }
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ ...transition, delay: i * 0.1 }}
-                  className="flex justify-center"
                 >
                   <div className="relative w-full h-[120px]">
                     <Image
-                      src={img}
-                      alt=""
                       fill
+                      alt=""
                       className="object-cover rounded-lg"
+                      src={img}
                     />
                   </div>
                 </motion.div>

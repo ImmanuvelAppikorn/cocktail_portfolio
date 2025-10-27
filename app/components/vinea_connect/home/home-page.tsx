@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import NavigationBar from "../navigation_bar/nav-page";
 import LanguageToggle from "../language_toggle/language-page";
@@ -12,7 +13,6 @@ import AboutPage from "../about/about-page";
 import ReviewPage from "../review/review-page";
 import GalleryPage from "../gallery/gallery-page";
 import NutritionPage from "../nutrition/nutrition-page";
-import { useRouter } from "next/navigation";
 import MoreDetails from "../about/more_details";
 
 // -------------------- COLORS --------------------
@@ -96,6 +96,7 @@ export default function HomePage() {
   // Hide intro after 1.5s
   useEffect(() => {
     const timer = setTimeout(() => setShowIntro(false), 1500);
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -141,27 +142,27 @@ export default function HomePage() {
       {/* Language Button */}
       {currentStep === "home" && (
         <motion.div
-          className="absolute top-4 left-4 z-50"
-          initial={{ x: -150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
+          className="absolute top-4 left-4 z-50"
           exit={{ x: -150, opacity: 0 }}
+          initial={{ x: -150, opacity: 0 }}
           transition={smoothTransition}
         >
           <button
-            onClick={() => setShowLanguagePopup(true)}
             className="focus:outline-none group relative flex items-center justify-center rounded-full hover:bg-white p-2 cursor-pointer"
             style={{
               width: "clamp(30px, 8vw, 38px)", // responsive size (min 28px, max 38px)
               height: "clamp(30px, 8vw, 38px)",
             }}
+            onClick={() => setShowLanguagePopup(true)}
           >
             <Image
-              src="/button-image/language-icon.svg"
-              alt="language-button"
               fill
+              priority
+              alt="language-button"
               className="object-contain p-[4px]"
               sizes="(max-width: 768px) 30px, (max-width: 1200px) 36px, 38px"
-              priority
+              src="/button-image/language-icon.svg"
             />
           </button>
         </motion.div>
@@ -171,17 +172,17 @@ export default function HomePage() {
       <AnimatePresence>
         {showLanguagePopup && (
           <motion.div
-            className="fixed inset-0 bg-black/40 flex items-center justify-center z-[100]"
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            className="fixed inset-0 bg-black/40 flex items-center justify-center z-[100]"
             exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
             transition={smoothTransition}
           >
             <motion.div
-              className="w-full px-4"
-              initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
+              className="w-full px-4"
               exit={{ scale: 0.85, opacity: 0 }}
+              initial={{ scale: 0.85, opacity: 0 }}
               transition={smoothTransition}
             >
               <LanguageToggle onClose={() => setShowLanguagePopup(false)} />
@@ -195,23 +196,23 @@ export default function HomePage() {
         {currentStep === "home" && !reverse && !showIntro && (
           <div className="absolute top-[3.5%] z-20 w-[90%] aspect-[3/1] flex items-center justify-center overflow-hidden">
             <motion.h1
-              initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 100 }}
-              transition={smoothTransition}
               className="text-center font-montagu font-semibold w-full flex items-center justify-center"
+              exit={{ opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 100 }}
               style={{
                 color: "#1C1826",
                 lineHeight: "80%",
               }}
+              transition={smoothTransition}
             >
               <div className="relative w-[80%] aspect-[2.7/1] mx-auto">
                 <Image
-                  alt="Vinea Logo"
-                  src="/logo/logo.svg"
                   fill
                   priority
+                  alt="Vinea Logo"
                   className="object-contain"
+                  src="/logo/logo.svg"
                 />
               </div>
             </motion.h1>
@@ -223,23 +224,23 @@ export default function HomePage() {
       <AnimatePresence>
         {currentStep === "home" && !reverse && !showIntro && (
           <motion.div
-            className="absolute top-[45%] right-3 z-50 mb-3"
-            initial={{ x: 150, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
+            className="absolute top-[45%] right-3 z-50 mb-3"
             exit={{ x: 150, opacity: 0 }}
+            initial={{ x: 150, opacity: 0 }}
             transition={smoothTransition}
           >
             <button
-              onClick={handleStartJourney}
               className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center border-1  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-[#582B2B] from-[#781B35] to-[#EB235C] hover:opacity-90 transition group"
+              onClick={handleStartJourney}
             >
               <span className="relative flex items-center">Explore More</span>
               <Image
-                src="/button-image/arrow-up-right.svg"
                 alt="arrow"
-                width={14}
-                height={14}
                 className="ml-2 z-10"
+                height={14}
+                src="/button-image/arrow-up-right.svg"
+                width={14}
               />
             </button>
           </motion.div>
@@ -248,14 +249,6 @@ export default function HomePage() {
 
       {/* Bottle Image */}
       <motion.div
-        className="absolute z-10 flex items-center justify-center overflow-hidden pt-0 xs:pt-2 sm:pt-8 md:pt-10 "
-        style={{ translateX: "-50%" }}
-        initial={{
-          height: "125%",
-          rotate: 0,
-          bottom: "-150%",
-          left: "50%",
-        }}
         animate={{
           height:
             currentStep === "home"
@@ -309,23 +302,29 @@ export default function HomePage() {
                 ? 0.4
                 : 1,
         }}
+        className="absolute z-10 flex items-center justify-center overflow-hidden pt-0 xs:pt-2 sm:pt-8 md:pt-10 "
+        initial={{
+          height: "125%",
+          rotate: 0,
+          bottom: "-150%",
+          left: "50%",
+        }}
+        style={{ translateX: "-50%" }}
         transition={smoothTransition}
       >
         <div className="relative w-full h-full">
           <Image
-            alt="bottle"
-            src={activeBottle.image}
             fill
             priority
+            alt="bottle"
             className="object-cover"
+            src={activeBottle.image}
           />
         </div>
       </motion.div>
 
       {/* Background Circle */}
       <motion.div
-        className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
-        initial={{ height: "90%", rotate: 0, opacity: 0, bottom: "-270%" }}
         animate={{
           height:
             currentStep === "home"
@@ -371,6 +370,8 @@ export default function HomePage() {
                 ? 0.6
                 : 1,
         }}
+        className="absolute left-1/2 -translate-x-1/2 z-0 flex items-center justify-center rounded-full"
+        initial={{ height: "90%", rotate: 0, opacity: 0, bottom: "-270%" }}
         transition={smoothTransition}
       >
         <Image
@@ -414,8 +415,8 @@ export default function HomePage() {
             )}
             {currentStep === "review" && (
               <ReviewPage
-                onPrevClick={handleReviewPrev}
                 onNavigationVisibilityChange={setShowNavigation}
+                onPrevClick={handleReviewPrev}
               />
             )}
             {currentStep === "gallery" && (

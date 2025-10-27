@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 export default function CrimsonPage({
@@ -28,28 +29,29 @@ export default function CrimsonPage({
     duration: 1.5,
     ease: [0.88, 0.01, 0.17, 0.99],
   };
+
   return (
     <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       <AnimatePresence>
         <motion.div
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
-          initial={{ x: 150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
           exit={{ x: 150, opacity: 0 }}
+          initial={{ x: 150, opacity: 0 }}
           transition={smoothTransition}
         >
           <button
-            onClick={handleScrollToTopAndNavigate}
             className="relative cursor-pointer overflow-hidden inline-flex items-center justify-center  px-4 py-2 rounded-[56px] text-white text-[12px] font-montagu font-semibold bg-gradient-to-t border-1 border-[#826026] bg-[linear-gradient(to_top,_#D8CCB4_100%,_#D8CCB4_36%)] hover:opacity-90 transition group"
+            onClick={handleScrollToTopAndNavigate}
           >
             <span className="relative flex items-center font-montagu text-[#BF062F]">
               More
               <Image
-                src="assets/scapra/button-image/arrow-up-right.svg"
                 alt="arrow"
-                width={14}
-                height={14}
                 className="ml-2 z-10"
+                height={14}
+                src="assets/scapra/button-image/arrow-up-right.svg"
+                width={14}
               />
             </span>
           </button>
@@ -60,22 +62,22 @@ export default function CrimsonPage({
         {/* Top Section */}
 
         <motion.div
-          variants={topVariants}
-          initial="hidden"
           animate="visible"
-          exit="exit"
           className="space-y-4 w-full"
+          exit="exit"
+          initial="hidden"
+          variants={topVariants}
         >
           {/* Header */}
           <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
             <button
-              onClick={onPrevClick}
               className="flex-shrink-0 cursor-pointer hover:bg-black/10 rounded-full"
+              onClick={onPrevClick}
             >
               <Image
-                src="/button-image/black-back.svg"
                 alt="Back Icon"
                 height={28}
+                src="/button-image/black-back.svg"
                 width={28}
               />
             </button>
@@ -88,30 +90,30 @@ export default function CrimsonPage({
           <div className="flex flex-col gap-4 text-[12px] font-semibold mt-6">
             <div className="flex flex-row w-full justify-between">
               <InfoCard
+                half
                 icon="assets/scapra/crimson-reserve-icons/origin.svg"
                 title="ORIGIN"
                 value="ITALY"
-                half
               />
               <InfoCard
+                half
                 icon="assets/scapra/crimson-reserve-icons/vintage.svg"
                 title="VINTAGE"
                 value="2020"
-                half
               />
             </div>
             <div className="flex flex-row w-full justify-between">
               <InfoCard
+                half
                 icon="assets/scapra/crimson-reserve-icons/region.svg"
                 title="REGION"
                 value="Acqui Terme, Piedmont"
-                half
               />
               <InfoCard
+                half
                 icon="assets/scapra/crimson-reserve-icons/variety.svg"
                 title="VARIETY"
                 value="Barbera"
-                half
               />
             </div>
           </div>
@@ -122,24 +124,24 @@ export default function CrimsonPage({
 
           {/* Bottom Section */}
           <motion.div
-            variants={bottomVariants}
-            initial="hidden"
             animate="visible"
-            exit="exit"
             className="flex flex-col space-y-4  w-full mt-6"
+            exit="exit"
+            initial="hidden"
+            variants={bottomVariants}
           >
             <div className="grid grid-cols-2 gap-2 w-full">
               <InfoCard
+                half
                 icon="assets/scapra/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
                 value="14.5%"
-                half
               />
               <InfoCard
+                half
                 icon="assets/scapra/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
                 value="French Allier oak barrels AGED (32mo)"
-                half
               />
             </div>
 
@@ -188,11 +190,11 @@ function InfoCard({
       {/* Icon Section */}
       <div className="w-[40px] h-[40px] rounded-full border border-[#1E1F1E] flex items-center justify-center">
         <Image
-          src={icon}
           alt={title}
-          width={20}
-          height={20}
           className="object-contain"
+          height={20}
+          src={icon}
+          width={20}
         />
       </div>
 
@@ -208,4 +210,3 @@ function InfoCard({
     </div>
   );
 }
-

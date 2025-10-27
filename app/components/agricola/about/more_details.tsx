@@ -16,16 +16,16 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
       {/* Title */}
 
       <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-        <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer">
+        <button className="flex-shrink-0 cursor-pointer" onClick={onPrevClick}>
           <Image
-            src="/button-image/black-back.svg"
             alt="Back Icon"
             height={26}
+            src="/button-image/black-back.svg"
             width={26}
           />
         </button>
         <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
-            CLÀSIC
+          CLÀSIC
         </h2>
       </div>
 
@@ -36,12 +36,31 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
         </p>
 
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium  leading-7  pt-2 text-justify">
-          Made entirely from 100% Ruchè grapes, Sant’Eufemia expresses the most straightforward and genuine soul of this unique Piedmontese variety. Sourced from vineyards in Castagnole Monferrato (Asti), situated at an altitude of 260 meters on mixed limestone, clay, and marl soils, the vines are trained using the single Guyot system and range between 5 and 10 years of age.
+          Made entirely from 100% Ruchè grapes, Sant’Eufemia expresses the most
+          straightforward and genuine soul of this unique Piedmontese variety.
+          Sourced from vineyards in Castagnole Monferrato (Asti), situated at an
+          altitude of 260 meters on mixed limestone, clay, and marl soils, the
+          vines are trained using the single Guyot system and range between 5
+          and 10 years of age.
           <br />
-The wine undergoes alcoholic fermentation in stainless steel for 10 to 15 days at a controlled temperature, followed by malolactic fermentation and aging in stainless steel tanks, preserving its freshness and primary fruit character. After a brief three-month refinement in the bottle, Sant’Eufemia is released to showcase its bright and authentic personality.
-<br />
-In the glass, it presents a ruby red color with lively purple reflections. The bouquet is intense and floral, with aromas of rosebuds and freshly picked cherries, leading to a palate that is fresh, soft, and lightly tannic, perfectly balanced and inviting with each sip. 
-<br />Its alcohol content of 13.5% complements its vibrant acidity, making it an ideal companion for white and red meats, first courses, fresh cheeses, cold cuts, fish, and even sushi. Best enjoyed at 16–18°C, Sant’Eufemia is a sincere and joyful expression of Ruchè—uncomplicated, honest, and full of character.
+          The wine undergoes alcoholic fermentation in stainless steel for 10 to
+          15 days at a controlled temperature, followed by malolactic
+          fermentation and aging in stainless steel tanks, preserving its
+          freshness and primary fruit character. After a brief three-month
+          refinement in the bottle, Sant’Eufemia is released to showcase its
+          bright and authentic personality.
+          <br />
+          In the glass, it presents a ruby red color with lively purple
+          reflections. The bouquet is intense and floral, with aromas of
+          rosebuds and freshly picked cherries, leading to a palate that is
+          fresh, soft, and lightly tannic, perfectly balanced and inviting with
+          each sip.
+          <br />
+          Its alcohol content of 13.5% complements its vibrant acidity, making
+          it an ideal companion for white and red meats, first courses, fresh
+          cheeses, cold cuts, fish, and even sushi. Best enjoyed at 16–18°C,
+          Sant’Eufemia is a sincere and joyful expression of
+          Ruchè—uncomplicated, honest, and full of character.
         </p>
       </div>
     </div>

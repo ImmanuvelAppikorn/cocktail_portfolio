@@ -41,12 +41,15 @@ export default function AboutPage({
         variants={topVariants}
       >
         <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-          <button onClick={onPrevClick} className="flex-shrink-0 cursor-pointer">
+          <button
+            className="flex-shrink-0 cursor-pointer"
+            onClick={onPrevClick}
+          >
             <Image
-              src="/button-image/black-back.svg"
               alt="Back Icon"
-            height={26}
-            width={26}
+              height={26}
+              src="/button-image/black-back.svg"
+              width={26}
             />
           </button>
           <h2 className="flex-1 text-center text-[#BF062F] text-[19px] font-bold leading-tight font-montagu">
@@ -62,11 +65,15 @@ export default function AboutPage({
 
         {/* Paragraph */}
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6  px-2 pt-2">
-          &ldquo;Produced with grapes coming from the estate "Bricchi" located on the border between Castel Rocchero and Acqui Terme. The vineyards range from 350 up to more than 400 meters above sea level and are mostly facing South-West, soil composition of sand with low percentages of clay and silt.&rdquo;
+          Produced with grapes coming from the estate "Bricchi" located on the
+          border between Castel Rocchero and Acqui Terme. The vineyards range
+          from 350 up to more than 400 meters above sea level and are mostly
+          facing South-West, soil composition of sand with low percentages of
+          clay and silt.
           <span>
             <button
-              onClick={handleScrollToTopAndNavigate}
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#BF062F] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
+              onClick={handleScrollToTopAndNavigate}
             >
               View More...
             </button>
