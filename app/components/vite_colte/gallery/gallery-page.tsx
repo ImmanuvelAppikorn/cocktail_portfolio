@@ -6,42 +6,27 @@ import { motion } from "framer-motion";
 
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
-    [
-      "/assets/vite_colte/gallery/image-1.svg",
-      "/assets/vite_colte/gallery/image-2.svg",
-      "/assets/vite_colte/gallery/image-3.svg",
-    ],
-    [
-      "/assets/vite_colte/gallery/image-4.svg",
-      "/assets/vite_colte/gallery/image-5.svg",
-      "/assets/vite_colte/gallery/image-6.svg",
-    ],
-    [
-      "/assets/vite_colte/gallery/image-19.svg",
-      "/assets/vite_colte/gallery/image-20.svg",
-      "/assets/vite_colte/gallery/image-21.svg",
-    ],
-    [
-      "/assets/vite_colte/gallery/image-7.svg",
-      "/assets/vite_colte/gallery/image-8.svg",
-      "/assets/vite_colte/gallery/image-9.svg",
-    ],
-    [
-      "/assets/vite_colte/gallery/image-10.svg",
-      "/assets/vite_colte/gallery/image-11.svg",
-      "/assets/vite_colte/gallery/image-12.svg",
-    ],
-    [
-      "/assets/vite_colte/gallery/image-13.svg",
-      "/assets/vite_colte/gallery/image-14.svg",
-      "/assets/vite_colte/gallery/image-15.svg",
-    ],
-    [
-      "/assets/vite_colte/gallery/image-16.svg",
-      "/assets/vite_colte/gallery/image-17.svg",
-      "/assets/vite_colte/gallery/image-18.svg",
-    ],
-  ];
+
+  ["/assets/vite_colte/gallery/1_rectangle.svg", "/assets/vite_colte/gallery/2_rectangle.svg", "/assets/vite_colte/gallery/3_rectangle.svg"],
+  ["/assets/vite_colte/gallery/4_rectangle.svg", "/assets/vite_colte/gallery/5_rectangle.svg", "/assets/vite_colte/gallery/6_rectangle.svg"],
+  ["/assets/vite_colte/gallery/7_rectangle.svg", "/assets/vite_colte/gallery/8_rectangle.svg", "/assets/vite_colte/gallery/9_rectangle.svg"],
+  ["/assets/vite_colte/gallery/10_rectangle.svg", "/assets/vite_colte/gallery/11_rectangle.svg", "/assets/vite_colte/gallery/12_rectangle.svg"],
+  ["/assets/vite_colte/gallery/13_rectangle.svg", "/assets/vite_colte/gallery/14_rectangle.svg", "/assets/vite_colte/gallery/15_rectangle.svg"],
+  ["/assets/vite_colte/gallery/16_rectangle.svg", "/assets/vite_colte/gallery/17_rectangle.svg", "/assets/vite_colte/gallery/18_rectangle.svg"],
+  ["/assets/vite_colte/gallery/19_rectangle.svg", "/assets/vite_colte/gallery/20_rectangle.svg", "/assets/vite_colte/gallery/21_rectangle.svg"],
+  ["/assets/vite_colte/gallery/22_rectangle.svg", "/assets/vite_colte/gallery/23_rectangle.svg", "/assets/vite_colte/gallery/24_rectangle.svg"],
+  ["/assets/vite_colte/gallery/25_rectangle.svg", "/assets/vite_colte/gallery/26_rectangle.svg", "/assets/vite_colte/gallery/27_rectangle.svg"],
+  ["/assets/vite_colte/gallery/28_rectangle.svg", "/assets/vite_colte/gallery/29_rectangle.svg", "/assets/vite_colte/gallery/30_rectangle.svg"],
+  ["/assets/vite_colte/gallery/31_rectangle.svg", "/assets/vite_colte/gallery/32_rectangle.svg", "/assets/vite_colte/gallery/33_rectangle.svg"],
+  ["/assets/vite_colte/gallery/34_rectangle.svg", "/assets/vite_colte/gallery/35_rectangle.svg", "/assets/vite_colte/gallery/36_rectangle.svg"],
+  ["/assets/vite_colte/gallery/37_rectangle.svg", "/assets/vite_colte/gallery/38_rectangle.svg", "/assets/vite_colte/gallery/39_rectangle.svg"],
+  ["/assets/vite_colte/gallery/40_rectangle.svg", "/assets/vite_colte/gallery/41_rectangle.svg", "/assets/vite_colte/gallery/42_rectangle.svg"],
+  ["/assets/vite_colte/gallery/43_rectangle.svg", "/assets/vite_colte/gallery/44_rectangle.svg", "/assets/vite_colte/gallery/45_rectangle.svg"],
+  ["/assets/vite_colte/gallery/46_rectangle.svg", "/assets/vite_colte/gallery/47_rectangle.svg", "/assets/vite_colte/gallery/48_rectangle.svg"],
+  ["/assets/vite_colte/gallery/49_rectangle.svg", "/assets/vite_colte/gallery/50_rectangle.svg"],
+
+];
+
 
   const slideFromLeft = {
     hidden: { x: -100, opacity: 0 },

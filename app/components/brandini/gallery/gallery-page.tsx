@@ -6,26 +6,40 @@ import { motion } from "framer-motion";
 
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
-    [
-      "/assets/brandini/gallery/image-1.svg",
-      "/assets/brandini/gallery/image-2.svg",
-      "/assets/brandini/gallery/image-3.svg",
-    ],
-    [
-      "/assets/brandini/gallery/image-4.svg",
-      "/assets/brandini/gallery/image-10.svg",
-      "/assets/brandini/gallery/image-5.svg",
-    ],
-    [
-      "/assets/brandini/gallery/image-6.svg",
-      "/assets/brandini/gallery/image-7.svg",
-      "/assets/brandini/gallery/image-8.svg",
-    ],
-    [
-      "/assets/brandini/gallery/image-9.svg",
-      "/assets/brandini/gallery/image-7.svg",
-      "/assets/brandini/gallery/image-8.svg",
-    ],
+    ["/assets/brandini/gallery/0_rectangle.svg", 
+    "/assets/brandini/gallery/1_rectangle.svg",
+     "/assets/brandini/gallery/2_rectangle.svg"],
+  ["/assets/brandini/gallery/3_rectangle.svg",
+     "/assets/brandini/gallery/4_rectangle.svg",
+      "/assets/brandini/gallery/5_rectangle.svg"],
+  ["/assets/brandini/gallery/6_rectangle.svg",
+     "/assets/brandini/gallery/7_rectangle.svg",
+      "/assets/brandini/gallery/8_rectangle.svg"],
+  ["/assets/brandini/gallery/9_rectangle.svg", 
+    "/assets/brandini/gallery/10_rectangle.svg",
+     "/assets/brandini/gallery/11_rectangle.svg"],
+  ["/assets/brandini/gallery/12_rectangle.svg",
+     "/assets/brandini/gallery/13_rectangle.svg",
+      "/assets/brandini/gallery/14_rectangle.svg"],
+  ["/assets/brandini/gallery/15_rectangle.svg",
+     "/assets/brandini/gallery/16_rectangle.svg",
+      "/assets/brandini/gallery/17_rectangle.svg"],
+
+  ["/assets/brandini/gallery/18_rectangle.svg", "/assets/brandini/gallery/19_rectangle.svg", "/assets/brandini/gallery/20_rectangle.svg"],
+  ["/assets/brandini/gallery/21_rectangle.svg", "/assets/brandini/gallery/22_rectangle.svg", "/assets/brandini/gallery/23_rectangle.svg"],
+  ["/assets/brandini/gallery/24_rectangle.svg", "/assets/brandini/gallery/25_rectangle.svg", "/assets/brandini/gallery/26_rectangle.svg"],
+  ["/assets/brandini/gallery/27_rectangle.svg", "/assets/brandini/gallery/28_rectangle.svg", "/assets/brandini/gallery/29_rectangle.svg"],
+  ["/assets/brandini/gallery/30_rectangle.svg", "/assets/brandini/gallery/31_rectangle.svg", "/assets/brandini/gallery/32_rectangle.svg"],
+  ["/assets/brandini/gallery/33_rectangle.svg", "/assets/brandini/gallery/34_rectangle.svg", "/assets/brandini/gallery/35_rectangle.svg"],
+  ["/assets/brandini/gallery/36_rectangle.svg", "/assets/brandini/gallery/37_rectangle.svg", "/assets/brandini/gallery/38_rectangle.svg"],
+  ["/assets/brandini/gallery/39_rectangle.svg", "/assets/brandini/gallery/40_rectangle.svg", "/assets/brandini/gallery/41_rectangle.svg"],
+  ["/assets/brandini/gallery/42_rectangle.svg", "/assets/brandini/gallery/43_rectangle.svg", "/assets/brandini/gallery/44_rectangle.svg"],
+  ["/assets/brandini/gallery/45_rectangle.svg", "/assets/brandini/gallery/46_rectangle.svg", "/assets/brandini/gallery/47_rectangle.svg"],
+  ["/assets/brandini/gallery/48_rectangle.svg", "/assets/brandini/gallery/49_rectangle.svg", "/assets/brandini/gallery/50_rectangle.svg"],
+  ["/assets/brandini/gallery/51_rectangle.svg", "/assets/brandini/gallery/52_rectangle.svg", "/assets/brandini/gallery/53_rectangle.svg"],
+  ["/assets/brandini/gallery/54_rectangle.svg", "/assets/brandini/gallery/55_rectangle.svg", "/assets/brandini/gallery/56_rectangle.svg"],
+  ["/assets/brandini/gallery/57_rectangle.svg", "/assets/brandini/gallery/58_rectangle.svg", "/assets/brandini/gallery/59_rectangle.svg"],
+  ["/assets/brandini/gallery/60_rectangle.svg", "/assets/brandini/gallery/61_rectangle.svg"],
   ];
 
   const slideFromLeft = {

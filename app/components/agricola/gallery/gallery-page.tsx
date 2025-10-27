@@ -6,31 +6,16 @@ import { motion } from "framer-motion";
 
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
-    [
-      "/assets/agricola/gallery/image-1.svg",
-      "/assets/agricola/gallery/image-2.svg",
-      "/assets/agricola/gallery/image-3.svg",
-    ],
-    [
-      "/assets/agricola/gallery/image-4.svg",
-      "/assets/agricola/gallery/image-5.svg",
-      "/assets/agricola/gallery/image-6.svg",
-    ],
-    [
-      "/assets/agricola/gallery/image-7.svg",
-      "/assets/agricola/gallery/image-8.svg",
-      "/assets/agricola/gallery/image-9.svg",
-    ],
-    [
-      "/assets/agricola/gallery/image-10.svg",
-      "/assets/agricola/gallery/image-11.svg",
-      "/assets/agricola/gallery/image-12.svg",
-    ],
-    [
-      "/assets/agricola/gallery/image-13.svg",
-      "/assets/agricola/gallery/image-17.svg",
-      "/assets/agricola/gallery/image-15.svg",
-    ],
+
+  ["/assets/agricola/gallery/0_rectangle.svg", "/assets/agricola/gallery/1_rectangle.svg", "/assets/agricola/gallery/2_rectangle.svg"],
+  ["/assets/agricola/gallery/3_rectangle.svg", "/assets/agricola/gallery/4_rectangle.svg", "/assets/agricola/gallery/5_rectangle.svg"],
+  ["/assets/agricola/gallery/6_rectangle.svg", "/assets/agricola/gallery/7_rectangle.svg", "/assets/agricola/gallery/8_rectangle.svg"],
+  ["/assets/agricola/gallery/9_rectangle.svg", "/assets/agricola/gallery/10_rectangle.svg", "/assets/agricola/gallery/11_rectangle.svg"],
+  ["/assets/agricola/gallery/12_rectangle.svg", "/assets/agricola/gallery/13_rectangle.svg", "/assets/agricola/gallery/14_rectangle.svg"],
+  ["/assets/agricola/gallery/15_rectangle.svg", "/assets/agricola/gallery/16_rectangle.svg", "/assets/agricola/gallery/17_rectangle.svg"],
+  ["/assets/agricola/gallery/18_rectangle.svg", "/assets/agricola/gallery/19_rectangle.svg", "/assets/agricola/gallery/20_rectangle.svg"],
+
+
   ];
 
   const slideFromLeft = {
