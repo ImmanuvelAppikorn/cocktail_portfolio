@@ -8,7 +8,7 @@ import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery",
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
 }
 

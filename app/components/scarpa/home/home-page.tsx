@@ -136,8 +136,11 @@ export default function HomePage() {
 
   // Common animation transition
   const smoothTransition = {
-    duration: currentStep === "review" ? 0 : 1.5, // Instant for review page
-    ease: currentStep === "review" ? "linear" : [0.88, 0.01, 0.17, 0.99],
+    duration: currentStep === "review" || currentStep === "gallery" ? 0 : 1.5,
+    ease:
+      currentStep === "review" || currentStep === "gallery"
+        ? "linear"
+        : [0.88, 0.01, 0.17, 0.99],
   };
 
   // -------------------- RETURN UI --------------------
@@ -319,7 +322,7 @@ export default function HomePage() {
                       ? "62%"
                       : "50%",
           opacity:
-            currentStep === "review"
+            currentStep === "review" || currentStep === "gallery"
               ? 0
               : currentStep === "more_details"
                 ? 0.4
@@ -389,7 +392,7 @@ export default function HomePage() {
                   ? -20
                   : 0,
           opacity:
-            currentStep === "review"
+            currentStep === "review" || currentStep === "gallery"
               ? 0
               : currentStep === "more_details"
                 ? 0.6
