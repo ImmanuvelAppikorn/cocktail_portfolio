@@ -39,7 +39,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 
   const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));
-    // Removed auto-close on navigation
+    setIsOpen(false); // 👈 Auto-close capsule after navigation
   };
 
   return (
