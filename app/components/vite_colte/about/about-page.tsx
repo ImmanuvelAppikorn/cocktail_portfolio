@@ -40,10 +40,11 @@ export default function AboutPage({
         initial="hidden"
         variants={topVariants}
       >
-        <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
+        
+         <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
           <button
-            className="flex-shrink-0 cursor-pointer"
-            onClick={onPrevClick}
+            className="absolute left-0"
+                    onClick={onPrevClick}
           >
             <Image
               alt="Back Icon"
@@ -52,8 +53,8 @@ export default function AboutPage({
               width={26}
             />
           </button>
-          <h2 className="flex-1 text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
-            BARBERRA D'ASTI
+          <h2 className="w-full text-center text-[#EB235C] text-[19px] font-bold leading-tight font-montagu">
+             BARBERRA D'ASTI
           </h2>
         </div>
 

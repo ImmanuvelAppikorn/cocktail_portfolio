@@ -40,22 +40,26 @@ export default function AboutPage({
         initial="hidden"
         variants={topVariants}
       >
-        <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-          <button
-            className="flex-shrink-0 cursor-pointer"
+
+
+
+    <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
+  <button
+    className="absolute left-0"
             onClick={onPrevClick}
-          >
-            <Image
-              alt="Back Icon"
-              height={26}
-              src="/button-image/black-back.svg"
-              width={26}
-            />
-          </button>
-          <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
-            CLÀSIC
-          </h2>
-        </div>
+  >
+    <Image
+      alt="Back Icon"
+      height={26}
+      src="/button-image/black-back.svg"
+      width={26}
+    />
+  </button>
+  <h2 className="w-full text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
+    CLÀSIC
+  </h2>
+</div>
+
 
         <div className="flex flex-row justify-start items-center w-full ">
           <p className="text-[16px] text-[#443A3B] font-extrabold tracking-[2px] w-full pb-0 mt-3 font-montagu">

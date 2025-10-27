@@ -15,8 +15,11 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
     >
       {/* Title */}
 
-      <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-        <button className="flex-shrink-0 cursor-pointer" onClick={onPrevClick}>
+      <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
+        <button
+          className="absolute left-0"
+                  onClick={onPrevClick}>
+        
           <Image
             alt="Back Icon"
             height={26}
@@ -24,7 +27,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
             width={26}
           />
         </button>
-        <h2 className="flex-1 text-center text-[#58660C] text-[19px] font-bold leading-tight font-montagu">
+        <h2 className="w-full text-center text-[#58660C] text-[19px] font-bold leading-tight font-montagu">
           ALTA LANGA
         </h2>
       </div>
