@@ -6,24 +6,23 @@ import { motion } from "framer-motion";
 
 const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const images = [
- 
-  ["/assets/scapra/gallery/0_rectangle.svg", "/assets/scapra/gallery/1_rectangle.svg", "/assets/scapra/gallery/2_rectangle.svg"],
-  ["/assets/scapra/gallery/3_rectangle.svg", "/assets/scapra/gallery/4_rectangle.svg", "/assets/scapra/gallery/5_rectangle.svg"],
-  ["/assets/scapra/gallery/6_rectangle.svg", "/assets/scapra/gallery/7_rectangle.svg", "/assets/scapra/gallery/8_rectangle.svg"],
-  ["/assets/scapra/gallery/9_rectangle.svg", "/assets/scapra/gallery/10_rectangle.svg", "/assets/scapra/gallery/11_rectangle.svg"],
-  ["/assets/scapra/gallery/12_rectangle.svg", "/assets/scapra/gallery/13_rectangle.svg", "/assets/scapra/gallery/14_rectangle.svg"],
-  ["/assets/scapra/gallery/15_rectangle.svg", "/assets/scapra/gallery/16_rectangle.svg", "/assets/scapra/gallery/17_rectangle.svg"],
-  ["/assets/scapra/gallery/18_rectangle.svg", "/assets/scapra/gallery/19_rectangle.svg", "/assets/scapra/gallery/20_rectangle.svg"],
-  ["/assets/scapra/gallery/21_rectangle.svg", "/assets/scapra/gallery/22_rectangle.svg", "/assets/scapra/gallery/23_rectangle.svg"],
-  ["/assets/scapra/gallery/24_rectangle.svg", "/assets/scapra/gallery/25_rectangle.svg", "/assets/scapra/gallery/26_rectangle.svg"],
-  ["/assets/scapra/gallery/27_rectangle.svg", "/assets/scapra/gallery/28_rectangle.svg", "/assets/scapra/gallery/29_rectangle.svg"],
-  ["/assets/scapra/gallery/30_rectangle.svg", "/assets/scapra/gallery/31_rectangle.svg", "/assets/scapra/gallery/32_rectangle.svg"],
-  ["/assets/scapra/gallery/33_rectangle.svg", "/assets/scapra/gallery/34_rectangle.svg", "/assets/scapra/gallery/35_rectangle.svg"],
-  ["/assets/scapra/gallery/36_rectangle.svg"],
 
+  ["/assets/scapra/gallery/0_rectangle.svg", "/assets/scapra/gallery/image-2.svg", "/assets/scapra/gallery/2_rectangle.svg"],
+  ["/assets/scapra/gallery/image-21.svg", "/assets/scapra/gallery/4_rectangle.svg", "/assets/scapra/gallery/5_rectangle.svg"],
+  ["/assets/scapra/gallery/6_rectangle.svg", "/assets/scapra/gallery/8_rectangle.svg", "/assets/scapra/gallery/9_rectangle.svg"],
+  ["/assets/scapra/gallery/10_rectangle.svg", "/assets/scapra/gallery/11_rectangle.svg", "/assets/scapra/gallery/15_rectangle.svg"],
+  ["/assets/scapra/gallery/14_rectangle.svg", "/assets/scapra/gallery/image-14.svg", "/assets/scapra/gallery/17_rectangle.svg"],
+  ["/assets/scapra/gallery/18_rectangle.svg", "/assets/scapra/gallery/20_rectangle.svg", "/assets/scapra/gallery/27_rectangle.svg"],
+  ["/assets/scapra/gallery/29_rectangle.svg", "/assets/scapra/gallery/31_rectangle.svg", "/assets/scapra/gallery/image-1.svg"],
+  ["/assets/scapra/gallery/image-2.svg", "/assets/scapra/gallery/image-3.svg", "/assets/scapra/gallery/image-4.svg"],
+  ["/assets/scapra/gallery/image-5.svg", "/assets/scapra/gallery/image-6.svg", "/assets/scapra/gallery/image-7.svg"],
+  ["/assets/scapra/gallery/image-8.svg", "/assets/scapra/gallery/image-9.svg", "/assets/scapra/gallery/image-10.svg"],
+  ["/assets/scapra/gallery/image-11.svg", "/assets/scapra/gallery/image-12.svg", "/assets/scapra/gallery/image-13.svg"],
+  ["/assets/scapra/gallery/image-14.svg", "/assets/scapra/gallery/image-15.svg", "/assets/scapra/gallery/image-16.svg"],
+  ["/assets/scapra/gallery/image-17.svg", "/assets/scapra/gallery/1_rectangle.svg", "/assets/scapra/gallery/image-19.svg"],
+  ["/assets/scapra/gallery/image-20.svg", "/assets/scapra/gallery/image-21.svg", "/assets/scapra/gallery/image-22.svg"],
 
   ];
-
   const slideFromLeft = {
     hidden: { x: -100, opacity: 0 },
     visible: { x: 0, opacity: 1 },
@@ -90,7 +89,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                     <Image
                       fill
                       alt=""
-                      className="object-cover rounded-lg"
+                      className="object-cover object-top rounded-lg"
                       src={img1}
                     />
                   </div>
@@ -111,7 +110,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
                         <Image
                           fill
                           alt=""
-                          className="object-cover rounded-lg"
+                          className="object-cover object-top rounded-lg"
                           src={img}
                         />
                       </div>
