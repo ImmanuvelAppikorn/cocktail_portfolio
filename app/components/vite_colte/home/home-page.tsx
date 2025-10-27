@@ -82,23 +82,38 @@ export default function HomePage() {
   }, []);
 
   // Navigation handlers
-  const handleStartJourney = () => setCurrentStep("crimson");
+  const handleStartJourney = () => {
+    setCurrentStep("crimson");
+    setNavStack(["home", "crimson"]);
+  };
+
+  const handleCrimsonNext = () => navigateStep("about");
+  const handleAboutNext = () => navigateStep("more_details");
 
   const navigateStep = (nextStep: typeof currentStep, delay = 800) => {
     setReverse(true);
     setTimeout(() => {
+      setNavStack((prev) => [...prev, nextStep]); // push new page
       setCurrentStep(nextStep);
       setReverse(false);
     }, delay);
   };
 
-  const handleCrimsonNext = () => navigateStep("about");
-  const handleAboutNext = () => navigateStep("more_details");
-  const handleCrimsonPrev = () => navigateStep("home");
-  const handleAboutPrev = () => navigateStep("crimson");
-  const handleReviewPrev = () => navigateStep("gallery");
-  const handleNutritionPrev = () => navigateStep("review");
-  const handleGalleryPrev = () => navigateStep("crimson");
+  const [navStack, setNavStack] = useState<string[]>(["home"]);
+
+  const goBack = (delay = 800) => {
+    setReverse(true);
+    setTimeout(() => {
+      setNavStack((prev) => {
+        if (prev.length <= 1) return prev; // if already at first page, stay
+        const newStack = prev.slice(0, -1); // remove last page
+        const previousStep = newStack[newStack.length - 1];
+        setCurrentStep(previousStep as typeof currentStep);
+        return newStack;
+      });
+      setReverse(false);
+    }, delay);
+  };
 
   // Common animation transition
   const smoothTransition = {
@@ -116,7 +131,9 @@ export default function HomePage() {
       {currentStep !== "home" && showNavigation && (
         <NavigationBar
           activeStep={currentStep as any}
-          onStepChange={setCurrentStep}
+          onStepChange={(nextStep) => {
+            if (nextStep !== currentStep) navigateStep(nextStep);
+          }}
         />
       )}
 
@@ -379,32 +396,25 @@ export default function HomePage() {
             {currentStep === "crimson" && (
               <CrimsonPage
                 onNextClick={handleCrimsonNext}
-                onPrevClick={handleCrimsonPrev}
+                onPrevClick={goBack}
               />
             )}
             {currentStep === "about" && (
-              <AboutPage
-                onNextClick={handleAboutNext}
-                onPrevClick={handleAboutPrev}
-              />
+              <AboutPage onNextClick={handleAboutNext} onPrevClick={goBack} />
             )}
             {currentStep === "more_details" && (
-              <MoreDetails
-                onPrevClick={handleAboutPrev} // <-- this goes back to AboutPage
-              />
+              <MoreDetails onPrevClick={goBack} />
             )}
             {currentStep === "nutrition" && (
-              <NutritionPage onPrevClick={handleNutritionPrev} />
+              <NutritionPage onPrevClick={goBack} />
             )}
             {currentStep === "review" && (
               <ReviewPage
                 onNavigationVisibilityChange={setShowNavigation}
-                onPrevClick={handleReviewPrev}
+                onPrevClick={goBack}
               />
             )}
-            {currentStep === "gallery" && (
-              <GalleryPage onPrevClick={handleGalleryPrev} />
-            )}
+            {currentStep === "gallery" && <GalleryPage onPrevClick={goBack} />}
           </motion.div>
         )}
       </AnimatePresence>
