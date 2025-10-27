@@ -91,7 +91,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
 
             {/* Items */}
             {section.isList ? (
-              <ul className="list-disc  space-y-2 font-poppins">
+              <ul className="list-disc pl-7 space-y-2 font-poppins">
                 {section.items.map((item, i) => (
                   <li
                     key={i}
@@ -112,9 +112,9 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                       <Image
                         alt=""
                         className="object-contain flex-shrink-0"
-                        height={22}
+                        height={32}
                         src={item.icon}
-                        width={22}
+                        width={32}
                       />
                     )}
                     <p className="text-[14px] font-medium leading-[150%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">

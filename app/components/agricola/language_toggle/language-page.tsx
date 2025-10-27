@@ -4,10 +4,12 @@ import React, { useState } from "react";
 
 const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
   const languageItems = [
-    { image: "/language-image/Italian.svg", text: "Italian" },
-    { image: "/language-image/Spanish.svg", text: "Spanish" },
-    { image: "/language-image/French.svg", text: "French" },
-    { image: "/language-image/English.svg", text: "English" },
+
+    { image: "/language-image/italian.svg", text: "Italian" },
+    { image: "/language-image/english.svg", text: "English" },
+    { image: "/language-image/french.svg", text: "French" },
+    { image: "/language-image/spanish.svg", text: "Spanish" },
+
   ];
 
   // Default selected language → English
