@@ -66,6 +66,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           oak barrels for a period of 32 months and subsequent ageing in a steel
           tank for about 6 months. After bottling, the wine is left to rest for
           4 months before being put on the market.
+              <div className="w-full h-[25vh]">{/* empty space */}</div>
         </p>
       </div>
     </div>

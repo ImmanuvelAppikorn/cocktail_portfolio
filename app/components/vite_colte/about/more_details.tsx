@@ -63,6 +63,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
           beautifully with a wide range of dishes — from pasta and roasted meats
           to aged cheeses and earthy Piedmontese classics. It is a genuine
           expression of tradition, terroir, and respect for nature.
+              <div className="w-full h-[25vh]">{/* empty space */}</div>
         </p>
       </div>
     </div>
