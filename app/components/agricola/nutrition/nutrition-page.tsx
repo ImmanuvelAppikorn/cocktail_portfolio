@@ -14,25 +14,26 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
     <div className="pt-2 px-4 space-y-4 mt-[5px] h-auto">
       {/* Header with back button */}
 
-      <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-        <button
-          className="flex-shrink-0"
-          onClick={() => onPrevClick && onPrevClick()}
-        >
-          <Image
-            alt="Back Icon"
-            height={26}
-            src="/button-image/black-back.svg"
-            width={26}
-          />
-        </button>
-        <h2 className="flex-1 text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
-          CLÀSIC
-        </h2>
-      </div>
+    <div className="relative flex w-full pt-2 pb-4 items-center justify-center border-b border-black">
+  <button
+    className="absolute left-4"
+    onClick={() => onPrevClick && onPrevClick()}
+  >
+    <Image
+      alt="Back Icon"
+      height={26}
+      src="/button-image/black-back.svg"
+      width={26}
+    />
+  </button>
+  <h2 className="w-full text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
+    CLÀSIC
+  </h2>
+</div>
+
 
       {/* Section Renderer */}
-      <div className="w-full h-[65vh] overflow-y-auto pt-2">
+      <div className="w-full h-[80vh] overflow-y-auto ">
         {[
           {
             title: "Nutritional Declaration",
@@ -85,7 +86,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
         ].map((section, idx) => (
           <div key={idx}>
             {/* Title */}
-            <p className="text-[16px] text-[#443A3B] font-bold tracking-[2px] w-full pb-0 mb-2  font-montagu">
+            <p className="text-[16px] text-[#443A3B] font-bold tracking-[2px] w-full pb-0 mb-4  font-montagu">
               {section.title}
             </p>
 
@@ -102,7 +103,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 ))}
               </ul>
             ) : (
-              <div className="space-y-1">
+              <div className="space-y-1 mb-4">
                 {section.items.map((item, i) => (
                   <div
                     key={i}
@@ -126,7 +127,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             )}
           </div>
         ))}
-        <div className="w-full h-[20vh]">{/* empty space */}</div>
+        <div className="w-full h-[35vh]">{/* empty space */}</div>
       </div>
     </div>
   );
