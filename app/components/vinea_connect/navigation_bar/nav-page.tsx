@@ -8,7 +8,7 @@ import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery",
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
 }
 
@@ -39,7 +39,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 
   const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));
-    // Removed auto-close on navigation
+    setIsOpen(false); // 👈 Auto-close capsule after navigation
   };
 
   return (

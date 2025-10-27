@@ -15,7 +15,7 @@ interface NavigationBarProps {
 const NavigationBar: React.FC<NavigationBarProps> = ({
   activeStep: _activeStep,
   onStepChange,
-}) => {
+}) => { 
   const navItems = [
     {
       id: "crimson",
@@ -43,15 +43,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
     },
   ];
-
+ 
   const [isOpen, setIsOpen] = useState(false);
 
   // Only handle menu open/close through the menu button
   // No auto-close on outside clicks
 
-  const handleNavigation = (stepId: string) => {
+   const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));
-    // Removed auto-close on navigation
+    setIsOpen(false); // 👈 Auto-close capsule after navigation
   };
 
   return (

@@ -132,12 +132,15 @@ export default function HomePage() {
 
   // “Next” handlers stay exactly as before
   const handleCrimsonNext = () => navigateStep("about");
-  const handleAboutNext = () => navigateStep("more_details");
+  const handleAboutNext = () => navigateStep("more_details"); 
 
   // Common animation transition
   const smoothTransition = {
-    duration: currentStep === "review" ? 0 : 1.5,
-    ease: currentStep === "review" ? "linear" : [0.88, 0.01, 0.17, 0.99],
+    duration: currentStep === "review" || currentStep === "gallery" ? 0 : 1.5,
+    ease:
+      currentStep === "review" || currentStep === "gallery"
+        ? "linear"
+        : [0.88, 0.01, 0.17, 0.99],
   };
 
   // -------------------- RETURN UI --------------------
@@ -147,7 +150,7 @@ export default function HomePage() {
       style={{ height: "100vh" }}
     >
       {/* Navigation Bar */}
-      {currentStep !== "home" && showNavigation && ( 
+      {currentStep !== "home" && showNavigation && (
         <NavigationBar
           activeStep={currentStep as any}
           onStepChange={(nextStep) => {
@@ -278,7 +281,7 @@ export default function HomePage() {
                     ? "20%"
                     : currentStep === "more_details"
                       ? "125%"
-                      : "10%",
+                      : "0%",
           aspectRatio: 0.5 / 1,
           rotate:
             currentStep === "home" || currentStep === "more_details"
@@ -313,7 +316,7 @@ export default function HomePage() {
                       ? "62%"
                       : "50%",
           opacity:
-            currentStep === "review"
+            currentStep === "review" || currentStep === "gallery"
               ? 0
               : currentStep === "more_details"
                 ? 0.4
@@ -374,7 +377,7 @@ export default function HomePage() {
                     : "-38%",
           rotate: currentStep === "home" ? 5 : 0,
           opacity:
-            currentStep === "review"
+            currentStep === "review" || currentStep === "gallery"
               ? 0
               : currentStep === "more_details"
                 ? 0.6

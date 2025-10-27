@@ -12,7 +12,7 @@ interface NavigationBarProps {
   ) => void;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({
+const NavigationBar: React.FC<NavigationBarProps> = ({ 
   activeStep: _activeStep,
   onStepChange,
 }) => {
@@ -40,7 +40,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "/assets/brandini/navigation-bar/new/Nutrition.svg",
+      icon: "/assets/brandini/navigation-bar/new/Nutrition.svg", 
     },
   ];
 
@@ -49,9 +49,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   // Only handle menu open/close through the menu button
   // No auto-close on outside clicks
 
-  const handleNavigation = (stepId: string) => {
+   const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));
-    // Removed auto-close on navigation
+    setIsOpen(false); // 👈 Auto-close capsule after navigation
   };
 
   return (
