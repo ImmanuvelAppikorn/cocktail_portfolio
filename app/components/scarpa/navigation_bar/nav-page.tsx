@@ -27,11 +27,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Gallery",
       icon: "/assets/scapra/navigation-bar/new/Gallery.svg",
     },
-    {
-      id: "home",
-      label: "Home",
-      icon: "/assets/scapra/navigation-bar/new/Home.svg",
-    },
+   
     {
       id: "review",
       label: "Reviews",
@@ -41,6 +37,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       id: "nutrition",
       label: "Ingredients",
       icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
+    },
+     {
+      id: "home",
+      label: "Home",
+      icon: "/assets/scapra/navigation-bar/new/Home.svg",
     },
   ];
  

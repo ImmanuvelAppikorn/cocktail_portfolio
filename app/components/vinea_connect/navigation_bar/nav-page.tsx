@@ -23,13 +23,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Gallery",
       icon: "/navigation-bar/new/Gallery.svg",
     },
-    { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
+    
     { id: "review", label: "Reviews", icon: "/navigation-bar/new/Review.svg" },
     {
       id: "nutrition",
       label: "Ingredients",
       icon: "/navigation-bar/new/Nutrition.svg",
     },
+    { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);

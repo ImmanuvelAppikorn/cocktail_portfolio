@@ -47,9 +47,7 @@ const ReviewPage = ({
       comment: string;
       avatar: string;
     }>
-  >([
-
-  ]);
+  >([]);
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -115,7 +113,7 @@ const ReviewPage = ({
     rating: number,
     comment: string,
     name: string,
-    avatar: string,
+    avatar: string
   ) => {
     const now = new Date();
     const uniqueId = `${now.getTime()}_${Math.floor(Math.random() * 10000)}`;
@@ -184,7 +182,7 @@ const ReviewPage = ({
   // Toggle dropdown visibility on heart click
   const handleHeartClick = (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
-    id: string,
+    id: string
   ) => {
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 
@@ -214,7 +212,7 @@ const ReviewPage = ({
                 />
               </button>
               <p className="text-[13px] sm:text-base font-bold font-mulish whitespace-nowrap">
-                BARBERA D,ASTI
+                BARBERA D’ASTI
               </p>
             </div>
 
@@ -246,7 +244,7 @@ const ReviewPage = ({
                   details.rating,
                   details.comment,
                   details.name,
-                  details.avatar,
+                  details.avatar
                 );
               }
             }}
@@ -294,8 +292,8 @@ const ReviewPage = ({
                               avatar,
                               time: new Date(),
                             }
-                          : r,
-                      ),
+                          : r
+                      )
                     );
                     setIsEditPopupOpen(false);
                   }}
@@ -581,7 +579,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect immediately...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Like.svg",
+                    "/review-images/comment/Like.svg"
                   );
                 } else {
                   console.log("❌ No reviewId!");
@@ -603,7 +601,7 @@ const ReviewPage = ({
                 e.stopPropagation();
                 console.log(
                   "🔥 Red Heart MOUSEDOWN! Review ID:",
-                  activeReactionId,
+                  activeReactionId
                 );
 
                 const reviewId = activeReactionId;
@@ -614,7 +612,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Red Heart...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/RedHeart.svg",
+                    "/review-images/comment/RedHeart.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Red Heart!");
@@ -644,7 +642,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Care...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Care.svg",
+                    "/review-images/comment/Care.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Care!");
@@ -674,7 +672,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Haha...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Haha.svg",
+                    "/review-images/comment/Haha.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Haha!");
@@ -758,7 +756,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Angry...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Angry.svg",
+                    "/review-images/comment/Angry.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Angry!");
