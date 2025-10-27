@@ -21,6 +21,7 @@ export const scrollToTopAndNavigate = (
   // Try to find and scroll each type of container
   scrollableSelectors.forEach((selector) => {
     const containers = document.querySelectorAll(selector);
+
     containers.forEach((container) => {
       if (container.scrollTop > 0) {
         container.scrollTo({

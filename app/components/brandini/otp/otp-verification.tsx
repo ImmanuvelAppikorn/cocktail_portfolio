@@ -1,0 +1,192 @@
+import { ConfirmationResult } from "firebase/auth";
+import Link from "next/link";
+import React, { useState, useRef, useEffect } from "react";
+
+interface UserDetails {
+  name: string;
+  mobile: string;
+  email: string;
+  avatar: string;
+}
+
+interface OtpVerifyProps {
+  onClose: () => void;
+  onSuccess?: (details: UserDetails) => void;
+  userDetails?: UserDetails;
+  confirmationResult: ConfirmationResult | null; // ✅ Add this
+}
+
+const OtpVerify = ({
+  onClose: _onClose,
+  onSuccess,
+  userDetails,
+  confirmationResult,
+}: OtpVerifyProps) => {
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  // ✅ Handle input change
+  const handleChange = (index: number, value: string) => {
+    if (!/^[0-9]?$/.test(value)) return; // only digits
+    const newOtp = [...otp];
+
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    // Move focus to next input automatically
+    if (value && index < otp.length - 1) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  // ✅ Handle backspace navigation
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  // Handle Submit
+  const handleSubmit = async () => {
+    const code = otp.join("");
+
+    if (code.length < 6) {
+      alert("Please enter the full 6-digit OTP");
+
+      return;
+    }
+
+    if (!confirmationResult) {
+      alert("No OTP request found. Please try again.");
+
+      return;
+    }
+
+    try {
+      setHasError(false); // reset error on new attempt
+
+      // Test OTP verification
+      if ((confirmationResult as any).testOtp) {
+        if (code === (confirmationResult as any).testOtp) {
+          console.log("✅ Test OTP verified!");
+          setIsSubmitted(true);
+
+          return;
+        } else {
+          setHasError(true); // ❌ set error if wrong
+          alert("Invalid OTP");
+
+          return;
+        }
+      }
+
+      // Real Firebase verification
+      const result = await (confirmationResult as ConfirmationResult).confirm(
+        code,
+      );
+
+      console.log("✅ OTP verified. User:", result.user);
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error("❌ OTP verification failed:", error);
+      setHasError(true); // ❌ set error if wrong
+      alert("Invalid OTP. Please try again.");
+    }
+  };
+
+  // ✅ Success animation
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        if (onSuccess && userDetails) {
+          onSuccess(userDetails);
+        }
+      }, 1500); // Wait for animation to complete (2 seconds)
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted, onSuccess, userDetails]);
+
+  if (isSubmitted) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full min-h-[420px]">
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-[90%] mb-6">
+            <p className="text-center text-[26.5px] font-axiforma font-bold text-[#5B5D60]">
+              OTP Verified Successfully
+            </p>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-contain"
+              onEnded={() => onSuccess && userDetails && onSuccess(userDetails)}
+            >
+              <source src="/gif/tick.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ OTP Form
+  return (
+    <div className="relative w-full rounded-[8.12px]">
+      <div className="flex flex-col space-y-10 h-full mb-0">
+        <div className="text-center flex flex-col mt-6">
+          <p className="text-[#5B5B5B] text-[26px] font-axiforma font-bold pb-4">
+            {hasError ? "OTP Verification Failed" : "OTP Verification"}
+          </p>
+          <p className="text-[17.5px] leading-[26px] text-[#3A3A3A] font-axiforma font-bold">
+            We will send you one-time password to your mobile number
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-8">
+          <div className="flex justify-center gap-2 mb-4">
+            {otp.map((digit, index) => (
+              <input
+                key={index}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
+                className={`w-9 h-12 text-center border-b-2 ${
+                  hasError ? "border-red-500" : "border-[#2743FD]"
+                } focus:outline-none focus:border-[#18288f] text-lg font-semibold`}
+                inputMode="numeric"
+                maxLength={1}
+                type="text"
+                value={digit}
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+              />
+            ))}
+          </div>
+
+          <p className="text-center mb-4 text-[15px] font-axiforma font-bold text-[#B9B9B9]">
+            Didn’t receive the OTP?{" "}
+            <Link className="text-[#1D3BFF]" href={""}>
+              Resend OTP
+            </Link>
+          </p>
+        </div>
+
+        <button
+          className="w-full bg-[#5F1BE7] text-white py-3 rounded-lg font-semibold hover:bg-[#320e79] transition"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default OtpVerify;
