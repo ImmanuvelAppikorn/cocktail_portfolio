@@ -20,27 +20,27 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     {
       id: "crimson",
       label: "Story",
-      icon: "assets/vite_colte/navigation-bar/new/Story.svg",
+      icon: "/assets/vite_colte/navigation-bar/new/Story.svg",
     },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "assets/vite_colte/navigation-bar/new/Gallery.svg",
+      icon: "/assets/vite_colte/navigation-bar/new/Gallery.svg",
     },
     {
       id: "home",
       label: "Home",
-      icon: "assets/vite_colte/navigation-bar/new/Home.svg",
+      icon: "/assets/vite_colte/navigation-bar/new/Home.svg",
     },
     {
       id: "review",
       label: "Reviews",
-      icon: "assets/vite_colte/navigation-bar/new/Review.svg",
+      icon: "/assets/vite_colte/navigation-bar/new/Review.svg",
     },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "assets/vite_colte/navigation-bar/new/Nutrition.svg",
+      icon: "/assets/vite_colte/navigation-bar/new/Nutrition.svg",
     },
   ];
 
@@ -74,7 +74,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <Image
             alt="menu"
             height={50}
-            src="assets/vite_colte/navigation-bar/new/trigger_button.svg"
+            src="/assets/vite_colte/navigation-bar/new/trigger_button.svg"
             width={50}
           />
         </div>

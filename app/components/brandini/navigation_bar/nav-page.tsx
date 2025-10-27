@@ -20,27 +20,27 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     {
       id: "crimson",
       label: "Story",
-      icon: "assets/brandini/navigation-bar/new/story.svg",
+      icon: "/assets/brandini/navigation-bar/new/Story.svg",
     },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "assets/brandini/navigation-bar/new/gallery.svg",
+      icon: "/assets/brandini/navigation-bar/new/Gallery.svg",
     },
     {
       id: "home",
       label: "Home",
-      icon: "assets/brandini/navigation-bar/new/home.svg",
+      icon: "/assets/brandini/navigation-bar/new/Home.svg",
     },
     {
       id: "review",
       label: "Reviews",
-      icon: "assets/brandini/navigation-bar/new/reviews.svg",
+      icon: "/assets/brandini/navigation-bar/new/reviews.svg",
     },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "assets/brandini/navigation-bar/new/nutrition.svg",
+      icon: "/assets/brandini/navigation-bar/new/Nutrition.svg",
     },
   ];
 
@@ -74,7 +74,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <Image
             alt="menu"
             height={50}
-            src="assets/brandini/navigation-bar/new/trigger_button.svg"
+            src="/assets/brandini/navigation-bar/new/trigger_button.svg"
             width={50}
           />
         </div>

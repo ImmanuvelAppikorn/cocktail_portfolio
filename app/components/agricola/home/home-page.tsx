@@ -206,13 +206,13 @@ export default function HomePage() {
               }}
               transition={smoothTransition}
             >
-              <div className="relative w-[80%] aspect-[2.3/1] mx-auto">
+              <div className="relative w-[80%] aspect-[2.5/1] mx-auto">
                 <Image
                   fill
                   priority
                   alt="Vinea Logo"
                   className="object-contain"
-                  src="assets/agricola/logo/logo.svg"
+                  src="/assets/agricola/logo/logo.svg"
                 />
               </div>
             </motion.h1>
@@ -275,7 +275,7 @@ export default function HomePage() {
                     : 0,
           bottom:
             currentStep === "home"
-              ? "-40%"
+              ? "-45%"
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
@@ -320,7 +320,7 @@ export default function HomePage() {
             priority
             alt="bottle"
             className="object-contain"
-            src="assets/agricola/vinea/bottle-1.svg"
+            src="/assets/agricola/vinea/bottle-1.svg"
           />
         </div>
       </motion.div>
@@ -380,7 +380,7 @@ export default function HomePage() {
           alt="Circle"
           className="object-contain w-full h-full"
           height={1000}
-          src="assets/agricola/shape-svg/circle-shape.svg"
+          src="/assets/agricola/shape-svg/circle-shape.svg"
           width={1000}
         />
       </motion.div>

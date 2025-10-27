@@ -20,27 +20,27 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     {
       id: "crimson",
       label: "Story",
-      icon: "assets/scapra/navigation-bar/new/Story.svg",
+      icon: "/assets/scapra/navigation-bar/new/Story.svg",
     },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "assets/scapra/navigation-bar/new/Gallery.svg",
+      icon: "/assets/scapra/navigation-bar/new/Gallery.svg",
     },
     {
       id: "home",
       label: "Home",
-      icon: "assets/scapra/navigation-bar/new/Home.svg",
+      icon: "/assets/scapra/navigation-bar/new/Home.svg",
     },
     {
       id: "review",
       label: "Reviews",
-      icon: "assets/scapra/navigation-bar/new/Review.svg",
+      icon: "/assets/scapra/navigation-bar/new/Review.svg",
     },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "assets/scapra/navigation-bar/new/Nutrition.svg",
+      icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
     },
   ];
 
@@ -74,7 +74,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <Image
             alt="menu"
             height={50}
-            src="assets/scapra/navigation-bar/new/trigger_button.svg"
+            src="/assets/scapra/navigation-bar/new/trigger_button.svg"
             width={50}
           />
         </div>

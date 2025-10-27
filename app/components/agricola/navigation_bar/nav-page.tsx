@@ -20,27 +20,27 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     {
       id: "crimson",
       label: "Story",
-      icon: "assets/agricola/navigation-bar/new/Story.svg",
+      icon: "/assets/agricola/navigation-bar/new/Story.svg",
     },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "assets/agricola/navigation-bar/new/Gallery.svg",
+      icon: "/assets/agricola/navigation-bar/new/Gallery.svg",
     },
     {
       id: "home",
       label: "Home",
-      icon: "assets/agricola/navigation-bar/new/Home.svg",
+      icon: "/assets/agricola/navigation-bar/new/Home.svg",
     },
     {
       id: "review",
       label: "Reviews",
-      icon: "assets/agricola/navigation-bar/new/Review.svg",
+      icon: "/assets/agricola/navigation-bar/new/Review.svg",
     },
     {
       id: "nutrition",
       label: "Ingredients",
-      icon: "assets/agricola/navigation-bar/new/Nutrition.svg",
+      icon: "/assets/agricola/navigation-bar/new/Nutrition.svg",
     },
   ];
 
@@ -74,7 +74,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <Image
             alt="menu"
             height={50}
-            src="assets/agricola/navigation-bar/new/trigger_button.svg"
+            src="/assets/agricola/navigation-bar/new/trigger_button.svg"
             width={50}
           />
         </div>
