@@ -5,9 +5,9 @@ import React, { useState } from "react";
 const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
   const languageItems = [
     { image: "/language-image/Italian.svg", text: "Italian" },
-    { image: "/language-image/English.svg", text: "English" },
-    { image: "/language-image/French.svg", text: "French" },
     { image: "/language-image/Spanish.svg", text: "Spanish" },
+    { image: "/language-image/French.svg", text: "French" },
+    { image: "/language-image/English.svg", text: "English" },
   ];
 
   // Default selected language → English
@@ -43,23 +43,24 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
       {/* Language Selection */}
       <div className="grid grid-cols-2 gap-4 px-2 sm:px-4">
         {languageItems.map((item, i) => {
-          const isSelected = selectedLang === item.text;
+          const isEnglish = item.text === "English";
 
-          return (
+          return ( 
             <button
               key={i}
-              className={`flex flex-col items-center justify-center cursor-pointer rounded-2xl p-3 border-2 transition-all duration-300 
-                ${
-                  isSelected
-                    ? "border-[#EC2960] bg-[#EC2960]/10 scale-105"
-                    : "border-transparent hover:border-gray-300 hover:bg-gray-100"
-                }`}
-              onClick={() => setSelectedLang(item.text)}
+              disabled={!isEnglish}
+              className={`flex flex-col items-center justify-center rounded-2xl p-3 border-2 transition-all duration-300 
+          ${
+            isEnglish
+              ? "opacity-100 cursor-pointer border-[#EC2960] bg-[#EC2960]/10 scale-105"
+              : "opacity-50 pointer-events-none border-transparent"
+          }`}
+              onClick={() => isEnglish && setSelectedLang(item.text)}
             >
               <Image
                 alt={item.text}
                 className={`transition-transform duration-300 ${
-                  isSelected ? "scale-110" : "scale-100"
+                  isEnglish ? "scale-110" : "scale-100"
                 }`}
                 height={90}
                 src={item.image}
@@ -67,7 +68,7 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
               />
               <p
                 className={`text-[18px] font-bold mt-2 transition-colors ${
-                  isSelected ? "text-[#EC2960]" : "text-black"
+                  isEnglish ? "text-[#EC2960]" : "text-black"
                 }`}
               >
                 {item.text}

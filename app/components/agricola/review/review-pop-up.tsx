@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 interface ReviewPopupProps {
   onClose: () => void;
   onReviewSubmit: (
-    rating: number,
+    rating: number, 
     comment: string,
     name: string,
     avatar: string,

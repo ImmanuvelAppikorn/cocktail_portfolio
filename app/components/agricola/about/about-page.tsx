@@ -40,26 +40,19 @@ export default function AboutPage({
         initial="hidden"
         variants={topVariants}
       >
-
-
-
-    <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
-  <button
-    className="absolute left-0"
-            onClick={onPrevClick}
-  >
-    <Image
-      alt="Back Icon"
-      height={26}
-      src="/button-image/black-back.svg"
-      width={26}
-    />
-  </button>
-  <h2 className="w-full text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
-    CLÀSIC
-  </h2>
-</div>
-
+        <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
+          <button className="absolute left-0" onClick={onPrevClick}>
+            <Image
+              alt="Back Icon"
+              height={26}
+              src="/button-image/black-back.svg"
+              width={26}
+            />
+          </button>
+          <h2 className="w-full text-center text-[#443A3B] text-[19px] font-bold leading-tight font-montagu">
+            CLÀSIC
+          </h2>
+        </div>
 
         <div className="flex flex-row justify-start items-center w-full ">
           <p className="text-[16px] text-[#443A3B] font-extrabold tracking-[2px] w-full pb-0 mt-3 font-montagu">
@@ -69,10 +62,18 @@ export default function AboutPage({
 
         {/* Paragraph */}
         <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 text-justify leading-6   pt-2">
-Made entirely from pure Ruchè grapes, Sant’Eufemia captures the genuine and natural expression of this rare variety. It stands as the most direct and honest version of Ruchè, highlighting its true aroma, flavor, and character without any additions or complexity.
-<br />
-This wine is straightforward and sincere, much like a peasant’s handshake — simple, firm, and full of authenticity. Every sip reflects the tradition of the land and the dedication behind its creation.
-Sant’Eufemia is ready to enjoy immediately, making it perfect for everyday moments, light meals, or casual gatherings. It offers a pure, refreshing taste that embodies the honest spirit of the Ferraris Agricola winery.
+          Made entirely from pure Ruchè grapes, Sant’Eufemia captures the
+          genuine and natural expression of this rare variety. It stands as the
+          most direct and honest version of Ruchè, highlighting its true aroma,
+          flavor, and character without any additions or complexity.
+          <br />
+          This wine is straightforward and sincere, much like a peasant’s
+          handshake — simple, firm, and full of authenticity. Every sip reflects
+          the tradition of the land and the dedication behind its creation.
+          Sant’Eufemia is ready to enjoy immediately, making it perfect for
+          everyday moments, light meals, or casual gatherings. It offers a pure,
+          refreshing taste that embodies the honest spirit of the Ferraris
+          Agricola winery.
           <span>
             <button
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#443A3B] inline-flex items-center justify-center px-[4px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"
