@@ -64,7 +64,7 @@ export default function AboutPage({
           </p>
         </div>
 
-        {/* Paragraph */}
+        {/* Paragraph */} 
         <p className="text-[12px] w-full font-axiforma tracking-[2] font-medium mt-1 text-justify leading-6  px-2 pt-2">
           Rossofuoco embodies the vibrant character of Barbera d’Asti,
           expressing the purity and intensity of this celebrated Piedmontese

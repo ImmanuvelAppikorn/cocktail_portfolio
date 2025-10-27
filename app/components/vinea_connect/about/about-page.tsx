@@ -40,26 +40,19 @@ export default function AboutPage({
         initial="hidden"
         variants={topVariants}
       >
-
-
- <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
-  <button
-    className="absolute left-0"
-            onClick={onPrevClick}
-  >
-    <Image
-      alt="Back Icon"
-      height={26}
-      src="/button-image/black-back.svg"
-      width={26}
-    />
-  </button>
-  <h2 className="w-full text-center text-[#EB235C] text-[16px] font-bold leading-tight font-montagu">
-     CABERNET SAUVIGNON
-  </h2>
-</div>
-
-
+        <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
+          <button className="absolute left-0" onClick={onPrevClick}>
+            <Image
+              alt="Back Icon"
+              height={26}
+              src="/button-image/black-back.svg"
+              width={26}
+            />
+          </button>
+          <h2 className="w-full text-center text-[#EB235C] text-[16px] font-bold leading-tight font-montagu">
+            CABERNET SAUVIGNON
+          </h2>
+        </div>
 
         <div className="flex flex-row justify-start items-center w-full px-2">
           <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu">

@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import GetDetailsPopup from "../otp/get-details";
 
 import BottleCarousel from "./slide-bottle";
-import ReviewPopupContent from "./review-pop-up";
+import ReviewPopupContent from "./review-pop-up"; 
 
 interface ReviewPageProps {
   onPrevClick?: () => void;
