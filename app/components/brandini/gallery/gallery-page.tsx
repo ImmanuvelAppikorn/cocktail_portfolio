@@ -23,7 +23,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
     ],
     [
       "/assets/brandini/gallery/9_rectangle.svg",
-      "/assets/brandini/gallery/58_rectangle.svg",
+      "/assets/brandini/gallery/image-3.svg",
       "/assets/brandini/gallery/50_rectangle.svg",
     ],
     [
@@ -65,10 +65,10 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
     [
       "/assets/brandini/gallery/33_rectangle.svg",
       "/assets/brandini/gallery/34_rectangle.svg",
-      "/assets/brandini/gallery/35_rectangle.svg",
+      "/assets/brandini/gallery/47_rectangle.svg",
     ],
     [
-      "/assets/brandini/gallery/47_rectangle.svg",
+      "/assets/brandini/gallery/35_rectangle.svg",
       "/assets/brandini/gallery/56_rectangle.svg",
       "/assets/brandini/gallery/38_rectangle.svg",
     ],
@@ -78,7 +78,7 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
       "/assets/brandini/gallery/41_rectangle.svg",
     ],
     [
-      "/assets/brandini/gallery/42_rectangle.svg",
+      "/assets/brandini/gallery/48_rectangle.svg",
       "/assets/brandini/gallery/43_rectangle.svg",
       "/assets/brandini/gallery/44_rectangle.svg",
     ],
