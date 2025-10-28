@@ -1,21 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 interface NavigationBarProps {
   activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery",
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
 }
 
 const NavigationBar: React.FC<NavigationBarProps> = ({
   activeStep: _activeStep,
   onStepChange,
-}) => { 
+}) => {
   const navItems = [
     {
       id: "crimson",
@@ -27,7 +27,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Gallery",
       icon: "/assets/scapra/navigation-bar/new/Gallery.svg",
     },
-   
+
     {
       id: "review",
       label: "Reviews",
@@ -38,25 +38,45 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Ingredients",
       icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
     },
-     {
+    {
       id: "home",
       label: "Home",
       icon: "/assets/scapra/navigation-bar/new/Home.svg",
     },
   ];
- 
+
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
-  // Only handle menu open/close through the menu button
-  // No auto-close on outside clicks
-
-   const handleNavigation = (stepId: string) => {
+  const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));
-    setIsOpen(false); // 👈 Auto-close capsule after navigation
+    // setIsOpen(false); // close after navigating
   };
 
+  // 👇 Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="nav-container fixed bottom-2 left-1/2 -translate-x-1/2 w-full max-w-[500px] px-2 z-50">
+    <div
+      ref={navRef}
+      className="nav-container fixed bottom-2 left-1/2 -translate-x-1/2 w-full max-w-[500px] px-2 z-50"
+    >
       <div className="relative">
         {/* Trigger Button */}
         <div
