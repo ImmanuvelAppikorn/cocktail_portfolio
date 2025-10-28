@@ -117,7 +117,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                         width={32}
                       />
                     )}
-                    <p className="text-[14px] font-medium leading-[150%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
+                    <p className="uppercase text-[14px] font-medium leading-[150%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
                       {item.text}
                     </p>
                   </div>

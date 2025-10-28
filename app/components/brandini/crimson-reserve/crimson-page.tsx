@@ -144,7 +144,7 @@ export default function CrimsonPage({
                 half
                 icon="/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="Wooden Barrels-38mo"
+                value="Wooden Barrels-38 MONTHS"
               />
             </div>
 

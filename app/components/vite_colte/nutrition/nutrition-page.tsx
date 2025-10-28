@@ -83,7 +83,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
         ].map((section, idx) => (
           <div key={idx}>
             {/* Title */}
-            <p className="text-[16px] text-[#EB235C] font-bold tracking-[2px] w-full pb-0 mb-2  font-montagu">
+            <p className="text-[16px] text-[#EB235C] font-bold tracking-[0px] w-full pb-0 mb-4  font-montagu uppercase">
               {section.title}
             </p>
 
@@ -93,7 +93,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                 {section.items.map((item, i) => (
                   <li
                     key={i}
-                    className="text-[14px] font-medium leading-[150%]  whitespace-normal break-words font-poppins uppercase"
+                    className="text-[14px] font-medium leading-[150%] tracking-[-3%] whitespace-normal break-words font-poppins"
                   >
                     {item.text}
                   </li>
@@ -115,7 +115,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
                         width={32}
                       />
                     )}
-                    <p className="text-[14px] font-medium leading-[150%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
+                    <p className="uppercase text-[14px] font-medium leading-[150%] tracking-[-3%] flex-1 whitespace-normal break-words font-poppins">
                       {item.text}
                     </p>
                   </div>

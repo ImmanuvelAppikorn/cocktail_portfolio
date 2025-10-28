@@ -257,7 +257,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "30%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "70%"
+                  ? "65%"
                   : currentStep === "review"
                     ? "20%"
                     : currentStep === "more_details"
@@ -278,23 +278,23 @@ export default function HomePage() {
             currentStep === "home"
               ? "-16%"
               : currentStep === "crimson"
-                ? "44%"
+                ? "40%"
                 : currentStep === "about"
                   ? "-15%"
                   : currentStep === "nutrition"
-                    ? "-20%"
+                    ? "-15%"
                     : currentStep === "more_details"
                       ? "-10%"
                       : "7%",
           left:
             currentStep === "home"
-              ? "53%"
+              ? "49%"
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about"
                   ? "74%"
                   : currentStep === "nutrition"
-                    ? "75%"
+                    ? "74%"
                     : currentStep === "more_details"
                       ? "55%"
                       : "50%",
@@ -331,7 +331,7 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "85%"
+              ? "90%"
               : currentStep === "crimson"
                 ? "200%"
                 : currentStep === "about" || currentStep === "nutrition"
@@ -364,7 +364,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? 0
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? 0
+                  ? -25
                   : 0,
           opacity:
             currentStep === "review" || currentStep === "gallery"

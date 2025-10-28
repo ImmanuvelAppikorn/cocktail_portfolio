@@ -141,7 +141,7 @@ export default function CrimsonPage({
                 half
                 icon="/assets/scapra/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="French Allier oak barrels AGED (32mo)"
+                value="French Allier oak barrels AGED (32 MONTHS)"
               />
             </div>
 

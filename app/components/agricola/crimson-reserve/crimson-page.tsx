@@ -141,7 +141,7 @@ export default function CrimsonPage({
                 half
                 icon="/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="REFINED IN BOTTLE (3MO)"
+                value="REFINED IN BOTTLE (3 MONTHS)"
               />
             </div>
 

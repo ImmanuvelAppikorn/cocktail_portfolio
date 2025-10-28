@@ -365,7 +365,7 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "50%"
                 : currentStep === "about" || currentStep === "nutrition"
-                  ? "95%"
+                  ? "92%"
                   : "50%",
           bottom:
             currentStep === "home"

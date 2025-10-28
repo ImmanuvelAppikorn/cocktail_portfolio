@@ -281,9 +281,9 @@ export default function HomePage() {
               : currentStep === "crimson"
                 ? "44%"
                 : currentStep === "about"
-                  ? "-15%"
+                  ? "-18%"
                   : currentStep === "nutrition"
-                    ? "-20%"
+                    ? "-18%"
                     : currentStep === "more_details"
                       ? "-12%"
                       : "7%",
@@ -346,8 +346,10 @@ export default function HomePage() {
               ? "50%"
               : currentStep === "crimson"
                 ? "50%"
-                : currentStep === "about" || currentStep === "nutrition"
+                : currentStep === "about" 
                   ? "95%"
+                  : currentStep === "nutrition"
+                  ?"95%"
                   : "50%",
           bottom:
             currentStep === "home"
