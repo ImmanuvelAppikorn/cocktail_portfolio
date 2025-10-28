@@ -123,7 +123,7 @@ const NutritionPage: React.FC<NutritionPageProps> = ({
             )}
           </div>
         ))}
-        <div className="w-full h-[35vh]">{/* empty space */}</div>
+        <div className="w-full h-[45vh]">{/* empty space */}</div>
       </div>
     </div>
   );

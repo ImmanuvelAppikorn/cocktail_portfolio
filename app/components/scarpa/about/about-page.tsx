@@ -50,7 +50,7 @@ export default function AboutPage({
             />
           </button>
           <h2 className="w-full text-center text-[#BF062F] text-[19px] font-bold leading-tight font-montagu">
-            ALTA LANGA
+            LA BOGLIONA
           </h2>
         </div>
 
