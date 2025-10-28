@@ -31,7 +31,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "text-foreground bg-white antialiased flex justify-center",
+          "text-foreground bg-white antialiased flex justify-center select-none",
           fontSans.variable,
         )}
         style={{
@@ -41,7 +41,7 @@ export default function RootLayout({
         }}
       >
         <div
-          className="w-full max-w-[500px] flex flex-col relative bg-white"
+          className="w-full max-w-[500px] flex flex-col relative bg-white select-none"
           style={{
             height: "var(--app-height)", // fixed height equal to visible screen
           }}

@@ -36,12 +36,12 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
             </div>
 
       {/* Scrollable content */}
-      <div className="w-full pl-2 mt-1 overflow-y-scroll no-scrollbar">
-        <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-6 font-montagu pl-2">
+      <div className="w-full  mt-1 overflow-y-scroll no-scrollbar">
+        <p className="text-[16px] text-[#EB235C] font-extrabold tracking-[2px] w-full pb-0 mt-3 font-montagu pl-2">
           About The Wine
         </p>
 
-        <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 leading-7  pl-4 pr-2 pt-2 text-justify">
+        <p className="text-[12px] w-full font-axiforma tracking-[1px] font-medium mt-1 leading-7  pl-2 pr-2 pt-2 text-justify">
           Lorem ipsum dolor sit amet consectetur. Sit sapien vulputate egestas
           nunc quis. Tortor aenean nisl nullam purus donec dolor sit. Vestibulum
           vestibulum vel ut libero volutpat magna gravida. Malesuada feugiat
