@@ -221,7 +221,7 @@ const ReviewPage = ({
             {/* Right side: Write a Review button */}
             <div className="flex-shrink-0">
               <button
-                className="bg-[#D8CCB4] px-2 py-1 rounded-full flex items-center text-[#BF062F] text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-gray-800 transition whitespace-nowrap"
+                className="bg-[#D8CCB4] px-4 py-2 rounded-full flex items-center text-[#BF062F] text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-[#aba18e] transition whitespace-nowrap"
                 onClick={() => setIsDetailsPopupOpen(true)}
               >
                 <Image

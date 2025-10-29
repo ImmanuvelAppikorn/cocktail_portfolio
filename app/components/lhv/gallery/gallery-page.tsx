@@ -10,160 +10,102 @@ const GalleryPage = ({ onPrevClick }: { onPrevClick?: () => void }) => {
   const [touchEnd, setTouchEnd] = useState(0);
 
   const images = [
-    [
-      "/assets/brandini/gallery/0_rectangle.svg",
-      "/assets/brandini/gallery/1_rectangle.svg",
-      "/assets/brandini/gallery/2_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/48_rectangle.svg",
-      "/assets/brandini/gallery/4_rectangle.svg",
-      "/assets/brandini/gallery/54_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/61_rectangle.svg",
-      "/assets/brandini/gallery/10_rectangle.svg",
-      "/assets/brandini/gallery/3_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/9_rectangle.svg",
-      "/assets/brandini/gallery/image-3.svg",
-      "/assets/brandini/gallery/50_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/12_rectangle.svg",
-      "/assets/brandini/gallery/13_rectangle.svg",
-      "/assets/brandini/gallery/57_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/53_rectangle.svg",
-      "/assets/brandini/gallery/46_rectangle.svg",
-      "/assets/brandini/gallery/17_rectangle.svg",
-    ],
 
-    [
-      "/assets/brandini/gallery/60_rectangle.svg",
-      "/assets/brandini/gallery/19_rectangle.svg",
-      "/assets/brandini/gallery/18_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/21_rectangle.svg",
-      "/assets/brandini/gallery/22_rectangle.svg",
-      "/assets/brandini/gallery/59_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/24_rectangle.svg",
-      "/assets/brandini/gallery/27_rectangle.svg",
-      "/assets/brandini/gallery/26_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/55_rectangle.svg",
-      "/assets/brandini/gallery/28_rectangle.svg",
-      "/assets/brandini/gallery/29_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/30_rectangle.svg",
-      "/assets/brandini/gallery/31_rectangle.svg",
-      "/assets/brandini/gallery/32_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/33_rectangle.svg",
-      "/assets/brandini/gallery/34_rectangle.svg",
-      "/assets/brandini/gallery/47_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/35_rectangle.svg",
-      "/assets/brandini/gallery/56_rectangle.svg",
-      "/assets/brandini/gallery/38_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/49_rectangle.svg",
-      "/assets/brandini/gallery/40_rectangle.svg",
-      "/assets/brandini/gallery/41_rectangle.svg",
-    ],
-    [
-      "/assets/brandini/gallery/48_rectangle.svg",
-      "/assets/brandini/gallery/43_rectangle.svg",
-      "/assets/brandini/gallery/44_rectangle.svg",
-    ],
-  ];
-const flatImages = images.flat();
+  ["/assets/lhv/gallery/1_rectangle.svg",
+    "/assets/lhv/gallery/2_rectangle.svg",
+     "/assets/lhv/gallery/3_rectangle.svg"],
+  ["/assets/lhv/gallery/4_rectangle.svg",
+     "/assets/lhv/gallery/5_rectangle.svg",
+      "/assets/lhv/gallery/6_rectangle.svg"],
+  ["/assets/lhv/gallery/7_rectangle.svg",
+    "/assets/lhv/gallery/8_rectangle.svg",
+     "/assets/lhv/gallery/9_rectangle.svg"],
+  ["/assets/lhv/gallery/10_rectangle.svg",
+     "/assets/lhv/gallery/11_rectangle.svg",
+      "/assets/lhv/gallery/12_rectangle.svg"],
+  ["/assets/lhv/gallery/13_rectangle.svg",
+     "/assets/lhv/gallery/4_rectangle.svg",
+      "/assets/lhv/gallery/15_rectangle.svg"],
+];
 
-  const handleImageClick = (sectionIdx: number, imgIdx: number) => {
-    const flatIndex = sectionIdx * 3 + imgIdx;
-    setSelectedImageIndex(flatIndex);
-  };
 
-  const handleNext = () => {
-    if (selectedImageIndex !== null && selectedImageIndex < flatImages.length - 1) {
-      setSelectedImageIndex(selectedImageIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (selectedImageIndex !== null && selectedImageIndex > 0) {
-      setSelectedImageIndex(selectedImageIndex - 1);
-    }
-  };
-
-  const handleClose = () => {
-    setSelectedImageIndex(null);
-  };
-
-  // Touch handlers for swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) handleNext(); // Swiped left
-    if (touchStart - touchEnd < -75) handlePrev(); // Swiped right
-  };
-
-  // Mouse drag handlers for desktop
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState(0);
-  const [dragEnd, setDragEnd] = useState(0);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setDragStart(e.clientX);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) setDragEnd(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    if (isDragging) {
-      if (dragStart - dragEnd > 75) handleNext(); // Drag left
-      if (dragStart - dragEnd < -75) handlePrev(); // Drag right
-      setIsDragging(false);
-    }
-  };
-
-  // Animation Variants
-  const slideFromLeft = { hidden: { x: -100, opacity: 0 }, visible: { x: 0, opacity: 1 } };
-  const slideFromRight = { hidden: { x: 100, opacity: 0 }, visible: { x: 0, opacity: 1 } };
-  const slideFromCenter = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
-  const transition = { duration: 0.6, ease: "easeOut" };
-
-  return (
-    <div className="relative w-full h-screen bg-white overflow-hidden px-4 ">
-      {/* Header */}
-      <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
-        <button className="flex-shrink-0 cursor-pointer" onClick={onPrevClick}>
-          <Image alt="Back Icon" height={26} src="/button-image/black-back.svg" width={26} />
-        </button>
-        <h2 className="flex-1 text-center text-[#252C00] text-[19px] font-bold leading-tight font-montagu">
-          GALLERY
-        </h2>
-      </div>
-
+ const flatImages = images.flat();
+ 
+   const handleImageClick = (sectionIdx: number, imgIdx: number) => {
+     const flatIndex = sectionIdx * 3 + imgIdx;
+     setSelectedImageIndex(flatIndex);
+   };
+ 
+   const handleNext = () => {
+     if (selectedImageIndex !== null && selectedImageIndex < flatImages.length - 1) {
+       setSelectedImageIndex(selectedImageIndex + 1);
+     }
+   };
+ 
+   const handlePrev = () => {
+     if (selectedImageIndex !== null && selectedImageIndex > 0) {
+       setSelectedImageIndex(selectedImageIndex - 1);
+     }
+   };
+ 
+   const handleClose = () => {
+     setSelectedImageIndex(null);
+   };
+ 
+   // Touch handlers for swipe
+   const handleTouchStart = (e: React.TouchEvent) => {
+     setTouchStart(e.targetTouches[0].clientX);
+   };
+ 
+   const handleTouchMove = (e: React.TouchEvent) => {
+     setTouchEnd(e.targetTouches[0].clientX);
+   };
+ 
+   const handleTouchEnd = () => {
+     if (touchStart - touchEnd > 75) handleNext(); // Swiped left
+     if (touchStart - touchEnd < -75) handlePrev(); // Swiped right
+   };
+ 
+   // Mouse drag handlers for desktop
+   const [isDragging, setIsDragging] = useState(false);
+   const [dragStart, setDragStart] = useState(0);
+   const [dragEnd, setDragEnd] = useState(0);
+ 
+   const handleMouseDown = (e: React.MouseEvent) => {
+     setIsDragging(true);
+     setDragStart(e.clientX);
+   };
+ 
+   const handleMouseMove = (e: React.MouseEvent) => {
+     if (isDragging) setDragEnd(e.clientX);
+   };
+ 
+   const handleMouseUp = () => {
+     if (isDragging) {
+       if (dragStart - dragEnd > 75) handleNext(); // Drag left
+       if (dragStart - dragEnd < -75) handlePrev(); // Drag right
+       setIsDragging(false);
+     }
+   };
+ 
+   // Animation Variants
+   const slideFromLeft = { hidden: { x: -100, opacity: 0 }, visible: { x: 0, opacity: 1 } };
+   const slideFromRight = { hidden: { x: 100, opacity: 0 }, visible: { x: 0, opacity: 1 } };
+   const slideFromCenter = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
+   const transition = { duration: 0.6, ease: "easeOut" };
+ 
+   return (
+     <div className="relative w-full h-screen bg-white overflow-hidden px-4 ">
+       {/* Header */}
+       <div className="flex flex-row w-full pt-2 pb-2 items-center justify-center border-b border-black">
+         <button className="flex-shrink-0 cursor-pointer" onClick={onPrevClick}>
+           <Image alt="Back Icon" height={26} src="/button-image/black-back.svg" width={26} />
+         </button>
+         <h2 className="flex-1 text-center text-[#5E7ECC] text-[19px] font-bold leading-tight font-montagu">
+           GALLERY
+         </h2>
+       </div>
+ 
  {/* Scrollable Gallery Section */}
       <div
         className="absolute top-[60px] bottom-0 left-0 right-0 overflow-y-auto p-2 pb-20 space-y-2 px-4"

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 
 const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
   const languageItems = [
-    { image: "/language-image/italian.svg", text: "Italian" },
-    { image: "/language-image/spanish.svg", text: "Spanish" },
-    { image: "/language-image/french.svg", text: "French" },
+    { image: "/language-image/as-italian.svg", text: "Italian" },
+    { image: "/language-image/as-spanish.svg", text: "Spanish" },
+    { image: "/language-image/as-french.svg", text: "French" },
     { image: "/language-image/english.svg", text: "English" },
   ];
 
@@ -79,7 +79,7 @@ const LanguageToggle = ({ onClose }: { onClose: () => void }) => {
       </div>
 
       {/* Continue Button */}
-      <div className="bg-[#5F1BE7] cursor-pointer w-full sm:w-[85%] h-[45px] flex justify-center mx-auto rounded-[8px] mt-6 mb-6 active:scale-95 transition-transform duration-200">
+      <div className="bg-[#5F1BE7] cursor-pointer w-full  h-[45px] flex justify-center mx-auto rounded-[8px] mt-6 mb-6 active:scale-95 transition-transform duration-200">
         <button
           className="text-white text-[16px] font-bold leading-[23px]"
           onClick={handleContinue}

@@ -47,9 +47,7 @@ const ReviewPage = ({
       comment: string;
       avatar: string;
     }>
-  >([
-
-  ]);
+  >([]);
 
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -115,7 +113,7 @@ const ReviewPage = ({
     rating: number,
     comment: string,
     name: string,
-    avatar: string,
+    avatar: string
   ) => {
     const now = new Date();
     const uniqueId = `${now.getTime()}_${Math.floor(Math.random() * 10000)}`;
@@ -184,7 +182,7 @@ const ReviewPage = ({
   // Toggle dropdown visibility on heart click
   const handleHeartClick = (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
-    id: string,
+    id: string
   ) => {
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 
@@ -202,9 +200,9 @@ const ReviewPage = ({
       >
         {/* Top Section: header + summary */}
         <div className=" space-y-2 flex-shrink-0">
-          <div className="flex flex-wrap justify-between items-center w-full sm:px-2">
+          <div className="flex flex-wrap justify-between items-center w-full ">
             {/* Left side: back button + title */}
-            <div className="flex items-center gap-1 flex-shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <button onClick={() => handleScrollToTopAndNavigate(onPrevClick)}>
                 <Image
                   alt="Back Icon"
@@ -213,15 +211,15 @@ const ReviewPage = ({
                   width={20}
                 />
               </button>
-              <p className="text-[11px] sm:text-base font-bold font-mulish whitespace-nowrap">
-                CABERNET SAUVIGNON
+              <p className="text-[13px] sm:text-base font-bold text font-mulish whitespace-nowrap">
+                VIGNA DEL PARROCO
               </p>
             </div>
 
             {/* Right side: Write a Review button */}
             <div className="flex-shrink-0">
               <button
-                className="bg-[#5F1BE7] px-4 py-2 rounded-full flex items-center text-white text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-gray-800 transition whitespace-nowrap"
+                className="bg-[#5E7ECC] px-4 py-2 rounded-full flex items-center text-white text-[11px] sm:text-[11px] font-bold gap-1 sm:gap-2 hover:bg-[#1A2042] transition whitespace-nowrap"
                 onClick={() => setIsDetailsPopupOpen(true)}
               >
                 <Image
@@ -246,7 +244,7 @@ const ReviewPage = ({
                   details.rating,
                   details.comment,
                   details.name,
-                  details.avatar,
+                  details.avatar
                 );
               }
             }}
@@ -294,8 +292,8 @@ const ReviewPage = ({
                               avatar,
                               time: new Date(),
                             }
-                          : r,
-                      ),
+                          : r
+                      )
                     );
                     setIsEditPopupOpen(false);
                   }}
@@ -306,7 +304,7 @@ const ReviewPage = ({
 
           {/* Reviews Summary */}
           {reviews.length > 0 && (
-            <div className="bg-[#f8f8f8] rounded-lg p-4 flex md:flex-row justify-between items-center my-2 w-full">
+            <div className="bg-[#eeedede8] rounded-lg p-4 flex md:flex-row justify-between items-center my-2 w-full">
               {/* Rating Bars */}
               <div className="flex flex-col gap-1 w-full max-w-[250px]">
                 {[5, 4, 3, 2, 1].map((num) => {
@@ -383,7 +381,7 @@ const ReviewPage = ({
         </div>
 
         {/* Middle Section: Reviews List center and scrollable */}
-        <div className=" h-[45vh]">
+        <div className="h-[45vh]">
           {reviews.length > 0 ? (
             reviews.map((r) => (
               <div
@@ -581,7 +579,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect immediately...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Like.svg",
+                    "/review-images/comment/Like.svg"
                   );
                 } else {
                   console.log("❌ No reviewId!");
@@ -603,7 +601,7 @@ const ReviewPage = ({
                 e.stopPropagation();
                 console.log(
                   "🔥 Red Heart MOUSEDOWN! Review ID:",
-                  activeReactionId,
+                  activeReactionId
                 );
 
                 const reviewId = activeReactionId;
@@ -614,7 +612,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Red Heart...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/RedHeart.svg",
+                    "/review-images/comment/RedHeart.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Red Heart!");
@@ -644,7 +642,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Care...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Care.svg",
+                    "/review-images/comment/Care.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Care!");
@@ -674,7 +672,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Haha...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Haha.svg",
+                    "/review-images/comment/Haha.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Haha!");
@@ -758,7 +756,7 @@ const ReviewPage = ({
                   console.log("Calling handleEmojiSelect for Angry...");
                   handleEmojiSelect(
                     reviewId,
-                    "/review-images/comment/Angry.svg",
+                    "/review-images/comment/Angry.svg"
                   );
                 } else {
                   console.log("❌ No reviewId for Angry!");
