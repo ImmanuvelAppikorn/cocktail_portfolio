@@ -30,7 +30,7 @@ const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
                 />
               </button>
               <h2 className="w-full text-center text-[#5E7ECC] text-[19px] font-bold leading-tight font-montagu">
-                          VIGNA DEL PARROCO
+               VERMOUTH ROSSO
               </h2>
             </div>
 

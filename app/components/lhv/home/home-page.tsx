@@ -254,9 +254,9 @@ export default function HomePage() {
         animate={{
           height:
             currentStep === "home"
-              ? "125%"
+              ? "100%"
               : currentStep === "crimson"
-                ? "30%"
+                ? "28%"
                 : currentStep === "about" || currentStep === "nutrition"
                   ? "55%"
                   : currentStep === "review"
@@ -277,9 +277,9 @@ export default function HomePage() {
                     : 0,
           bottom:
             currentStep === "home"
-              ? "-45%"
+              ? "-22%"
               : currentStep === "crimson"
-                ? "44%"
+                ? "48%"
                 : currentStep === "about"
                   ? "-8%"
                   : currentStep === "nutrition"

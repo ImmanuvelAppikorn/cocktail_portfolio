@@ -212,7 +212,7 @@ const ReviewPage = ({
                 />
               </button>
               <p className="text-[13px] sm:text-base font-bold text font-mulish whitespace-nowrap">
-                VIGNA DEL PARROCO
+                VERMOUTH ROSSO
               </p>
             </div>
 

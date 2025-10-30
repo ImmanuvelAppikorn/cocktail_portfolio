@@ -31,11 +31,11 @@ export default function CrimsonPage({
   };
 
   return (
-    <div className=" relative flex flex-col pt-2 px-4 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
+    <div className=" relative flex flex-col pt-2 px-3 h-full  text-black overflow-y-auto w-full max-w-[500px] mx-auto">
       <AnimatePresence>
         <motion.div
           animate={{ x: 0, opacity: 1 }}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
+          className="absolute right-4 top-[47%] -translate-y-1/2 z-50 rounded-full shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]" // centered horizontally
           exit={{ x: 150, opacity: 0 }}
           initial={{ x: 150, opacity: 0 }}
           transition={smoothTransition}
@@ -84,7 +84,7 @@ export default function CrimsonPage({
                                                     />
                                                   </button>
                                                   <h2 className="w-full text-center text-white text-[19px] font-bold leading-tight font-montagu">
-                                                           VIGNA DEL PARROCO
+                                                    VERMOUTH ROSSO
                                                   </h2>
                                                 </div>
 
@@ -121,13 +121,13 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
-        <div className="pb-22">
+        <div className="pb-18">
           {/* CTA Button */}
 
           {/* Bottom Section */}
           <motion.div
             animate="visible"
-            className="flex flex-col space-y-4  w-full mt-6"
+            className="flex flex-col space-y-4  w-full mt-6  "
             exit="exit"
             initial="hidden"
             variants={bottomVariants}
