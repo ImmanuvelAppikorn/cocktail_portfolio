@@ -70,26 +70,22 @@ export default function CrimsonPage({
         >
           {/* Header */}
 
-
-            <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
-                                                  <button
-                                                    className="absolute left-0"
-                                                            onClick={onPrevClick}
-                                                  >
-                                                    <Image
-                                                      alt="Back Icon"
-                                                      height={26}
-                                                      src="/button-image/black-back.svg"
-                                                      width={26}
-                                                    />
-                                                  </button>
-                                                  <h2 className="w-full text-center text-white text-[19px] font-bold leading-tight font-montagu">
-                                                    VERMOUTH ROSSO
-                                                  </h2>
-                                                </div>
+          <div className="relative flex w-full pt-2 pb-2 items-center justify-center border-b border-black">
+            <button className="absolute left-0" onClick={onPrevClick}>
+              <Image
+                alt="Back Icon"
+                height={26}
+                src="/button-image/black-back.svg"
+                width={26}
+              />
+            </button>
+            <h2 className="w-full text-center text-white text-[19px] font-bold leading-tight font-montagu">
+              VERMOUTH ROSSO
+            </h2>
+          </div>
 
           {/* Wine Info Cards (Top Section) */}
-          <div className="flex flex-col gap-4 text-[12px] font-semibold mt-6">
+          <div className="flex flex-col gap-3 text-[12px] font-semibold mt-6">
             <div className="flex flex-row w-full justify-between">
               <InfoCard
                 half
@@ -121,36 +117,36 @@ export default function CrimsonPage({
           </div>
         </motion.div>
 
-        <div className="pb-18">
+        <div className="pb-19">
           {/* CTA Button */}
 
           {/* Bottom Section */}
           <motion.div
             animate="visible"
-            className="flex flex-col space-y-4  w-full mt-6  "
+            className="flex flex-col space-y-2  w-full mt-6  "
             exit="exit"
             initial="hidden"
             variants={bottomVariants}
           >
-            <div className="grid grid-cols-2 gap-2 w-full">
+            <div className="flex flex-row  w-full">
               <InfoCard
                 half
                 icon="/assets/vite_colte/crimson-reserve-icons/alcohol.svg"
                 title="ALCOHOL"
-                value="14.0%"
+                value="18.0%"
               />
               <InfoCard
                 half
                 icon="/assets/vite_colte/crimson-reserve-icons/processing.svg"
                 title="PROCESSING"
-                value="WOODEN BARRELS (38 MONTHS)"
+                value="AGED IN WOODEN BARRELS"
               />
             </div>
 
             <InfoCard
               icon="/assets/vite_colte/crimson-reserve-icons/winery.svg"
               title="WINERY"
-              value="-"
+              value="LHV AVEZZA"
             />
             <InfoCard
               icon="/assets/vite_colte/crimson-reserve-icons/harvest.svg"
@@ -160,7 +156,7 @@ export default function CrimsonPage({
             <InfoCard
               icon="/assets/vite_colte/crimson-reserve-icons/tasting-notes.svg"
               title="TASTING NOTES"
-              value="BRIGHT RUBY WITH PURPLE HINTS, FRUITY SCENTS OF MARASCA CHERRIES AND SMALL BERRIES"
+              value="VANILLA,RHUBARB,JUNIPER,TOASTED WOOD,CHRISTMAS SPICES"
             />
           </motion.div>
         </div>

@@ -66,7 +66,7 @@ export default function AboutPage({
 
         {/* Paragraph */} 
         <p className="text-[12px] w-full font-axiforma tracking-[2] font-medium mt-1 text-justify leading-6  px-2 pt-2">
-          An exceptional artisanal Vermouth from Turin, mixed with 25 botanical ingredients on a Piedmont wine base. The taste is of good structure and uses notes of vanilla, rhubarb, juniper, toasted wood and Christmas spices (cloves, cinnamon and dried orange). Extraordinarily balanced with an aftertaste of medicinal herbs. Perfect for a Negroni, Americano, Manhattan or simply served alone with ice and a slice of orange.
+An exceptional artisanal Vermouth di Torino, blended with 25 botanical ingredients on a base of Piedmont wine. The taste is well-structured, featuring notes of vanilla, rhubarb, juniper, toasted wood, and festive spices (cloves, cinnamon, and dried orange). Wonderfully balanced with a hint of medicinal herbs. Perfect for a Negroni, Americano, Manhattan, or simply enjoyed on its own with ice and a slice of orange.
           <span>
             <button
               className="cursor-pointer font-axiforma relative overflow-hidden hover:text-[#5E7ECC] inline-flex items-center justify-center px-[2px]  text-[#0052B4] text-[12px] font-montagu font-semibold transition group"

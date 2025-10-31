@@ -117,7 +117,7 @@ export default function HomePage() {
 
   // Common animation transition
   const smoothTransition = {
-    duration: currentStep === "review" || currentStep === "gallery" ? 0 : 1.5,
+    duration: currentStep === "review" || currentStep === "gallery" ? 0 : 1,
     ease:
       currentStep === "review" || currentStep === "gallery"
         ? "linear"
@@ -279,7 +279,7 @@ export default function HomePage() {
             currentStep === "home"
               ? "-22%"
               : currentStep === "crimson"
-                ? "48%"
+                ? "47%"
                 : currentStep === "about"
                   ? "-8%"
                   : currentStep === "nutrition"

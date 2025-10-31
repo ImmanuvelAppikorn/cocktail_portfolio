@@ -38,7 +38,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 
   const handleNavigation = (stepId: string) => {
     scrollToTopAndNavigate(() => onStepChange(stepId as any));
-    // setIsOpen(false); // close after navigating
+    setIsOpen(false); // close after navigating
   };
 
   // 👇 Close menu when clicking outside
