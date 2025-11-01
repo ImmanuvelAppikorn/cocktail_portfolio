@@ -6,9 +6,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 interface NavigationBarProps {
-  activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"  ;
+  activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery" 
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
 }
 
@@ -18,35 +18,36 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const navItems = [
     {
+      id: "explore",
+      label: "Explore",
+      icon: "/assets/lhv/navigation-bar/explore_more.svg",
+    },
+    {
       id: "crimson",
       label: "Story",
-      icon: "/assets/lhv/navigation-bar/new/Story.svg",
+      icon: "/assets/lhv/navigation-bar/new1/Story.svg",
     },
     {
       id: "gallery",
       label: "Gallery",
-      icon: "/assets/lhv/navigation-bar/new/Gallery.svg",
+      icon: "/assets/lhv/navigation-bar/new1/Gallery.svg",
     },
 
     {
       id: "review",
       label: "Reviews",
-      icon: "/assets/lhv/navigation-bar/new/Review.svg",
+      icon: "/assets/lhv/navigation-bar/new1/Review.svg",
     },
-    {
-      id: "nutrition",
-      label: "Ingredients",
-      icon: "/assets/lhv/navigation-bar/new/Nutrition.svg",
-    },
-    {
-      id: "explore",
-      label: "Explore",
-      icon: "/assets/lhv/navigation-bar/new/Home.svg",
-    },
+    // {
+    //   id: "nutrition",
+    //   label: "Ingredients",
+    //   icon: "/assets/lhv/navigation-bar/new/Nutrition.svg",
+    // },
+
     {
       id: "home",
       label: "Home",
-      icon: "/assets/lhv/navigation-bar/new/Home.svg",
+      icon: "/assets/lhv/navigation-bar/new1/Home.svg",
     },
   ];
 
@@ -100,7 +101,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <Image
             alt="menu"
             height={50}
-            src="/assets/lhv/navigation-bar/new/trigger_button.svg"
+            src="/assets/lhv/navigation-bar/new1/trigger_button.svg"
             width={50}
           />
         </div>
@@ -124,7 +125,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
               >
                 <Image
                   alt={item.label}
-                  className="object-contain "
+                  className="object-contain"
                   height={32}
                   src={item.icon}
                   width={32}

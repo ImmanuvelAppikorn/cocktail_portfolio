@@ -5,9 +5,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 interface NavigationBarProps {
-  activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery" ;
+  activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
   onStepChange: (
-    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"  
+    step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
 }
 
@@ -16,6 +16,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   onStepChange,
 }) => {
   const navItems = [
+    {
+      id: "explore",
+      label: "Explore",
+      icon: "/assets/brandini/navigation-bar/explore_more.svg",
+    },
     {
       id: "crimson",
       label: "Story",
@@ -31,16 +36,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Reviews",
       icon: "/assets/brandini/navigation-bar/new/reviews.svg",
     },
-    {
-      id: "nutrition",
-      label: "Ingredients",
-      icon: "/assets/brandini/navigation-bar/new/Nutrition.svg",
-    },
-    {
-      id: "explore",
-      label: "Explore",
-      icon: "/assets/brandini/navigation-bar/new/Home.svg",
-    },
+    // {
+    //   id: "nutrition",
+    //   label: "Ingredients",
+    //   icon: "/assets/brandini/navigation-bar/new/Nutrition.svg",
+    // },
+
     {
       id: "home",
       label: "Home",
@@ -76,7 +77,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   }, [isOpen]);
 
   return (
-    <div
+    <div 
       ref={navRef}
       className="nav-container fixed bottom-2 left-1/2 -translate-x-1/2 w-full max-w-[500px] px-2 z-50"
     >

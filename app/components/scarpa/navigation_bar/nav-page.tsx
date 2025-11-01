@@ -16,7 +16,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   activeStep: _activeStep,
   onStepChange,
 }) => {
-  const navItems = [
+  const navItems = [ 
+    {
+      id: "explore",
+      label: "Explore",
+      icon: "/assets/scapra/navigation-bar/explore_more.svg",
+    },
     {
       id: "crimson",
       label: "Story",
@@ -25,7 +30,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     {
       id: "gallery",
       label: "Gallery",
-      icon: "/assets/scapra/navigation-bar/new/Gallery.svg",
+      icon: "/assets/scapra/navigation-bar/new/Gallery.svg", 
     },
 
     {
@@ -33,16 +38,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Reviews",
       icon: "/assets/scapra/navigation-bar/new/Review.svg",
     },
-    {
-      id: "nutrition",
-      label: "Ingredients",
-      icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
-    },
-    {
-      id: "explore",
-      label: "Explore",
-      icon: "/assets/scapra/navigation-bar/new/Home.svg",
-    },
+    // {
+    //   id: "nutrition",
+    //   label: "Ingredients",
+    //   icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
+    // },
+
     {
       id: "home",
       label: "Home",

@@ -112,7 +112,7 @@ export default function HomePage() {
   const navigateStep = (nextStep: typeof currentStep, delay = 800) => {
     setReverse(true);
     setTimeout(() => {
-      setNavStack((prev) => [...prev, nextStep]); // push new page
+      setNavStack((prev) => [...prev, nextStep]); // push new page 
       setCurrentStep(nextStep);
       setReverse(false);
     }, delay);
@@ -410,6 +410,30 @@ export default function HomePage() {
           width={1000}
         />
       </motion.div>
+
+       {/* Ingredients Floating Button */}
+      {currentStep !== "home" && !reverse && (
+        <motion.div
+          className="absolute top-[35%] right-4 z-50 cursor-pointer"
+          drag
+          dragMomentum={false}
+          dragElastic={0.2}
+           onClick={() => {
+            if (currentStep !== "nutrition") {
+              navigateStep("nutrition");
+            }
+          }}
+          whileTap={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 100, damping: 10 }}
+        >
+          <Image
+            src="/assets/scapra/navigation-bar/ingredients.svg"
+            alt="Nutrition Rocket"
+             height={46}
+            width={46}
+          />
+        </motion.div>
+      )}
 
       {/* Pages */}
       <AnimatePresence>

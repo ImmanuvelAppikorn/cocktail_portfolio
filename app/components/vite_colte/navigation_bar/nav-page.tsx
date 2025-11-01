@@ -12,11 +12,16 @@ interface NavigationBarProps {
   ) => void;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({
+const NavigationBar: React.FC<NavigationBarProps> = ({ 
   activeStep: _activeStep,
   onStepChange,
 }) => {
   const navItems = [
+    {
+      id: "explore",
+      label: "Explore",
+      icon: "/assets/vite_colte/navigation-bar/explore_more.svg",
+    },
     {
       id: "crimson",
       label: "Story",
@@ -33,16 +38,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Reviews",
       icon: "/assets/vite_colte/navigation-bar/new/Review.svg",
     },
-    {
-      id: "nutrition",
-      label: "Ingredients",
-      icon: "/assets/vite_colte/navigation-bar/new/Nutrition.svg",
-    },
-    {
-      id: "explore",
-      label: "Explore",
-      icon: "/assets/vite_colte/navigation-bar/new/Home.svg",
-    },
+    // {
+    //   id: "nutrition",
+    //   label: "Ingredients",
+    //   icon: "/assets/vite_colte/navigation-bar/new/Nutrition.svg",
+    // },
+
     {
       id: "home",
       label: "Home",
