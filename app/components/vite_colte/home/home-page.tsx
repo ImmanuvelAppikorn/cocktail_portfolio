@@ -124,6 +124,31 @@ export default function HomePage() {
         : [0.88, 0.01, 0.17, 0.99],
   };
 
+  
+  const [constraints, setConstraints] = useState({
+    top: 0,
+    bottom: 0,
+    // left: 0,
+    // right: 0,
+  });
+
+  // Dynamically update constraints based on viewport size
+  useEffect(() => {
+    const updateConstraints = () => {
+      const height = window.innerHeight;
+      const elementSize = 120; // approximate element height (adjust if needed)
+
+      setConstraints({
+        top: -(height / 2 - elementSize), // reach near the top
+        bottom: height / 2 - elementSize, // reach near the bottom
+      });
+    };
+
+    updateConstraints(); // run once
+    window.addEventListener("resize", updateConstraints);
+    return () => window.removeEventListener("resize", updateConstraints);
+  }, []);
+
   // -------------------- RETURN UI --------------------
   return (
     <div
@@ -388,29 +413,31 @@ export default function HomePage() {
         />
       </motion.div>
 
-      {/* Ingredients Floating Button */}
-      {currentStep !== "home" && !reverse && (
-        <motion.div
-          className="absolute top-[35%] right-4 z-50 cursor-pointer"
-          drag
-          dragMomentum={false}
-          dragElastic={0.2}
-          whileTap={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 100, damping: 10 }}
-          onClick={() => {
-            if (currentStep !== "nutrition") {
-              navigateStep("nutrition");
-            }
-          }}
-        >
-          <Image
-            src="/assets/vite_colte/navigation-bar/ingredients.svg"
-            alt="Nutrition Rocket"
-             height={46}
-            width={46}
-          />
-        </motion.div>
-      )}
+    {/* Ingredients Floating Button */}
+          {currentStep !== "home" && !reverse && (
+            <motion.div
+              className="absolute top-[35%] right-4 z-50 cursor-pointer bg-white rounded-full shadow-[0_0_15px_4px_rgba(0,0,0,0.25)] p-2"
+              drag="y" // ✅ only vertical drag
+              dragElastic={0.2}
+              dragMomentum={false}
+              dragConstraints={constraints} // ✅ dynamically set
+              whileTap={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 10 }}
+              onClick={() => {
+                if (currentStep !== "nutrition") {
+                  navigateStep("nutrition");
+                }
+              }}
+            >
+              <Image
+                src="/assets/vite_colte/navigation-bar/ingredients.svg"
+                alt="Nutrition Rocket"
+                height={46}
+                width={46}
+              />
+            </motion.div>
+          )}
+    
 
       {/* Pages */}
       <AnimatePresence>

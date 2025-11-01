@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 
 interface MoreDetailsProps {
-  onPrevClick: () => void;
+  onPrevClick: () => void; 
 }
 
 const MoreDetails = ({ onPrevClick }: MoreDetailsProps) => {
