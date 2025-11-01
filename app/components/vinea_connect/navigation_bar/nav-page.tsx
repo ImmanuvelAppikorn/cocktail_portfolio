@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { scrollToTopAndNavigate } from "@/app/utils/scroll-utils";
 
 interface NavigationBarProps {
-  activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery";
+  activeStep: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery" ;
   onStepChange: (
     step: "home" | "crimson" | "about" | "review" | "nutrition" | "gallery"
   ) => void;
@@ -30,6 +30,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       label: "Ingredients",
       icon: "/navigation-bar/new/Nutrition.svg",
     },
+    { id: "explore", label: "Explore", icon: "/navigation-bar/new/Home.svg" },
     { id: "home", label: "Home", icon: "/navigation-bar/new/Home.svg" },
   ];
 
@@ -108,9 +109,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                 <Image
                   alt={item.label}
                   className="object-contain "
-                  height={38}
+                  height={32}
                   src={item.icon}
-                  width={38}
+                  width={32}
                 />
                 <p className="text-[8px]  text-center text-[#EB235C]  p-0.5 px-2  font-light font-axiforma whitespace-nowrap">
                   {item.label}

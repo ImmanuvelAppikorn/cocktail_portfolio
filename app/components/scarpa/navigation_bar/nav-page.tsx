@@ -39,6 +39,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       icon: "/assets/scapra/navigation-bar/new/Nutrition.svg",
     },
     {
+      id: "explore",
+      label: "Explore",
+      icon: "/assets/scapra/navigation-bar/new/Home.svg",
+    },
+    {
       id: "home",
       label: "Home",
       icon: "/assets/scapra/navigation-bar/new/Home.svg",
@@ -120,9 +125,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                 <Image
                   alt={item.label}
                   className="object-contain "
-                  height={38}
+                  height={32}
                   src={item.icon}
-                  width={38}
+                  width={32}
                 />
                 <p className="text-[8px]  text-center text-[#826026]  p-0.5 px-2  font-light font-axiforma whitespace-nowrap">
                   {item.label}
